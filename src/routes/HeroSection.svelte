@@ -1,70 +1,35 @@
 <script>
   import background_image from '$lib/assets/Elvebakken.jpg';
-  import { onMount } from 'svelte';
-
-  let countdown;
-
-  async function fetchCurrentTime() {
-    const response = await fetch('http://worldtimeapi.org/api/timezone/Europe/Oslo');
-    const data = await response.json();
-    return new Date(data.datetime).getTime();
-  }
-
-  onMount(async () => {
-    const countDownDate = new Date("Feb 15, 2025 11:30:00").getTime(); // Dato til konseptslipp
-    const countdownElement = document.getElementById("countdown");
-
-    let now = await fetchCurrentTime(); // Fetch current time from API once
-    const startTime = Date.now();
-    const offset = now - startTime;
-
-    const updateCountdown = () => {
-      now = Date.now() + offset; // Update current time based on local system clock
-
-      let distance = countDownDate - now; // Finner tidsforskjell i sekunder
-
-      let months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30)); // Finner antall måneder
-      let days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)); // Finner antall dager
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Finner antall timer
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Finner antall minutter
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000); // Finner antall sekunder
-
-      if (countdownElement) {
-        countdownElement.innerHTML = `${months}m ${days}d ${hours}h ${minutes}m ${seconds}s`; // Viser tidsforskjell i HTML
-      }
-    };
-
-    updateCountdown(); // Initial call to display the countdown immediately
-    setInterval(updateCountdown, 1000); // Update every second
-  });
+  import Countdown from './Countdown.svelte';
 </script>
 
+<section class="hero is-fullheight is-fullwidth" style="background-image: url({background_image});">
+  <div class="container text-center">
+    <h1 class="hero-title">Elvebakkenrevyen</h1>
+    <div class="countdown">
+      <Countdown />
+    </div>
+  </div>
+</section>
+
 <style>
-  #countdown {
-    font-size: 2em;
-    font-weight: bold;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
+
   .hero {
-    @apply bg-blue-500 text-white py-20;
+    @apply text-white py-20;
     height: 100vh;
     width: 100vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    text-transform: uppercase;
   }
   .hero::before {
     content: ''; 
     top: 0;
     left: 0;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
     z-index: 0;
@@ -74,21 +39,63 @@
     z-index: 1;
   }
   .hero-title {
+    user-select: none;
+    margin-top: 10%;
     @apply text-4xl font-bold mb-4;
+    font-family: var(--font-header);
   }
-  .hero-subtitle {
-    @apply text-xl mb-8;
+
+  /* Media queries for responsivitet */
+  @media (max-width: 768px) {
+    .countdown {
+      font-size: 1.5em;
+      margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
+    }
+    .countdown-item {
+      padding: 3%;
+      flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
+      margin: 5px; /* Legg til margin mellom elementer */
+    }
+    .hero-title {
+      font-size: 2.5em;
+      user-select: none;
+    }
+    .hero-subtitle {
+      font-size: 1.2em;
+    }
+    .hero-button {
+      font-size: 1em;
+    }
   }
-  .hero-button {
-    @apply bg-white text-blue-500 font-bold py-2 px-4 rounded;
+
+  @media (max-width: 480px) {
+    .countdown {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      font-size: 1.25em;
+      margin-top: 15%; /* Juster plass over nedtellingen for mindre skjermer */
+      height: auto; /* Juster høyde for mindre skjermer */
+    }
+    .countdown-item {
+      margin: 5px 0; /* Legg til margin mellom elementer */
+    }
+    .hero-title {
+      font-size: 2em;
+    }
+    .hero-subtitle {
+      font-size: 1em;
+    }
+    .hero-button {
+      font-size: 0.8em;
+    }
+    .row {
+      display: flex;
+      flex-direction: row;
+    }
+    #min {
+      border-left: none;
+    }
+
   }
 </style>
-
-<section class="hero is-fullheight is-fullwidth" style="background-image: url({background_image});">
-  <div class="container mx-auto text-center">
-    <h1 class="hero-title">Elvebakkenrevyen</h1>
-    <div id="countdown">Loading...</div>
-    <p class="hero-subtitle">We are glad to have you here. Explore our content and enjoy your stay!</p>
-    <button class="hero-button">Get Started</button>
-  </div>
-</section>

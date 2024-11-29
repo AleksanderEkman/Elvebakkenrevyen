@@ -5,6 +5,10 @@
     import HeroSection from './HeroSection.svelte';
 </script>
 
+<svelte:head>
+    <title>Elvebakkenrevyen</title>
+</svelte:head>
+
 <main>
     <HeroSection />
 
