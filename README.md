@@ -1,38 +1,23 @@
-# sv
+# Elvebakkenrevyen
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Introduksjon
 
-## Creating a project
+Elvebakkenrevyen er en nettside laget for å presentere informasjon om revyen ved Elvebakken videregående skole. Nettsiden er bygget med **SvelteKit**, et moderne rammeverk for utvikling av brukergrensesnitt som gir en rask og responsiv opplevelse.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Teknisk informasjon
 
-```bash
-# create a new project in the current directory
-npx sv create
+### Teknologier brukt
 
-# create a new project in my-app
-npx sv create my-app
-```
+- **SvelteKit**: Et rammeverk for å bygge applikasjoner med Svelte. Det gir server-side rendering, statisk nettstedgenerering og en enkel utviklingsopplevelse.
+- **Vite**: En rask byggverktøy som brukes av SvelteKit for utvikling og produksjon.
+- **Tailwind CSS**: Et utility-first CSS-rammeverk som brukes for å lage tilpassede design raskt og effektivt.
+- **Node.js**: Brukes som servermiljø for å kjøre applikasjonen.
 
-## Developing
+### Installasjon
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+For å sette opp prosjektet lokalt, følg disse trinnene:
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+1. Klon repositoriet:
+   ```bash
+   git clone https://github.com/ditt-brukernavn/elvebakkenrevyen.git
+   cd elvebakkenrevyen
