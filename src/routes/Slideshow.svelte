@@ -1,15 +1,15 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import nymalt from '$lib/assets/slideshow/nymalt.png';
-    import fortheculture from '$lib/assets/slideshow/fortheculture.png';
-    import ekko from '$lib/assets/slideshow/ekko.png';
-    import image2021 from '$lib/assets/slideshow/2021.png';
-    import døden from '$lib/assets/slideshow/døden.png';
-    import kjøssmegpåmunnen from '$lib/assets/slideshow/kjøssmegpåmunnen.png';
-    import vimåsnakkeommiljø from '$lib/assets/slideshow/vimåsnakkeommiljø.png';
-    import mellomrom from '$lib/assets/slideshow/mellomrom.png';
-    import utåstjælepaller from '$lib/assets/slideshow/utåstjælepaller.png';
-    import utenentråd from '$lib/assets/slideshow/utenentråd.png';
+    import nymalt from '$lib/assets/slideshow/nymalt.webp';
+    import fortheculture from '$lib/assets/slideshow/fortheculture.webp';
+    import ekko from '$lib/assets/slideshow/ekko.webp';
+    import image2021 from '$lib/assets/slideshow/2021.webp';
+    import døden from '$lib/assets/slideshow/døden.webp';
+    import kjøssmegpåmunnen from '$lib/assets/slideshow/kjøssmegpåmunnen.webp';
+    import vimåsnakkeommiljø from '$lib/assets/slideshow/vimåsnakkeommiljø.webp';
+    import mellomrom from '$lib/assets/slideshow/mellomrom.webp';
+    import utåstjælepaller from '$lib/assets/slideshow/utåstjælepaller.webp';
+    import utenentråd from '$lib/assets/slideshow/utenentråd.webp';
   
     let imageIndex = 0;
     const images = [
@@ -117,9 +117,8 @@
     }
     @media (max-width: 480px) {
       .slideshow {
-        width: 95vw;
+        width: 90vw;
         height: auto;
       }
     }
-
   </style>
