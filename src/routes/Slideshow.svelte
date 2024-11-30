@@ -9,6 +9,7 @@
     import vimåsnakkeommiljø from '$lib/assets/slideshow/vimåsnakkeommiljø.png';
     import mellomrom from '$lib/assets/slideshow/mellomrom.png';
     import utåstjælepaller from '$lib/assets/slideshow/utåstjælepaller.png';
+    import utenentråd from '$lib/assets/slideshow/utenentråd.png';
   
     let imageIndex = 0;
     const images = [
@@ -20,7 +21,8 @@
         { src: kjøssmegpåmunnen },
         { src: vimåsnakkeommiljø },
         { src: mellomrom },
-        { src: utåstjælepaller}
+        { src: utåstjælepaller},
+        { src: utenentråd }
     ];
   
     onMount(() => {
@@ -57,7 +59,7 @@
       width: 100%;
       height: auto;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
+      border-radius: 12.5px;
       user-select: none;
     }
     .slideshow {

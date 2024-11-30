@@ -1,7 +1,0 @@
-{
-    "version": 3,
-    "file": "app.css",
-    "sources": ["app.scss"],
-    "sourcesContent": ["body { background: red; }"],
-    "mappings": "AAAA,KAAK,CAAC,GAAG,CAAC,KAAK,CAAC"
-  }

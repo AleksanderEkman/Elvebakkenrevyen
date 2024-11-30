@@ -10,65 +10,71 @@
     const countDownDate = new Date("Feb 15, 2025 11:30:00").getTime(); // Dato til konseptslipp
   
     const updateValues = () => {
-      const now = new Date().getTime(); // Hent nåværende lokal tid
-      const distance = countDownDate - now; // Beregn tidsforskjellen
+        const now = new Date().getTime(); // Hent nåværende lokal tid
+        const distance = countDownDate - now; // Beregn tidsforskjellen
   
-      months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30)); // Beregn måneder
-      days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)); // Beregn dager
-      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Beregn timer
-      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Beregn minutter
-      seconds = Math.floor((distance % (1000 * 60)) / 1000); // Beregn sekunder
-    };
-  
-    const updateCountdown = (mq: MediaQueryList) => {
-        updateValues();
-    
-        const m = document.getElementById("m");
-        const d = document.getElementById("d");
-        const h = document.getElementById("h");
-        const min = document.getElementById("min");
-        const sek = document.getElementById("sek");
-    
-        if (months <= 0 && m) {
-            m.style.display = "none";
-        }
-        if (days <= 0 && d) {
-            d.style.display = "none";
-        }
-        if (hours <= 0 && h && d) {
-            h.style.display = "none";
-            if (mq.matches) {
-                d.style.borderRight = "none";
-            } else {
-                d.style.borderRight = "3px solid";
-            }
-        }
-        if (minutes <= 0 && min) {
-            min.style.display = "none";
-        }
-        if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0) {
-            if (sek) {
-                sek.style.fontSize = "1.8em";
-            }
-        }
-        if (mq.matches) {
-            if (h) {
-                h.style.borderRight = "none";
-            }
-        } else {
-            if (h) {
-                h.style.borderRight = "3px solid";
-            }
-        }
+        months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30)); // Beregn måneder
+        days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)); // Beregn dager
+        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Beregn timer
+        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Beregn minutter
+        seconds = Math.floor((distance % (1000 * 60)) / 1000); // Beregn sekunder
     };
     
     updateValues();
     onMount(() => {
-        const mq = window.matchMedia("(max-width: 480px)");
-        updateCountdown(mq); // Initialt kall for å vise nedtellingen umiddelbart
-        setInterval(() => updateCountdown(mq), 1000); // Oppdater hvert sekund
+      const mq = window.matchMedia("(max-width: 480px)");
+      const m = document.getElementById("m");
+      const d = document.getElementById("d");
+      const h = document.getElementById("h");
+      const min = document.getElementById("min");
+      const sek = document.getElementById("sek");
+  
+      const updateCountdown = () => {
+        updateValues();
+  
+        if (months <= 0 && m) {
+            m.style.display = "none";
+        }
+        if (h && d && min) {
+            if (days <= 0) {
+                d.style.display = "none";
+            } else {
+                d.style.display = "flex";
+            } 
+            if (hours <= 0) {
+                h.style.display = "none";
+                if (mq.matches) {
+                    d.style.borderRight = "none";
+                } else {
+                    d.style.borderRight = "3px solid";
+                }
+            } else {
+                h.style.display = "flex";
+            }
+            if (minutes <= 0 && min) {
+                min.style.display = "none";
+            } else {
+                min.style.display = "flex";
+            }
+        }
+        if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0 && sek) {
+            sek.style.fontSize = "1.8em";
+        }
+        if (h) {
+            if (mq.matches) {
+                h.style.borderRight = "none";
+            } else {
+                h.style.borderRight = "3px solid";
+            }
+        }
+      };
+      
+      updateCountdown(); // Initialt kall for å vise nedtellingen umiddelbart
+      const interval = setInterval(updateCountdown, 1000); // Oppdater hvert sekund
+  
+      return () => clearInterval(interval); // Cleanup interval on component unmount
     });
-  </script>
+</script>
 
 <div class="countdown">
     <div class="row1">
@@ -97,10 +103,8 @@
         display: flex;
         flex-direction: row;
     }
-    .row1 > * {
-        border-right: 3px solid;
-    }
-    .row2 > *:nth-child(1) {
+    .row1 > .countdown-item:not(:last-child),
+    .row2 > .countdown-item:not(:last-child) {
         border-right: 3px solid;
     }
     .countdown {
@@ -113,6 +117,7 @@
         user-select: none;
     }
     .countdown-item {
+        overflow: hidden;
         margin: 10px;
         padding: 5%;
         padding-left: 35px; 
