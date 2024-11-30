@@ -21,6 +21,7 @@
         list-style-type: none;
         text-transform: none;
         font-size: 1.2em;
+        padding: 20px;
     }
     
     li {

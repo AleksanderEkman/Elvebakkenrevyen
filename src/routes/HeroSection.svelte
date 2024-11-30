@@ -85,6 +85,10 @@
   @media (max-width: 768px) {
 
     .hero-title {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
+      0 0 5px rgba(255, 255, 255, 0.25), 
+      0 0 10px rgba(255, 255, 255, 0.15), 
+      0 0 15px rgba(255, 255, 255, 0.1);
       margin-top: 10%;
       font-size: 2.5em;
       user-select: none;
