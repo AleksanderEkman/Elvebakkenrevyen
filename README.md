@@ -35,16 +35,16 @@ For å sette opp prosjektet lokalt, følg disse trinnene:
 
 ### Prosjektstruktur
 /elvebakkenrevyen
--│
--├── src/
--│   ├── routes/          # Inneholder ruter for applikasjonen
--│   ├── components/      # Gjenbrukbare komponenter
--│   ├── styles/          # CSS-filer og Tailwind-konfigurasjoner
--│   └── lib/             # Biblioteker og hjelpefunksjoner
--│
--├── static/              # Statisk innhold (bilder, favicon osv.)
--├── package.json         # Prosjektets avhengigheter og skript
--└── svelte.config.js     # Konfigurasjon for SvelteKit
+- │
+- ├── src/
+- │   ├── routes/          # Inneholder ruter for applikasjonen
+- │   ├── components/      # Gjenbrukbare komponenter
+- │   ├── styles/          # CSS-filer og Tailwind-konfigurasjoner
+- │   └── lib/             # Biblioteker og hjelpefunksjoner
+- │
+- ├── static/              # Statisk innhold (bilder, favicon osv.)
+- ├── package.json         # Prosjektets avhengigheter og skript
+- └── svelte.config.js     # Konfigurasjon for SvelteKit
 
 ### Kontakt
 For spørsmål eller tilbakemeldinger, vennligst kontakt meg på aleksander.ekman1@gmail.com. Takk for at du besøker Elvebakkenrevyens nettside!
