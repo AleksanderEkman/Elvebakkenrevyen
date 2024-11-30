@@ -33,10 +33,8 @@
       imgElement.classList.remove('fade-in');
       imgElement.classList.add('fade-out');
       imageIndex = (imageIndex + 1) % images.length;
+      imgElement.src = images[imageIndex].src;
       setTimeout(() => {
-        
-        imgElement.src = images[imageIndex].src;
-
         imgElement.classList.remove('fade-out');
         imgElement.classList.add('fade-in');
       }, 400);
