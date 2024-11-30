@@ -91,14 +91,14 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
 
     .hero-title {
-      margin-top: -10%;
+      margin-top: -8%;
       font-size: 2.5em;
     }
   }
-  @media (max-height: 768px) {
+  @media (max-height: 1368px) {
     .links {
       bottom: 0;
       left: 0;

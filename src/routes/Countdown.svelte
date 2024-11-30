@@ -54,7 +54,7 @@
   
     onMount(() => {
 
-      const mq = window.matchMedia("(max-width: 480px)");
+      const mq = window.matchMedia("(max-width: 1215px)");
   
       const updateCountdown = () => {
         updateValues();
@@ -166,7 +166,7 @@
       }
     }
   
-    @media (max-width: 768px) {
+    @media (max-width: 1215px) {
       .countdown {
         font-size: 1.5em;
         margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
@@ -180,7 +180,7 @@
       }
     }
   
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       .countdown {
         display: flex;
         flex-wrap: wrap;
