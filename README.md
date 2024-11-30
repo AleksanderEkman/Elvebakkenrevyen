@@ -2,7 +2,7 @@
 
 ## Introduksjon
 
-Elvebakkenrevyen er en nettside laget for å presentere informasjon om revyen ved Elvebakken videregående skole. Nettsiden er bygget med **SvelteKit**, et moderne rammeverk for utvikling av brukergrensesnitt som gir en rask og responsiv opplevelse.
+Elvebakkenrevyen er en nettside laget for å presentere informasjon om revyen ved Elvebakken videregående skole, samt selge billetter til kunder gjennom **bestill.albillett.no**. Nettsiden er bygget med **SvelteKit**, et moderne rammeverk for utvikling av brukergrensesnitt som gir en rask og responsiv opplevelse.
 
 ## Teknisk informasjon
 
