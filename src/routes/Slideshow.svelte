@@ -32,14 +32,14 @@
     const interval = setInterval(() => {
       imgElement.classList.remove('fade-in');
       imgElement.classList.add('fade-out');
-
+      imageIndex = (imageIndex + 1) % images.length;
       setTimeout(() => {
-        imageIndex = (imageIndex + 1) % images.length;
+        
         imgElement.src = images[imageIndex].src;
 
         imgElement.classList.remove('fade-out');
         imgElement.classList.add('fade-in');
-      }, 300);
+      }, 400);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -84,11 +84,11 @@
   }
     
   :global(.fade-in) {
-    animation: fadeIn 0.15s forwards;
+    animation: fadeIn 0.2s forwards;
   }
 
   :global(.fade-out) {
-    animation: fadeOut 0.15s forwards;
+    animation: fadeOut 0.2s forwards;
   }
 
   @keyframes fadeIn {
