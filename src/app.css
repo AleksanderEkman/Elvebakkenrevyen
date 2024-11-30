@@ -36,6 +36,6 @@ main {
 
 html {
 	@apply antialiased;
-	overflow: hidden;
+
 }
 

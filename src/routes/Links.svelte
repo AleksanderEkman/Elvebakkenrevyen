@@ -53,16 +53,21 @@
     li a {
         position: relative;
     }
+    @media (max-width: 1420px) {
+        ul {
+            font-size: 0.95em;
+        }
+    }
     @media (max-width: 480px) {
         ul {
             font-size: 0.75em;
         }
     }
-    @media (max-height: 768px) or (max-width: 1024px) {
+    @media (max-height: 750px) or (max-width: 768px) {
         ul {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: space-evenly;
             width: 100%;
             padding: 7.5px;
         }

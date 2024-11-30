@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import { fly, fade} from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
   import Countdown from './Countdown.svelte';
@@ -10,20 +11,19 @@
   onMount(() => {
     showContent = true;
   });
-  
-
 </script>
 
 <section class="hero is-fullheight is-fullwidth" style="background-image: url({background_image});">
   {#if showContent}
     <div class="container text-center">
-        <h1 class="hero-title" in:fly={{ y: -200, duration: 600 }}>Elvebakkenrevyen 2025</h1>
+        <h1 class="hero-title" in:fly={{y: -200, duration: 800}}>Elvebakkenrevyen 2025</h1>
         <div class="countdown" in:fade={{ duration: 800 }}>
           <Countdown />
-          <Slideshow />
+          <div class="fly" in:fly={{y:200, duration: 800}}>
+            <Slideshow />
+          </div>
+          
         </div>
-
-
     </div>
     <div class="links" in:fade={{ duration: 800 }}>
       <Links />
@@ -58,19 +58,19 @@
     z-index: 1;
   }
   .hero-title {
-      user-select: none;
-      margin-top: 2.5%;
-      @apply text-8xl font-bold mb-4;
-      font-family: var(--font-header);
-      background: linear-gradient(90deg, #ffffff, #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 
-      0 0 10px rgba(255, 255, 255, 0.25), 
-      0 0 20px rgba(255, 255, 255, 0.15), 
-      0 0 30px rgba(255, 255, 255, 0.1);
-      letter-spacing: 3px;
+    user-select: none;
+    margin-top: 2.5%;
+    @apply text-8xl font-bold mb-4;
+    font-family: var(--font-header);
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 
+    0 0 10px rgba(255, 255, 255, 0.25), 
+    0 0 20px rgba(255, 255, 255, 0.15), 
+    0 0 30px rgba(255, 255, 255, 0.1);
+    letter-spacing: 3px;
   }
 
   .links {
@@ -82,15 +82,15 @@
   }
 
   /* Media queries for responsivitet */
-  @media (max-width: 768px) {
-
+  @media (max-width: 1420px) {
     .hero-title {
+      margin-top: 0%;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-      0 0 5px rgba(255, 255, 255, 0.25), 
-      0 0 10px rgba(255, 255, 255, 0.15), 
-      0 0 15px rgba(255, 255, 255, 0.1);
-      margin-top: 10%;
-      font-size: 2.5em;
+      0 0 7.5px rgba(255, 255, 255, 0.25), 
+      0 0 15px rgba(255, 255, 255, 0.15), 
+      0 0 20px rgba(255, 255, 255, 0.1);
+      margin-top: -2.5%;
+      font-size: 3em;
       user-select: none;
     }
   }
@@ -115,6 +115,11 @@
       0 0 5px rgba(255, 255, 255, 0.2), 
       0 0 10px rgba(255, 255, 255, 0.1), 
       0 0 15px rgba(255, 255, 255, 0.05);
+    }
+  }
+  @media (max-width: 1024px) and (max-height:600px) {
+     .hero-title {
+      margin-top: -5.5%;
     }
   }
 </style>
