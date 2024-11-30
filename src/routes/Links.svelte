@@ -20,7 +20,7 @@
         color: var(--color-text1);
         list-style-type: none;
         text-transform: none;
-        font-size: 1.15em;
+        font-size: 1.2em;
     }
     
     li {
@@ -56,5 +56,14 @@
         ul {
             font-size: 0.75em;
         }
+    @media (max-height: 768px) {
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            padding: 5px;
+        }
+    }
     }
 </style>
