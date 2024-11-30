@@ -35,10 +35,10 @@
       imageIndex = (imageIndex + 1) % images.length;
       setTimeout(() => {
         imgElement.src = images[imageIndex].src;
-      }, 200);
-      setTimeout(() => {
-        imgElement.classList.remove('fade-out');
-        imgElement.classList.add('fade-in');
+        setTimeout(() => {
+          imgElement.classList.remove('fade-out');
+          imgElement.classList.add('fade-in');
+        }, 200);
       }, 200);
     }, 5000);
 

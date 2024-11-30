@@ -200,6 +200,9 @@
       #min {
         border-left: none;
       }
+      span {
+        font-size: 1em;
+      }
     }
     @media (max-width: 1024px) and (max-height:600px) {
       .countdown {
