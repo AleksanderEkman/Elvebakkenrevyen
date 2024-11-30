@@ -12,6 +12,9 @@ export default defineConfig({
         include: ['src/**/*.{test,spec}.{js,ts}']
     },
     build: {
-        sourcemap: false
-      }
+        sourcemap: true
+      },
+    optimizeDeps: {
+        include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep']
+    }
 });

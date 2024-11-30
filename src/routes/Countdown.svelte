@@ -1,45 +1,88 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
-
+  
     let months = 0;
     let days = 0;
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
-
-    onMount(() => {
+  
     const countDownDate = new Date("Feb 15, 2025 11:30:00").getTime(); // Dato til konseptslipp
-
-    const updateCountdown = () => {
-        const now = new Date().getTime(); // Hent nåværende lokal tid
-
-        const distance = countDownDate - now; // Beregn tidsforskjellen
-
-        months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30)); // Beregn måneder
-        days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)); // Beregn dager
-        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Beregn timer
-        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Beregn minutter
-        seconds = Math.floor((distance % (1000 * 60)) / 1000); // Beregn sekunder
+  
+    const updateValues = () => {
+      const now = new Date().getTime(); // Hent nåværende lokal tid
+      const distance = countDownDate - now; // Beregn tidsforskjellen
+  
+      months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30)); // Beregn måneder
+      days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)); // Beregn dager
+      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Beregn timer
+      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Beregn minutter
+      seconds = Math.floor((distance % (1000 * 60)) / 1000); // Beregn sekunder
     };
-
-    updateCountdown(); // Oppdater nedtellingen umiddelbart
-    setInterval(updateCountdown, 1000); // Oppdater hvert sekund
+  
+    const updateCountdown = (mq: MediaQueryList) => {
+        updateValues();
+    
+        const m = document.getElementById("m");
+        const d = document.getElementById("d");
+        const h = document.getElementById("h");
+        const min = document.getElementById("min");
+        const sek = document.getElementById("sek");
+    
+        if (months <= 0 && m) {
+            m.style.display = "none";
+        }
+        if (days <= 0 && d) {
+            d.style.display = "none";
+        }
+        if (hours <= 0 && h && d) {
+            h.style.display = "none";
+            if (mq.matches) {
+                d.style.borderRight = "none";
+            } else {
+                d.style.borderRight = "3px solid";
+            }
+        }
+        if (minutes <= 0 && min) {
+            min.style.display = "none";
+        }
+        if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0) {
+            if (sek) {
+                sek.style.fontSize = "1.8em";
+            }
+        }
+        if (mq.matches) {
+            if (h) {
+                h.style.borderRight = "none";
+            }
+        } else {
+            if (h) {
+                h.style.borderRight = "3px solid";
+            }
+        }
+    };
+    
+    updateValues();
+    onMount(() => {
+        const mq = window.matchMedia("(max-width: 480px)");
+        updateCountdown(mq); // Initialt kall for å vise nedtellingen umiddelbart
+        setInterval(() => updateCountdown(mq), 1000); // Oppdater hvert sekund
     });
-</script>
+  </script>
 
 <div class="countdown">
-    <div class="row">
-      <div class="countdown-item">
+    <div class="row1">
+      <div id="m" class="countdown-item">
         <p>{months}</p> <span>måneder</span>
       </div>
       <div id = "d" class="countdown-item">
         <p>{days}</p> <span>dager</span>
       </div>
-      <div class="countdown-item">
+      <div id="h" class="countdown-item">
         <p>{hours}</p> <span>timer</span>
       </div>
     </div>
-    <div class="row">
+    <div class="row2">
       <div id="min" class="countdown-item">
         <p>{minutes}</p> <span>minutter</span>
       </div>
@@ -50,12 +93,18 @@
 </div>
 
 <style>
-    .row {
+    .row1, .row2 {
         display: flex;
         flex-direction: row;
     }
+    .row1 > * {
+        border-right: 3px solid;
+    }
+    .row2 > *:nth-child(1) {
+        border-right: 3px solid;
+    }
     .countdown {
-        margin-top: 10%;
+        margin-top: 5%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -66,6 +115,8 @@
     .countdown-item {
         margin: 10px;
         padding: 5%;
+        padding-left: 35px; 
+        padding-right: 55px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -73,12 +124,7 @@
         min-width: 80px;
         flex: 1 1 100px; /* Tillat elementer å vokse og krympe */
     }
-    #d, #min {
-        padding-left: 60px; 
-        padding-right: 60px;
-        border-left: 3px solid;
-        border-right: 3px solid;
-    }
+
     p {
         font-size: 3em;
     }
@@ -93,6 +139,8 @@
         }
         .countdown-item {
             padding: 3%;
+            padding-left: 40px;
+            padding-right: 40px;
             flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
             margin: 5px; /* Legg til margin mellom elementer */
         }
@@ -110,7 +158,7 @@
         .countdown-item {
             margin: 5px 0; /* Legg til margin mellom elementer */
         }
-        .row {
+        .row1, .row2 {
             display: flex;
             flex-direction: row;
         }
