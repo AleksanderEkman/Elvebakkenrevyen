@@ -3,6 +3,7 @@
     import { goto } from '$app/navigation';
 
     import HeroSection from './HeroSection.svelte';
+    import Footer from './Footer.svelte';
 </script>
 
 <svelte:head>
@@ -13,5 +14,5 @@
 
 <main>
     <HeroSection />
-
+    <Footer />
 </main>

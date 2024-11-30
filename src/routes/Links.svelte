@@ -67,7 +67,7 @@
         ul {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: space-evenly;
             width: 100%;
             padding: 7.5px;
         }

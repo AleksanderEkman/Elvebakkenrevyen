@@ -78,7 +78,6 @@
     position: relative; /* Change to relative */
     width: 100%;
     height: auto;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     user-select: none;
     -webkit-user-drag: none;
     z-index: 2;
@@ -115,7 +114,7 @@
     }
     .slideshow {
       width: 55vw;
-      height: auto;
+      height: 100%;
     }
   }
   @media (max-width: 480px) {
