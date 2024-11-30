@@ -54,7 +54,7 @@
   
     onMount(() => {
 
-      const mq = window.matchMedia("(max-width: 1023px)");
+      const mq = window.matchMedia("(max-width: 580px)");
   
       const updateCountdown = () => {
         updateValues();
@@ -65,7 +65,8 @@
         updateVisibility(minuteElement, minutes);
   
         if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0 && secondElement) {
-          secondElement.style.fontSize = "1.8em";
+          secondElement.style.fontSize = "1.6em";
+
         }
   
         updateBorder(hourElement, mq.matches);
@@ -127,7 +128,7 @@
     }
     .countdown-item {
         overflow: hidden;
-        margin: 10px;
+        margin: 15px;
         padding: 5%;
         padding-left: 35px; 
         padding-right: 55px;
@@ -169,7 +170,7 @@
     @media (max-width: 1420px) {
       .countdown {
         font-size: 1.4em;
-        margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
+        margin-top: 10px; /* Juster plass over nedtellingen for mindre skjermer */
       }
       .countdown-item {
         padding: 3%;
