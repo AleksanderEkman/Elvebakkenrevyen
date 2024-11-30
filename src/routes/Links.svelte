@@ -52,6 +52,11 @@
     li a {
         position: relative;
     }
+    @media (max-width: 1420px) {
+        ul {
+            font-size: 0.95em;
+        }
+    }
     @media (max-width: 480px) {
         ul {
             font-size: 0.75em;

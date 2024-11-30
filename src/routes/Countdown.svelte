@@ -137,7 +137,7 @@
         text-transform: uppercase;
         font-size: 0.8em;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 1420px) {
         .countdown {
             font-size: 1.5em;
             margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
@@ -156,7 +156,7 @@
             display: flex;
             flex-wrap: wrap;
             flex-direction: column;
-            font-size: 1.25em;
+            font-size: 1.2em;
             margin-top: 15%; /* Juster plass over nedtellingen for mindre skjermer */
             height: auto; /* Juster høyde for mindre skjermer */
         }

@@ -82,17 +82,15 @@
   }
 
   /* Media queries for responsivitet */
-  @media (max-width: 768px) {
-
+  @media (max-width: 1420px) {
     .hero-title {
-      margin-top: 10%;
-      font-size: 2.5em;
+      margin-top: 0%;
+      font-size: 3em;
       user-select: none;
     }
   }
 
   @media (max-width: 480px) {
-
     .hero-title {
       font-size: 2.5em;
     }

@@ -30,15 +30,16 @@
       if (!imgElement) return;
   
       const interval = setInterval(() => {
+        imgElement.classList.remove('fade-in');
         imgElement.classList.add('fade-out');
   
-        imageIndex = (imageIndex + 1) % images.length;
-        imgElement.src = images[imageIndex].src;
+        setTimeout(() => {
+          imageIndex = (imageIndex + 1) % images.length;
+          imgElement.src = images[imageIndex].src;
 
-        imgElement.classList.remove('fade-out');
-        imgElement.classList.add('fade-in');
-
-  
+          imgElement.classList.remove('fade-out');
+          imgElement.classList.add('fade-in');
+        }, 400);
       }, 5000); 
   
       return () => clearInterval(interval);
@@ -79,9 +80,40 @@
       user-select: none;
       -webkit-user-drag: none;
     }
-    .fade-in {
-      opacity: 1;
-      transition: opacity 0.5s ease-in;
+      
+    :global(.fade-in) {
+      animation: fadeIn 0.2s forwards;
+    }
+
+    :global(.fade-out) {
+      animation: fadeOut 0.2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0.5;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0.5;
+      }
+    }
+    @media (max-width: 1420px) {
+      .overflow {
+        margin-top: 3.5%;
+      }
+      .slideshow {
+        width: 55vw;
+        height: auto;
+      }
     }
     @media (max-width: 480px) {
       .slideshow {
