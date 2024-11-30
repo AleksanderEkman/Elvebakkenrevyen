@@ -54,7 +54,7 @@
   
     onMount(() => {
 
-      const mq = window.matchMedia("(max-width: 1215px)");
+      const mq = window.matchMedia("(max-width: 1023px)");
   
       const updateCountdown = () => {
         updateValues();
@@ -146,40 +146,6 @@
       text-transform: uppercase;
       font-size: 0.8em;
     }
-    @media (max-width: 1420px) {
-        .countdown {
-            font-size: 1.5em;
-            margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
-        }
-        .countdown-item {
-            padding: 3%;
-            padding-left: 40px;
-            padding-right: 40px;
-            flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
-            margin: 5px; /* Legg til margin mellom elementer */
-        }
-    }
-
-    @media (max-width: 480px) {
-        .countdown {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            font-size: 1.2em;
-            margin-top: 15%; /* Juster plass over nedtellingen for mindre skjermer */
-            height: auto; /* Juster høyde for mindre skjermer */
-        }
-        .countdown-item {
-            margin: 5px 0; /* Legg til margin mellom elementer */
-        }
-        .row1, .row2 {
-            display: flex;
-            flex-direction: row;
-        }
-        #min {
-            border-left: none;
-        }
-
   
     :global(.update-animation) {
       animation: updateEffect 0.5s ease-in-out;
@@ -199,10 +165,10 @@
         opacity: 1;
       }
     }
-  
-    @media (max-width: 1215px) {
+    
+    @media (max-width: 1420px) {
       .countdown {
-        font-size: 1.5em;
+        font-size: 1.4em;
         margin-top: 30px; /* Juster plass over nedtellingen for mindre skjermer */
       }
       .countdown-item {
@@ -232,6 +198,11 @@
       }
       #min {
         border-left: none;
+      }
+    }
+    @media (max-width: 1024px) and (max-height:600px) {
+      .countdown {
+        font-size: 0.8em;
       }
     }
   </style>
