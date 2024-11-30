@@ -3,9 +3,9 @@
   import { cubicOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
-  import Countdown from './Countdown.svelte';
-  import Slideshow from './Slideshow.svelte';
-  import Links from './Links.svelte';
+  import Countdown from './components/Countdown.svelte';
+  import Slideshow from './components/Slideshow.svelte';
+  import Links from './components/Links.svelte';
 
   let showContent = false;
   onMount(() => {
