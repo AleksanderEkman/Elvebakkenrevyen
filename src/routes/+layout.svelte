@@ -1,7 +1,9 @@
 <script lang="ts">
-	import '../app.css';
+    import '../app.css';
 	let { children } = $props();
 </script>
+
+<!-- Google tag (gtag.js) -->
 
 <svelte:head>
 	<meta name="keywords" content="Elvebakkenrevyen, Revy, 2025, Elvebakken, Nymalt, For the culture, Ekko" />

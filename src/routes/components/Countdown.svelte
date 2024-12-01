@@ -46,7 +46,7 @@
       }
     };
   
-    const updateBorder = (element: HTMLElement | undefined, condition: boolean) => {
+    const updateBorder = (element: HTMLElement | undefined, condition: boolean, condition2: boolean = true) => {
       if (element) {
         element.style.borderRight = condition ? 'none' : '3px solid';
       }
@@ -70,6 +70,7 @@
         }
   
         updateBorder(hourElement, mq.matches);
+        updateBorder(dayElement, mq.matches, hours <= 0);
   
         // Trigger animations
         if (parseInt(monthElement.innerText) != months) animateUpdate(monthP);
@@ -123,7 +124,7 @@
       justify-content: center;
       align-items: center;
       font-size: 2em;
-      flex-wrap: wrap; /* Tillat elementer å brytes på mindre skjermer */
+      flex-wrap: wrap;
       user-select: none;
     }
     .countdown-item {
@@ -142,8 +143,12 @@
   
     p {
       font-size: 3em;
+      display: flex;
+      justify-content: center;
     }
     span {
+      display: flex;
+      justify-content: center;
       text-transform: uppercase;
       font-size: 0.8em;
     }
