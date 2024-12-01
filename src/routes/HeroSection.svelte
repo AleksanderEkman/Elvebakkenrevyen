@@ -35,7 +35,7 @@
 
   .hero {
     @apply text-white py-20;
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
