@@ -193,7 +193,7 @@
         flex-wrap: wrap;
         flex-direction: column;
         font-size: 0.75em;
-        margin-top: 5%; /* Juster plass over nedtellingen for mindre skjermer */
+        margin-top: 4%; 
         height: auto; /* Juster høyde for mindre skjermer */
       }
       .countdown-item {

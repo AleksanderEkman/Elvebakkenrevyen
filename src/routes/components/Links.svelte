@@ -60,7 +60,7 @@
     }
     @media (max-width: 480px) {
         ul {
-            font-size: 0.75em;
+            font-size: 0.9em;
         }
     }
     @media (max-height: 750px) or (max-width: 768px) {
