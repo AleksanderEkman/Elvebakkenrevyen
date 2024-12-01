@@ -112,7 +112,7 @@
   @media (max-width: 480px) {
     .hero-title {
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-      0 0 10px rgba(255, 255, 255, 0.25), 
+      0 0 7.5px rgba(255, 255, 255, 0.2), 
       0 0 15px rgba(255, 255, 255, 0.15), 
       0 0 20px rgba(255, 255, 255, 0.1);
       background: none;
@@ -120,6 +120,7 @@
       background-clip: initial;
       -webkit-text-fill-color: initial;
       color: #ffffff; /* Fallback color */
+      padding: 5px;
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {
