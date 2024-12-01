@@ -2,59 +2,60 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
 
-  // Importerer alle bilder som trengs
+  // Import all images needed for the slideshow
   const images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
   const imageArray: string[] = Object.values(images).map((module) => (module as { default: string }).default);
   
   let imageIndex = 0;
-  let imgElement: HTMLImageElement;
 
   onMount(() => {
-    if (!imgElement || imageArray.length === 0) return; // Ensure imgElement exists and imageArray is not empty
-    imgElement.src = imageArray[imageIndex]; // Set initial image source
+    if (imageArray.length === 0) return; // Ensure imageArray is not empty
 
     const interval = setInterval(() => {
+      imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
+    }, 5000); // Change image every 5 seconds
 
-      imageIndex = (imageIndex + 1) % imageArray.length;
-
-    }, 5000); 
-
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval); // Clean up interval on component destroy
   });
 </script>
 
 <div class="overflow">
   <div class="slideshow">
     {#key imageIndex}
-      <img id="slideshow-image" bind:this={imgElement} class="fade-in" src={imageArray[imageIndex]} alt="Elvebakkenrevybilde" transition:fade />
+      <img 
+        id="slideshow-image" 
+        src={imageArray[imageIndex]} 
+        alt="Elvebakkenrevybilde" 
+        class="fade-in" 
+        transition:fade 
+      />
     {/key}
-
   </div>
 </div>
+
 <style>
   .overflow {
     overflow: hidden;
-    z-index: 5;
-    margin-top: 0%;
     display: flex;
     justify-content: center;
     width: 100%;
     height: auto;
     border-radius: 12.5px;
     user-select: none;
+    margin-top: 0; /* Removed percentage for consistency */
+    z-index: 5;
   }
 
   .slideshow {
     overflow: hidden;
     background-color: black;
-    width: 50vw; /* Setter bredde */
-    height: auto; /* Setter høyde til auto */
+    width: 50vw; /* Set width */
+    height: auto; /* Set height to auto */
     position: relative;
     border-radius: 10px;
-    z-index: 5;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    aspect-ratio: 18.5 / 10; /* Bredde til høyde */
-}
+    aspect-ratio: 18.5 / 10;
+  }
 
   #slideshow-image {
     border-radius: 10px;
@@ -63,34 +64,29 @@
     left: 0; 
     width: 100%;
     height: 100%;
+    object-fit: cover;
     user-select: none;
-    -webkit-user-drag: none;
+    -webkit-user-drag: none; 
     z-index: 2;
-    object-fit: cover; 
+    transition: opacity 0.5s ease-in-out; 
   }
 
   @media (max-width: 1420px) {
     .overflow { 
-      margin-top: 3.5%;
+      margin-top: 3.5%; 
     }
+    
     .slideshow {
-      width: 55vw; /* Adjusted width for medium screens */
-      aspect-ratio: auto; /* Allow height to adjust */
-      height: auto; /* Allow height to adjust based on content */
-    }
-    #slideshow-image {
-      position: relative;
+      width: 55vw; 
+      height: auto;
     }
   }
 
   @media (max-width: 480px) {
     .slideshow {
-      width: 90vw; /* Full width for small screens */
-      aspect-ratio: auto; /* Allow height to adjust */
-      height: auto; /* Allow height to adjust based on content */
+      width: 90vw; 
+      height: auto; 
     }
-    #slideshow-image {
-      position: relative;
-    }
-  }
+    
+}
 </style>

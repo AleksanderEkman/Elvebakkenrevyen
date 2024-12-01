@@ -54,7 +54,7 @@
   
     onMount(() => {
 
-      const mq = window.matchMedia("(max-width: 580px)");
+      const mq = window.matchMedia("(max-width: 1024px)");
   
       const updateCountdown = () => {
         updateValues();
