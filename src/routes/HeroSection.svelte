@@ -18,11 +18,10 @@
     <div class="container text-center">
         <h1 class="hero-title" in:fly={{y: -200, duration: 800}}>Elvebakkenrevyen 2025</h1>
         <div class="countdown" in:fade={{ duration: 800 }}>
-          <Countdown />
           <div class="fly" in:fly={{y:200, duration: 800}}>
             <Slideshow />
+            <Countdown />
           </div>
-          
         </div>
     </div>
     <div class="links" in:fade={{ duration: 800 }}>
@@ -60,7 +59,7 @@
   }
   .hero-title {
     user-select: none;
-    margin-top: 2.5%;
+    margin-top: 0%;
     @apply text-8xl font-bold mb-4;
     font-family: var(--font-header);
     background: linear-gradient(90deg, #ffffff, #ffffff);

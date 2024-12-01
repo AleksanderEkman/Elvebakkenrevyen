@@ -19,7 +19,7 @@
     let minuteP: HTMLElement;
     let secondP: HTMLElement;
   
-    const countDownDate = new Date("Feb 15, 2025 11:30:00").getTime(); // Dato til konseptslipp
+    const countDownDate = new Date("Jan 30, 2025 15:50:00").getTime(); // Dato til konseptslipp
   
     const updateValues = () => {
       const now = new Date().getTime(); // Hent nåværende lokal tid
@@ -90,7 +90,7 @@
   <div class="countdown">
     <div class="row1">
       <div id="m" class="countdown-item" bind:this={monthElement}>
-        <p bind:this={monthP}>{months}</p> <span>måneder</span>
+        <p bind:this={monthP}>{months}</p> <span>måned</span>
       </div>
       <div id="d" class="countdown-item" bind:this={dayElement}>
         <p bind:this={dayP}>{days}</p> <span>dager</span>
@@ -119,7 +119,7 @@
       border-right: 3px solid;
     }
     .countdown {
-      margin-top: 5%;
+      margin-top: 3%;
       display: flex;
       justify-content: center;
       align-items: center;
