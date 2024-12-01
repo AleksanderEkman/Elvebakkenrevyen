@@ -1,35 +1,34 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+
+  // Importerer alle bilder som trengs
   const images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
   const imageArray: string[] = Object.values(images).map((module) => (module as { default: string }).default);
+  
   let imageIndex = 0;
   let imgElement: HTMLImageElement;
 
   onMount(() => {
-    const imgElement = document.getElementById('slideshow-image') as HTMLImageElement;
-    if (!imgElement) return;
-    imgElement.src = imageArray[imageIndex];
+    if (!imgElement || imageArray.length === 0) return; // Ensure imgElement exists and imageArray is not empty
+    imgElement.src = imageArray[imageIndex]; // Set initial image source
 
     const interval = setInterval(() => {
-      imgElement.classList.remove('fade-in');
-      imgElement.classList.add('fade-out');
-      imageIndex = (imageIndex + 1) % imageArray.length;
-      setTimeout(() => {
-        imgElement.src = imageArray[imageIndex];
-        setTimeout(() => {
-          imgElement.classList.remove('fade-out');
-          imgElement.classList.add('fade-in');
-        }, 200);
-      }, 200);
-    }, 5000);
 
-    return () => clearInterval(interval);
+      imageIndex = (imageIndex + 1) % imageArray.length;
+
+    }, 5000); 
+
+    return () => clearInterval(interval); 
   });
 </script>
 
 <div class="overflow">
   <div class="slideshow">
-    <img id="slideshow-image" bind:this={imgElement} alt="Slideshow for tidligere revyforestillinger" class="w-full h-auto fade-in" />
+    {#key imageIndex}
+      <img id="slideshow-image" bind:this={imgElement} class="fade-in" src={imageArray[imageIndex]} alt="Elvebakkenrevybilde" transition:fade />
+    {/key}
+
   </div>
 </div>
 <style>
@@ -68,32 +67,6 @@
     -webkit-user-drag: none;
     z-index: 2;
     object-fit: cover; 
-  }
-    
-  :global(.fade-in) {
-    animation: fadeIn 0.2s forwards;
-  }
-
-  :global(.fade-out) {
-    animation: fadeOut 0.2s forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
   }
 
   @media (max-width: 1420px) {

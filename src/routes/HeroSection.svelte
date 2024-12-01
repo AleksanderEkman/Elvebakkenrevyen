@@ -34,6 +34,7 @@
 <style>
   .hero {
     @apply text-white py-20;
+    height: 100vh;
     height: 100svh;
     width: 100vw;
     background-size: cover;
@@ -41,6 +42,7 @@
     background-repeat: no-repeat;
     position: relative;
     text-transform: uppercase;
+    overflow: hidden;
   }
   .hero::before {
     content: ''; 
