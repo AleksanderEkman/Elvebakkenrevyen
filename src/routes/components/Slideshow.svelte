@@ -19,7 +19,9 @@
   });
 </script>
 
+
 <div class="overflow">
+  <p class="slideshow-text">Fra skaperne av:</p>
   <div class="slideshow">
     {#key imageIndex}
       <img 
@@ -37,6 +39,8 @@
   .overflow {
     overflow: hidden;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
     height: auto;
@@ -49,7 +53,7 @@
   .slideshow {
     overflow: hidden;
     background-color: black;
-    width: 50vw; /* Set width */
+    width: 46vw; /* Set width */
     height: auto; /* Set height to auto */
     position: relative;
     border-radius: 10px;
@@ -70,6 +74,15 @@
     z-index: 2;
     transition: opacity 0.5s ease-in-out; 
   }
+  
+  .slideshow-text {
+    text-align: center;
+    font-size: 2.4em;
+    font-family: var(--font-header);
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 
   @media (max-width: 1420px) {
     .overflow { 
@@ -83,9 +96,15 @@
   }
 
   @media (max-width: 480px) {
+    .overflow { 
+      margin-top: 8%; 
+    }
     .slideshow {
       width: 90vw; 
       height: auto; 
+    }
+    .slideshow-text {
+      font-size: 1.5em;
     }
     
 }
