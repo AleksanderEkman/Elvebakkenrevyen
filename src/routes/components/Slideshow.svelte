@@ -10,6 +10,7 @@
   import mellomrom from '$lib/assets/slideshow/mellomrom.webp';
   import utåstjælepaller from '$lib/assets/slideshow/utåstjælepaller.webp';
   import utenentråd from '$lib/assets/slideshow/utenentråd.webp';
+  import image7 from '$lib/assets/slideshow/7.webp';
 
   let imageIndex = 0;
   const images = [
@@ -22,7 +23,8 @@
     { src: vimåsnakkeommiljø },
     { src: mellomrom },
     { src: utåstjælepaller },
-    { src: utenentråd }
+    { src: utenentråd },
+    { src: image7 }
   ];
 
   onMount(() => {

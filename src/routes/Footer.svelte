@@ -1,5 +1,8 @@
 <footer>
-    <p id="credit">© 2024-2025 Elvebakkenrevyen. Designet og utviklet av <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.</p>
+    <p id="credit">
+        © 2024-2025 Elvebakkenrevyen. Designet og utviklet av 
+        <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.
+    </p>
 </footer>
 
 <style>
