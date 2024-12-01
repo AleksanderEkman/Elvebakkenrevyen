@@ -32,7 +32,6 @@
 </section>
 
 <style>
-
   .hero {
     @apply text-white py-20;
     height: 100svh;

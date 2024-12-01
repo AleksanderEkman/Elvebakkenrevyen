@@ -48,7 +48,7 @@
   
     const updateBorder = (element: HTMLElement | undefined, condition: boolean, condition2: boolean = true) => {
       if (element) {
-        element.style.borderRight = condition ? 'none' : '3px solid';
+        element.style.borderRight = (condition && condition2) ? 'none' : '3px solid';
       }
     };
   
@@ -66,8 +66,8 @@
   
         if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0 && secondElement) {
           secondElement.style.fontSize = "1.6em";
-
         }
+        
   
         updateBorder(hourElement, mq.matches);
         updateBorder(dayElement, mq.matches, hours <= 0);
