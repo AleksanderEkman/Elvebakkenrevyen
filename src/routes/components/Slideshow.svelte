@@ -97,7 +97,7 @@
 
   @media (max-width: 480px) {
     .overflow { 
-      margin-top: 8%; 
+      margin-top: 5%; 
     }
     .slideshow {
       width: 90vw; 
