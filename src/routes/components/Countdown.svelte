@@ -81,7 +81,7 @@
       };
   
       updateCountdown(); // Initialt kall for å vise nedtellingen umiddelbart
-      const interval = setInterval(updateCountdown, 1000); // Oppdater hvert sekund
+      const interval = setInterval(updateCountdown, 500); // Oppdater hvert halvt sekund
   
       return () => clearInterval(interval); // Cleanup interval on component unmount
     });
