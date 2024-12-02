@@ -1,109 +1,95 @@
 <footer>
     <div class="footer-col">
-        <p id="text">
-            © 2024-2025 Elvebakkenrevyen.
-        </p> 
-        <p id="credit">
-            Designet og utviklet av <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.
-        </p>
+      <p id="header">
+        © 2024-2025 Elvebakkenrevyen.
+      </p>
+      <p id="credit">
+        Nettside designet og utviklet av <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.
+      </p>
     </div>
-    <div class="footer-col">
-        <p id="text">
-            Revysjefer: 
+    <div class="footer-right">
+      <div class="footer-col">
+        <p id="header">
+          Revysjefene
         </p>
-        <p id="text">
-            Vetle
+        <ul>
+          <li>Vetle Due Garnes</li>
+          <li>Mari Brøten</li>
+          <li>Martin Langeland</li>
+          <li>Frida Del Rio-Vang</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p id="header">
+          Revyinstruktørene
         </p>
-        <p id="text">
-            Mari
-        </p>
-        <p id="text">
-            Martin
-        </p>
-        <p id="text">
-            Frida 
-        </p>
+        <ul>
+          <li>Mats Valø</li>
+          <li>Sindre Hansen</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-        <p id="text">
-            Revyinstruktører:
-        </p>
-        <p id="text">
-            Mats
-        </p>
-        <p id="text">
-            Sindre
-        </p>
-    </div>
-</footer>
-
-<style>
+  </footer>
+  
+  <style>
     footer {
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-        width: 100vw;
-        padding: 2em 1em;
-        background: linear-gradient(135deg, #000000, #161616);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100vw;
+      padding: 2em 1em;
+      background: linear-gradient(135deg, #000000, #161616);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
     }
-
+  
     .footer-col {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        width: 30%;
-        padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 0.5em;
     }
-
-    #credit, #text {
-        padding: 0.1em 0;
-        font-size: 1em;
-        color: white;
-        text-align: left;
+  
+    .footer-right {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2em; /* Adjust the gap between the columns */
     }
-
-    #credit a {
-        color: #8dc0d2;
-        text-decoration: none;
+  
+    #header {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 0.5em;
     }
-
-    #credit a:hover {
-        color: #c2c2c2;
-        transition: color 0.3s ease;
-        text-decoration: underline;
+  
+    #credit {
+      font-size: 1em;
+      color: white;
+      margin-top: 0.5em;
     }
-
-    #text {
-        margin: 0.05em 0;
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
-
-    @media (max-width: 768px) {
-        footer {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-col {
-            width: 100%;
-            align-items: center;
-            text-align: center;
-        }
-
-        #credit, #text {
-            text-align: center;
-        }
+  
+    li {
+      font-size: 1em;
+      color: white;
+      margin: 0.2em 0;
     }
-
-    @media (max-width: 480px) {
-        #credit, #text {
-            font-size: 0.8em;
-        }
-        footer {
-            height: 45svh;
-        }
+  
+    a {
+      color: white;
+      text-decoration: none;
     }
-</style>
+  
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
