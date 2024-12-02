@@ -39,6 +39,7 @@
 
 <style>
     footer {
+        height: 30svh;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -77,7 +78,7 @@
     }
 
     #text {
-        margin: 0.2em 0;
+        margin: 0.05em 0;
     }
 
     @media (max-width: 768px) {
@@ -100,6 +101,9 @@
     @media (max-width: 480px) {
         #credit, #text {
             font-size: 0.8em;
+        }
+        footer {
+            height: 45svh;
         }
     }
 </style>
