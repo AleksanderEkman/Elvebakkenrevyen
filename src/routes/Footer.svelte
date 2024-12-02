@@ -39,7 +39,7 @@
 
 <style>
     footer {
-        height: 30svh;
+        height: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

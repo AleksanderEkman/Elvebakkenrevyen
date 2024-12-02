@@ -10,10 +10,11 @@
   let showContent = false;
   onMount(() => {
     showContent = true;
+
   });
 </script>
 
-<section class="hero is-fullheight is-fullwidth" style="background-image: url({background_image});">
+<section class="hero is-fullwidth" style="background-image: url({background_image});">
   {#if showContent}
     <div class="container text-center">
         <h1 class="hero-title" in:fly={{y: -200, duration: 800}}>Elvebakkenrevyen 2025</h1>
