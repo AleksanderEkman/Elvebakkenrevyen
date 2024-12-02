@@ -86,12 +86,16 @@
 
   @media (max-width: 1420px) {
     .overflow { 
-      margin-top: 3.5%; 
+      margin-top: 0%; 
     }
     
     .slideshow {
       width: 55vw; 
       height: auto;
+    }
+
+    .slideshow-text {
+      font-size: 2.5em;
     }
   }
 

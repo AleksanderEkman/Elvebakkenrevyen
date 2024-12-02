@@ -119,7 +119,7 @@
       border-right: 3px solid;
     }
     .countdown {
-      margin-top: 3%;
+      margin-top: 0%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -176,7 +176,7 @@
     @media (max-width: 1420px) {
       .countdown {
         font-size: 1.4em;
-        margin-top: 10px; /* Juster plass over nedtellingen for mindre skjermer */
+        margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */
       }
       .countdown-item {
         padding: 3%;
