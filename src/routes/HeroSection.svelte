@@ -49,7 +49,7 @@
     position: absolute;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     width: 100%;
-    height: 100%;
+    height: 100svh;
     z-index: 0;
   }
   .container {
