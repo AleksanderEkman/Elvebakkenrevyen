@@ -34,9 +34,8 @@
 <style>
   .hero {
     @apply text-white py-20;
-    height: 100svh;
+    min-height: 100svh;
     width: 100vw;
-    min-height: 600px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
