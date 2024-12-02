@@ -86,7 +86,7 @@
       return () => clearInterval(interval); // Cleanup interval on component unmount
     });
   </script>
-  
+
   <div class="countdown">
     <div class="row1">
       <div id="m" class="countdown-item" bind:this={monthElement}>
@@ -108,6 +108,8 @@
       </div>
     </div>
   </div>
+
+
   
   <style>
     .row1, .row2 {
@@ -119,7 +121,7 @@
       border-right: 3px solid;
     }
     .countdown {
-      margin-top: 0%;
+      margin-top: 2.5%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -129,7 +131,7 @@
     }
     .countdown-item {
         overflow: hidden;
-        margin: 15px;
+        margin: 10px;
         padding: 5%;
         padding-left: 35px; 
         padding-right: 55px;
