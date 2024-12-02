@@ -53,7 +53,7 @@
   .slideshow {
     overflow: hidden;
     background-color: black;
-    width: 46vw; /* Set width */
+    width: 50vw; /* Set width */
     height: auto; /* Set height to auto */
     position: relative;
     border-radius: 10px;

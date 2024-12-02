@@ -121,7 +121,7 @@
       border-right: 3px solid;
     }
     .countdown {
-      margin-top: 2.5%;
+      margin-top: 3.25%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -132,7 +132,6 @@
     .countdown-item {
         overflow: hidden;
         margin: 10px;
-        padding: 5%;
         padding-left: 35px; 
         padding-right: 55px;
         display: flex;
@@ -143,7 +142,6 @@
         min-width: 80px;
         flex: 1 1 100px;
     }
-  
     p {
       font-size: 3em;
       display: flex;
