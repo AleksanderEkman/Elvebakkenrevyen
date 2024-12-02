@@ -6,11 +6,11 @@
 </script>
 
 
-<ul>
-    <li><a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube"><i class="fab fa-youtube"></i> YouTube</a></li>
-    <li><a href="https://www.instagram.com/Elvebakkenrevyen/" aria-label="Følg ELvebakkenrevyen på Instagram"><i class="fab fa-instagram"></i> Instagram</a></li>
-    <li><a href="https://www.tiktok.com/@Elvebakkenrevyen" aria-label="Følg Elvebakkenreveyen på TikTok"><i class="fab fa-tiktok"></i> TikTok</a></li>
-    <li><a href="https://www.facebook.com/Elvebakkenrevyen/" aria-label="Følg Elvebakkenrevyen på facebook"><i class="fab fa-facebook"></i> Facebook</a></li>
+<ul role="navigation" aria-label="Sosiale medier">
+    <li><a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube"><i aria-hidden="true" class="fab fa-youtube"></i> YouTube</a></li>
+    <li><a href="https://www.instagram.com/Elvebakkenrevyen/" aria-label="Følg ELvebakkenrevyen på Instagram"><i aria-hidden="true" class="fab fa-instagram"></i> Instagram</a></li>
+    <li><a href="https://www.tiktok.com/@Elvebakkenrevyen" aria-label="Følg Elvebakkenreveyen på TikTok"><i aria-hidden="true" class="fab fa-tiktok"></i> TikTok</a></li>
+    <li><a href="https://www.facebook.com/Elvebakkenrevyen/" aria-label="Følg Elvebakkenrevyen på Facebook"><i aria-hidden="true" class="fab fa-facebook"></i> Facebook</a></li>
 </ul>
 
 <style>

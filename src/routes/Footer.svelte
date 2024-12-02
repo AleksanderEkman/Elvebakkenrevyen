@@ -1,4 +1,4 @@
-<footer>
+<footer aria-label="Footer Informasjon">
   <div class="footer-col">
     <p id="header">
       © 2024-2025 Elvebakkenrevyen.

@@ -19,15 +19,14 @@
   });
 </script>
 
-
-<div class="overflow">
+<div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
   <p class="slideshow-text">Fra skaperne av:</p>
-  <div class="slideshow">
+  <div class="slideshow" aria-live="polite" aria-atomic="true">
     {#key imageIndex}
       <img 
         id="slideshow-image" 
         src={imageArray[imageIndex]} 
-        alt="Elvebakkenrevybilde" 
+        alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
         class="fade-in" 
         transition:fade 
       />

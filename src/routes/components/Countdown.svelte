@@ -81,21 +81,21 @@
       };
   
       updateCountdown(); // Initialt kall for å vise nedtellingen umiddelbart
-      const interval = setInterval(updateCountdown, 500); // Oppdater hvert halvt sekund
+      const interval = setInterval(updateCountdown, 1000); // Oppdater hvert halvt sekund
   
       return () => clearInterval(interval); // Cleanup interval on component unmount
     });
   </script>
 
-  <div class="countdown">
+  <div class="countdown" aria-label="Nedtelling til konseptslipp for Elvebakkenrevyen 2025">
     <div class="row1">
-      <div id="m" class="countdown-item" bind:this={monthElement}>
+      <div id="m" class="countdown-item" aria-live="polite" aria-atomic="true" bind:this={monthElement}>
         <p bind:this={monthP}>{months}</p> <span>måned</span>
       </div>
-      <div id="d" class="countdown-item" bind:this={dayElement}>
+      <div id="d" aria-live="polite" aria-atomic="true" class="countdown-item" bind:this={dayElement}>
         <p bind:this={dayP}>{days}</p> <span>dager</span>
       </div>
-      <div id="h" class="countdown-item" bind:this={hourElement}>
+      <div id="h" aria-live="polite" aria-atomic="true" class="countdown-item" bind:this={hourElement}>
         <p bind:this={hourP}>{hours}</p> <span>timer</span>
       </div>
     </div>
