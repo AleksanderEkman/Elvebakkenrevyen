@@ -173,7 +173,7 @@
       }
     }
     
-    @media (max-width: 1420px) {
+    @media (max-width: 1450px) {
       .countdown {
         font-size: 1.4em;
         margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */

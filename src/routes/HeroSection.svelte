@@ -82,7 +82,7 @@
   }
 
   /* Media queries for responsivitet */
-  @media (max-width: 1420px) {
+  @media (max-width: 1440px) {
     .hero-title {
       margin-top: 0%;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
@@ -90,7 +90,7 @@
       0 0 15px rgba(255, 255, 255, 0.15), 
       0 0 20px rgba(255, 255, 255, 0.1);
       margin-top: -2.5%;
-      font-size: 3em;
+      font-size: 4.5em;
       user-select: none;
     }
   }

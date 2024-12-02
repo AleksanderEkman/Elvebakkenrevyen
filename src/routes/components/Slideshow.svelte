@@ -84,13 +84,13 @@
     text-align: center;
   }
 
-  @media (max-width: 1420px) {
+  @media (max-width: 1450px) {
     .overflow { 
       margin-top: 0%; 
     }
     
     .slideshow {
-      width: 55vw; 
+      width: 57vw; 
       height: auto;
     }
 
