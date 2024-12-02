@@ -1,8 +1,10 @@
 <footer>
     <div class="footer-col">
+        <p id="text">
+            © 2024-2025 Elvebakkenrevyen.
+        </p> 
         <p id="credit">
-            © 2024-2025 Elvebakkenrevyen. Designet og utviklet av 
-            <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.
+            Designet og utviklet av <a href="mailto:aleksander.ekman1@gmail.com">Aleksander Ekman</a>.
         </p>
     </div>
     <div class="footer-col">
@@ -10,16 +12,27 @@
             Revysjefer: 
         </p>
         <p id="text">
-            Vetle Due Garnes
+            Vetle
         </p>
         <p id="text">
-            Mari Brøten
+            Mari
         </p>
         <p id="text">
-            Martin Langeland
+            Martin
         </p>
         <p id="text">
             Frida 
+        </p>
+    </div>
+    <div class="footer-col">
+        <p id="text">
+            Revyinstruktører:
+        </p>
+        <p id="text">
+            Mats
+        </p>
+        <p id="text">
+            Sindre
         </p>
     </div>
 </footer>
@@ -27,56 +40,66 @@
 <style>
     footer {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
         width: 100vw;
-        height: auto;
-        /* Use a transparent background with a dark gradient overlay */
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-        background-size: cover; /* Ensures the background image covers the entire footer */
+        padding: 2em 1em;
+        background: linear-gradient(135deg, #000000, #161616);
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-        padding: 1em;
     }
+
     .footer-col {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 0.5em;
+        align-items: flex-start;
+        width: 30%;
+        padding: 1em;
     }
 
-    #credit {
-        padding: 0 1em;
+    #credit, #text {
+        padding: 0.1em 0;
         font-size: 1em;
-        color: white; /* White text for contrast */
-        text-transform: none;
+        color: white;
         text-align: left;
     }
 
-    #credit:hover {
-        cursor: default;
-        color: #c2c2c2; /* Slightly lighter on hover */
-        transition: color 0.3s ease;
-    }
-
     #credit a {
-        color: white; /* Link color */
-        text-decoration: none; /* Remove underline */
+        color: #8dc0d2;
+        text-decoration: none;
     }
 
     #credit a:hover {
-        color: #8dc0d2; /* Lighter link color on hover */
+        color: #c2c2c2;
         transition: color 0.3s ease;
-        text-decoration: underline; /* Underline on hover */
+        text-decoration: underline;
     }
+
     #text {
-        color: white;
+        margin: 0.2em 0;
     }
+
+    @media (max-width: 768px) {
+        footer {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        #credit, #text {
+            text-align: center;
+        }
+    }
+
     @media (max-width: 480px) {
-        #credit {
-            font-size: 0.7em; /* Responsive font size for smaller screens */
+        #credit, #text {
+            font-size: 0.8em;
         }
     }
 </style>
