@@ -99,7 +99,6 @@
   }
 
   @media (max-width: 768px) {
-
     .hero-title {
       margin-top: -8%;
       font-size: 2.5em;
