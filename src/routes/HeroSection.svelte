@@ -12,7 +12,8 @@
   let showContent = false;
   onMount(() => {
     console.log(navigator.userAgent);
-    if (navigator.userAgent.includes('Brave')) {
+    // @ts-ignore
+    if (navigator.userAgent.includes('Mobile') && navigator.brave.isBrave()) {
       hero.style.height = 'auto';
     } else {
       hero.style.height = '100svh';
