@@ -10,16 +10,7 @@
   let hero: HTMLElement
 
   let showContent = false;
-  onMount(() => {
-    console.log(navigator.userAgent);
-    // @ts-ignore
-    if (navigator.userAgent.includes('Mobile') && navigator.brave.isBrave()) {
-      hero.style.height = 'auto';
-    } else {
-      hero.style.height = '100svh';
-    }
-    showContent = true;
-  });
+
 </script>
 
 <section class="hero" bind:this={hero} style="background-image: url({background_image});">
@@ -42,6 +33,7 @@
 <style>
   .hero {
     @apply text-white py-20;
+    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -128,7 +120,7 @@
       -webkit-background-clip: initial;
       background-clip: initial;
       -webkit-text-fill-color: initial;
-      color: #ffffff; /* Fallback color */
+      color: #ffffff;
       padding: 5px;
     }
   }
