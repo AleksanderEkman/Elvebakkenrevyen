@@ -1,25 +1,17 @@
 <script lang="ts">
     import { onMount } from 'svelte';
   
-    let months = 0;
-    let days = 0;
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-  
-    let monthElement: HTMLElement;
-    let dayElement: HTMLElement;
-    let hourElement: HTMLElement;
-    let minuteElement: HTMLElement;
-    let secondElement: HTMLElement;
+    let months = 0, days = 0, hours = 0, minutes = 0, seconds = 0;
 
-    let monthP: HTMLElement;
-    let dayP: HTMLElement;
-    let hourP: HTMLElement;
-    let minuteP: HTMLElement;
-    let secondP: HTMLElement;
+    let monthElement: HTMLElement, dayElement: HTMLElement, 
+      hourElement: HTMLElement, minuteElement: HTMLElement, 
+      secondElement: HTMLElement;
+
+    let monthP: HTMLElement, dayP: HTMLElement, 
+      hourP: HTMLElement, minuteP: HTMLElement, 
+      secondP: HTMLElement;
   
-    const countDownDate = new Date("Jan 30, 2025 15:50:00").getTime(); // Dato til konseptslipp
+    const countDownDate = new Date("Jan 28, 2025 15:50:00").getTime(); // Dato til konseptslipp
   
     const updateValues = () => {
       const now = new Date().getTime(); // Hent nåværende lokal tid
@@ -72,7 +64,7 @@
         updateBorder(hourElement, mq.matches);
         updateBorder(dayElement, mq.matches, hours <= 0);
   
-        // Trigger animations
+        // Spill animasjon hvis verdi har endret seg
         if (parseInt(monthElement.innerText) != months) animateUpdate(monthP);
         if (parseInt(dayElement.innerText) != days) animateUpdate(dayP);
         if (parseInt(hourElement.innerText) != hours) animateUpdate(hourP);
@@ -81,9 +73,9 @@
       };
   
       updateCountdown(); // Initialt kall for å vise nedtellingen umiddelbart
-      const interval = setInterval(updateCountdown, 1000); // Oppdater hvert halvt sekund
+      const interval = setInterval(updateCountdown, 1000); // Oppdater hvert sekund
   
-      return () => clearInterval(interval); // Cleanup interval on component unmount
+      return () => clearInterval(interval);
     });
   </script>
 

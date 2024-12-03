@@ -4,7 +4,6 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -12,7 +11,9 @@
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
-		"start": "vite preview --host 0.0.0.0 --port 8080"
+		"start": "vite preview --host 0.0.0.0 --port 8080",
+		"build:css": "postcss src/app.css -o dist/styles.css",
+		"build": "NODE_ENV=production npm run build:css && vite build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.3.1",
@@ -24,9 +25,11 @@
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
 		"postcss": "^8.4.49",
+		"postcss-cli": "^11.0.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
+		"purgecss": "^7.0.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^3.4.15",
@@ -38,10 +41,10 @@
 	"dependencies": {
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
-		"bulma": "^1.0.2",
 		"flowbite-svelte": "^0.47.3",
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.get": "^4.4.2",
-		"lodash.isequal": "^4.5.0"
+		"lodash.isequal": "^4.5.0",
+		"postcss-purgecss": "^5.0.0"
 	}
 }

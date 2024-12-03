@@ -35,6 +35,8 @@
 <style>
   .hero {
     @apply text-white py-20;
+    display: flex;
+    justify-content: center;
     height: 100svh;
     width: 100vw;
     background-size: cover;
