@@ -32,7 +32,7 @@
       <img 
         loading="eager"
         id="slideshow-image" 
-        data-src={imageArray[imageIndex]} 
+        src={imageArray[imageIndex]} 
         alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
         transition:fade
       />
