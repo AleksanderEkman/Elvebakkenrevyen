@@ -34,7 +34,7 @@
 <style>
   .hero {
     @apply text-white py-20;
-    min-height: 100svh;
+    height: auto;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -43,6 +43,13 @@
     text-transform: uppercase;
     overflow: hidden;
   }
+  @supports (height: 100svh) {
+    .hero {
+      min-height: 100svh;
+      height: 100svh;
+    }
+  }
+
   .hero::before {
     content: ''; 
     top: 0;
