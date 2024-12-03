@@ -34,6 +34,6 @@ main {
 
 html {
 	@apply antialiased;
-
+	background-color: black;
 }
 
