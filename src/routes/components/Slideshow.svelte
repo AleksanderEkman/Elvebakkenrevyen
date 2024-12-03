@@ -1,9 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-
-  // Importerer alle bilder for slideshowt
-  const images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
+  let images: Record<string, { default: string }>;
+  
+  // Importerer alle bilder for slideshow
+  if (navigator.userAgent.includes('Mobile')) {
+    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp', { eager: true });
+  } else {
+    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
+  }
+  
   const imageArray: string[] = Object.values(images).map((module) => (module as { default: string }).default);
   
   let imageIndex = 0;
@@ -24,7 +30,7 @@
   <div class="slideshow" aria-live="polite" aria-atomic="true">
     {#key imageIndex}
       <img 
-        loading="lazy"
+        loading="eager"
         id="slideshow-image" 
         src={imageArray[imageIndex]} 
         alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
