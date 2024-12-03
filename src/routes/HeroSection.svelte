@@ -11,13 +11,13 @@
 
   let showContent = false;
   onMount(() => {
-    showContent = true;
-    
+    console.log(navigator.userAgent);
     if (navigator.userAgent.includes('Brave')) {
       hero.style.height = 'auto';
     } else {
       hero.style.height = '100svh';
     }
+    showContent = true;
   });
 </script>
 
@@ -41,7 +41,6 @@
 <style>
   .hero {
     @apply text-white py-20;
-    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
