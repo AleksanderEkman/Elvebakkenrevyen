@@ -52,8 +52,8 @@
   .slideshow {
     overflow: hidden;
     background-color: black;
-    width: 50vw; /* Set width */
-    height: auto; /* Set height to auto */
+    width: 52.5vw; /* Sett bredde */
+    height: auto; /* Forbereder til aspect ratio */
     position: relative;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
