@@ -10,7 +10,6 @@
 		<meta property="og:description" content="Nedtelling for Elvebakkenrevyen 2025" />
 		<meta property="og:url" content="https://elvebakkenrevyen.no" />
 		<link rel="canonical" href="https://elvebakkenrevyen.no" />
-		<script defer src="https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ"></script>
 		<script defer type="application/ld+json">
 			{`
 			{
@@ -48,6 +47,11 @@
 		</script>
 		%sveltekit.head%
 	</head>
+	<script defer src="https://kit.fontawesome.com/e21aa9ee85.js" crossorigin="anonymous"></script>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+	<script defer src="https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ"></script>
 	<script defer>
 		// Google Tag Manager configuration
 		window.dataLayer = window.dataLayer || [];
@@ -55,8 +59,4 @@
 		gtag('js', new Date());
 		gtag('config', 'G-S9GEK8HDJJ');
 	</script>
-	<script defer src="https://kit.fontawesome.com/e21aa9ee85.js" crossorigin="anonymous"></script>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
 </html>
