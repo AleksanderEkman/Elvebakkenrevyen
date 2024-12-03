@@ -6,15 +6,22 @@
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import Links from './components/Links.svelte';
+  
+  let hero: HTMLElement
 
   let showContent = false;
   onMount(() => {
     showContent = true;
-
+    
+    if (navigator.userAgent.includes('Brave')) {
+      hero.style.height = 'auto';
+    } else {
+      hero.style.height = '100svh';
+    }
   });
 </script>
 
-<section class="hero" style="background-image: url({background_image});">
+<section class="hero" bind:this={hero} style="background-image: url({background_image});">
   {#if showContent}
     <div class="container text-center">
         <h1 class="hero-title" in:fly={{y: -200, duration: 800}}>Elvebakkenrevyen 2025</h1>
@@ -34,7 +41,7 @@
 <style>
   .hero {
     @apply text-white py-20;
-    height: auto;
+    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -43,12 +50,7 @@
     text-transform: uppercase;
     overflow: hidden;
   }
-  @supports (height: 100svh) {
-    .hero {
-      min-height: 100svh;
-      height: 100svh;
-    }
-  }
+
 
   .hero::before {
     content: ''; 
