@@ -10,7 +10,9 @@
   let hero: HTMLElement
 
   let showContent = false;
-
+  onMount(() => {
+    showContent = true;
+  });
 </script>
 
 <section class="hero" bind:this={hero} style="background-image: url({background_image});">
@@ -120,7 +122,7 @@
       -webkit-background-clip: initial;
       background-clip: initial;
       -webkit-text-fill-color: initial;
-      color: #ffffff;
+      color: #ffffff; /* Fallback color */
       padding: 5px;
     }
   }
