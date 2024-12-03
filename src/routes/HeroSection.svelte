@@ -35,6 +35,8 @@
 <style>
   .hero {
     @apply text-white py-20;
+    display: flex;
+    justify-content: center;
     height: 100svh;
     width: 100vw;
     background-size: cover;
@@ -44,7 +46,6 @@
     text-transform: uppercase;
     overflow: hidden;
   }
-
 
   .hero::before {
     content: ''; 
@@ -56,10 +57,12 @@
     min-height: 100svh;
     z-index: 0;
   }
+
   .container {
     position: relative;
     z-index: 1;
   }
+  
   .hero-title {
     user-select: none;
     margin-top: 0%;
