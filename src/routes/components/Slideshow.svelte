@@ -2,20 +2,20 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
 
-  // Import all images needed for the slideshow
+  // Importerer alle bilder for slideshowt
   const images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
   const imageArray: string[] = Object.values(images).map((module) => (module as { default: string }).default);
   
   let imageIndex = 0;
 
   onMount(() => {
-    if (imageArray.length === 0) return; // Ensure imageArray is not empty
+    if (imageArray.length === 0) return; // Passer på at imageArray ikke er tom
 
     const interval = setInterval(() => {
       imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-    }, 5000); // Change image every 5 seconds
+    }, 5000); // Bytter bilde hver femte sekund
 
-    return () => clearInterval(interval); // Clean up interval on component destroy
+    return () => clearInterval(interval); // Fjerner
   });
 </script>
 
@@ -27,7 +27,6 @@
         id="slideshow-image" 
         src={imageArray[imageIndex]} 
         alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
-        class="fade-in" 
         transition:fade 
       />
     {/key}

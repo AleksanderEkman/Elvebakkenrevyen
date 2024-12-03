@@ -5,7 +5,6 @@
 
 </script>
 
-
 <ul role="navigation" aria-label="Sosiale medier">
     <li><a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube"><i aria-hidden="true" class="fab fa-youtube"></i> YouTube</a></li>
     <li><a href="https://www.instagram.com/Elvebakkenrevyen/" aria-label="Følg ELvebakkenrevyen på Instagram"><i aria-hidden="true" class="fab fa-instagram"></i> Instagram</a></li>
@@ -53,7 +52,7 @@
     li a {
         position: relative;
     }
-    @media (max-width: 1420px) {
+    @media (max-width: 1450px) {
         ul {
             font-size: 0.95em;
         }

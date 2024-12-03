@@ -45,7 +45,6 @@
     overflow: hidden;
   }
 
-
   .hero::before {
     content: ''; 
     top: 0;
@@ -56,10 +55,12 @@
     min-height: 100svh;
     z-index: 0;
   }
+
   .container {
     position: relative;
     z-index: 1;
   }
+  
   .hero-title {
     user-select: none;
     margin-top: 0%;
