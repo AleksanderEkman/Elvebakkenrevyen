@@ -1,16 +1,17 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
+
   let images: Record<string, () => Promise<{ default: string }>>;
-  
-  // Importerer alle bilder for slideshow
+
+  // Import all images for the slideshow
   if (navigator.userAgent.includes('Mobile')) {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp');
   }
-  let imageArray: string[] = [];
 
+  let imageArray: string[] = [];
   let imageIndex = 0;
 
   onMount(() => {
@@ -18,29 +19,32 @@
       imageArray = await Promise.all(
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
+
+      if (imageArray.length === 0) return; // Ensure imageArray is not empty
+
+      const interval = setInterval(() => {
+        imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
+      }, 5000); // Change image every 5 seconds
+
+      return () => clearInterval(interval); // Cleanup interval on component unmount
     })();
-
-    if (imageArray.length === 0) return; // Passer på at imageArray ikke er tom
-
-    const interval = setInterval(() => {
-      imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-    }, 5000); // Bytter bilde hver femte sekund
-
-    return () => clearInterval(interval); // Fjerner
   });
 </script>
 
 <div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
   <p class="slideshow-text">Fra skaperne av:</p>
   <div class="slideshow" aria-live="polite" aria-atomic="true">
-    {#key imageIndex}
-      <img 
-        id="slideshow-image" 
-        src={imageArray[imageIndex]} 
-        alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
-        transition:fade
-      />
-    {/key}
+    {#if imageArray.length > 0}
+      {#key imageIndex}
+        <img 
+          loading="lazy"
+          id="slideshow-image" 
+          src={imageArray[imageIndex]} 
+          alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
+          transition:fade
+        />
+      {/key}
+    {/if}
   </div>
 </div>
 
@@ -62,8 +66,8 @@
   .slideshow {
     overflow: hidden;
     background-color: black;
-    width: 52.5vw; /* Sett bredde */
-    height: auto; /* Forbereder til aspect ratio */
+    width: 52.5vw; /* Set width */
+    height: auto; /* Prepare for aspect ratio */
     position: relative;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -119,6 +123,5 @@
     .slideshow-text {
       font-size: 1.5em;
     }
-    
-}
+  }
 </style>
