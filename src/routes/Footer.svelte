@@ -59,18 +59,18 @@
     gap: 2em; /* Adjust the gap between the columns */
   }
 
-  #header {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 0.5em;
-  }
+    #header {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 0.5em;
+    }
 
-  #credit {
-    font-size: 1em;
-    color: white;
-    margin-top: 0.5em;
-  }
+    #credit {
+      font-size: 1em;
+      color: white;
+      margin-top: 0.5em;
+    }
 
   ul {
     list-style-type: none;
@@ -109,15 +109,27 @@
         }
     }
 
-    @media (max-width: 480px) {
-        #header {
-            font-size: 1.1em;
-        }
-        #credit, li {
-            font-size: 0.8em;
-        }
-        footer {
-            height: 45svh;
-        }
+  @media (max-width: 480px) {
+      #header {
+          font-size: 1.1em;
+      }
+      #credit, li {
+          font-size: 0.8em;
+      }
+      footer {
+          height: 45svh;
+      }
+  }
+  @media (max-width: 933px) and (orientation: landscape) { 
+    #header {
+      font-size: 0.9em;
     }
+
+    #credit {
+      font-size: 0.75em;
+    }
+    li {
+      font-size: 0.8em;
+    }
+  }
 </style>
