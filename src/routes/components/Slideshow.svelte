@@ -11,8 +11,6 @@
   }
   let imageArray: string[] = [];
 
-
-  
   let imageIndex = 0;
 
   onMount(() => {
