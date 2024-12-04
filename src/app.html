@@ -49,12 +49,24 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
-	<script defer src="https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ"></script>
 	<script defer>
-		// Google Tag Manager configuration
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-S9GEK8HDJJ');
+		window.addEventListener('load', () => {
+			const script = document.createElement('script');
+			script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
+			script.async = true; 
+
+			document.head.appendChild(script);
+
+			script.onload = () => {
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-S9GEK8HDJJ');
+			};
+	
+			script.onerror = () => {
+				console.error('Failed to load Google Tag Manager script.');
+			};
+		});
 	</script>
 </html>
