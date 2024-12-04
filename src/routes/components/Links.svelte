@@ -2,17 +2,18 @@
     import { onMount } from 'svelte';
 
     onMount(() => {
-        // Create a link element
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css';
-        link.media = 'print'; // Initially set media to print
-        document.head.appendChild(link);
+        setTimeout(() => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css';
+            link.media = 'print'; // Initially set media to print
+            document.head.appendChild(link);
 
-        // Change media to all after loading
-        link.onload = () => {
-            link.media = 'all';
-        };
+            // Change media to all after loading
+            link.onload = () => {
+                link.media = 'all';
+            };
+        }, 125);
     });
 </script>
 
