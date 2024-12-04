@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { fly, fade} from 'svelte/transition';
+  import { fly, fade } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import Links from './components/Links.svelte';
-  
-  let hero: HTMLElement
+
+  let hero: HTMLElement;
 
   let showContent = false;
   onMount(() => {
@@ -18,13 +18,13 @@
 <section class="hero" bind:this={hero} style="background-image: url({background_image});">
   {#if showContent}
     <div class="container text-center">
-        <h1 class="hero-title" in:fly={{y: -200, duration: 800}}>Elvebakkenrevyen 2025</h1>
-        <div class="countdown" in:fade={{ duration: 800 }}>
-          <div class="fly" in:fly={{y:200, duration: 800}}>
-            <Slideshow />
-            <Countdown />
-          </div>
+      <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
+      <div class="countdown" in:fade={{ duration: 800 }}>
+        <div class="fly" in:fly={{ y: 200, duration: 800 }}>
+          <Slideshow />
+          <Countdown />
         </div>
+      </div>
     </div>
     <div class="links" in:fade={{ duration: 800 }}>
       <Links />
@@ -37,7 +37,7 @@
     @apply text-white py-20;
     display: flex;
     justify-content: center;
-    height: 100svh;
+    height: 100vh;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -54,7 +54,7 @@
     position: absolute;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     width: 100%;
-    min-height: 100svh;
+    min-height: 100vh;
     z-index: 0;
   }
 
@@ -87,7 +87,7 @@
     width: 10%;
   }
 
-  /* Media queries for responsivitet */
+  /* Media queries for responsiveness */
   @media (max-width: 1440px) {
     .hero-title {
       margin-top: 0%;
@@ -107,6 +107,7 @@
       font-size: 2.5em;
     }
   }
+
   @media (max-height: 1368px) {
     .links {
       bottom: 0;
@@ -114,6 +115,7 @@
       width: 100%;
     }
   }
+
   @media (max-width: 480px) {
     .hero-title {
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
@@ -128,9 +130,33 @@
       padding: 5px;
     }
   }
-  @media (max-width: 1024px) and (max-height:600px) {
-     .hero-title {
+
+  @media (max-width: 1024px) and (max-height: 600px) {
+    .hero-title {
       margin-top: -5.5%;
     }
   }
+  
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .hero {
+      height: 100vh;
+      padding: 10px;
+    }
+
+    .hero-title {
+      font-size: 2em;
+      margin-top: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
+      0 0 7px rgba(255, 255, 255, 0.2), 
+      0 0 13px rgba(255, 255, 255, 0.13), 
+      0 0 19px rgba(255, 255, 255, 0.07);
+    }
+
+    .container {
+      padding: 10px;
+    }
+  }
+
+
 </style>

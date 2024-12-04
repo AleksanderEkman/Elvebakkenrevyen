@@ -89,12 +89,21 @@
       }
     }
   
-    @media (max-height: 750px) or (max-width: 768px) {
-      ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        width: 100%;
-      }
+    @media not all and (max-height: 600px) and (max-width: 1024px) {
+        @media (max-height: 750px) or (max-width: 768px) {
+            ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                width: 100%;
+            }
+        }
     }
+  @media (max-width: 933px) and (orientation: landscape) {
+    ul {
+      display: block;
+      width: auto;
+    }
+  } 
+
   </style>

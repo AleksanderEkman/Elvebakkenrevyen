@@ -206,4 +206,11 @@
       font-size: 0.8em;
     }
   }
+  @media  (max-height: 600px) and (max-width: 1024px) {
+
+      .countdown {
+        display: none;
+      }
+
+    }
 </style>

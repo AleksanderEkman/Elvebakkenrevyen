@@ -123,4 +123,11 @@
       font-size: 1.5em;
     }
   }
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .slideshow-text {
+      font-size: 1.75em;
+    }
+  } 
+
 </style>
