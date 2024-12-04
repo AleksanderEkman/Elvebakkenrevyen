@@ -35,7 +35,7 @@
   <div class="slideshow" aria-live="polite" aria-atomic="true">
     {#key imageIndex}
       <img 
-        loading="eager"
+        loading="lazy"
         id="slideshow-image" 
         src={imageArray[imageIndex]} 
         alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
