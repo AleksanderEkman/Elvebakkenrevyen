@@ -1,9 +1,7 @@
 <svelte:head>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </svelte:head>
-<script>
 
-</script>
 
 <ul aria-label="Sosiale medier">
     <li><a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube"><i aria-hidden="true" class="fab fa-youtube"></i> YouTube</a></li>
