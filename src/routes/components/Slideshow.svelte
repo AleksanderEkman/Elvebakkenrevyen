@@ -1,20 +1,27 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  let images: Record<string, { default: string }>;
+  let images: Record<string, () => Promise<{ default: string }>>;
   
   // Importerer alle bilder for slideshow
   if (navigator.userAgent.includes('Mobile')) {
-    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp', { eager: true });
+    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
-    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
+    images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp');
   }
-  
-  const imageArray: string[] = Object.values(images).map((module) => (module as { default: string }).default);
+  let imageArray: string[] = [];
+
+
   
   let imageIndex = 0;
 
   onMount(() => {
+    (async () => {
+      imageArray = await Promise.all(
+        Object.values(images).map(module => module())
+      ).then(images => images.map(img => img.default));
+    })();
+
     if (imageArray.length === 0) return; // Passer på at imageArray ikke er tom
 
     const interval = setInterval(() => {
