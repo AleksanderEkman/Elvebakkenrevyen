@@ -1,6 +1,20 @@
-<svelte:head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" media="print">
-</svelte:head>
+<script>
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        // Create a link element
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css';
+        link.media = 'print'; // Initially set media to print
+        document.head.appendChild(link);
+
+        // Change media to all after loading
+        link.onload = () => {
+            link.media = 'all';
+        };
+    });
+</script>
 
 
 <ul aria-label="Sosiale medier">
