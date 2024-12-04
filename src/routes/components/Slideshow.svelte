@@ -4,7 +4,7 @@
 
   let images: Record<string, () => Promise<{ default: string }>>;
 
-  // Import all images for the slideshow
+  // Importerer alle bilder basert på enhet
   if (navigator.userAgent.includes('Mobile')) {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
@@ -20,13 +20,13 @@
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
 
-      if (imageArray.length === 0) return; // Ensure imageArray is not empty
+      if (imageArray.length === 0) return;
 
       const interval = setInterval(() => {
-        imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-      }, 5000); // Change image every 5 seconds
+        imageIndex = (imageIndex + 1) % imageArray.length; 
+      }, 5000);
 
-      return () => clearInterval(interval); // Cleanup interval on component unmount
+      return () => clearInterval(interval);
     })();
   });
 </script>
