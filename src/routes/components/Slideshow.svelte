@@ -80,11 +80,10 @@
     top: 0; 
     left: 0; 
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     user-select: none;
     -webkit-user-drag: none; 
-    z-index: 2;
     transition: opacity 0.5s ease-in-out; 
   }
   
