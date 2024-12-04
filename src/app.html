@@ -1,72 +1,89 @@
 <!doctype html>
 <html lang="no">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="google-site-verification" content="MKE_ffa9T07lcFa5tdZCwUyuYDwBulVu07wwk2bMVz4" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="keywords" content="Elvebakkenrevyen, Revy, 2025, Elvebakken" />
-		<meta property="og:title" content="Elvebakkenrevyen 2025" />
-		<meta property="og:description" content="Nedtelling for Elvebakkenrevyen 2025" />
-		<meta property="og:url" content="https://elvebakkenrevyen.no" />
-		<link rel="canonical" href="https://elvebakkenrevyen.no" />
-		<script defer type="application/ld+json">
-			{
-			  "@context": "https://schema.org",
-			  "@type": "Event",
-			  "name": "Elvebakkenrevyen 2025",
-			  "startDate": "2025-02-26T11:30:00",
-			  "location": {
-				"@type": "Place",
-				"name": "Elvebakken",
-				"address": {
-				  "@type": "PostalAddress",
-				  "streetAddress": "Vestre Elvebakke 3",
-				  "addressLocality": "Oslo",
-				  "postalCode": "0182",
-				  "addressCountry": "NO"
-				}
-			  },
-			  "image": [
-				"%sveltekit.assets%/og-image.png"
-			  ],
-			  "description": "Nedtelling for Elvebakkenrevyen 2025",
-			  "organizer": {
-				"@type": "Organization",
-				"name": "Elvebakkenrevyen",
-				"url": "https://elvebakkenrevyen.no"
-			  },
-			  "sameAs": [
-				"https://www.facebook.com/Elvebakkenrevyen",
-				"https://www.instagram.com/Elvebakkenrevyen",
-				"https://www.tiktok.com/@elvebakkenrevyen"
-			  ]
-			}
-		  </script>
-		%sveltekit.head%
-	</head>
-	<script defer src="https://kit.fontawesome.com/e21aa9ee85.js" crossorigin="anonymous"></script>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
-	<script defer>
-		window.addEventListener('load', () => {
-			const script = document.createElement('script');
-			script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
-			script.defer = true;
-
-			document.head.appendChild(script);
-
-			script.onload = () => {
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-				gtag('config', 'G-S9GEK8HDJJ');
-			};
-	
-			script.onerror = () => {
-				console.error('Failed to load Google Tag Manager script.');
-			};
-		});
-	</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elvebakkenrevyen 2025</title>
+    
+    <!-- Preload and preconnect -->
+    <link rel="preload" href="https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ" as="script">
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="%sveltekit.assets%/favicon.png">
+    
+    <!-- Meta tags -->
+    <meta name="google-site-verification" content="MKE_ffa9T07lcFa5tdZCwUyuYDwBulVu07wwk2bMVz4">
+    <meta name="keywords" content="Elvebakkenrevyen, Revy, 2025, Elvebakken">
+    <meta name="description" content="Nedtelling for Elvebakkenrevyen 2025">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Elvebakkenrevyen 2025">
+    <meta property="og:description" content="Nedtelling for Elvebakkenrevyen 2025">
+    <meta property="og:url" content="https://elvebakkenrevyen.no">
+    <meta property="og:image" content="%sveltekit.assets%/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://elvebakkenrevyen.no">
+    
+    <!-- Structured data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "Elvebakkenrevyen 2025",
+            "startDate": "2025-02-26T11:30:00",
+            "location": {
+                "@type": "Place",
+                "name": "Elvebakken",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Vestre Elvebakke 3",
+                    "addressLocality": "Oslo",
+                    "postalCode": "0182",
+                    "addressCountry": "NO"
+                }
+            },
+            "image": ["%sveltekit.assets%/og-image.png"],
+            "description": "Nedtelling for Elvebakkenrevyen 2025",
+            "organizer": {
+                "@type": "Organization",
+                "name": "Elvebakkenrevyen",
+                "url": "https://elvebakkenrevyen.no"
+            },
+            "sameAs": [
+                "https://www.facebook.com/Elvebakkenrevyen",
+                "https://www.instagram.com/Elvebakkenrevyen",
+                "https://www.tiktok.com/@elvebakkenrevyen"
+            ]
+        }
+    </script>
+    
+    %sveltekit.head%
+</head>
+<body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e21aa9ee85.js" async></script>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        window.addEventListener('load', () => {
+            const script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
+            script.async = true;
+            document.head.appendChild(script);
+            script.onload = () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-S9GEK8HDJJ');
+            };
+            script.onerror = () => {
+                console.error('Failed to load Google Tag Manager script.');
+            };
+        });
+    </script>
+</body>
 </html>

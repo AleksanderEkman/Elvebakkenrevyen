@@ -5,15 +5,15 @@
 
 </script>
 
-<nav aria-label="Sosiale medier">
+<ul aria-label="Sosiale medier">
     <li><a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube"><i aria-hidden="true" class="fab fa-youtube"></i> YouTube</a></li>
     <li><a href="https://www.instagram.com/Elvebakkenrevyen/" aria-label="Følg ELvebakkenrevyen på Instagram"><i aria-hidden="true" class="fab fa-instagram"></i> Instagram</a></li>
     <li><a href="https://www.tiktok.com/@Elvebakkenrevyen" aria-label="Følg Elvebakkenreveyen på TikTok"><i aria-hidden="true" class="fab fa-tiktok"></i> TikTok</a></li>
     <li><a href="https://www.facebook.com/Elvebakkenrevyen/" aria-label="Følg Elvebakkenrevyen på Facebook"><i aria-hidden="true" class="fab fa-facebook"></i> Facebook</a></li>
-</nav>
+</ul>
 
 <style>
-    nav {
+    ul {
         user-select: none;
         z-index: 3;
         color: var(--color-text1);
@@ -53,17 +53,17 @@
         position: relative;
     }
     @media (max-width: 1450px) {
-        nav {
+        ul {
             font-size: 0.95em;
         }
     }
     @media (max-width: 480px) {
-        nav {
+        ul {
             font-size: 0.9em;
         }
     }
     @media (max-height: 750px) or (max-width: 768px) {
-        nav {
+        ul {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
