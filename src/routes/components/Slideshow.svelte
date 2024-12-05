@@ -3,30 +3,25 @@
   import { fade } from 'svelte/transition';
 
   let images: Record<string, () => Promise<{ default: string }>>;
-  let firstImage: { default: string } | undefined;
+  let imagesReady = false;
 
-  // Import the first image eagerly
+  // Importerer alle bilder basert på enhet
   if (navigator.userAgent.includes('Mobile')) {
-    const mobileImages = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp', { eager: true });
-    firstImage = mobileImages['$lib/assets/slideshow/mobile/firstImage.webp'];
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
-    const desktopImages = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
-    firstImage = desktopImages['$lib/assets/slideshow/firstImage.webp'];
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp');
   }
 
-  let imageArray: string[] = firstImage ? [firstImage.default] : [];
+  let imageArray: string[] = [];
   let imageIndex = 0;
 
   onMount(() => {
     (async () => {
-      const otherImages = await Promise.all(
+      imageArray = await Promise.all(
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
 
-      imageArray = firstImage ? [firstImage.default, ...otherImages] : otherImages;
-
+      imagesReady = true;
       if (imageArray.length === 0) return;
 
       const interval = setInterval(() => {
@@ -41,7 +36,7 @@
 <div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
   <p class="slideshow-text">Fra skaperne av:</p>
   <div class="slideshow" aria-live="polite" aria-atomic="true">
-    {#if imageArray.length > 0}
+    {#if imagesReady && imageArray.length > 0}
       {#key imageIndex}
         <img 
           loading="eager"
@@ -51,6 +46,13 @@
           transition:fade
         />
       {/key}
+    {:else}
+      <img 
+        loading="eager"
+        id="slideshow-image" 
+        src="$lib/assets/slideshow/mobile/!_nymalt.webp" 
+        alt="Elvebakkenrevyen nymalt" 
+      />
     {/if}
   </div>
 </div>
