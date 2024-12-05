@@ -37,7 +37,7 @@
     @apply text-white py-20;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -54,7 +54,7 @@
     position: absolute;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     width: 100%;
-    min-height: 100vh;
+    min-height: 100svh;
     z-index: 0;
   }
 
