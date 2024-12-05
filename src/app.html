@@ -67,7 +67,19 @@
     </script>
     
     %sveltekit.head%
-    
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
+    style-src 'self';
+    img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com;
+    connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
+    frame-src https://www.googletagmanager.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    font-src 'self';
+    manifest-src 'self'
+    ">
 </head>
 
 <body data-sveltekit-preload-data="hover">
