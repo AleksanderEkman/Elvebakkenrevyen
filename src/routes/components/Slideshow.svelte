@@ -3,9 +3,8 @@
   import { fade } from 'svelte/transition';
 
   let images: Record<string, () => Promise<{ default: string }>>;
-  let imagesReady = false;
 
-  // Importerer alle bilder basert på enhet
+  // Import all images for the slideshow
   if (navigator.userAgent.includes('Mobile')) {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
@@ -21,14 +20,13 @@
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
 
-      imagesReady = true;
-      if (imageArray.length === 0) return;
+      if (imageArray.length === 0) return; // Ensure imageArray is not empty
 
       const interval = setInterval(() => {
-        imageIndex = (imageIndex + 1) % imageArray.length; 
-      }, 5000);
+        imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
+      }, 5000); // Change image every 5 seconds
 
-      return () => clearInterval(interval);
+      return () => clearInterval(interval); // Cleanup interval on component unmount
     })();
   });
 </script>
@@ -36,23 +34,16 @@
 <div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
   <p class="slideshow-text">Fra skaperne av:</p>
   <div class="slideshow" aria-live="polite" aria-atomic="true">
-    {#if imagesReady && imageArray.length > 0}
+    {#if imageArray.length > 0}
       {#key imageIndex}
         <img 
-          loading="eager"
+          loading="lazy"
           id="slideshow-image" 
           src={imageArray[imageIndex]} 
           alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
           transition:fade
         />
       {/key}
-    {:else}
-      <img 
-        loading="eager"
-        id="slideshow-image" 
-        src="$lib/assets/slideshow/mobile/!_nymalt.webp" 
-        alt="Elvebakkenrevyen nymalt" 
-      />
     {/if}
   </div>
 </div>
@@ -89,10 +80,11 @@
     top: 0; 
     left: 0; 
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     user-select: none;
     -webkit-user-drag: none; 
+    z-index: 2;
     transition: opacity 0.5s ease-in-out; 
   }
   
@@ -132,11 +124,11 @@
       font-size: 1.5em;
     }
   }
+  
   /* Media query for mobile landscape mode */
   @media (max-width: 933px) and (orientation: landscape) {
     .slideshow-text {
       font-size: 1.75em;
     }
   } 
-
 </style>
