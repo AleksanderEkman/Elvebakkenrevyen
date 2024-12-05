@@ -3,22 +3,29 @@
   import { fade } from 'svelte/transition';
 
   let images: Record<string, () => Promise<{ default: string }>>;
+  let firstImage: { default: string } | undefined;
 
-  // Importerer alle bilder basert på enhet
+  // Import the first image eagerly
   if (navigator.userAgent.includes('Mobile')) {
+    const mobileImages = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp', { eager: true });
+    firstImage = mobileImages['$lib/assets/slideshow/mobile/firstImage.webp'];
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
+    const desktopImages = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp', { eager: true });
+    firstImage = desktopImages['$lib/assets/slideshow/firstImage.webp'];
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/*.webp');
   }
 
-  let imageArray: string[] = [];
+  let imageArray: string[] = firstImage ? [firstImage.default] : [];
   let imageIndex = 0;
 
   onMount(() => {
     (async () => {
-      imageArray = await Promise.all(
+      const otherImages = await Promise.all(
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
+
+      imageArray = firstImage ? [firstImage.default, ...otherImages] : otherImages;
 
       if (imageArray.length === 0) return;
 
