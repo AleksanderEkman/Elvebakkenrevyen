@@ -143,7 +143,9 @@
       height: 100vh;
       padding: 10px;
     }
-
+    .hero::before {
+      height: 100vh;
+    }
     .hero-title {
       font-size: 2em;
       margin-top: 0;
