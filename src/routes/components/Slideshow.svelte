@@ -37,7 +37,7 @@
     {#if imageArray.length > 0}
       {#key imageIndex}
         <img 
-          loading="lazy"
+          loading="eager"
           id="slideshow-image" 
           src={imageArray[imageIndex]} 
           alt={`Elvebakkenrevybilde ${imageIndex + 1} av ${imageArray.length}`} 
