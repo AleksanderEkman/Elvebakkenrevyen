@@ -37,7 +37,7 @@
     @apply text-white py-20;
     display: flex;
     justify-content: center;
-    height: 100svh;
+    min-height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
@@ -140,11 +140,11 @@
   /* Media query for mobile landscape mode */
   @media (max-width: 933px) and (orientation: landscape) {
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       padding: 10px;
     }
     .hero::before {
-      height: 100lvh;
+      min-height: 100lvh;
     }
     .hero-title {
       font-size: 2em;
