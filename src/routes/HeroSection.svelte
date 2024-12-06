@@ -144,7 +144,7 @@
       padding: 10px;
     }
     .hero::before {
-      height: 100vh;
+      height: 100lvh;
     }
     .hero-title {
       font-size: 2em;
@@ -153,6 +153,11 @@
       0 0 7px rgba(255, 255, 255, 0.2), 
       0 0 13px rgba(255, 255, 255, 0.13), 
       0 0 19px rgba(255, 255, 255, 0.07);
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      -webkit-text-fill-color: initial;
+      color: #ffffff; /* Fallback color */
     }
 
     .container {
