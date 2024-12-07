@@ -116,35 +116,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 2rem; /* Use rem units for font size */
     flex-wrap: wrap;
     user-select: none;
+    height: 100%; /* Ensure the countdown takes up the full height of its parent */
   }
   .countdown-item {
       overflow: hidden;
-      margin: 10px;
-      padding-left: 35px; 
-      padding-right: 55px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       justify-content: center;
-      min-width: 80px;
+      min-width: 5rem;
+      padding-left: 3rem; 
+      padding-right: 3rem;
       flex: 1 1 100px;
   }
   p {
-    font-size: 3em;
+    font-size: 6rem;
     display: flex;
     justify-content: center;
+
   }
   span {
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 1.3rem; 
   }
-
   :global(.update-animation) {
     animation: updateEffect 0.5s ease-in-out;
   }
@@ -166,13 +168,11 @@
   
   @media (max-width: 1450px) {
     .countdown {
-      font-size: 1.4em;
+      font-size: 1.4rem; /* Use rem units for font size */
       margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */
     }
     .countdown-item {
       padding: 3%;
-      padding-left: 40px;
-      padding-right: 40px;
       flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
       margin: 5px; /* Legg til margin mellom elementer */
     }
@@ -183,7 +183,7 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      font-size: 0.75em;
+      font-size: 0.75rem; /* Use rem units for font size */
       margin-top: 4%; 
       height: auto; /* Juster høyde for mindre skjermer */
     }
@@ -198,19 +198,17 @@
       border-left: none;
     }
     span {
-      font-size: 1em;
+      font-size: 1rem; /* Use rem units for font size */
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {
     .countdown {
-      font-size: 0.8em;
+      font-size: 0.8rem; /* Use rem units for font size */
     }
   }
   @media  (max-height: 600px) and (max-width: 1024px) {
-
-      .countdown {
-        display: none;
-      }
-
+    .countdown {
+      display: none;
     }
+  }
 </style>

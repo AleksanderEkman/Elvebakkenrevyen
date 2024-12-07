@@ -19,7 +19,7 @@
   {#if showContent}
     <div class="container text-center">
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
-      <div class="countdown" in:fade={{ duration: 800 }}>
+      <div class="fade" in:fade={{ duration: 800 }}>
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
           <Slideshow />
           <Countdown />
@@ -37,7 +37,7 @@
     @apply text-white py-20;
     display: flex;
     justify-content: center;
-    min-height: 100svh;
+    height: 100svh;
     width: 100vw;
     background-size: cover;
     background-position: center;
