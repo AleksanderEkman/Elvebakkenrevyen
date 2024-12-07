@@ -128,9 +128,8 @@
       align-items: center;
       text-align: center;
       justify-content: center;
-      min-width: 5rem;
-      padding-left: 3rem; 
-      padding-right: 3rem;
+      min-width: 15rem;
+
       flex: 1 1 100px;
   }
   p {
@@ -168,11 +167,12 @@
   
   @media (max-width: 1450px) {
     .countdown {
-      font-size: 1.4rem; /* Use rem units for font size */
+      font-size: 1.4rem; 
       margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */
     }
     .countdown-item {
-      padding: 3%;
+      padding-left: 3rem; 
+      padding-right: 3rem;
       flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
       margin: 5px; /* Legg til margin mellom elementer */
     }
@@ -183,12 +183,21 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      font-size: 0.75rem; /* Use rem units for font size */
+
       margin-top: 4%; 
-      height: auto; /* Juster høyde for mindre skjermer */
+      height: auto; 
+    }
+    p {
+      font-size: 3rem;
+    }
+    span {
+      font-size: 1rem; 
     }
     .countdown-item {
-      margin: 5px 0; /* Legg til margin mellom elementer */
+      margin: 5px 0; 
+      min-width: 7.5rem;
+      width: 7.5rem;
+
     }
     .row1, .row2 {
       display: flex;

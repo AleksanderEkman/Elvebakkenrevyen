@@ -10,19 +10,19 @@
     </div>
     <div class="footer-col">
       <p id="header">
-        Kontakt oss
-      </p>
-      <ul>
-        <li><a href="mailto:revysjefer@elvebakkenrevyen.no">revysjefer@elvebakkenrevyen.no</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <p id="header">
         Adresse
       </p>
       <ul>
         <li>Vestre Elvebakke 3</li>
         <li>0182 Oslo</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p id="header">
+        Kontakt oss
+      </p>
+      <ul>
+        <li><a href="mailto:revysjefer@elvebakkenrevyen.no">revysjefer@elvebakkenrevyen.no</a></li>
       </ul>
     </div>
   </div>
