@@ -18,7 +18,7 @@ const config = {
 		},
 		files: {
 			hooks: {
-				server: 'src/hooks/server.js',
+				server: 'src/hooks/hooks.server.ts',
 				universal: 'src/hooks/universal.js'
 			},
 		}
