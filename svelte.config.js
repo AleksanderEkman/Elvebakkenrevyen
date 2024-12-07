@@ -14,6 +14,8 @@ const config = {
 					"self",
 					"https://www.googletagmanager.com"
 				],
+				"object-src": ["none"],
+				"base-uri": ["none"],
 			},
 		},
 		files: {

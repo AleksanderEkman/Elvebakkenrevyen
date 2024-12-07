@@ -47,7 +47,7 @@
     align-items: flex-start;
     width: 100%;
     max-width: 1200px;
-    gap: 2em; /* Add gap between columns */
+    gap: 3em; /* Add gap between columns */
   }
 
   .footer-col {
