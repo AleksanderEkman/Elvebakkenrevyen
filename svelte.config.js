@@ -21,10 +21,7 @@ const config = {
 				server: 'src/hooks/server.js',
 				universal: 'src/hooks/universal.js'
 			},
-		},
-		prerender: {
-			entries: ['*']
-		},
+		}
 	}
 };
 
