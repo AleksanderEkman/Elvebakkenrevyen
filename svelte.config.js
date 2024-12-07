@@ -11,9 +11,11 @@ const config = {
 			mode: "nonce",
 			directives: {
 				"script-src": [
-					"self",
-					"https://www.googletagmanager.com"
+					"self"
 				],
+				"script-src-elem": [
+                    "'self'"
+                ],
 				"object-src": ["none"],
 				"base-uri": ["none"],
 			},

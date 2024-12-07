@@ -89,23 +89,24 @@
     <div style="display: contents">%sveltekit.body%</div>
     
 
-    <!-- Google Tag Manager -->
-	<script nonce="%sveltekit.nonce%">
-		window.addEventListener('load', function() {
-			setTimeout(function() {
-				var script = document.createElement('script');
-				script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
-				script.async = true;
-				document.head.appendChild(script);
+  <!-- Google Tag Manager -->
+  <script nonce="%sveltekit.nonce%">
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
+            script.async = true;
+            script.nonce = "%sveltekit.nonce%";
+            document.head.appendChild(script);
 
-				script.onload = function() {
-					window.dataLayer = window.dataLayer || [];
-					function gtag(){dataLayer.push(arguments);}
-					gtag('js', new Date());
-					gtag('config', 'G-S9GEK8HDJJ');
-				};
-			}, 3000);
-		});
-	</script>
+            script.onload = function() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-S9GEK8HDJJ');
+            };
+        }, 3000);
+    });
+  </script>
 </body>
 </html>
