@@ -8,12 +8,11 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		csp: {
-			mode: "hash",
+			mode: "nonce",
 			directives: {
 				"script-src": [
 					"self",
-					"https://www.googletagmanager.com",
-					'sha256-1xOgbz/xSP7IfjQKKYNLJO6q+HLQu66Wjd4osOvrWR8='
+					"https://www.googletagmanager.com"
 				],
 			},
 		},

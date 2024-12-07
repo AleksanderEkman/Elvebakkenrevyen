@@ -13,10 +13,11 @@
 		"test": "npm run test:unit -- --run",
 		"start": "vite preview --host 0.0.0.0 --port 8080",
 		"build:css": "postcss src/app.css -o dist/styles.css",
-		"build": "NODE_ENV=production npm run build:css && vite build"
+		"build": "vite build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-static": "^3.0.6",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"autoprefixer": "^10.4.20",
