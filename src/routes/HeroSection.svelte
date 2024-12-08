@@ -188,26 +188,38 @@
   }
 
   @media (max-width: 480px) {
-    .hero {
-      justify-content: flex-start;
-      background-position: top;
-    }
+  .hero {
+    display: flex; /* Ensure flexbox is applied */
+    justify-content: flex-start;
+    align-items: center; /* Center items vertically if needed */
+    background-size: cover;
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Make sure the hero section takes full height */
+    overflow: hidden; /* Prevent overflow if needed */
+  }
 
-    .hero-title {
-      margin-top: 10%;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
+  .cont {
+    background-position: top; /* Keep this as is if it fits your design */
+  }
+
+  .hero-title {
+    margin-top: 10%;
+    text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.2), 
       0 0 7px rgba(255, 255, 255, 0.2), 
       0 0 13px rgba(255, 255, 255, 0.13), 
       0 0 19px rgba(255, 255, 255, 0.07);
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      -webkit-text-fill-color: initial;
-      color: #ffffff; /* Fallback color */
-      padding: 5px;
-    }
-
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: #ffffff; /* Fallback color */
+    padding: 5px;
+    text-align: center; /* Center title text for better readability */
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
   }
+}
 
   @media (max-width: 1024px) and (max-height: 600px) {
     .hero-title {
