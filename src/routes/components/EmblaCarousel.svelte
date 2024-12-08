@@ -58,7 +58,7 @@
         margin: auto;
         --slide-height: 30rem;
         --slide-spacing: 1rem;
-        --slide-size: 20%;
+        --slide-size: 25%;
     }
     .embla:hover {
         cursor: grab;
@@ -67,7 +67,7 @@
         cursor: grabbing;
     }
     .embla__viewport {
-        width: 69vw;
+        width: 65vw;
         overflow: hidden;
     }
     .embla__container {

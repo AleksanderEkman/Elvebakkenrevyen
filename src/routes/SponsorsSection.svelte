@@ -21,6 +21,7 @@
   }
   h2 {
     @apply text-white;
+    text-shadow: 0 0 1rem black;
     font-family: var(--font-header);
     font-size: 5rem;
     margin-bottom: 2rem;

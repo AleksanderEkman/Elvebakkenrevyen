@@ -3,6 +3,7 @@
   import { cubicOut } from 'svelte/easing';
   import { onMount, onDestroy } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
+  import sponsorer_background from '$lib/assets/sponsorer.webp';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import SponsorsSection from './SponsorsSection.svelte';
@@ -13,9 +14,7 @@
 
   const handleScroll = () => {
     let scrolledBottom = (window.scrollY > window.innerHeight)
-    if (linksClass) {
-      linksClass.style.position = scrolledBottom ? 'absolute' : 'fixed';    
-    }
+
   };
   onMount(() => {
     showContent = true;
@@ -36,19 +35,18 @@
           </div>
         </div>
       </div>
-    {/if}
-  </section>
-  <div class="cont"> 
-    {#if showContent}
-      <div class="fade" in:fade={{ duration: 800 }}>
-        <SponsorsSection />
-      </div>
-      
       <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
         <Links />
       </div>
     {/if}
-  </div>
+  </section>
+</div>
+<div class="cont" style="background-image: url({sponsorer_background});"> 
+  {#if showContent}
+    <div class="fade" in:fade={{ duration: 800 }}>
+      <SponsorsSection />
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -78,6 +76,7 @@
   .fade {
     z-index: 1;
   }
+
   .cont {
     height: 100vh;
     padding: 0;
@@ -89,13 +88,32 @@
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
+    background: linear-gradient(135deg, #311500, #4b0326); /* Sunset colors */
+
+    font-family: var(--font-header);
+    text-align: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .cont::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
   }
   .background::before {
     content: ''; 
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
     width: 100%;
     height: 100vh;
     z-index: 1;
@@ -135,7 +153,7 @@
   }
 
   .links {
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 10px;
     left: 20px;
