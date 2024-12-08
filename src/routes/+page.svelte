@@ -14,3 +14,11 @@
     <HeroSection />
     <Footer />
 </main>
+
+<style>
+    main {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: auto;
+    }
+</style>

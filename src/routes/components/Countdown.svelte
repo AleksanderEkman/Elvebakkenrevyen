@@ -80,7 +80,7 @@
 </script>
 
 
-<div class="countdown" aria-label="Nedtelling til konseptslipp for Elvebakkenrevyen 2025">
+<div class="countdown-elem" aria-label="Nedtelling til konseptslipp for Elvebakkenrevyen 2025">
   <div class="row1">
     <div id="m" class="countdown-item" aria-live="polite" aria-atomic="true" bind:this={monthElement}>
       <p bind:this={monthP}>{months}</p> <span>måned</span>
@@ -111,7 +111,7 @@
   .row2 > .countdown-item:not(:last-child) {
     border-right: 3px solid;
   }
-  .countdown {
+  .countdown-elem {
     margin-top: 3.25%;
     display: flex;
     justify-content: center;
@@ -165,7 +165,7 @@
   }
   
   @media (max-width: 1450px) {
-    .countdown {
+    .countdown-elem {
       margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */
     }
     .countdown-item {
@@ -182,7 +182,7 @@
   }
 
   @media (max-width: 540px) {
-    .countdown {
+    .countdown-elem {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -210,12 +210,12 @@
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {
-    .countdown {
+    .countdown-elem {
       font-size: 0.8rem; /* Use rem units for font size */
     }
   }
   @media  (max-height: 600px) and (max-width: 1024px) {
-    .countdown {
+    .countdown-elem {
       display: none;
     }
   }

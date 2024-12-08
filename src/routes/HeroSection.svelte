@@ -5,9 +5,9 @@
   import background_image from '$lib/assets/Elvebakken.webp';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
+  import SponsorsSection from './SponsorsSection.svelte';
   import Links from './components/Links.svelte';
 
-  let hero: HTMLElement;
 
   let showContent = false;
   onMount(() => {
@@ -15,44 +15,50 @@
   });
 </script>
 
-<section class="hero" bind:this={hero} style="background-image: url({background_image});">
-  {#if showContent}
-    <div class="container text-center">
-      <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
-      <div class="fade" in:fade={{ duration: 800 }}>
-        <div class="fly" in:fly={{ y: 200, duration: 800 }}>
-          <Slideshow />
-          <Countdown />
+<div class="background" style="background-image: url({background_image});">
+  <section class="hero">
+    {#if showContent}
+      <div class="container text-center">
+        <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
+        <div class="fade" in:fade={{ duration: 800 }}>
+          <div class="fly" in:fly={{ y: 200, duration: 800 }}>
+            <Slideshow />
+            <Countdown />
+          </div>
         </div>
-        
       </div>
-      
-    </div>
-    <div class="links" in:fade={{ duration: 800 }}>
-      <Links />
-    </div>
-  {/if}
-</section>
+      <div class="links" in:fade={{ duration: 800 }}>
+        <Links />
+      </div>
+    {/if}
+  </section>
+  <SponsorsSection />
+</div>
+
 
 <style>
+  .background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100vw;
+  }
   .hero {
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100svh; /* Ensure the hero section takes up at least the full viewport height */
+    min-height: 100svh;
     width: 100vw;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Fix the background image */
+
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
   }
 
-  .hero::before {
+  .background::before {
     content: ''; 
     position: fixed;
     top: 0;
