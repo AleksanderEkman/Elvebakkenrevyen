@@ -172,7 +172,12 @@
   }
 
   @media (max-width: 480px) {
+    .hero {
+      justify-content: flex-start;
+    }
+
     .hero-title {
+      margin-top: 10%;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
       0 0 7px rgba(255, 255, 255, 0.2), 
       0 0 13px rgba(255, 255, 255, 0.13), 
@@ -183,6 +188,9 @@
       -webkit-text-fill-color: initial;
       color: #ffffff; /* Fallback color */
       padding: 5px;
+    }
+    .background::before {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95));
     }
   }
 
