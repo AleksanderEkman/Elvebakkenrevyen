@@ -58,7 +58,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensure the hero section takes up at least the full viewport height */
+    min-height: 100svh; /* Ensure the hero section takes up at least the full viewport height */
     width: 100vw;
     position: relative;
     text-transform: uppercase;
@@ -68,7 +68,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width: 100vw;
     overflow: hidden;
     padding: 0;
   }
