@@ -13,8 +13,10 @@
         Adresse
       </p>
       <ul>
-        <li>Vestre Elvebakke 3</li>
-        <li>0182 Oslo</li>
+        <a href="https://www.google.com/maps/place/Vestre+Elvebakke+3" target="_blank" rel="noopener noreferrer">
+          Vestre Elvebakke 3<br>
+          0182 Oslo
+        </a>
       </ul>
     </div>
     <div class="footer-col">
