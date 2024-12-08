@@ -76,7 +76,7 @@
   }
 
   .cont {
-    height: 100vh;
+    height: 100svh;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -192,8 +192,8 @@
     display: flex; /* Ensure flexbox is applied */
     justify-content: flex-start;
     align-items: center; /* Center items vertically if needed */
-    background-size: 411%;
-    background-position: center; /* Center the background image */
+    background-size: 500%;
+    background-position: top; 
     height: 100svh; /* Make sure the hero section takes full height */
     overflow: hidden; /* Prevent overflow if needed */
   }
