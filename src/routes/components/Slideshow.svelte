@@ -90,7 +90,7 @@
   
   .slideshow-text {
     text-align: center;
-    font-size: 2.7em;
+    font-size: 3.2em;
     font-family: var(--font-header);
     color: #fff;
     margin-bottom: 1rem;

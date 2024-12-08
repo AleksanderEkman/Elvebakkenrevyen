@@ -24,7 +24,9 @@
           <Slideshow />
           <Countdown />
         </div>
+        
       </div>
+      
     </div>
     <div class="links" in:fade={{ duration: 800 }}>
       <Links />
@@ -36,12 +38,15 @@
   .hero {
     @apply text-white py-20;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 100svh;
+    align-items: center;
+    min-height: 100svh; /* Ensure the hero section takes up at least the full viewport height */
     width: 100vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Fix the background image */
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
@@ -49,13 +54,13 @@
 
   .hero::before {
     content: ''; 
+    position: fixed;
     top: 0;
     left: 0;
-    position: absolute;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     width: 100%;
-    min-height: 100svh;
-    z-index: 0;
+    height: 100svh;
+    z-index: 1;
   }
 
   .container {
@@ -144,7 +149,7 @@
       padding: 10px;
     }
     .hero::before {
-      min-height: 100lvh;
+      min-height: 100vh;
     }
     .hero-title {
       font-size: 2em;
@@ -153,17 +158,9 @@
       0 0 7px rgba(255, 255, 255, 0.2), 
       0 0 13px rgba(255, 255, 255, 0.13), 
       0 0 19px rgba(255, 255, 255, 0.07);
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      -webkit-text-fill-color: initial;
-      color: #ffffff; /* Fallback color */
     }
-
     .container {
       padding: 10px;
     }
   }
-
-
 </style>

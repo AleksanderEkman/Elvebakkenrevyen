@@ -129,7 +129,6 @@
       text-align: center;
       justify-content: center;
       min-width: 15rem;
-
       flex: 1 1 100px;
   }
   p {
@@ -194,14 +193,10 @@
     p {
       font-size: 3rem;
     }
-    span {
-      font-size: 1rem; 
-    }
     .countdown-item {
       margin: 5px 0; 
       min-width: 7.5rem;
       width: 7.5rem;
-
     }
     .row1, .row2 {
       display: flex;
@@ -211,7 +206,7 @@
       border-left: none;
     }
     span {
-      font-size: 1rem; /* Use rem units for font size */
+      font-size: 0.9rem; 
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {

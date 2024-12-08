@@ -8,7 +8,6 @@
 
 <svelte:head>
     <title>Elvebakkenrevyen 2025</title>
-    <meta name="description" content="Nedtelling for Elvebakkenrevyen 2025" />
 </svelte:head>
 
 <main>
