@@ -90,13 +90,14 @@
     
 
   <!-- Google Tag Manager -->
-  <script nonce="%sveltekit.nonce%">
+  <script lang="ts" nonce="%sveltekit.nonce%">
+    const scriptNonce = document.currentScript ? document.currentScript.nonce : null;
     window.addEventListener('load', function() {
         setTimeout(function() {
             var script = document.createElement('script');
             script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
             script.async = true;
-            script.nonce = "%sveltekit.nonce%";
+            script.nonce = scriptNonce;
             document.head.appendChild(script);
 
             script.onload = function() {

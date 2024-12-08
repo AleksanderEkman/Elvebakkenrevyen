@@ -108,7 +108,7 @@
       width: 100%;
       align-items: center;
       text-align: center;
-      padding: 1em 0;
+      padding: 0.5em 0;
     }
 
     #credit, li {

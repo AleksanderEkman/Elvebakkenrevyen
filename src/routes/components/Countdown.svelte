@@ -167,14 +167,18 @@
   
   @media (max-width: 1450px) {
     .countdown {
-      font-size: 1.4rem; 
       margin-top: 2%; /* Juster plass over nedtellingen for mindre skjermer */
     }
     .countdown-item {
-      padding-left: 3rem; 
-      padding-right: 3rem;
+      min-width: 10rem;
       flex: 1 1 45%; /* Sørg for at elementer tar opp lik plass */
       margin: 5px; /* Legg til margin mellom elementer */
+    }
+    p {
+      font-size: 4rem;
+    }
+    span {
+      font-size: 1rem; 
     }
   }
 

@@ -111,7 +111,12 @@
       font-size: 2.5em;
     }
   }
-
+  @media (max-width: 768px) {
+    .slideshow {
+      width: 72.5vw; 
+      height: auto;
+    }
+  }
   @media (max-width: 480px) {
     .overflow { 
       margin-top: 5%; 
