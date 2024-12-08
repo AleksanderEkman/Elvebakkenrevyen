@@ -23,8 +23,8 @@
   });
 </script>
 
-<div class="background" style="background-image: url({background_image});">
-  <section class="hero">
+<div class="background">
+  <section class="hero" style="background-image: url({background_image});">
     {#if showContent}
       <div class="container text-center">
         <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
@@ -50,15 +50,7 @@
 </div>
 
 <style>
-  .background {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    width: 100vw;
-    overflow: hidden;
-    padding: 0;
-  }
+
   .hero {
     margin-top: 0%;
     @apply text-white py-20;
@@ -70,6 +62,13 @@
     width: 100vw;
     position: relative;
     text-transform: uppercase;
+    overflow: hidden;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100vw;
     overflow: hidden;
     padding: 0;
   }
@@ -108,7 +107,7 @@
     height: 100vh;
     z-index: 1;
   }
-  .background::before {
+  .hero::before {
     content: ''; 
     position: absolute;
     top: 0;
@@ -192,6 +191,7 @@
   @media (max-width: 480px) {
     .hero {
       justify-content: flex-start;
+      background-position: top;
     }
 
     .hero-title {
@@ -207,9 +207,7 @@
       color: #ffffff; /* Fallback color */
       padding: 5px;
     }
-    .background::before {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
-    }
+
   }
 
   @media (max-width: 1024px) and (max-height: 600px) {
