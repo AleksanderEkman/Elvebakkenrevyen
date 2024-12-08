@@ -93,7 +93,7 @@
     text-align: center;
 
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
   }
 
