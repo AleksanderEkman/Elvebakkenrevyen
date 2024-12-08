@@ -23,24 +23,24 @@
   });
 </script>
 
-<div class="background">
-  <section class="hero" style="background-image: url({background_image});">
-    {#if showContent}
-      <div class="container text-center">
-        <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
-        <div class="fade" in:fade={{ duration: 800 }}>
-          <div class="fly" in:fly={{ y: 200, duration: 800 }}>
-            <Slideshow />
-            <Countdown />
-          </div>
+
+<section class="hero" style="background-image: url({background_image});">
+  {#if showContent}
+    <div class="container text-center">
+      <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
+      <div class="fade" in:fade={{ duration: 800 }}>
+        <div class="fly" in:fly={{ y: 200, duration: 800 }}>
+          <Slideshow />
+          <Countdown />
         </div>
       </div>
-      <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
-        <Links />
-      </div>
-    {/if}
-  </section>
-</div>
+    </div>
+    <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
+      <Links />
+    </div>
+  {/if}
+</section>
+
 <div class="cont" style="background-image: url({sponsorer_background});"> 
   {#if showContent}
     <div class="fade" in:fade={{ duration: 800 }}>
@@ -103,7 +103,7 @@
     left: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     z-index: 1;
   }
   .hero::before {
@@ -194,7 +194,7 @@
     align-items: center; /* Center items vertically if needed */
     background-size: cover;
     background-position: center; /* Center the background image */
-    height: 100vh; /* Make sure the hero section takes full height */
+    height: 100svh; /* Make sure the hero section takes full height */
     overflow: hidden; /* Prevent overflow if needed */
   }
 
