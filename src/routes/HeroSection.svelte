@@ -38,9 +38,12 @@
       </div>
     {/if}
   </section>
-  <div class="cont">
-    <SponsorsSection />
+  <div class="cont"> 
     {#if showContent}
+      <div class="fade" in:fade={{ duration: 800 }}>
+        <SponsorsSection />
+      </div>
+      
       <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
         <Links />
       </div>
@@ -71,6 +74,9 @@
     text-transform: uppercase;
     overflow: hidden;
     padding: 0;
+  }
+  .fade {
+    z-index: 1;
   }
   .cont {
     height: 100vh;

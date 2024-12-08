@@ -60,8 +60,14 @@
         --slide-spacing: 1rem;
         --slide-size: 20%;
     }
+    .embla:hover {
+        cursor: grab;
+    }
+    .embla:active {
+        cursor: grabbing;
+    }
     .embla__viewport {
-        width: 70vw;
+        width: 69vw;
         overflow: hidden;
     }
     .embla__container {
