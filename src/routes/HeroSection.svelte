@@ -1,17 +1,26 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import SponsorsSection from './SponsorsSection.svelte';
   import Links from './components/Links.svelte';
 
-
   let showContent = false;
+  let linksClass: HTMLElement;
+
+  const handleScroll = () => {
+    let scrolledBottom = (window.scrollY > window.innerHeight)
+    if (linksClass) {
+      linksClass.style.position = scrolledBottom ? 'absolute' : 'fixed';    
+    }
+  };
   onMount(() => {
     showContent = true;
+
+    window.addEventListener('scroll', handleScroll);
   });
 </script>
 
@@ -27,14 +36,17 @@
           </div>
         </div>
       </div>
-      <div class="links" in:fade={{ duration: 800 }}>
+    {/if}
+  </section>
+  <div class="cont">
+    <SponsorsSection />
+    {#if showContent}
+      <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
         <Links />
       </div>
     {/if}
-  </section>
-  <SponsorsSection />
+  </div>
 </div>
-
 
 <style>
   .background {
@@ -43,21 +55,35 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     width: 100vw;
+    overflow: hidden;
+    padding: 0;
   }
   .hero {
+    margin-top: 0%;
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100svh;
+    min-height: 100vh; /* Ensure the hero section takes up at least the full viewport height */
     width: 100vw;
-
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+    padding: 0;
+  }
+  .cont {
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
   }
-
   .background::before {
     content: ''; 
     position: fixed;
@@ -65,7 +91,7 @@
     left: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
     width: 100%;
-    height: 100svh;
+    height: 100vh;
     z-index: 1;
   }
 
@@ -90,12 +116,24 @@
     letter-spacing: 3px;
   }
 
+  .cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0%;
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+
   .links {
-    position: absolute;
+    position: fixed;
+    width: 100%;
     bottom: 10px;
     left: 20px;
     z-index: 2;
-    width: 10%;
   }
 
   /* Media queries for responsiveness */
@@ -155,7 +193,7 @@
       padding: 10px;
     }
     .hero::before {
-      min-height: 100vh;
+      height: 100vh;
     }
     .hero-title {
       font-size: 2em;

@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
 
     import HeroSection from './HeroSection.svelte';
     import Footer from './Footer.svelte';
+
+
 </script>
 
 <svelte:head>
@@ -16,9 +18,10 @@
 </main>
 
 <style>
+
     main {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
+
         height: auto;
+        overflow: hidden;
     }
 </style>
