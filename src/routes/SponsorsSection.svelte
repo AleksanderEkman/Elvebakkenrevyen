@@ -1,5 +1,8 @@
 <script lang="ts">
-    import EmblaCarousel from './components/EmblaCarousel.svelte';
+	import { on } from 'svelte/events';
+  import EmblaCarousel from './components/EmblaCarousel.svelte';
+
+  
 </script>
 
 <div class="flex">
