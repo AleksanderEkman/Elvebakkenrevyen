@@ -25,6 +25,7 @@
     font-family: var(--font-header);
     font-size: 5rem;
     margin-bottom: 2rem;
+    user-select: none;
   }
   @media (max-width: 540px) {
     h2 {
