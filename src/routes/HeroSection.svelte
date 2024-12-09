@@ -86,8 +86,6 @@
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
-    background: linear-gradient(135deg, #311500, #4b0326); /* Sunset colors */
-
     font-family: var(--font-header);
     text-align: center;
 
@@ -101,7 +99,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
     width: 100%;
     height: 100vh;
     z-index: 1;

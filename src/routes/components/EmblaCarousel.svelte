@@ -68,6 +68,7 @@
     }
     .embla__viewport {
         width: 65vw;
+        border-radius: 1.5rem;
         overflow: hidden;
     }
     .embla__container {
@@ -84,10 +85,10 @@
         padding-left: var(--slide-spacing);
     }
     .embla__slide__number {
-        background-color: aliceblue;
+        background-color: rgba(255,255,255,0.15);
         z-index: 2;
         box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-        border-radius: 1.8rem;
+        border-radius: 1.5rem;
         font-size: 4rem;
         font-weight: 600;
         display: flex;
@@ -103,6 +104,16 @@
         }
         .embla__viewport {
             width: 100vw;
+        }
+    }
+    
+    @media (max-width: 1450px) {
+        .embla {
+            --slide-size: 27.5%;
+            --slide-height: 20rem;
+        }
+        .embla__viewport {
+            width: 90vw;
         }
     }
   </style>
