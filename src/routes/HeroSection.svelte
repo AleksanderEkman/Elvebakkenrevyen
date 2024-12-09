@@ -11,18 +11,26 @@
 
   let showContent = false;
   let linksClass: HTMLElement;
+  let contBackground: string = '';
+  let contBackgroundLoaded = false;
 
   const handleScroll = () => {
-    let scrolledBottom = (window.scrollY > window.innerHeight)
-
+    let scrolledBottom = (window.scrollY > window.innerHeight);
   };
+
   onMount(() => {
     showContent = true;
+
+    const contImg = new Image();
+    contImg.src = sponsorer_background;
+    contImg.onload = () => {
+      contBackground = `url(${sponsorer_background})`;
+      contBackgroundLoaded = true;
+    };
 
     window.addEventListener('scroll', handleScroll);
   });
 </script>
-
 
 <section class="hero" style="background-image: url({background_image});">
   {#if showContent}
@@ -41,7 +49,7 @@
   {/if}
 </section>
 
-<div class="cont" style="background-image: url({sponsorer_background});"> 
+<div class="cont" class:loaded={contBackgroundLoaded} style="background-image: {contBackground};"> 
   {#if showContent}
     <div class="fade" in:fade={{ duration: 800 }}>
       <SponsorsSection />
@@ -50,7 +58,6 @@
 </div>
 
 <style>
-
   .hero {
     margin-top: 0%;
     @apply text-white py-20;
@@ -88,10 +95,15 @@
     overflow: hidden;
     font-family: var(--font-header);
     text-align: center;
-
     background-size: cover;
-    background-position: top;
+    background-position: top center;
     background-repeat: no-repeat;
+    background-image: none;
+    transition: background-image 1s ease-in-out;
+  }
+
+  .cont.loaded {
+    background-image: var(--contBackground);
   }
 
   .cont::before {
@@ -136,18 +148,6 @@
     letter-spacing: 3px;
   }
 
-  .cont {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    padding: 0%;
-    position: relative;
-    text-transform: uppercase;
-    overflow: hidden;
-  }
-
   .links {
     position: absolute;
     width: 100%;
@@ -186,38 +186,38 @@
   }
 
   @media (max-width: 480px) {
-  .hero {
-    display: flex; /* Ensure flexbox is applied */
-    justify-content: flex-start;
-    align-items: center; /* Center items vertically if needed */
-    background-size: 500%;
-    background-position: top; 
-    height: 100svh; /* Make sure the hero section takes full height */
-    overflow: hidden; /* Prevent overflow if needed */
-  }
+    .hero {
+      display: flex; /* Ensure flexbox is applied */
+      justify-content: flex-start;
+      align-items: center; /* Center items vertically if needed */
+      background-size: 450%;
+      background-position: top; 
+      height: 100svh; /* Make sure the hero section takes full height */
+      overflow: hidden; /* Prevent overflow if needed */
+    }
 
-  .cont {
-    background-position: top; /* Keep this as is if it fits your design */
-  }
+    .cont {
+      background-position: top; /* Keep this as is if it fits your design */
+    }
 
-  .hero-title {
-    margin-top: 10%;
-    text-shadow: 
-      1px 1px 2px rgba(0, 0, 0, 0.2), 
-      0 0 7px rgba(255, 255, 255, 0.2), 
-      0 0 13px rgba(255, 255, 255, 0.13), 
-      0 0 19px rgba(255, 255, 255, 0.07);
-    background: none;
-    -webkit-background-clip: initial;
-    background-clip: initial;
-    -webkit-text-fill-color: initial;
-    color: #ffffff; /* Fallback color */
-    padding: 5px;
-    text-align: center; /* Center title text for better readability */
-    width: 100%; /* Ensure it takes full width */
-    box-sizing: border-box; /* Include padding in width calculation */
+    .hero-title {
+      margin-top: 10%;
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.2), 
+        0 0 7px rgba(255, 255, 255, 0.2), 
+        0 0 13px rgba(255, 255, 255, 0.13), 
+        0 0 19px rgba(255, 255, 255, 0.07);
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      -webkit-text-fill-color: initial;
+      color: #ffffff; /* Fallback color */
+      padding: 5px;
+      text-align: center; /* Center title text for better readability */
+      width: 100%; /* Ensure it takes full width */
+      box-sizing: border-box; /* Include padding in width calculation */
+    }
   }
-}
 
   @media (max-width: 1024px) and (max-height: 600px) {
     .hero-title {

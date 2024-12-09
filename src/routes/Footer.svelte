@@ -62,7 +62,7 @@
     align-items: center;
     text-align: center; /* Center text within columns */
     flex: 1; /* Allow columns to grow and shrink equally */
-    padding: 0 1em;
+    padding: 0 0.5em;
   }
 
   #header {
@@ -87,7 +87,7 @@
   li {
     font-size: 1em;
     color: white;
-    margin: 0.2em 0;
+    margin: 0.1em 0;
   }
 
   a {
@@ -122,17 +122,6 @@
     }
   }
 
-  @media (max-width: 480px) {
-    #header {
-      font-size: 1.1em;
-    }
-    #credit, li {
-      font-size: 0.8em;
-    }
-    footer {
-      height: auto;
-    }
-  }
 
   @media (max-width: 933px) and (orientation: landscape) { 
     #header {
@@ -144,6 +133,20 @@
     }
     li {
       font-size: 0.8em;
+    }
+  }
+  @media (max-width: 480px) {
+    #header {
+      font-size: 1.1em;
+    }
+    #credit, li {
+      font-size: 0.8em;
+    }
+    footer {
+      height: auto;
+    }
+    .content {
+      gap: 2.2em;
     }
   }
 </style>
