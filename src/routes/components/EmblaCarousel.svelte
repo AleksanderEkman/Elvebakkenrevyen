@@ -6,6 +6,7 @@
   let viewportNode: HTMLElement;
   let emblaApi: any;
   let sponsorImages: string[] = [];
+  let textArray = ['Vulkan Oslo', 'Kaffebrenneriet', 'Freddy Fuego', 'Fellesverkstedet', 'Vega Scene', 'Syng']
 
   /** @type {import('embla-carousel').EmblaOptionsType} */
   const OPTIONS = { loop: true };
@@ -40,10 +41,13 @@
 <section bind:this={emblaNode} class="embla">
   <div bind:this={viewportNode} class="embla__viewport">
     <div class="embla__container">
-      {#each sponsorImages as image}
+      {#each sponsorImages as image, index}
         <div class="embla__slide">
           <div class="embla__slide__img">
             <img src={image} alt="Sponsor" loading="lazy" />
+          </div>
+          <div class="text">
+            <p>{textArray[index]}</p>
           </div>
         </div>
       {/each}
@@ -77,6 +81,8 @@
     margin-left: calc(var(--slide-spacing) * -1);
   }
   .embla__slide {
+    display: flex;
+    flex-direction: column;
     z-index: 2;
     transform: translate3d(0, 0, 0);
     flex: 0 0 var(--slide-size);
@@ -90,6 +96,13 @@
     border-radius: 1.5rem;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    user-select: none;
+  }
+  .text p {
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
     user-select: none;
   }
   @media (max-width: 1450px) {
