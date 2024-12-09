@@ -76,7 +76,7 @@
   }
 
   .cont {
-    height: 100svh;
+    height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@
     left: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
     width: 100%;
-    height: 100svh;
+    height: 100vh;
     z-index: 1;
   }
   .hero::before {
