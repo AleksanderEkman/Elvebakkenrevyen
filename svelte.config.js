@@ -16,6 +16,7 @@ const config = {
                 "script-src-elem": [
                     "'self'"
                 ],
+
                 "object-src": ["none"],
                 "base-uri": ["none"],
             },

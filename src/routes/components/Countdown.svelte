@@ -102,7 +102,7 @@
   </div>
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .row1, .row2 {
     display: flex;
     flex-direction: row;

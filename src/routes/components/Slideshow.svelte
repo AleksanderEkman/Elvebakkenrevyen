@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .overflow {
     overflow: hidden;
     display: flex;
@@ -103,7 +103,7 @@
     }
     
     .slideshow {
-      width: 57vw; 
+      width: 60vw; 
       height: auto;
     }
 

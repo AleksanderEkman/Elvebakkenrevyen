@@ -17,10 +17,8 @@
     <Footer />
 </main>
 
-<style>
-
+<style nonce="%sveltekit.nonce%">
     main {
-
         height: auto;
         overflow: hidden;
     }

@@ -33,7 +33,7 @@
   </div>
 </footer>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   footer {
     height: auto;
     display: flex;

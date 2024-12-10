@@ -2,7 +2,6 @@
 	import { on } from 'svelte/events';
   import EmblaCarousel from './components/EmblaCarousel.svelte';
 
-  
 </script>
 
 <div class="flex">
@@ -12,7 +11,7 @@
   <EmblaCarousel />
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .flex {
     margin-top: -8rem;
     z-index: 1;
@@ -29,6 +28,11 @@
     font-size: 5rem;
     margin-bottom: 2rem;
     user-select: none;
+  }
+  @media (max-width: 1450px) {
+    h2 {
+      font-size: 4rem;
+    }
   }
   @media (max-width: 540px) {
     h2 {
