@@ -35,8 +35,6 @@
       emblaApi.destroy();
     };
   });
-
-
 </script>
 
 <section bind:this={emblaNode} class="embla">
@@ -91,14 +89,18 @@
     padding-left: var(--slide-spacing);
   }
   .embla__slide__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
+    height: var(--slide-height);
     object-fit: cover;
     border-radius: 1.5rem;
     background-color: rgba(0, 0, 0, 0.7);
     box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
     user-select: none;
   }
+  
   .text p {
     font-size: 2.5rem;
     color: white;
@@ -124,7 +126,9 @@
   @media (max-width: 540px) {
     .embla {
       --slide-size: 75%;
-      --slide-height: 27.5rem;
+      --slide-height: 22.5rem;
+      display: flex;
+      
     }
     .embla__viewport {
       width: 100vw;
