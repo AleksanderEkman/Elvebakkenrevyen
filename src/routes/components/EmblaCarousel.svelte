@@ -102,7 +102,7 @@
     font-size: 2.5rem;
     color: white;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.4rem;
     user-select: none;
   }
   @media (max-width: 1450px) {
@@ -121,6 +121,10 @@
     }
     .embla__viewport {
       width: 100vw;
+    }
+    .text p {
+      font-size: 2rem;
+      margin-top: 0;
     }
   }
 </style>

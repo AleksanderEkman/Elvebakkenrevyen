@@ -190,14 +190,14 @@
       display: flex; /* Ensure flexbox is applied */
       justify-content: flex-start;
       align-items: center; /* Center items vertically if needed */
-      background-size: 450%;
+      background-size: 430%;
       background-position: top; 
       height: 100svh; /* Make sure the hero section takes full height */
       overflow: hidden; /* Prevent overflow if needed */
     }
 
     .cont {
-      background-position: top; /* Keep this as is if it fits your design */
+      background-position: bottom; /* Keep this as is if it fits your design */
     }
 
     .hero-title {
