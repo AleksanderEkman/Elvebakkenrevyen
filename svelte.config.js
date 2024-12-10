@@ -18,6 +18,7 @@ const config = {
                 ],
                 "style-src": [
                     "'self'",
+                    "'nonce-%sveltekit.nonce%'"
                 ],
                 "object-src": ["none"],
                 "base-uri": ["none"],
