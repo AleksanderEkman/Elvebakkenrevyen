@@ -60,7 +60,7 @@
     margin: auto;
     --slide-height: 30rem;
     --slide-spacing: 0.75rem;
-    --slide-size: 24%;
+    --slide-size: 22%;
   }
   .embla:hover {
     cursor: grab;
@@ -69,7 +69,7 @@
     cursor: grabbing;
   }
   .embla__viewport {
-    width: 85vw;
+    width: 95vw;
     border-radius: 1.5rem;
     overflow: hidden;
   }
@@ -97,7 +97,8 @@
     object-fit: cover;
     border-radius: 1.5rem;
     background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 
+                0 4px 8px rgba(0, 0, 0, 0.4); 
     user-select: none;
   }
   
@@ -136,6 +137,13 @@
     .text p {
       font-size: 2rem;
       margin-top: 0;
+    }
+    .text a {
+      padding: 0.2rem;
+      
+      border: 0.1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
     }
   }
 </style>
