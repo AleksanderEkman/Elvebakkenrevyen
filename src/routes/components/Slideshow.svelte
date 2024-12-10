@@ -103,7 +103,7 @@
     }
     
     .slideshow {
-      width: 57vw; 
+      width: 60vw; 
       height: auto;
     }
 

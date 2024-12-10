@@ -6,14 +6,20 @@
   let viewportNode: HTMLElement;
   let emblaApi: any;
   let sponsorImages: string[] = [];
-  let textArray = ['Vulkan Oslo', 'Kaffebrenneriet', 'Freddy Fuego', 'Fellesverkstedet', 'Vega Scene', 'Syng']
+  let sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
+    {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
+    {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
+    {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/no"}, 
+    {name: 'Vega Scene', url: "https://www.vegascene.no/"}, 
+    {name: 'Syng', url: "https://syng.no/"}
+  ]
 
+  
   /** @type {import('embla-carousel').EmblaOptionsType} */
   const OPTIONS = { loop: true };
 
   onMount(() => {
     const loadImages = async () => {
-      // Dynamically import all images from $lib/assets/sponsors/*.webp
       const images = import.meta.glob<{ default: string }>('$lib/assets/sponsors/*.webp');
       for (const path in images) {
         const imageModule = await images[path]();
@@ -25,17 +31,12 @@
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
     });
 
-    emblaNode.addEventListener('click', handleCarouselClick);
-
     return () => {
-      emblaNode.removeEventListener('click', handleCarouselClick);
       emblaApi.destroy();
     };
   });
 
-  function handleCarouselClick(event: MouseEvent) {
-    event.preventDefault(); // Prevent default behavior
-  }
+
 </script>
 
 <section bind:this={emblaNode} class="embla">
@@ -47,7 +48,7 @@
             <img src={image} alt="Sponsor" loading="lazy" />
           </div>
           <div class="text">
-            <p>{textArray[index]}</p>
+            <p><a href="{sponsors[index].url}" target={'_blank'}>{sponsors[index].name}</a></p>
           </div>
         </div>
       {/each}
@@ -94,7 +95,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
     user-select: none;
   }
@@ -104,15 +105,21 @@
     text-align: center;
     margin-top: 0.4rem;
     user-select: none;
+    z-index: 5;
+  }
+  .text a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
   @media (max-width: 1450px) {
     .embla {
-      --slide-size: 27.5%;
+      --slide-size: 24%;
       --slide-height: 20rem;
     }
     .embla__viewport {
-      width: 90vw;
+      width: 100vw;
     }
+
   }
   @media (max-width: 540px) {
     .embla {

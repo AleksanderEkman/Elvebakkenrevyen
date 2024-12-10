@@ -30,6 +30,11 @@
     margin-bottom: 2rem;
     user-select: none;
   }
+  @media (max-width: 1450px) {
+    h2 {
+      font-size: 4rem;
+    }
+  }
   @media (max-width: 540px) {
     h2 {
       font-size: 3.25rem;
