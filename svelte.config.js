@@ -16,10 +16,7 @@ const config = {
                 "script-src-elem": [
                     "'self'"
                 ],
-                "style-src": [
-                    "'self'",
-                    "'nonce-%sveltekit.nonce%'"
-                ],
+
                 "object-src": ["none"],
                 "base-uri": ["none"],
             },
