@@ -57,7 +57,7 @@
   {/if}
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .hero {
     margin-top: 0%;
     @apply text-white py-20;

@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .overflow {
     overflow: hidden;
     display: flex;

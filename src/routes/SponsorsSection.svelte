@@ -12,7 +12,7 @@
   <EmblaCarousel />
 </div>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .flex {
     margin-top: -8rem;
     z-index: 1;

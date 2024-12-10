@@ -18,7 +18,6 @@
 </main>
 
 <style>
-
     main {
 
         height: auto;

@@ -56,7 +56,7 @@
   </div>
 </section>
 
-<style>
+<style nonce="%sveltekit.nonce%">
   .embla {
     z-index: 2;
     margin: auto;

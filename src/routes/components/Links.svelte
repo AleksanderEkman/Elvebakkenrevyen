@@ -31,7 +31,7 @@
     </li>
   </ul>
   
-  <style>
+  <style nonce="%sveltekit.nonce%">
     ul {
       user-select: none;
       z-index: 3;
