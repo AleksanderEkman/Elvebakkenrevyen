@@ -60,7 +60,7 @@
     z-index: 2;
     margin: auto;
     --slide-height: 30rem;
-    --slide-spacing: 1rem;
+    --slide-spacing: 0.75rem;
     --slide-size: 24%;
   }
   .embla:hover {
@@ -70,7 +70,7 @@
     cursor: grabbing;
   }
   .embla__viewport {
-    width: 80vw;
+    width: 85vw;
     border-radius: 1.5rem;
     overflow: hidden;
   }
@@ -86,7 +86,7 @@
     z-index: 2;
     transform: translate3d(0, 0, 0);
     flex: 0 0 var(--slide-size);
-    min-width: 0;
+    width: 30rem;
     padding-left: var(--slide-spacing);
   }
   .embla__slide__img {
