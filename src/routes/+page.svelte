@@ -1,10 +1,18 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { superForm } from 'sveltekit-superforms';
     import { goto } from '$app/navigation';
 
     import HeroSection from './HeroSection.svelte';
-    import Footer from './Footer.svelte';
+    import SponsorsSection from './SponsorsSection.svelte';
+    import ContactSection from './ContactSection.svelte';
 
+    let showContent = false;
+    export let data;
+
+    onMount(() => {
+        showContent = true;
+    });
 
 </script>
 
@@ -13,13 +21,14 @@
 </svelte:head>
 
 <main>
-    <HeroSection />
-    <Footer />
+    <HeroSection {showContent}/>
+    <SponsorsSection {showContent}/>
+    <ContactSection {data} {showContent}/>
 </main>
 
 <style nonce="%sveltekit.nonce%">
     main {
         height: auto;
-        overflow: hidden;
+        overflow-x: hidden;
     }
 </style>

@@ -35,6 +35,7 @@
 
 <style nonce="%sveltekit.nonce%">
   footer {
+    overflow: hidden;
     height: auto;
     display: flex;
     justify-content: center;

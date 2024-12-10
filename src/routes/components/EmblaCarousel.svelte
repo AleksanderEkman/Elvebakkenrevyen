@@ -60,7 +60,7 @@
     margin: auto;
     --slide-height: 30rem;
     --slide-spacing: 0.75rem;
-    --slide-size: 22%;
+    --slide-size: 21%;
   }
   .embla:hover {
     cursor: grab;
@@ -69,7 +69,7 @@
     cursor: grabbing;
   }
   .embla__viewport {
-    width: 95vw;
+    width: 99vw;
     border-radius: 1.5rem;
     overflow: hidden;
   }
@@ -96,7 +96,7 @@
     height: var(--slide-height);
     object-fit: cover;
     border-radius: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 
                 0 4px 8px rgba(0, 0, 0, 0.4); 
     user-select: none;
@@ -109,6 +109,9 @@
     margin-top: 0.4rem;
     user-select: none;
     z-index: 5;
+  }
+  .text p a {
+    user-select: none;
   }
   .text a:hover {
     text-decoration: underline;
@@ -140,10 +143,10 @@
     }
     .text a {
       padding: 0.2rem;
-      
-      border: 0.1px solid rgba(255, 255, 255, 0.3);
+      border: 0.1px solid rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
   }
 </style>

@@ -3,33 +3,18 @@
   import { cubicOut } from 'svelte/easing';
   import { onMount, onDestroy } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
-  import sponsorer_background from '$lib/assets/sponsorer.webp';
+
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import SponsorsSection from './SponsorsSection.svelte';
   import Links from './components/Links.svelte';
 
-  let showContent = false;
+  export let showContent: boolean;
+  
   let linksClass: HTMLElement;
   let contBackground: string = '';
   let contBackgroundLoaded = false;
 
-  const handleScroll = () => {
-    let scrolledBottom = (window.scrollY > window.innerHeight);
-  };
-
-  onMount(() => {
-    showContent = true;
-
-    const contImg = new Image();
-    contImg.src = sponsorer_background;
-    contImg.onload = () => {
-      contBackground = `url(${sponsorer_background})`;
-      contBackgroundLoaded = true;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-  });
 </script>
 
 <section class="hero" style="background-image: url({background_image});">
@@ -48,14 +33,6 @@
     </div>
   {/if}
 </section>
-
-<div class="cont" class:loaded={contBackgroundLoaded} style="background-image: {contBackground};"> 
-  {#if showContent}
-    <div class="fade" in:fade={{ duration: 800 }}>
-      <SponsorsSection />
-    </div>
-  {/if}
-</div>
 
 <style nonce="%sveltekit.nonce%">
   .hero {
@@ -82,40 +59,6 @@
     z-index: 1;
   }
 
-  .cont {
-    height: 100vh;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    position: relative;
-    text-transform: uppercase;
-    overflow: hidden;
-    font-family: var(--font-header);
-    text-align: center;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: none;
-    transition: background-image 1s ease-in-out;
-  }
-
-  .cont.loaded {
-    background-image: var(--contBackground);
-  }
-
-  .cont::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-  }
   .hero::before {
     content: ''; 
     position: absolute;
@@ -194,11 +137,6 @@
       background-position: top; 
       height: 100svh; /* Make sure the hero section takes full height */
       overflow: hidden; /* Prevent overflow if needed */
-    }
-
-    .cont {
-      background-position: top;
-      
     }
 
     .hero-title {
