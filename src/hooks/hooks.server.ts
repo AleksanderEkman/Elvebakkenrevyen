@@ -7,8 +7,7 @@ const securityHeaders = {
     'Referrer-Policy': 'no-referrer', // Control referrer information
     'Permissions-Policy': 'geolocation=(self), microphone=()', // Define permissions for features
     'Access-Control-Allow-Origin': 'https://elvebakken-app-sv958.ondigitalocean.app/', // Allow specific origin
-    'Access-Control-Allow-Methods': 'POST, OPTIONS', // Allow specific methods
-    'Access-Control-Allow-Headers': 'Content-Type', // Allow specific headers
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', // Allow specific methods
     'Vary': 'Origin' // Handle multiple domains
 };
 
