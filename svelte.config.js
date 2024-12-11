@@ -26,7 +26,10 @@ const config = {
                 server: 'src/hooks/hooks.server.ts',
                 universal: 'src/hooks/universal.js'
             },
-        }
+        },
+        csrf: {
+            checkOrigin: false,
+        },
     }
 };
 

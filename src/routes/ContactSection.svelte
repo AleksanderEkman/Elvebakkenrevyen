@@ -1,27 +1,27 @@
 <script lang="ts">
-    import { z } from "zod";
-    import { fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
     import { zod } from "sveltekit-superforms/adapters";
     import { superForm } from 'sveltekit-superforms/client';
-    import { onMount } from 'svelte';
-    import { contactSchema } from '$lib/schemas';
+    import { contactSchema } from '$lib/schemas'; // Ensure this schema is defined correctly
+    import { fade } from 'svelte/transition';
     import { faCheck } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
     import spinner from '$lib/assets/spinner.svg';
 
-    export let data;
+    export let csrfToken: string; // Expecting csrfToken to be passed as a prop
+    export let data; // Form data passed from the parent
     export let showContent: boolean;
-    
+
+    // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
         validators: zod(contactSchema)
-    })
+    });
 
     let contactSection: HTMLElement;
-    let footer: HTMLElement | null
-    
-    const updateContactSectionHeight = () => {
+    let footer: HTMLElement | null;
 
+    const updateContactSectionHeight = () => {
         if (contactSection && footer) {
             const footerHeight = footer.offsetHeight;
             if (window.matchMedia('(min-width: 768px)').matches) {
@@ -32,17 +32,16 @@
         }
     };
 
-    onMount(() => {
+    onMount(async () => {
         footer = document.querySelector('footer');
         updateContactSectionHeight();
     });
-
 </script>
 
 <section bind:this={contactSection} class="contact">
     {#if showContent}
         <form in:fade={{ duration: 500 }} method="POST" use:enhance class="contact-field">
-
+            <input type="hidden" name="csrf_token" bind:value={csrfToken} /> <!-- Bind CSRF token directly -->
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>
                 <p>Er det noe du lurer på? Send oss en mail da vel!</p>
@@ -50,9 +49,7 @@
             <div class="name">
                 <div class="input-container">
                     <label for="firstName">Fornavn</label>
-                    <input type="text" id="firstName" name="firstName" 
-                        bind:value={$form.firstName}
-                    />
+                    <input type="text" id="firstName" name="firstName" bind:value={$form.firstName} required />
                     {#if $errors.firstName}
                         <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
                     {:else}
@@ -62,9 +59,7 @@
 
                 <div class="input-container">
                     <label for="lastName">Etternavn</label>
-                    <input type="text" id="lastName" name="lastName"
-                        bind:value={$form.lastName}
-                    />
+                    <input type="text" id="lastName" name="lastName" bind:value={$form.lastName} required />
                     {#if $errors.lastName}
                         <small id="error" in:fade={{ duration: 70 }}>Ugyldig etternavn</small>
                     {:else}
@@ -72,23 +67,20 @@
                     {/if}
                 </div>
             </div>
-            
+
             <div class="input-container">
                 <label for="email">E-post</label>
-                <input type="email" id="email" name="email"
-                    bind:value={$form.email}
-                />
+                <input type="email" id="email" name="email" bind:value={$form.email} required />
                 {#if $errors.email}
                     <small id="error" in:fade={{ duration: 70 }}>Ugyldig e-postadresse</small>
                 {:else}
                     <small>&nbsp;</small>
                 {/if}
             </div>
+
             <div class="input-container">
                 <label for="message">Melding</label>
-                <textarea id="message" name="body"
-                    bind:value={$form.body}>
-                </textarea>
+                <textarea id="message" name="body" bind:value={$form.body} required></textarea>
                 {#if $errors.body}
                     <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 30-500 tegn)</small>
                 {:else}
@@ -105,7 +97,6 @@
                 {:else}
                     <p id="spinner"></p>
                 {/if}
-
             </div>
         </form>
     {/if}
