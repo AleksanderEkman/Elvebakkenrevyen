@@ -7,6 +7,9 @@ const config = {
 
     kit: {
         adapter: adapter(),
+        csrf: {
+            checkOrigin: false,
+        },
         csp: {
             mode: "nonce",
             directives: {
@@ -26,10 +29,7 @@ const config = {
                 server: 'src/hooks/hooks.server.ts',
                 universal: 'src/hooks/universal.js'
             },
-        },
-          csrf: {
-            checkOrigin: false,
-        },
+        }
     }
 };
 
