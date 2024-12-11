@@ -6,7 +6,7 @@ const securityHeaders = {
     'X-Content-Type-Options': 'nosniff', // Prevent MIME type sniffing
     'Referrer-Policy': 'no-referrer', // Control referrer information
     'Permissions-Policy': 'geolocation=(self), microphone=()', // Define permissions for features
-    'Access-Control-Allow-Origin': 'https://elvebakken-app-sv958.ondigitalocean.app', // Allow specific origin
+    'Access-Control-Allow-Origin': 'https://elvebakken-app-sv958.ondigitalocean.app/', // Allow specific origin
     'Access-Control-Allow-Methods': 'POST, OPTIONS', // Allow specific methods
     'Access-Control-Allow-Headers': 'Content-Type', // Allow specific headers
     'Vary': 'Origin' // Handle multiple domains
