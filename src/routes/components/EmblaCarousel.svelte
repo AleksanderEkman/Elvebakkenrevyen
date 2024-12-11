@@ -43,7 +43,13 @@
       {#each sponsorImages as image, index}
         <div class="embla__slide">
           <div class="embla__slide__img">
-            <img src={image} alt="Sponsor" loading="lazy" />
+            <img
+              src={image} 
+              width="100%"
+              height="100%"
+              alt="Sponsor" 
+              loading="lazy" 
+            />
           </div>
           <div class="text">
             <p><a href="{sponsors[index].url}" target={'_blank'}>{sponsors[index].name}</a></p>
@@ -150,7 +156,6 @@
       border-radius: 10px;
       box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      
     }
   }
 </style>

@@ -1,15 +1,16 @@
 <script lang="ts">
-    import SuperDebug from 'sveltekit-superforms';
     import { z } from "zod";
+    import { fade } from 'svelte/transition';
     import { zod } from "sveltekit-superforms/adapters";
     import { superForm } from 'sveltekit-superforms/client';
     import { onMount } from 'svelte';
     import { contactSchema } from '$lib/schemas';
+    import spinner from '$lib/assets/spinner.svg';
     export let data;
 
     export let showContent: boolean;
     
-    const { form, errors, constraints, message, enhance } = superForm(data.form, {
+    const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
         validators: zod(contactSchema)
     })
@@ -30,20 +31,18 @@
     };
 
     onMount(() => {
-
-            footer = document.querySelector('footer');
-            updateContactSectionHeight();
-
+        footer = document.querySelector('footer');
+        updateContactSectionHeight();
     });
 
 </script>
 
 <section bind:this={contactSection} class="contact">
     {#if showContent}
-        <form method="POST" use:enhance class="contact-field">
+        <form in:fade={{ duration: 500 }} method="POST" use:enhance class="contact-field">
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>
-                <p>Er det noe du lurer på? Send en mail da vel!</p>
+                <p>Er det noe du lurer på? Send oss en mail da vel!</p>
             </div>
             <div class="name">
                 <div class="input-container">
@@ -52,7 +51,9 @@
                         bind:value={$form.firstName}
                     />
                     {#if $errors.firstName}
-                        <small>Fornavn er for kort</small>
+                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                    {:else}
+                        <small>&nbsp;</small>
                     {/if}
                 </div>
 
@@ -62,7 +63,9 @@
                         bind:value={$form.lastName}
                     />
                     {#if $errors.lastName}
-                        <small>Etternavn er for kort</small>
+                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig etternavn</small>
+                    {:else}
+                        <small>&nbsp;</small>
                     {/if}
                 </div>
             </div>
@@ -73,7 +76,9 @@
                     bind:value={$form.email}
                 />
                 {#if $errors.email}
-                    <small>Ugyldig e-postadresse</small>
+                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig e-postadresse</small>
+                {:else}
+                    <small>&nbsp;</small>
                 {/if}
             </div>
             <div class="input-container">
@@ -82,11 +87,20 @@
                     bind:value={$form.body}>
                 </textarea>
                 {#if $errors.body}
-                    <small>Melding for kort</small>
-                {/if}    
+                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 30-500 tegn)</small>
+                {:else}
+                    <small>&nbsp;</small>
+                {/if}
             </div>
 
-            <button type="submit">Send</button>
+            <div class="progress">
+                <button type="submit">Send</button>
+                {#if $delayed}
+                    <img id="spinner" src="{spinner}" alt="Sender..">
+                {:else}
+                    <p id="spinner"></p>
+                {/if}
+            </div>
         </form>
     {/if}
 </section>
@@ -94,12 +108,13 @@
 <style>
     .contact {
         color: white;
+        background: linear-gradient(135deg, rgba(0, 0, 10, 1) 0%, rgba(10, 10, 20, 1) 50%, rgba(20, 20, 30, 1) 80%, rgba(30, 30, 40, 1) 100%);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 50vh;
+        height: 100vh;
         position: relative;
         text-transform: none;
         overflow: hidden;
@@ -107,17 +122,18 @@
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
-        background-image: none;
+
         transition: background-image 1s ease-in-out;
     }
 
     .contact-field {
+        font-size: 1.2rem;
         display: flex;
         margin-top: -10rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 22%;
+        width: 30%;
         height: 100%;
         position: relative;
         text-transform: none;
@@ -131,6 +147,7 @@
     }
 
     .desc {
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -140,34 +157,76 @@
         overflow: hidden;
         text-align: center;
         padding: 1rem;
+        margin-bottom: 0.4rem;
     }
     #contact-header {
+        overflow: hidden;
         padding: 1rem;
         font-family: var(--font-header);
         font-size: 3.5rem;
     }
     .name {
+        overflow: hidden;
+        width: 99.5%;
+        gap: 1.5rem;
         display: flex;
         flex-direction: row;
     }
 
     .input-container {
-        font-family: Helvetica;
-        width: 100%;
-        padding: 0.5rem;
-        margin: 0 0 1rem 0;
+        overflow: hidden;
+        font-family: Helvetica, sans-serif;
+        width: 99.5%;
+        margin: 0 0 0.75rem 0;
     }
     input, textarea {
-        color: black;
+        overflow: hidden;
+        border-radius: 5px;
+        border: solid 0.8px white;
+        color: white;
         padding: 0.5rem;
         width: 100%;
         resize: none;
+        background-color: transparent;
     }
     textarea {
-        height: 8rem;
+        height: 9rem;
+    }
+    .progress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     small {
+        color: white;
+        overflow: hidden;
+        transition: all 0.15s;
+        font-size: 0.8rem;
+        flex: 0 0 auto;
+        user-select: none;
+    }
+    #error {
         color: #FF4040;
+    }
+    #spinner {
+        color: white;
+        user-select: none;
+        overflow: hidden;
+        padding: 1rem;
+        width: 4rem;
+        height: 4rem;
+    }
+    button {
+        overflow: hidden;
+        font-family: var(--font-header);
+        font-size: 2rem;
+        border: solid 1px white;
+        padding: 0.25rem 2rem;
+        border-radius: 10px;
+    }
+    button:active {
+        background-color: rgb(32, 32, 32);
+        transform: scale(0.95);
     }
     @media screen and (max-width: 768px) {
         .contact-field {
@@ -179,6 +238,9 @@
         }
         .contact-field {
             font-size: 0.9rem;
+        }
+        button {
+            font-size: 1.5rem;
         }
     }
 </style>

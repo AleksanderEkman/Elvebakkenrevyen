@@ -20,7 +20,7 @@
 </script>
 <div class="cont" class:loaded={contBackgroundLoaded} style="background-image: {contBackground};"> 
   {#if showContent}
-    <div class="fade" in:fade={{ duration: 800 }}>
+    <div class="fade" in:fade={{ duration: 500 }}>
       <div class="flex">
         <div class="text">
           <h2>Sponsorer</h2>
