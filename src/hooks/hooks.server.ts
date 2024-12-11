@@ -4,7 +4,13 @@ import { handleCsrf } from '@kitql/handles';
 // Define security headers to enhance application security
 const securityHeaders = {
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains', // Enforce HTTPS
-
+    'X-Frame-Options': 'DENY', // Prevent clickjacking
+    'X-Content-Type-Options': 'nosniff', // Prevent MIME type sniffing
+    'Referrer-Policy': 'no-referrer', // Control referrer information
+    'Permissions-Policy': 'geolocation=(self), microphone=()', // Define permissions for features
+    'Access-Control-Allow-Origin': 'https://elvebakken-app-sv958.ondigitalocean.app', // Allow specific origin
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', // Allow specific methods
+    'Vary': 'Origin' // Handle multiple domains
 };
 
 
