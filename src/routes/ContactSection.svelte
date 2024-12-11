@@ -5,9 +5,11 @@
     import { superForm } from 'sveltekit-superforms/client';
     import { onMount } from 'svelte';
     import { contactSchema } from '$lib/schemas';
+    import { faCheck } from '@fortawesome/free-solid-svg-icons';
+    import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
     import spinner from '$lib/assets/spinner.svg';
-    export let data;
 
+    export let data;
     export let showContent: boolean;
     
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
@@ -97,9 +99,12 @@
                 <button type="submit">Send</button>
                 {#if $delayed}
                     <img id="spinner" src="{spinner}" alt="Sender..">
+                {:else if $message}
+                    <p id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                 {:else}
                     <p id="spinner"></p>
                 {/if}
+
             </div>
         </form>
     {/if}
@@ -119,10 +124,6 @@
         text-transform: none;
         overflow: hidden;
         text-align: center;
-        background-size: cover;
-        background-position: top center;
-        background-repeat: no-repeat;
-
         transition: background-image 1s ease-in-out;
     }
 
@@ -133,16 +134,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 30%;
+        width: 27.5%;
         height: 100%;
         position: relative;
         text-transform: none;
         overflow: hidden;
         text-align: left;
-        background-size: cover;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-image: none;
         transition: background-image 1s ease-in-out;
     }
 
@@ -209,12 +206,21 @@
         color: #FF4040;
     }
     #spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: white;
         user-select: none;
         overflow: hidden;
         padding: 1rem;
         width: 4rem;
         height: 4rem;
+    }
+    #message {
+        height: 4rem;
+        padding: 1rem;
+        font-size: 1rem;
+        color: rgb(255, 255, 255);
     }
     button {
         overflow: hidden;
