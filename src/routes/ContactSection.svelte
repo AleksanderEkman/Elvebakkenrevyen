@@ -23,9 +23,9 @@
         if (contactSection && footer) {
             const footerHeight = footer.offsetHeight;
             if (window.matchMedia('(min-width: 768px)').matches) {
-                contactSection.style.height = `calc(100vh - ${footerHeight}px)`;
+                contactSection.style.height = `calc(100svh - ${footerHeight}px)`;
             } else {
-                contactSection.style.height = `calc(100vh - ${footerHeight}px * 0.75)`;
+                contactSection.style.height = `calc(100svh - ${footerHeight}px * 0.75)`;
             }
         }
     };
