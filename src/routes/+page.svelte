@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { superForm } from 'sveltekit-superforms';
     import { goto } from '$app/navigation';
-
+    
     import HeroSection from './HeroSection.svelte';
     import SponsorsSection from './SponsorsSection.svelte';
     import ContactSection from './ContactSection.svelte';

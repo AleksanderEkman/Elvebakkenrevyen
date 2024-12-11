@@ -1,12 +1,18 @@
 <script lang="ts">
     import SuperDebug from 'sveltekit-superforms';
+    import { z } from "zod";
+    import { zod } from "sveltekit-superforms/adapters";
     import { superForm } from 'sveltekit-superforms/client';
     import { onMount } from 'svelte';
+    import { contactSchema } from '$lib/schemas';
     export let data;
 
     export let showContent: boolean;
     
-    const { form, errors, constraints, message, enhance } = superForm(data.form)
+    const { form, errors, constraints, message, enhance } = superForm(data.form, {
+        taintedMessage: 'Er du sikker på at du vil forlate siden?',
+        validators: zod(contactSchema)
+    })
 </script>
 
 <section class = "contact">
@@ -17,23 +23,32 @@
             <div class="name">
                 <div id="name">
                     <label for="firstName">Fornavn</label>
-                    <input type="text" id="firstName" name="firstName" bind:value={$form.firstName} />
-                    {#if $errors.firstName} <p>{$errors.firstName}</p> {/if}
+                    <input type="text" id="firstName" name="firstName" 
+                        bind:value={$form.firstName}
+                    />
+                    {#if $errors.firstName} <small>{$errors.firstName}</small> {/if}
                 </div>
                 <div id="name">
                     <label for="lastName">Etternavn</label>
-                    <input type="text" id="lastName" name="lastName" bind:value={$form.lastName}/>
-                    {#if $errors.lastName} <p>{$errors.lastName}</p> {/if}
+                    <input type="text" id="lastName" name="lastName"
+                        bind:value={$form.lastName}
+                    />
+                    {#if $errors.lastName} <small>{$errors.lastName}</small> {/if}
                 </div>
             </div>
     
             <label for="email">E-post</label>
-            <input type="email" id="email" name="email" bind:value={$form.email} />
-            {#if $errors.email} <p>{$errors.email}</p> {/if}
+            <input type="email" id="email" name="email"
+                bind:value={$form.email}
+
+            />
+            {#if $errors.email} <small>{$errors.email}</small> {/if}
     
             <label for="message">Melding</label>
-            <textarea id="message" name="message" bind:value={$form.message}></textarea>
-            {#if $errors.message} <p>{$errors.message}</p> {/if}
+            <textarea id="message" name="body"
+                bind:value={$form.body}>
+            </textarea>
+            {#if $errors.body} <small>{$errors.body}</small> {/if}
     
             <button type="submit">Send</button>
         </form>
@@ -48,7 +63,7 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 88.5vh;
+        height: 87vh;
         position: relative;
         text-transform: none;
         overflow: hidden;
