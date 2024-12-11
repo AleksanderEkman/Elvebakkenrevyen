@@ -42,6 +42,7 @@
 <section bind:this={contactSection} class="contact">
     {#if showContent}
         <form in:fade={{ duration: 500 }} method="POST" use:enhance class="contact-field">
+
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>
                 <p>Er det noe du lurer på? Send oss en mail da vel!</p>
