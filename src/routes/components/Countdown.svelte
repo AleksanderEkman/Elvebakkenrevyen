@@ -132,6 +132,7 @@
       flex: 1 1 100px;
   }
   p {
+    font-family: Helvetica, sans-serif;
     font-size: 6rem;
     display: flex;
     justify-content: center;

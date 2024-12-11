@@ -1,17 +1,22 @@
 <script lang="ts">
     import '../app.css';
+    import { onMount } from 'svelte';
 	let { children } = $props();
     import Footer from './Footer.svelte';
 
-    const windowsOS = navigator.userAgent.includes('Win');
-    console.log(navigator.userAgent);
-    if (windowsOS) {
-        document.body.classList.add('windows');
-    }
+    onMount(() => {
+        const windowsOS = navigator.userAgent.includes('Windows');
+        if (windowsOS) {
+            document.documentElement.classList.add('windows');
+        }
+    });
 </script>
 
+
 {@render children()}
-<Footer />
+<Footer />    
+
+
 
 <style>
 

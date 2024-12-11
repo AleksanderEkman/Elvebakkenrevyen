@@ -21,8 +21,9 @@
 </svelte:head>
 
 <main>
+
     <HeroSection {showContent}/>
-    <SponsorsSection {showContent}/>
+    <SponsorsSection {showContent}/>    
     <ContactSection {data} {showContent}/>
 </main>
 
@@ -31,4 +32,5 @@
         height: auto;
         overflow-x: hidden;
     }
+
 </style>

@@ -110,6 +110,9 @@
     user-select: none;
     z-index: 5;
   }
+  .text {
+    user-select: none;
+  }
   .text p a {
     user-select: none;
   }
@@ -147,6 +150,7 @@
       border-radius: 10px;
       box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      
     }
   }
 </style>
