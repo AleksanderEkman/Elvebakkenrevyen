@@ -8,7 +8,6 @@
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
     import spinner from '$lib/assets/spinner.svg';
 
-    export let csrfToken: string; // Expecting csrfToken to be passed as a prop
     export let data; // Form data passed from the parent
     export let showContent: boolean;
 
@@ -41,7 +40,7 @@
 <section bind:this={contactSection} class="contact">
     {#if showContent}
         <form in:fade={{ duration: 500 }} method="POST" use:enhance class="contact-field">
-            <input type="hidden" name="csrf_token" bind:value={csrfToken} /> <!-- Bind CSRF token directly -->
+
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>
                 <p>Er det noe du lurer på? Send oss en mail da vel!</p>

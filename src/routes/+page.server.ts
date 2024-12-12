@@ -53,12 +53,11 @@ export const actions = {
                 });
             };
 
-            // Defer the entire logic by 2 seconds
             await new Promise((resolve) => {
                 setTimeout(async () => {
                     await sendEmail(mail);
                     resolve(message(form, 'Melding sendt!'));
-                }, 2000);
+                },1000);
             });
 
             return message(form, 'Melding sendt!');
