@@ -6,13 +6,23 @@ const securityHeaders = {
     'X-Content-Type-Options': 'nosniff', // Prevent MIME type sniffing
     'Referrer-Policy': 'no-referrer', // Control referrer information
     'Permissions-Policy': 'geolocation=(self), microphone=()', // Define permissions for features
-    'Access-Control-Allow-Origin': 'https://elvebakken-app-sv958.ondigitalocean.app', // Allow specific origin
+    'Access-Control-Allow-Origin': '*', // Allow specific origin
     'Access-Control-Allow-Methods': 'POST, OPTIONS', // Allow specific methods
     'Access-Control-Allow-Headers': 'Content-Type', // Allow specific headers
     'Vary': 'Origin' // Handle multiple domains
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
+    // Handle preflight requests for CORS
+    if (event.request.method === 'OPTIONS') {
+        return new Response(null, {
+            headers: {
+                ...securityHeaders,
+                'Content-Length': '0'
+            }
+        });
+    }
+
     const response = await resolve(event);
 
     // Set custom security headers
