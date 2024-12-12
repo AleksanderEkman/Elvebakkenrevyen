@@ -13,6 +13,11 @@ const securityHeaders = {
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
+    if (origin) {
+        console.log(`Request Origin: ${origin}`);
+    } else {
+        console.log('No Origin header present.');
+    }
     // Handle preflight requests for CORS
     if (event.request.method === 'OPTIONS') {
         return new Response(null, {
