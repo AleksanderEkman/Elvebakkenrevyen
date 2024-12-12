@@ -6,9 +6,9 @@ const securityHeaders = {
     'X-Content-Type-Options': 'nosniff', // Prevent MIME type sniffing
     'Referrer-Policy': 'strict-origin-when-cross-origin', // Control referrer information
     'Permissions-Policy': 'geolocation=(self), microphone=()', // Define permissions for features
-    'Access-Control-Allow-Origin': '*', // Allow specific origin
-    'Access-Control-Allow-Methods': 'POST, OPTIONS', // Allow specific methods
-    'Access-Control-Allow-Headers': 'Content-Type', // Allow specific headers
+    'Access-Control-Allow-Origin': '*', // Allow all origins
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', // Allow POST and OPTIONS methods
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, application/x-www-form-urlencoded', // Allow specific headers
     'Vary': 'Origin' // Handle multiple domains
 };
 
