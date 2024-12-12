@@ -13,6 +13,7 @@ const securityHeaders = {
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
+    const origin = event.request.headers.get('Origin');
     if (origin) {
         console.log(`Request Origin: ${origin}`);
     } else {
