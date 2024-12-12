@@ -7,9 +7,7 @@ const config = {
 
     kit: {
         adapter: adapter(),
-        csrf: {
-            checkOrigin: false,
-        },
+
         csp: {
             mode: "nonce",
             directives: {
