@@ -9,12 +9,6 @@ const config = {
         adapter: adapter(),
 
 
-        files: {
-            hooks: {
-                server: 'src/hooks/hooks.server.ts',
-                universal: 'src/hooks/universal.js'
-            },
-        }
     }
 };
 

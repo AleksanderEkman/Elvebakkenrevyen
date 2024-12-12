@@ -205,7 +205,7 @@
         color: white;
         user-select: none;
         overflow: hidden;
-        padding: 1rem;
+        padding: 2rem;
         width: 4rem;
         height: 4rem;
     }
