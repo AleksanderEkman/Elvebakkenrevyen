@@ -26,7 +26,7 @@
             if (window.matchMedia('(min-width: 768px)').matches) {
                 contactSection.style.height = `calc(100svh - ${footerHeight}px)`;
             } else {
-                contactSection.style.height = `calc(100svh - ${footerHeight}px * 0.75)`;
+                contactSection.style.height = `calc(100svh - ${footerHeight}px * 0.5)`;
             }
         }
     };
@@ -88,13 +88,12 @@
             </div>
 
             <div class="progress">
-                <button type="submit">Send</button>
                 {#if $delayed}
                     <img id="spinner" src="{spinner}" alt="Sender..">
                 {:else if $message}
                     <p id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                 {:else}
-                    <p id="spinner"></p>
+                    <button type="submit">Send</button>
                 {/if}
             </div>
         </form>
@@ -162,30 +161,33 @@
     }
 
     .input-container {
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
         font-family: Helvetica, sans-serif;
         width: 99.5%;
-        margin: 0 0 0.75rem 0;
+        margin: 0 0 0.25rem 0;
     }
     input, textarea {
+        margin: 0;
         overflow: hidden;
         border-radius: 5px;
         border: solid 0.8px white;
         color: white;
-        padding: 0.5rem;
+        padding: 0.4rem;
         width: 100%;
         resize: none;
         background-color: transparent;
     }
-    textarea {
-        height: 9rem;
-    }
+
     .progress {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     small {
+        margin: 0;
+        padding: 0;
         color: white;
         overflow: hidden;
         transition: all 0.15s;
@@ -219,12 +221,28 @@
         font-size: 2rem;
         border: solid 1px white;
         padding: 0.25rem 2rem;
+        margin: 0.25rem;
         border-radius: 10px;
+        height: 4rem;
     }
     button:active {
         background-color: rgb(32, 32, 32);
         transform: scale(0.95);
     }
+    @media screen and (max-width: 1450px) {
+        .input-container {
+            margin: 0;
+            padding: 0.5rem;
+        }
+        .contact-field {
+            margin-top: 0;
+            width: 35%;
+        }
+        small {
+            font-size: 0.7rem;
+        }
+    }
+
     @media screen and (max-width: 768px) {
         .contact-field {
             width: 80%;

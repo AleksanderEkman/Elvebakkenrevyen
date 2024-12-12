@@ -26,12 +26,7 @@ const config = {
                 ],
             },
         },
-        files: {
-            hooks: {
-                server: 'src/hooks/hooks.server.ts',
-                universal: 'src/hooks/universal.js'
-            },
-        }
+
     }
 };
 
