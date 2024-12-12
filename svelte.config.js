@@ -10,30 +10,7 @@ const config = {
         csrf: {
             checkOrigin: false,
         },
-        csp: {
-            mode: "nonce",
-            directives: {
-                "script-src": [
-                    "'self'"
-                ],
-                "script-src-elem": [
-                    "'self'"
-                ],
 
-                "object-src": [
-                    "'self'"
-                ],
-                "base-uri": [
-                    "'self'"
-                ],
-            },
-        },
-        files: {
-            hooks: {
-                server: 'src/hooks/hooks.server.ts',
-                universal: 'src/hooks/universal.js'
-            },
-        }
     }
 };
 
