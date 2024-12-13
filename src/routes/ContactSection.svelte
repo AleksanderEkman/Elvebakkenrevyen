@@ -47,7 +47,6 @@
         const { FontAwesomeIcon: IconComponent } = await import('@fortawesome/svelte-fontawesome');
         faCheck = checkIcon;
         faTimes = timesIcon;
-        FontAwesomeIcon = IconComponent;
 
         footer = document.querySelector('footer');
         updateContactSectionHeight();
