@@ -43,61 +43,62 @@
         method="POST" 
         use:enhance 
         class="contact-field">
-
-            <div class="desc">
-                <h2 id="contact-header">Kontakt oss</h2>
-                <p>Er det noe du lurer på? Send oss en mail da vel!</p>
-            </div>
-            <div class="name">
+            <div class="contact-content">
+                <div class="desc">
+                    <h2 id="contact-header">Kontakt oss</h2>
+                    <p>Er det noe du lurer på? Send oss en mail da vel!</p>
+                </div>
+                <div class="name">
+                    <div class="input-container">
+                        <label for="firstName">Fornavn</label>
+                        <input type="text" id="firstName" name="firstName" bind:value={$form.firstName} required />
+                        {#if $errors.firstName}
+                            <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                        {:else}
+                            <small>&nbsp;</small>
+                        {/if}
+                    </div>
+    
+                    <div class="input-container">
+                        <label for="lastName">Etternavn</label>
+                        <input type="text" id="lastName" name="lastName" bind:value={$form.lastName} required />
+                        {#if $errors.lastName}
+                            <small id="error" in:fade={{ duration: 70 }}>Ugyldig etternavn</small>
+                        {:else}
+                            <small>&nbsp;</small>
+                        {/if}
+                    </div>
+                </div>
+    
                 <div class="input-container">
-                    <label for="firstName">Fornavn</label>
-                    <input type="text" id="firstName" name="firstName" bind:value={$form.firstName} required />
-                    {#if $errors.firstName}
-                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                    <label for="email">E-post</label>
+                    <input type="email" id="email" name="email" bind:value={$form.email} required />
+                    {#if $errors.email}
+                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig e-postadresse</small>
                     {:else}
                         <small>&nbsp;</small>
                     {/if}
                 </div>
-
+    
                 <div class="input-container">
-                    <label for="lastName">Etternavn</label>
-                    <input type="text" id="lastName" name="lastName" bind:value={$form.lastName} required />
-                    {#if $errors.lastName}
-                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig etternavn</small>
+                    <label for="message">Melding</label>
+                    <textarea id="message" name="body" bind:value={$form.body} required></textarea>
+                    {#if $errors.body}
+                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 30-500 tegn)</small>
                     {:else}
                         <small>&nbsp;</small>
                     {/if}
                 </div>
-            </div>
-
-            <div class="input-container">
-                <label for="email">E-post</label>
-                <input type="email" id="email" name="email" bind:value={$form.email} required />
-                {#if $errors.email}
-                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig e-postadresse</small>
-                {:else}
-                    <small>&nbsp;</small>
-                {/if}
-            </div>
-
-            <div class="input-container">
-                <label for="message">Melding</label>
-                <textarea id="message" name="body" bind:value={$form.body} required></textarea>
-                {#if $errors.body}
-                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 30-500 tegn)</small>
-                {:else}
-                    <small>&nbsp;</small>
-                {/if}
-            </div>
-
-            <div class="progress">
-                {#if !$delayed && !$message}
-                    <button>Send</button>
-                {:else if $message}
-                    <p class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
-                {:else}
-                    <img id="spinner" src={spinner} alt="Sender..">
-                {/if}
+    
+                <div class="progress">
+                    {#if !$delayed && !$message}
+                        <button>Send</button>
+                    {:else if $message}
+                        <p class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                    {:else}
+                        <img id="spinner" src={spinner} alt="Sender..">
+                    {/if}
+                </div>
             </div>
         </form>
     {/if}
@@ -123,11 +124,11 @@
     .contact-field {
         font-size: 1.2rem;
         display: flex;
-        margin-top: -10rem;
+        margin-top: -2.5rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 27.5%;
+        width: 35%;
         height: 100%;
         position: relative;
         text-transform: none;
@@ -135,7 +136,14 @@
         text-align: left;
         transition: background-image 1s ease-in-out;
     }
-
+    .contact-content {
+        border-radius: 1.5rem;
+        padding: 2rem;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 
+                    0 4px 8px rgba(0, 0, 0, 0.4); 
+    }
     .desc {
         overflow: hidden;
         display: flex;
@@ -175,14 +183,17 @@
         margin: 0;
         overflow: hidden;
         border-radius: 5px;
-        border: solid 0.8px white;
+        border: solid 0.8px rgba(255, 255, 255, 0.75);
         color: white;
         padding: 0.4rem;
         width: 100%;
         resize: none;
         background-color: transparent;
+        transition: all 0.2s;
     }
-
+    input:hover, textarea:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
     .progress {
         display: flex;
         flex-direction: column;
@@ -215,7 +226,7 @@
         font-size: 1.75rem;
     }
     #message {
-        height: 4rem;
+        height: 15rem;
         padding: 1rem;
         font-size: 1rem;
         color: rgb(255, 255, 255);
@@ -224,11 +235,15 @@
         overflow: hidden;
         font-family: var(--font-header);
         font-size: 2rem;
-        border: solid 1px white;
+        border: solid 1px rgba(255, 255, 255, 0.75);
         padding: 0 2rem;
         margin: 0;
         border-radius: 10px;
         height: 4rem;
+        transition: all 0.2s;
+    }
+    button:hover {
+        background-color: rgba(255, 255, 255, 0.05);
     }
     button:active {
         background-color: rgb(32, 32, 32);
@@ -248,6 +263,10 @@
         }
     }
 
+    textarea {
+        height: 20rem;
+    }
+
     @media screen and (max-width: 768px) {
         .contact-field {
             width: 80%;
@@ -261,6 +280,9 @@
         }
         button {
             font-size: 1.5rem;
+        }
+        #message {
+            height: 10rem;
         }
     }
 </style>
