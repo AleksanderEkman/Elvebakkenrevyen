@@ -91,12 +91,12 @@
             </div>
 
             <div class="progress">
-                {#if !$delayed}
-                    <button type="submit">Send</button>
+                {#if !$delayed && !$message}
+                    <button>Send</button>
                 {:else if $message}
                     <p id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                 {:else}
-                    <img id="spinner" src="{spinner}" alt="Sender..">
+                    <img id="spinner" src={spinner} alt="Sender..">
                 {/if}
             </div>
         </form>
@@ -205,10 +205,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        margin: 0 auto;
         user-select: none;
         overflow: hidden;
-        padding: 2rem;
         width: 4rem;
         height: 4rem;
     }
@@ -223,8 +222,8 @@
         font-family: var(--font-header);
         font-size: 2rem;
         border: solid 1px white;
-        padding: 0.25rem 2rem;
-        margin: 0.25rem;
+        padding: 0 2rem;
+        margin: 0;
         border-radius: 10px;
         height: 4rem;
     }
@@ -239,7 +238,7 @@
         }
         .contact-field {
             margin-top: 0;
-            width: 35%;
+            width: 40%;
         }
         small {
             font-size: 0.7rem;
