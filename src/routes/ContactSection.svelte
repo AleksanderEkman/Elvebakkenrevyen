@@ -96,11 +96,11 @@
     
                 <div class="progress">
                     {#if !$delayed && !$message}
-                        <button out:fade={{ duration:50 }}>Send</button>
+                        <button>Send</button>
                     {:else if $message}
-                        <p in:fade={{duration:50, delay: 50 }} class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                        <p in:fade={{duration:50 }} class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                     {:else}
-                        <img in:fade={{duration:50, delay: 100 }} id="spinner" src={spinner} alt="Sender..">
+                        <img in:fade={{duration:50}} id="spinner" src={spinner} alt="Sender..">
                     {/if}
                 </div>
             </div>
