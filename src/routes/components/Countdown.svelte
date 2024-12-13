@@ -192,7 +192,7 @@
       height: auto; 
     }
     p {
-      font-size: 3rem;
+      font-size: 2.75rem;
     }
     .countdown-item {
       margin: 5px 0; 
