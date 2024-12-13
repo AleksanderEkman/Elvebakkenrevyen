@@ -31,7 +31,7 @@ export const actions = {
         if (!form.valid) {
             return fail(400, { form });
         } else {
-            const { firstName, lastName, email, body } = form.data;
+            const { name, email, body, phone } = form.data;
 
             const sanitizedBody = sanitizeHtml(body, {
                 allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
@@ -43,9 +43,9 @@ export const actions = {
             const mail: SendMailOptions = {
                 from: PRIVATE_GOOGLE_EMAIL,
                 to: "aleksander.ekman1@gmail.com",
-                subject: `Mail fra kontaktskjema: ${firstName} ${lastName}`,
-                html: `<p>(Uverifisert e-postadresse: ${email})</p>
-                       <p><strong>Mail fra ${firstName} ${lastName}</strong></p>
+                subject: `Mail fra kontaktskjema: ${name}`,
+                html: `<p>(Uverifisert kontaktinfo: ${email}${phone ? `, Tlf: ${phone}` : ""})</p>
+                       <p><strong>Mail fra ${name}</strong></p>
                        <p>${sanitizedBody.replace(/\n/g, '<br>')}</p>`
             };
 
