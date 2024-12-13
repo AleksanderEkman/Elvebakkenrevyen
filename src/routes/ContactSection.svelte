@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, SvelteComponent } from 'svelte';
     import { zod } from "sveltekit-superforms/adapters";
     import { superForm } from 'sveltekit-superforms/client';
     import { contactSchema } from '$lib/schemas'; // Ensure this schema is defined correctly
@@ -7,7 +7,6 @@
     import { type IconDefinition } from '@fortawesome/free-solid-svg-icons';
     import { faX } from '@fortawesome/free-solid-svg-icons';
     import spinner from '$lib/assets/spinner.svg';
-    import type { SvelteComponent } from 'svelte/internal';
 
     export let data; // Form data passed from the parent
     export let showContent: boolean;
@@ -28,8 +27,7 @@
     let footer: HTMLElement | null;
     let tooManyRequests = false;
 
-    let faCheck: IconDefinition, faTimes: IconDefinition;
-    let FontAwesomeIcon: typeof SvelteComponent;
+    let faCheck: IconDefinition, faTimes: IconDefinition, FontAwesomeIcon: typeof SvelteComponent
 
     const updateContactSectionHeight = () => {
         if (contactSection && footer) {
@@ -43,12 +41,11 @@
     };
 
     onMount(async () => {
-        let { faCheck: checkIcon, faTimes: timesIcon } = await import('@fortawesome/free-solid-svg-icons');
-        const { FontAwesomeIcon: IconComponent } = await import('@fortawesome/svelte-fontawesome');
+        const { faCheck: checkIcon, faTimes: timesIcon } = await import('@fortawesome/free-solid-svg-icons');
+        const { FontAwesomeIcon: Icon } = await import('@fortawesome/svelte-fontawesome');
         faCheck = checkIcon;
         faTimes = timesIcon;
-        FontAwesomeIcon = IconComponent;
-
+        FontAwesomeIcon = Icon;
         footer = document.querySelector('footer');
         updateContactSectionHeight();
         setTimeout(() => {
