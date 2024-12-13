@@ -3,9 +3,10 @@
     import { onMount } from 'svelte';
 	let { children } = $props();
     import Footer from './Footer.svelte';
-    const windowsOS = navigator.userAgent.includes('Windows');
+
 
     onMount(() => {
+        const windowsOS = navigator.userAgent.includes('Windows');
         if (windowsOS) {
             document.documentElement.classList.add('windows');
         }
@@ -17,7 +18,7 @@
 
 <style>
     :global(.windows ::-webkit-scrollbar) {
-        width: 13px;
+        width: 17px;
     }
     
     :global(.windows ::-webkit-scrollbar-track) {
