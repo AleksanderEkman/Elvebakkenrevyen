@@ -353,6 +353,7 @@
 
         input, textarea {
             padding: 0.25rem;
+            font-size: 0.75rem;
         }
 
         .info {
@@ -361,6 +362,9 @@
 
         .contact-field {
             width: 90%;
+        }
+        .country-code {
+            font-size: 0.75rem;
         }
     }
 </style>
