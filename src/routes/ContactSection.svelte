@@ -227,7 +227,7 @@
     }
     #message {
         height: 15rem;
-        padding: 1rem;
+        padding: 0.4rem;
         font-size: 1rem;
         color: rgb(255, 255, 255);
     }
@@ -288,6 +288,15 @@
         }
         #message {
             height: 10rem;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        #message {
+            height: 5rem;
+        }
+        input, textarea {
+            padding: 0.25rem;
         }
     }
 </style>
