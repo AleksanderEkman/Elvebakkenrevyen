@@ -18,7 +18,7 @@
 
 <style>
     :global(.windows ::-webkit-scrollbar) {
-        width: 17px;
+        width: 13px;
     }
     
     :global(.windows ::-webkit-scrollbar-track) {
