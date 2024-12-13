@@ -249,6 +249,8 @@
         background-color: rgb(32, 32, 32);
         transform: scale(0.95);
     }
+
+
     @media screen and (max-width: 1450px) {
         .input-container {
             margin: 0;
@@ -256,15 +258,18 @@
         }
         .contact-field {
             margin-top: 0;
-            width: 40%;
+            width: 50%;
+        }
+        .contact-content {
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.4);
         }
         small {
             font-size: 0.7rem;
         }
-    }
-
-    textarea {
-        height: 20rem;
+        #message {
+            height: 5rem;
+        }
     }
 
     @media screen and (max-width: 768px) {
