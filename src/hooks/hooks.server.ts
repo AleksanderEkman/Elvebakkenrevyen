@@ -53,7 +53,7 @@ const securityHeaders = {
 const csrfProtection = csrf(['/']); // Add paths that should be exempt from CSRF protection
 
 export const handle: Handle = async ({ event, resolve }) => {
-<<<<<<< HEAD
+
 	if (event.request.method === 'OPTIONS') {
 		return new Response(null, {
 			headers: {
@@ -62,23 +62,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 			}
 		});
 	}
-=======
-    const origin = event.request.headers.get('Origin');
-    if (origin) {
-        console.log(`Request Origin: ${origin}`);
-    } else {
-        console.log('No Origin header present.');
-    }
-    // Handle preflight requests for CORS
-    if (event.request.method === 'OPTIONS') {
-        return new Response(null, {
-            headers: {
-                ...securityHeaders,
-                'Content-Length': '0'
-            }
-        });
-    }
->>>>>>> 55cae8b7f21dea9a0f72bc5bb505fced98305760
 
 	// Apply CSRF protection
 	const csrfResult = await csrfProtection({ event, resolve });
