@@ -72,7 +72,7 @@
     
                 <div class="input-container">
                     <label for="email">E-post</label>
-                    <input type="email" id="email" name="email" bind:value={$form.email} required />
+                    <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
                     {#if $errors.email}
                         <small id="error" in:fade={{ duration: 70 }}>Ugyldig e-postadresse</small>
                     {:else}
@@ -92,11 +92,11 @@
     
                 <div class="progress">
                     {#if !$delayed && !$message}
-                        <button>Send</button>
+                        <button out:fade={{ duration:50 }}>Send</button>
                     {:else if $message}
-                        <p class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                        <p in:fade={{duration:50, delay: 50 }} class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                     {:else}
-                        <img id="spinner" src={spinner} alt="Sender..">
+                        <img in:fade={{duration:50, delay: 100 }} id="spinner" src={spinner} alt="Sender..">
                     {/if}
                 </div>
             </div>
@@ -140,7 +140,7 @@
         border-radius: 1.5rem;
         padding: 2rem;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.3);
         box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 
                     0 4px 8px rgba(0, 0, 0, 0.4); 
     }

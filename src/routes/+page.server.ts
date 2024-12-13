@@ -11,8 +11,8 @@ import sanitizeHtml from 'sanitize-html';
 import type { RequestEvent } from "./$types.js";
 
 const limiter = new RateLimiter({
-    IP: [3, 'h'],
-    IPUA: [5, 'd']
+    IP: [2, 'h'],
+    IPUA: [2, 'd']
 });
 
 export const load = async () => {
