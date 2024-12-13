@@ -207,7 +207,7 @@
         position: absolute;
         left: 10px;
         font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(109, 109, 109, 0.5);
         pointer-events: none;
 
     }
