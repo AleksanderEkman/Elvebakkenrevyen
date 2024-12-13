@@ -91,12 +91,12 @@
             </div>
 
             <div class="progress">
-                {#if $delayed}
-                    <img id="spinner" src="{spinner}" alt="Sender..">
+                {#if !$delayed}
+                    <button type="submit">Send</button>
                 {:else if $message}
                     <p id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                 {:else}
-                    <button type="submit">Send</button>
+                    <img id="spinner" src="{spinner}" alt="Sender..">
                 {/if}
             </div>
         </form>
