@@ -298,5 +298,8 @@
         input, textarea {
             padding: 0.25rem;
         }
+        .name {
+            gap: 1rem;
+        }
     }
 </style>
