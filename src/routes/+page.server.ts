@@ -1,4 +1,5 @@
-import { fail } from "@sveltejs/kit";
+import { fail, error } from "@sveltejs/kit";
+import { RateLimiter } from "sveltekit-rate-limiter/server";
 import { message } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { superValidate } from "sveltekit-superforms/server";
@@ -7,6 +8,12 @@ import transporter from "$lib/emailSetup.server.js";
 import type { SendMailOptions } from "nodemailer";
 import { contactSchema } from "$lib/schemas";
 import sanitizeHtml from 'sanitize-html';
+import type { RequestEvent } from "./$types.js";
+
+const limiter = new RateLimiter({
+    IP: [10, 'h'],
+    IPUA: [5, 'h']
+});
 
 export const load = async () => {
     const form = await superValidate(zod(contactSchema));
@@ -14,7 +21,8 @@ export const load = async () => {
 }
 
 export const actions = {
-    default: async ({ request }) => {
+    default: async ({ request, locals }) => {
+        if (await limiter.isLimited({request, locals} as RequestEvent)) error(429, 'Too many requests'); 
         const form = await superValidate(request, zod(contactSchema));
         console.log(form);
 

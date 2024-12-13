@@ -94,7 +94,7 @@
                 {#if !$delayed && !$message}
                     <button>Send</button>
                 {:else if $message}
-                    <p id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                    <p class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
                 {:else}
                     <img id="spinner" src={spinner} alt="Sender..">
                 {/if}
@@ -210,6 +210,9 @@
         overflow: hidden;
         width: 4rem;
         height: 4rem;
+    }
+    .icon {
+        font-size: 1.75rem;
     }
     #message {
         height: 4rem;
