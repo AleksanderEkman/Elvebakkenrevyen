@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, SvelteComponent } from 'svelte';
     import { zod } from "sveltekit-superforms/adapters";
     import { superForm } from 'sveltekit-superforms/client';
     import { contactSchema } from '$lib/schemas'; // Ensure this schema is defined correctly
     import { fade } from 'svelte/transition';
-    import { faCheck } from '@fortawesome/free-solid-svg-icons';
-    import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+    import { type IconDefinition } from '@fortawesome/free-solid-svg-icons';
+    import { faX } from '@fortawesome/free-solid-svg-icons';
     import spinner from '$lib/assets/spinner.svg';
 
     export let data; // Form data passed from the parent
@@ -15,11 +15,19 @@
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
-        validators: zod(contactSchema)
+        validators: zod(contactSchema),
+        onError: (response) => {
+            if (response.result.status === 429) {
+                tooManyRequests = true;
+            }
+        },
     });
 
     let contactSection: HTMLElement;
     let footer: HTMLElement | null;
+    let tooManyRequests = false;
+
+    let faCheck: IconDefinition, faTimes: IconDefinition, FontAwesomeIcon: typeof SvelteComponent
 
     const updateContactSectionHeight = () => {
         if (contactSection && footer) {
@@ -33,6 +41,11 @@
     };
 
     onMount(async () => {
+        const { faCheck: checkIcon, faTimes: timesIcon } = await import('@fortawesome/free-solid-svg-icons');
+        const { FontAwesomeIcon: Icon } = await import('@fortawesome/svelte-fontawesome');
+        faCheck = checkIcon;
+        faTimes = timesIcon;
+        FontAwesomeIcon = Icon;
         footer = document.querySelector('footer');
         updateContactSectionHeight();
         setTimeout(() => {
@@ -96,9 +109,11 @@
     
                 <div class="progress">
                     {#if !$delayed && !$message}
-                        <button out:fade={{ duration:50 }}>Send</button>
+                        <button>Send</button>
                     {:else if $message}
-                        <p in:fade={{duration:50, delay: 50 }} class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                        <p class="icon" id="spinner"><FontAwesomeIcon icon={faCheck}/></p>
+                    {:else if tooManyRequests}
+                        <p class="icon" id="spinner"><FontAwesomeIcon icon={faX}/></p>
                     {:else}
                         <img in:fade={{duration:50, delay: 100 }} id="spinner" src={spinner} alt="Sender..">
                     {/if}
@@ -298,9 +313,11 @@
     @media screen and (max-width: 540px) {
         #message {
             height: 5rem;
+            font-size: 0.75rem;
         }
         input, textarea {
             padding: 0.25rem;
+            font-size: 0.75rem;
         }
         .name {
             gap: 1rem;
