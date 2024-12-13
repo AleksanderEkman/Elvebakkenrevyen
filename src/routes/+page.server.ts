@@ -21,9 +21,14 @@ export const load = async () => {
 }
 
 export const actions = {
-    default: async ({ request, locals }) => {
-        if (await limiter.isLimited({request, locals} as RequestEvent)) error(429, 'Too many requests'); 
-        const form = await superValidate(request, zod(contactSchema));
+    default: async (event: RequestEvent) => {
+        const clientAddress = event.getClientAddress();
+        if (await limiter.isLimited(event)) {
+            throw error(429, 'Too many requests');
+        }
+        
+        
+        const form = await superValidate(event.request, zod(contactSchema));
         console.log(form);
 
         if (!form.valid) {
