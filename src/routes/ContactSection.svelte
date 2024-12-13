@@ -84,7 +84,7 @@
                     <label for="message">Melding</label>
                     <textarea id="message" name="body" bind:value={$form.body} required></textarea>
                     {#if $errors.body}
-                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 30-500 tegn)</small>
+                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig melding (må ha 50-500 tegn)</small>
                     {:else}
                         <small>&nbsp;</small>
                     {/if}
@@ -300,6 +300,9 @@
         }
         .name {
             gap: 1rem;
+        }
+        .contact-field {
+            width: 90%;
         }
     }
 </style>

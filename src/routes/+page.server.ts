@@ -11,8 +11,8 @@ import sanitizeHtml from 'sanitize-html';
 import type { RequestEvent } from "./$types.js";
 
 const limiter = new RateLimiter({
-    IP: [10, 'h'],
-    IPUA: [5, 'h']
+    IP: [3, 'h'],
+    IPUA: [5, 'd']
 });
 
 export const load = async () => {
@@ -22,11 +22,9 @@ export const load = async () => {
 
 export const actions = {
     default: async (event: RequestEvent) => {
-        const clientAddress = event.getClientAddress();
         if (await limiter.isLimited(event)) {
             throw error(429, 'Too many requests');
         }
-        
         
         const form = await superValidate(event.request, zod(contactSchema));
 
