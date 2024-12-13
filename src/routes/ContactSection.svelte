@@ -26,7 +26,7 @@
             if (window.matchMedia('(min-width: 768px)').matches) {
                 contactSection.style.height = `calc(100svh - ${footerHeight}px)`;
             } else {
-                contactSection.style.height = `calc(100svh - ${footerHeight}px * 0.4)`;
+                contactSection.style.height = `calc(100svh - ${footerHeight}px * 0.3)`;
             }
         }
     };
