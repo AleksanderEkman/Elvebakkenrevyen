@@ -349,22 +349,35 @@
     @media screen and (max-width: 540px) {
         #message {
             height: 5rem;
+            font-size: 0.75rem;
         }
-
+        .phone-input {
+            width: 70%;
+        }
         input, textarea {
             padding: 0.25rem;
             font-size: 0.75rem;
         }
-
         .info {
             gap: 1rem;
         }
-
         .contact-field {
             width: 90%;
         }
         .country-code {
+            left: 7.5px;
             font-size: 0.75rem;
+        }
+        #phone {
+            padding-left: 2.1rem;
+        }
+        button {
+            padding: 0 1.5rem;
+            height: 3.5rem;
+        }
+        #spinner {
+            width: 3.5rem;
+            height: 3.5rem;
         }
     }
 </style>
