@@ -34,10 +34,10 @@
 
     onMount(async () => {
         footer = document.querySelector('footer');
-        updateContactSectionHeight();
         setTimeout(() => {
+            updateContactSectionHeight();
             isMounted = true;
-        }, 100);
+        }, 500);
     });
 </script>
 
@@ -352,7 +352,7 @@
             font-size: 0.75rem;
         }
         .phone-input {
-            width: 70%;
+            width: 65%;
         }
         input, textarea {
             padding: 0.25rem;
