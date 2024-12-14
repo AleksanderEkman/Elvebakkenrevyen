@@ -1,0 +1,12 @@
+.git
+node_modules
+.eslint*
+.prettier*
+.git*
+.vscode
+REAMDE.md
+Dockerfile*
+dokcer-compose.yml
+public
+.svelte-kit
+build
