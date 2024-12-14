@@ -74,7 +74,7 @@
                         {/if}
                     </div>
                     <div class="input-container phone-input">
-                        <label for="phone">Telefon</label>
+                        <label for="phone">Telefon <small>(Valgfritt)</small></label>
                         <div class="phone-wrapper">
                             <span class="country-code">+47</span>
                             <input type="tel" id="phone" name="phone" bind:value={$form.phone} />
@@ -166,7 +166,7 @@
         padding: 1rem;
         margin-bottom: 0.4rem;
     }
-
+    
     #contact-header {
         overflow: hidden;
         padding: 1rem;
@@ -181,7 +181,11 @@
         display: flex;
         flex-direction: row;
     }
-
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .input-container {
         display: flex;
         flex-direction: column;
