@@ -39,6 +39,10 @@ export const actions = {
                     'a': ['href']
                 }
             });
+            const trimmedBody = sanitizedBody
+            .replace(/^\s*<br\s*\/?>|^\s*\n/, '')
+            .replace(/<br\s*\/?>\s*$|\n\s*$/, '');
+
             const phoneLink = phone ? `, <a href="tel:+47${phone}">+47${phone}</a>` : "";
             const mail: SendMailOptions = {
                 from: PRIVATE_GOOGLE_EMAIL,
@@ -46,7 +50,7 @@ export const actions = {
                 subject: `Mail fra kontaktskjema: ${name}`,
                 html: `<p>Uverifisert: ${email}${phoneLink}</p>
                        <p><strong>Mail fra ${name}</strong></p>
-                       <p>${sanitizedBody.replace(/\n/g, '<br>')}</p>`
+                       <p>${trimmedBody.replace(/\n/g, '<br>')}</p>`
             };
 
             const sendEmail = async (mail: SendMailOptions) => {
