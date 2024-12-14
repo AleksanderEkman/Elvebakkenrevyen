@@ -44,7 +44,7 @@ export const actions = {
                 from: PRIVATE_GOOGLE_EMAIL,
                 to: "aleksander.ekman1@gmail.com",
                 subject: `Mail fra kontaktskjema: ${name}`,
-                html: `<p>(Uverifisert kontaktinfo: ${email}${phone ? `, Tlf: ${phone}` : ""})</p>
+                html: `<p>${email}${phone ? `, Tlf: +48${phone}` : ""} (Uverifisert)</p>
                        <p><strong>Mail fra ${name}</strong></p>
                        <p>${sanitizedBody.replace(/\n/g, '<br>')}</p>`
             };
