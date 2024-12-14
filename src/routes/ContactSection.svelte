@@ -230,6 +230,10 @@
         font-size: 0.95rem;
     }
 
+    input:focus, textarea:focus {
+        border-color: rgba(255, 255, 255, 0.9);
+        --tw-ring-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
     input:hover, textarea:hover {
         background-color: rgba(255, 255, 255, 0.05);
     }
@@ -352,7 +356,7 @@
             font-size: 0.75rem;
         }
         .phone-input {
-            width: 65%;
+            width: 60%;
         }
         input, textarea {
             padding: 0.25rem;

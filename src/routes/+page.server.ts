@@ -39,12 +39,12 @@ export const actions = {
                     'a': ['href']
                 }
             });
-
+            const phoneLink = phone ? `, <a href="tel:+47${phone}">+47${phone}</a>` : "";
             const mail: SendMailOptions = {
                 from: PRIVATE_GOOGLE_EMAIL,
                 to: "aleksander.ekman1@gmail.com",
                 subject: `Mail fra kontaktskjema: ${name}`,
-                html: `<p>(Uverifisert kontaktinfo: ${email}${phone ? `, Tlf: ${phone}` : ""})</p>
+                html: `<p>Uverifisert: ${email}${phoneLink}</p>
                        <p><strong>Mail fra ${name}</strong></p>
                        <p>${sanitizedBody.replace(/\n/g, '<br>')}</p>`
             };

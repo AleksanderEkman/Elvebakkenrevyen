@@ -36,4 +36,5 @@ html {
 	@apply antialiased;
 	background-color: black;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
