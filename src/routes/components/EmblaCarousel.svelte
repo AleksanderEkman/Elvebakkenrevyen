@@ -76,7 +76,7 @@
     cursor: grabbing;
   }
   .embla__viewport {
-    width: 99vw;
+    width: 100vw;
     border-radius: 1.5rem;
     overflow: hidden;
   }
