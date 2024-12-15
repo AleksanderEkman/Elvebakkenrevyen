@@ -1,19 +1,22 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
     import { superForm } from 'sveltekit-superforms';
     import { goto } from '$app/navigation';
-    
     import HeroSection from './HeroSection.svelte';
-    import SponsorsSection from './SponsorsSection.svelte';
-    import ContactSection from './ContactSection.svelte';
+    let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
+    let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
+
 
     let showContent = false;
     export let data;
 
 
     onMount(async () => {
-        showContent = true;
+        SponsorsSection = (await import('./SponsorsSection.svelte')).default;
+        ContactSection = (await import('./ContactSection.svelte')).default;
+        await tick();
 
+        showContent = true;
     });
 
 </script>
@@ -23,10 +26,11 @@
 </svelte:head>
 
 <main>
-
-    <HeroSection {showContent}/>
-    <SponsorsSection {showContent}/>    
-    <ContactSection {data} {showContent}/>
+    <svelte:component this={HeroSection} {showContent}/>
+    {#if SponsorsSection && ContactSection}
+        <svelte:component this={SponsorsSection} {showContent}/>    
+        <svelte:component this={ContactSection} {data} {showContent}/>
+    {/if}
 </main>
 
 <style nonce="%sveltekit.nonce%">

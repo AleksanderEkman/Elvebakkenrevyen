@@ -6,19 +6,20 @@
   let viewportNode: HTMLElement;
   let emblaApi: any;
   let sponsorImages: string[] = [];
-  let sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
-    {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
-    {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
-    {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/no"}, 
-    {name: 'Vega Scene', url: "https://www.vegascene.no/"}, 
-    {name: 'Syng', url: "https://syng.no/"}
-  ]
-
+  let sponsors: {name: string, url: string}[] = [];
   
   /** @type {import('embla-carousel').EmblaOptionsType} */
   const OPTIONS = { loop: true };
 
   onMount(() => {
+    sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
+        {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
+        {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
+        {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/no"}, 
+        {name: 'Vega Scene', url: "https://www.vegascene.no/"}, 
+        {name: 'Syng', url: "https://syng.no/"}
+      ]
+
     const loadImages = async () => {
       const images = import.meta.glob<{ default: string }>('$lib/assets/sponsors/*.webp');
       for (const path in images) {

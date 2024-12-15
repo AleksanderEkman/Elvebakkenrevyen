@@ -1,35 +1,51 @@
 <script lang="ts">
     import '../app.css';
     import { onMount } from 'svelte';
-	let { children } = $props();
+    let { children } = $props();
     import Footer from './Footer.svelte';
-    import { ScrollWrapper } from '@shentohendriks/svelte-smoothscroll';
+    import Scrollbar from 'smooth-scrollbar';
 
-    let lenisOptions: {
-        lerp: 0.1,
-        duration: 1,
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: false,
-        smoothTouch: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-        normalizeWheel: true
-    }
+    let scrollbar: Scrollbar;
+
+
     onMount(() => {
+        const scrollContainer = document.querySelector('.scroll-container') as HTMLElement;
+        if (scrollContainer) {
+            scrollbar = Scrollbar.init(scrollContainer, {
+                damping: 0.025,
+                thumbMinSize: 30,
+                renderByPixels: false,
+                alwaysShowTracks: false,
+                continuousScrolling: false
+            });
+        }
 
+        return () => {
+            if (scrollbar) {
+                scrollbar.destroy();
+            }
+        };
     });
 </script>
 
-<ScrollWrapper settings={lenisOptions}>
+<div class="scroll-container">
     {@render children()}
     <Footer />    
-</ScrollWrapper>
-
+</div>
 
 <style>
-    :global(::-webkit-scrollbar) {
-       width: 0;
+    .scroll-container {
+        height: 100vh;
+        overflow: hidden;
     }
-
+    :global(.scroll-container .scrollbar-track) {
+        background: transparent;
+        width: 12px;
+    }
+    :global(.scroll-container .scrollbar-thumb) {
+        background-color: #888;
+        width: 12px;
+        border-radius: 10px;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
 </style>
