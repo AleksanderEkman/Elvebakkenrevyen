@@ -9,8 +9,8 @@
 
     onMount(() => {
         const userAgent = navigator.userAgent;
-        const mobile = userAgent.includes('Mobile');
-        if (!mobile) {
+        const mobileOrMac = (userAgent.includes('Mobile') || userAgent.includes('Mac'));
+        if (!mobileOrMac) {
             const scrollContainer = document.querySelector('.scroll-container') as HTMLElement;
             if (scrollContainer) {
                 scrollbar = Scrollbar.init(scrollContainer, {
@@ -51,7 +51,7 @@
         border-radius: 10px;
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
     }
-    @media (max-width: 540px) {
+    @media (max-width: 1450px) {
         .scroll-container {
             height: auto;
         }

@@ -3,7 +3,7 @@ import { RateLimiter } from "sveltekit-rate-limiter/server";
 import { message } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import { superValidate } from "sveltekit-superforms/server";
-import { PRIVATE_GOOGLE_EMAIL } from "$env/static/private";
+import { PRIVATE_GOOGLE_EMAIL, PRIVATE_RECIPIENT } from "$env/static/private";
 import transporter from "$lib/emailSetup.server.js";
 import type { SendMailOptions } from "nodemailer";
 import { contactSchema } from "$lib/schemas";
@@ -46,7 +46,7 @@ export const actions = {
             const phoneLink = phone ? `, <a href="tel:+47${phone}">+47${phone}</a>` : "";
             const mail: SendMailOptions = {
                 from: PRIVATE_GOOGLE_EMAIL,
-                to: "aleksander.ekman1@gmail.com",
+                to: PRIVATE_RECIPIENT,
                 subject: `Mail fra kontaktskjema: ${name}`,
                 html: `<p>Uverifisert: ${email}${phoneLink}</p>
                        <p><strong>Mail fra ${name}</strong></p>
