@@ -22,7 +22,7 @@ For å sette opp prosjektet lokalt, følg disse trinnene:
 
 1. Klon repositoriet:
    ```bash
-   git clone https://github.com/ditt-brukernavn/elvebakkenrevyen.git
+   git clone https://github.com/allsers/elvebakkenrevyen.git
    cd elvebakkenrevyen
 
 2. Installer avhengigheter:
