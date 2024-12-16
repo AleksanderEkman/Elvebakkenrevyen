@@ -1,7 +1,5 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
-  import { onMount, onDestroy } from 'svelte';
   import background_image from '$lib/assets/Elvebakken.webp';
 
   import Countdown from './components/Countdown.svelte';
