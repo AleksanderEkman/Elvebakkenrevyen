@@ -4,7 +4,7 @@
 
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
-  import SponsorsSection from './SponsorsSection.svelte';
+
   import Links from './components/Links.svelte';
 
   export let showContent: boolean;
