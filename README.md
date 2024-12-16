@@ -2,7 +2,7 @@
 
 ## Introduksjon
 
-Elvebakkenrevyen er en nettside laget for å presentere informasjon om revyen ved Elvebakken videregående skole, samt selge billetter til kunder gjennom **bestill.albillett.no**. Nettsiden er bygget med **SvelteKit**, et moderne rammeverk for utvikling av brukergrensesnitt som gir en rask og responsiv opplevelse.
+Elvebakkenrevyen-nettsiden er laget for å presentere informasjon om revyen ved Elvebakken videregående skole, samt selge billetter til kunder gjennom **bestill.albillett.no**. Nettsiden er bygget med **SvelteKit**, et moderne rammeverk for utvikling av brukergrensesnitt som gir en rask og responsiv opplevelse.
 
 ## Teknisk informasjon
 
@@ -22,7 +22,7 @@ For å sette opp prosjektet lokalt, følg disse trinnene:
 
 1. Klon repositoriet:
    ```bash
-   git clone https://github.com/ditt-brukernavn/elvebakkenrevyen.git
+   git clone https://github.com/allsers/elvebakkenrevyen.git
    cd elvebakkenrevyen
 
 2. Installer avhengigheter:
