@@ -3,6 +3,7 @@
     import { superForm } from 'sveltekit-superforms';
     import { goto } from '$app/navigation';
     import HeroSection from './HeroSection.svelte';
+    import TicketSection from './TicketSection.svelte';
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
     let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
 
@@ -26,10 +27,11 @@
 </svelte:head>
 
 <main>
-    <svelte:component this={HeroSection} {showContent}/>
+    <HeroSection {showContent}/>
     {#if SponsorsSection && ContactSection}
         <svelte:component this={SponsorsSection} {showContent}/>    
         <svelte:component this={ContactSection} {data} {showContent}/>
+        <TicketSection />
     {/if}
 </main>
 

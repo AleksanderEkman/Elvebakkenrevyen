@@ -135,12 +135,15 @@
     .embla__viewport {
       width: 100vw;
     }
+    .text p {
+      font-size: 2.25rem;
+    }
 
   }
   @media (max-width: 540px) {
     .embla {
       --slide-size: 75%;
-      --slide-height: 22.5rem;
+      --slide-height: 20rem;
       display: flex;
       
     }

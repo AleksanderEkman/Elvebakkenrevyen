@@ -2,7 +2,6 @@
   import { fly, fade } from 'svelte/transition';
   import background_image from '$lib/assets/Elvebakken.webp';
 
-  import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
 
   import Links from './components/Links.svelte';
@@ -22,7 +21,6 @@
       <div class="fade" in:fade={{ duration: 800 }}>
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
           <Slideshow />
-          <Countdown />
         </div>
       </div>
     </div>
@@ -97,7 +95,8 @@
     z-index: 2;
   }
 
-  /* Media queries for responsiveness */
+  /* Media queries for responsivitet */
+  /* Tilegnet laptoper og Mac */
   @media (max-width: 1440px) {
     .hero-title {
       margin-top: 0%;
@@ -110,7 +109,7 @@
       user-select: none;
     }
   }
-
+  /* Tilegnet tablets (iPad-er) */
   @media (max-width: 768px) {
     .hero-title {
       margin-top: -8%;
@@ -118,6 +117,7 @@
     }
   }
 
+  /* Links plasseres langs bunnen */
   @media (max-height: 1368px) {
     .links {
       bottom: 0;
@@ -126,15 +126,17 @@
     }
   }
 
-  @media (max-width: 480px) {
+  /* Tilpasset telefoner */
+  @media (max-width: 540px) {
+    /* Bruker svh, smallest viewport height, støttet av de fleste browsers */
     .hero {
-      display: flex; /* Ensure flexbox is applied */
+      display: flex; 
       justify-content: flex-start;
-      align-items: center; /* Center items vertically if needed */
+      align-items: center;
       background-size: 413.5%;
       background-position: top; 
-      height: 100svh; /* Make sure the hero section takes full height */
-      overflow: hidden; /* Prevent overflow if needed */
+      height: 100svh; 
+      overflow: hidden; 
     }
 
     .hero-title {
@@ -148,21 +150,22 @@
       -webkit-background-clip: initial;
       background-clip: initial;
       -webkit-text-fill-color: initial;
-      color: #ffffff; /* Fallback color */
+      color: #ffffff; 
       padding: 5px;
-      text-align: center; /* Center title text for better readability */
-      width: 100%; /* Ensure it takes full width */
-      box-sizing: border-box; /* Include padding in width calculation */
+      text-align: center; 
+      width: 100%; 
+      box-sizing: border-box;
     }
   }
 
+  /* Tilpasset nest hub og nest hub max (ikke så nødvendig)*/
   @media (max-width: 1024px) and (max-height: 600px) {
     .hero-title {
       margin-top: -5.5%;
     }
   }
   
-  /* Media query for mobile landscape mode */
+  /* Tilpasset landscape mode på mobil */
   @media (max-width: 933px) and (orientation: landscape) {
     .hero {
       min-height: 100vh;
