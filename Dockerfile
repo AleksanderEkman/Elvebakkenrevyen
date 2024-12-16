@@ -11,6 +11,6 @@ WORKDIR /app
 COPY --from=build /app/build build/
 COPY --from=build /app/node_modules node_modules/
 COPY package.json .
-EXPOSE 3000
+EXPOSE 8080
 ENV NODE_ENV=production
 CMD ["node", "build/index.js"]
