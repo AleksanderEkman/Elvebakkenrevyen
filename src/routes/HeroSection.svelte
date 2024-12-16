@@ -12,7 +12,7 @@
   let linksClass: HTMLElement;
   let contBackground: string = '';
   let contBackgroundLoaded = false;
-
+  
 </script>
 
 <section class="hero" style="background-image: url({background_image});">
@@ -40,7 +40,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100svh; /* Ensure the hero section takes up at least the full viewport height */
+    min-height: 100svh;
     width: 100vw;
     position: relative;
     text-transform: uppercase;
