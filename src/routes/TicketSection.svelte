@@ -15,9 +15,7 @@
             {label: "Teppefalls", date: "4.03.2024", time:"18:00", showCode: "s9"}
         ];
     });
-
 </script>
-
 
 <section class="ticketSection">
     <div class="flex">
