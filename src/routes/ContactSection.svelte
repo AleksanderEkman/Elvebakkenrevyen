@@ -328,7 +328,7 @@
         }
 
         #message {
-            height: 5rem;
+            height: 6.25rem;
         }
     }
 

@@ -4,7 +4,7 @@
 
   let images: Record<string, () => Promise<{ default: string }>>;
 
-  // Import all images for the slideshow
+  // Importer alle bilder fra assets mappa
   if (navigator.userAgent.includes('Mobile')) {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
@@ -20,7 +20,7 @@
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
 
-      if (imageArray.length === 0) return; // Ensure imageArray is not empty
+      if (imageArray.length === 0) return; // Passer på at imageArray ikke er tom
 
       const interval = setInterval(() => {
         imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images

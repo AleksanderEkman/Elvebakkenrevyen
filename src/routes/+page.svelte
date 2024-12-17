@@ -6,7 +6,7 @@
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
     let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
 
-
+    
     let showContent = false;
     export let data;
 

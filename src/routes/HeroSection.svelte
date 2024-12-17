@@ -10,8 +10,7 @@
   export let showContent: boolean;
   
   let linksClass: HTMLElement;
-  let contBackground: string = '';
-  let contBackgroundLoaded = false;
+
   
 </script>
 
