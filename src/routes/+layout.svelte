@@ -5,15 +5,19 @@
     import Footer from './Footer.svelte';
     import Scrollbar from 'smooth-scrollbar';
 
+    // Kun for Windows, bruker en custom scrollbar som gir mer smooth scrolling
     let scrollbar: Scrollbar;
 
     onMount(() => {
+        // Bruker userAgent til å sjekke enheten som brukeren er på
         const userAgent = navigator.userAgent;
         const mobileOrMac = (userAgent.includes('Mobile') || userAgent.includes('Mac'));
         if (!mobileOrMac) {
             const scrollContainer = document.querySelector('.scroll-container') as HTMLElement;
             if (scrollContainer) {
+                // Initaliserer scrollbar hvis nettsiden ikke kjøres på mobil eller Mac
                 scrollbar = Scrollbar.init(scrollContainer, {
+                    // Instillinger for scrollbar, test ut
                     damping: 0.025,
                     thumbMinSize: 30,
                     renderByPixels: false,
@@ -24,6 +28,7 @@
 
             return () => {
                 if (scrollbar) {
+                    // Destruerer scrollbar når komponenten unmountes
                     scrollbar.destroy();
                 }
             };
@@ -31,6 +36,7 @@
     });
 </script>
 
+<!-- Denne scroll-containeren er en wrapper for alle komponentene -->
 <div class="scroll-container">
     {@render children()}
     <Footer />    
@@ -38,6 +44,7 @@
 
 <style>
     .scroll-container {
+        /* Må sette høyde til 100vh for smooth-scrollbar npm packagen */
         height: 100vh;
         overflow: hidden;
     }

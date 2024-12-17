@@ -6,7 +6,7 @@
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
     let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
 
-    
+
     let showContent = false;
     export let data;
 
@@ -21,12 +21,15 @@
 
 </script>
 
+<!-- Side-spesifikk tittel -->
 <svelte:head>
     <title>Elvebakkenrevyen 2025</title>
 </svelte:head>
 
+<!-- Rendrer alle komponentene med en main tag. -->
+<!-- Bruker litt annen syntaks for å lazy loade SponsorsSection og ContactSection. -->
 <main>
-    <svelte:component this={HeroSection} {showContent}/>
+    <HeroSection {showContent}/>
     {#if SponsorsSection && ContactSection}
         <svelte:component this={SponsorsSection} {showContent}/>    
         <svelte:component this={ContactSection} {data} {showContent}/>
@@ -38,5 +41,4 @@
         height: auto;
         overflow-x: hidden;
     }
-
 </style>

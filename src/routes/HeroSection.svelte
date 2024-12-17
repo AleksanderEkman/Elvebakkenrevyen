@@ -10,28 +10,29 @@
   export let showContent: boolean;
   
   let linksClass: HTMLElement;
-
-  
 </script>
 
+<!-- HTML-struktur med visuell hierarki for UX -->
 <section class="hero" style="background-image: url({background_image});">
   {#if showContent}
     <div class="container text-center">
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
       <div class="fade" in:fade={{ duration: 800 }}>
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
+          <!-- Nøstede komponenter -->
           <Slideshow />
           <Countdown />
         </div>
       </div>
     </div>
     <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
+      <!-- Egen komponent for links -->
       <Links />
     </div>
   {/if}
 </section>
 
-<style nonce="%sveltekit.nonce%">
+<style>
   .hero {
     margin-top: 0%;
     @apply text-white py-20;
