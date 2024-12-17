@@ -1,7 +1,5 @@
 <script lang="ts">
     import { onMount, tick } from 'svelte';
-    import { superForm } from 'sveltekit-superforms';
-    import { goto } from '$app/navigation';
     import HeroSection from './HeroSection.svelte';
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
     let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
