@@ -53,7 +53,11 @@
             />
           </div>
           <div class="text">
-            <p><a href="{sponsors[index].url}" target={'_blank'}>{sponsors[index].name}</a></p>
+            <p><a href="{sponsors[index].url}" target={'_blank'}>
+              <span id="inner">
+                {sponsors[index].name}
+              </span>
+          </a></p>
           </div>
         </div>
       {/each}
@@ -120,12 +124,24 @@
   .text {
     user-select: none;
   }
-  .text p a {
+  #inner {
     user-select: none;
+    width: 5%;
   }
-  .text a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+  #inner::after {
+    margin-top: -0.3rem;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    content: '';
+    width: 0%;
+    height: 5px;
+    left: 0;
+    background-color: var(--color-text1);
+    transition: width 0.2s ease;
+  }
+  #inner:hover::after {
+    width: 100%;
   }
   @media (max-width: 1450px) {
     .embla {
