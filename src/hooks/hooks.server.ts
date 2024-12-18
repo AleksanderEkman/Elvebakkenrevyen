@@ -61,15 +61,25 @@ export const handle: Handle = async ({ event, resolve }) => {
         });
     }
 
-    const csrfResult = await csrfProtection({ event, resolve });
+    // Apply CSRF protection
+    const csrfResult = await csrfProtection({ 
+        event, 
+        resolve: async (event) => {
+            const response = await resolve(event);
+            // Apply security headers
+            Object.entries(securityHeaders).forEach(
+                ([header, value]) => response.headers.set(header, value)
+            );
+            return response;
+        }
+    });
+
     if (csrfResult !== undefined) {
+        Object.entries(securityHeaders).forEach(
+            ([header, value]) => csrfResult.headers.set(header, value)
+        );
         return csrfResult;
     }
 
-    const response = await resolve(event);
-    Object.entries(securityHeaders).forEach(
-        ([header, value]) => response.headers.set(header, value)
-    );
-
-    return response;
+    return csrfResult;
 }
