@@ -4,13 +4,16 @@
 
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
-
   import Links from './components/Links.svelte';
 
   export let showContent: boolean;
   
   let linksClass: HTMLElement;
 </script>
+
+<svelte:head>
+  <link rel="preload" href={background_image} as="image">
+</svelte:head>
 
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section class="hero" style="background-image: url({background_image});">
@@ -52,6 +55,7 @@
     background-attachment: fixed;
     overflow: hidden;
     padding: 0;
+    background-color: #000; /* Set a background color that matches the background image */
   }
   .fade {
     z-index: 1;
@@ -132,6 +136,7 @@
       justify-content: flex-start;
       align-items: center; /* Center items vertically if needed */
       background-size: cover;
+      background-attachment: scroll;
       background-position: top; 
       height: 100svh; /* Make sure the hero section takes full height */
       overflow: hidden; /* Prevent overflow if needed */
