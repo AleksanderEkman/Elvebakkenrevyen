@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Elvebakkenrevyen 2025</title>
         
-        <!-- Her ligger diverse SEO-optimiseringer for sosiale medier deling samt en Schema.org JSON -->
-        <!-- for gode søkeresultater (Rich Results) på Google. -->>
-
         <!-- Favicon -->
         <link rel="icon" href="%sveltekit.assets%/favicon.png">
         
@@ -95,13 +92,9 @@
     </head>
 
     <body data-sveltekit-preload-data="hover">
-        <!-- Krevesm for sveltekit oppset i html-filen -->
         <div style="display: contents">%sveltekit.body%</div>
         
         <!-- Google Tag Manager -->
-        <!-- Legges inn som fullt statisk innhold. Bruker en nonce for ekstra sikkerhet. -->
-        <!-- Scriptet lastes inn async, 5 sekunder etter at nettsiden har lastet inn. -->
-        <!-- Denne taggen sender informasjon til Google Analytics om brukeroppførsel på nettsiden. -->
         <script lang="ts" nonce="%sveltekit.nonce%">
             const scriptNonce = document.currentScript ? document.currentScript.nonce : null;
             window.addEventListener('load', function() {
@@ -111,7 +104,7 @@
                     script.async = true;
                     script.nonce = scriptNonce;
                     document.head.appendChild(script);
-                    // ID-en hentes fra Google Analytics
+
                     script.onload = function() {
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}

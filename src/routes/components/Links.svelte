@@ -42,7 +42,7 @@
       padding: 2em;
       width: 5%;
     }
-
+  
     li {
       color: var(--color-text1);
       padding-bottom: 10px;
@@ -87,8 +87,7 @@
   
     @media (max-width: 480px) {
       ul {
-        font-size: 0.85em;
-        padding: 0em;
+        font-size: 0.9em;
       }
     }
   

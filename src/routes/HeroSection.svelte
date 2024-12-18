@@ -131,7 +131,7 @@
       display: flex; /* Ensure flexbox is applied */
       justify-content: flex-start;
       align-items: center; /* Center items vertically if needed */
-      background-size: cover;
+      background-size: 413.5%;
       background-position: top; 
       height: 100svh; /* Make sure the hero section takes full height */
       overflow: hidden; /* Prevent overflow if needed */

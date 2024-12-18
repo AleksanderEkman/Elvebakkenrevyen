@@ -135,18 +135,7 @@
     .embla__viewport {
       width: 100vw;
     }
-  }
-  @media (max-width: 768px) {
-    .embla {
-      --slide-size: 30%;
-      --slide-height: 17rem;
-    }
-    .embla__viewport {
-      width: 100vw;
-    }
-    .text p {
-      font-size: 2rem;
-    }
+
   }
   @media (max-width: 540px) {
     .embla {
