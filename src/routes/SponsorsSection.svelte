@@ -89,10 +89,10 @@
   }
   @media (min-width: 1450px) {
     .cont {
-      height: 85vh;
+      height: 90vh;
     }
     .cont::before {
-      height: 85vh;
+      height: 90vh;
     }
   }
   @media (max-width: 1450px) {
