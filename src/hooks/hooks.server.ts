@@ -43,7 +43,7 @@ const securityHeaders = {
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'geolocation=(self), microphone=()',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://bakkarevydocker-o869w.ondigitalocean.app',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Vary': 'Origin'
