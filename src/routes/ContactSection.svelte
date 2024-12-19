@@ -240,7 +240,7 @@
         --tw-ring-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
     }
     input:hover, textarea:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.06);
     }
 
     .progress {
@@ -299,7 +299,7 @@
     }
 
     button:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.06);
     }
 
     button:active {

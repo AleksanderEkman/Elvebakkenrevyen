@@ -192,7 +192,7 @@
       height: auto; 
     }
     p {
-      font-size: 2.75rem;
+      font-size: 2.65rem;
     }
     .countdown-item {
       margin: 5px 0; 
@@ -207,7 +207,7 @@
       border-left: none;
     }
     span {
-      font-size: 0.9rem; 
+      font-size: 0.85rem; 
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {

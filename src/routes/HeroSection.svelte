@@ -170,7 +170,7 @@
   /* Media query for mobile landscape mode */
   @media (max-width: 933px) and (orientation: landscape) {
     .hero {
-      min-height: 100vh;
+      height: 100vh;
       padding: 10px;
     }
     .hero::before {

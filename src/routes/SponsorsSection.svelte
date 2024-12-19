@@ -67,7 +67,7 @@
     z-index: 2;
   }
   .flex {
-    margin-top: -6.5rem;
+    margin-top: -5rem;
     z-index: 1;
     width: 100vw;
     flex-direction: column;
