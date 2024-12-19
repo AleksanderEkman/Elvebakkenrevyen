@@ -1,22 +1,35 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import background_image from '$lib/assets/Elvebakken.webp';
-
+  import { onMount } from 'svelte';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import Links from './components/Links.svelte';
 
+  let height: number | string;
   export let showContent: boolean;
-  
+  let innerHeight: number;
   let linksClass: HTMLElement;
+
+  onMount(async () => {
+    if (true) {
+      height = innerHeight;
+    } 
+    else {
+      height = '100svh';
+    }
+  });
+
 </script>
 
 <svelte:head>
   <link rel="preload" href={background_image} as="image">
 </svelte:head>
 
+<svelte:window bind:innerHeight></svelte:window>
+
 <!-- HTML-struktur med visuell hierarki for UX -->
-<section class="hero" style="background-image: url({background_image});">
+<section class="hero" style="background-image: url({background_image}); height: {height}px">
   {#if showContent}
     <div class="container text-center">
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
@@ -68,7 +81,7 @@
     left: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
   }
 
@@ -130,7 +143,7 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
     .hero {
       display: flex; /* Ensure flexbox is applied */
       justify-content: flex-start;
@@ -173,9 +186,6 @@
       height: 100svh;
       padding: 10px;
       background-attachment: scroll;
-    }
-    .hero::before {
-      height: 100svh;
     }
     .hero-title {
       font-size: 2em;

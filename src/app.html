@@ -109,6 +109,7 @@
                     var script = document.createElement('script');
                     script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S9GEK8HDJJ';
                     script.async = true;
+                    script.defer = true;
                     script.nonce = scriptNonce;
                     document.head.appendChild(script);
                     // ID-en hentes fra Google Analytics
@@ -118,7 +119,7 @@
                         gtag('js', new Date());
                         gtag('config', 'G-S9GEK8HDJJ');
                     };
-                }, 5000);
+                }, 5500);
             });
         </script>
     </body>
