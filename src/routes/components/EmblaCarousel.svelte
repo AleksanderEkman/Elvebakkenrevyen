@@ -54,9 +54,7 @@
           </div>
           <div class="text">
             <p><a href="{sponsors[index].url}" target={'_blank'}>
-              <span id="inner">
-                {sponsors[index].name}
-              </span>
+              {sponsors[index].name}
           </a></p>
           </div>
         </div>
@@ -124,12 +122,12 @@
   .text {
     user-select: none;
   }
-  #inner {
+  .text p a {
     user-select: none;
-    width: 5%;
+    display: inline-block;
   }
-  #inner::after {
-    margin-top: -0.3rem;
+  .text p a::after {
+    margin-top: -0.5rem;
     display: flex;
     justify-self: center;
     align-self: center;
@@ -139,8 +137,9 @@
     left: 0;
     background-color: var(--color-text1);
     transition: width 0.2s ease;
+    border-radius: 1px;
   }
-  #inner:hover::after {
+  .text p a:hover::after {
     width: 100%;
   }
   @media (max-width: 1450px) {
