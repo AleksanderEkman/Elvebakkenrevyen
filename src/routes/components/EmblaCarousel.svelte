@@ -185,5 +185,12 @@
       box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
+  }  
+
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .embla {
+      --slide-height: 20rem;
+    }
   }
 </style>

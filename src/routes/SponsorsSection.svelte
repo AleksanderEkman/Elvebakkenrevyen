@@ -109,5 +109,11 @@
       background-position: top;
     }
   }
-  
+    
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .cont {
+      height: 40rem;
+    }
+  }
 </style>

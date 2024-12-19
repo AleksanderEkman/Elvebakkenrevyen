@@ -172,6 +172,7 @@
     .hero {
       min-height: 100vh;
       padding: 10px;
+      background-attachment: scroll;
     }
     .hero::before {
       height: 100vh;
@@ -179,10 +180,7 @@
     .hero-title {
       font-size: 2em;
       margin-top: 0;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-      0 0 7px rgba(255, 255, 255, 0.2), 
-      0 0 13px rgba(255, 255, 255, 0.13), 
-      0 0 19px rgba(255, 255, 255, 0.07);
+      text-shadow: 0;
     }
     .container {
       padding: 10px;
