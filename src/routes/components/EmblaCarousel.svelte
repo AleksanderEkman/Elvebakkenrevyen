@@ -191,5 +191,8 @@
     .embla {
       --slide-height: 20rem;
     }
+    .text p {
+      font-size: 1.75rem;
+    }
   }
 </style>
