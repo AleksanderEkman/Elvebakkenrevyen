@@ -168,19 +168,24 @@
   }
   
   /* Media query for mobile landscape mode */
-  @media (max-width: 933px) and (orientation: landscape) {
+  @media (max-width: 935px) and (orientation: landscape) {
     .hero {
-      height: 100vh;
+      height: 100svh;
       padding: 10px;
       background-attachment: scroll;
     }
     .hero::before {
-      height: 100vh;
+      height: 100svh;
     }
     .hero-title {
       font-size: 2em;
       margin-top: 0;
-      text-shadow: 0;
+      text-shadow: none;
+      text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.2), 
+        0 0 7px rgba(255, 255, 255, 0.2), 
+        0 0 13px rgba(255, 255, 255, 0.13), 
+        0 0 19px rgba(255, 255, 255, 0.07);
     }
     .container {
       padding: 10px;

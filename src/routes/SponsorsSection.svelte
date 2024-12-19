@@ -115,5 +115,8 @@
     .cont {
       height: 40rem;
     }
+    h2 {
+      font-size: 3.5rem;
+    }
   }
 </style>

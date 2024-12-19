@@ -189,7 +189,7 @@
   /* Media query for mobile landscape mode */
   @media (max-width: 933px) and (orientation: landscape) {
     .embla {
-      --slide-height: 20rem;
+      --slide-height: 15rem;
     }
     .text p {
       font-size: 1.75rem;
