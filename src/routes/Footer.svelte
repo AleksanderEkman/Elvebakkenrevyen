@@ -5,7 +5,7 @@
         © 2024-2025 Elvebakkenrevyen
       </p>
       <p id="credit">
-        Designet og utviklet av <a id="c" href="mailto:aleksanderekman@elvebakkenrevyen.no">Aleksander Ekman</a>
+        Designet og utviklet av <a href="mailto:aleksanderekman@elvebakkenrevyen.no">Aleksander Ekman</a>
       </p>
     </div>
     <div class="footer-col">
@@ -97,10 +97,6 @@
   }
 
   a:hover {
-    text-decoration: underline;
-  }
-
-  #c {
     text-decoration: underline;
   }
 
