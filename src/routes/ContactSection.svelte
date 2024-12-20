@@ -24,7 +24,7 @@
     const updateContactSectionHeight = () => {
         if (contactSection && footer) {
             const footerHeight = footer.offsetHeight;
-            if (window.matchMedia('(min-width: 768px)').matches) {
+            if (window.matchMedia('(min-width: 768px)').matches && !navigator.userAgent.includes('Mobile')) {
                 contactSection.style.height = `calc(100svh - ${footerHeight}px)`;
             } else {
                 contactSection.style.height = `auto`;

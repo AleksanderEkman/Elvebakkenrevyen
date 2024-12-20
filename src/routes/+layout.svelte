@@ -3,36 +3,21 @@
     import { onMount } from 'svelte';
     let { children } = $props();
     import Footer from './Footer.svelte';
-    import Scrollbar from 'smooth-scrollbar';
+    import Lenis from 'lenis'
+    import 'lenis/dist/lenis.css'
 
     // Kun for Windows, bruker en custom scrollbar som gir mer smooth scrolling
-    let scrollbar: Scrollbar;
 
     onMount(() => {
+        window.scrollTo(0, 0)
         // Bruker userAgent til å sjekke enheten som brukeren er på
         const userAgent = navigator.userAgent;
         const mobileOrMac = (userAgent.includes('Mobile') || userAgent.includes('Mac'));
         if (!mobileOrMac) {
-            const scrollContainer = document.querySelector('.scroll-container') as HTMLElement;
-            if (scrollContainer) {
-                // Initaliserer scrollbar hvis nettsiden ikke kjøres på mobil eller Mac
-                scrollbar = Scrollbar.init(scrollContainer, {
-                    // Instillinger for scrollbar, test ut
-                    damping: 0.025,
-                    thumbMinSize: 30,
-                    renderByPixels: false,
-                    alwaysShowTracks: false,
-                    continuousScrolling: false
-                });
-            }
-
-            return () => {
-                if (scrollbar) {
-                    // Destruerer scrollbar når komponenten unmountes
-                    scrollbar.destroy();
-                }
-            };
-        }
+            const lenis = new Lenis({
+                autoRaf: true,
+            });
+        }   
     });
 </script>
 
@@ -44,8 +29,7 @@
 
 <style>
     .scroll-container {
-        /* Må sette høyde til 100vh for smooth-scrollbar npm packagen */
-        height: 100vh;
+        height: auto;
         overflow: hidden;
     }
     :global(.scroll-container .scrollbar-track) {

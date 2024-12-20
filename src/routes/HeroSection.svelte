@@ -1,22 +1,41 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import background_image from '$lib/assets/Elvebakken.webp';
-
+  import { onMount } from 'svelte';
   import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import Links from './components/Links.svelte';
+  import InAppSpy from "inapp-spy";
 
+  let height: number | string;
+  let scrollY: number;
   export let showContent: boolean;
-  
-  let linksClass: HTMLElement;
+  let innerHeight: number;
+  let scrollAmplifier: number;
+
+  onMount(() => {
+    const { isInApp } = InAppSpy();
+    if (isInApp) {
+      height = innerHeight + 'px';
+    } else {
+      height = '100svh';
+    }
+    if (window.matchMedia("(max-width: 540px)").matches) {
+      scrollAmplifier = 0.6;
+    } else {
+      scrollAmplifier = -1;
+    }
+  });
 </script>
 
 <svelte:head>
   <link rel="preload" href={background_image} as="image">
 </svelte:head>
 
+<svelte:window bind:innerHeight bind:scrollY></svelte:window>
+
 <!-- HTML-struktur med visuell hierarki for UX -->
-<section class="hero" style="background-image: url({background_image});">
+<section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.2}px;">
   {#if showContent}
     <div class="container text-center">
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
@@ -28,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div bind:this={linksClass} class="links" in:fade={{ duration: 800 }}>
+    <div class="links" in:fade={{ duration: 800 }}>
       <!-- Egen komponent for links -->
       <Links />
     </div>
@@ -43,7 +62,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100svh;
     width: 100vw;
     position: relative;
     text-transform: uppercase;
@@ -56,6 +74,7 @@
     overflow: hidden;
     padding: 0;
     background-color: #000; /* Set a background color that matches the background image */
+    scroll-behavior: smooth; /* Enable smooth scrolling */
   }
   .fade {
     z-index: 1;
@@ -68,8 +87,9 @@
     left: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
+    backdrop-filter: blur(1.5px);
   }
 
   .container {
@@ -130,7 +150,7 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
     .hero {
       display: flex; /* Ensure flexbox is applied */
       justify-content: flex-start;
@@ -138,8 +158,8 @@
       background-size: cover;
       background-attachment: scroll;
       background-position: top; 
-      height: 100svh; /* Make sure the hero section takes full height */
       overflow: hidden; /* Prevent overflow if needed */
+      scroll-behavior: smooth; /* Enable smooth scrolling for mobile */
     }
 
     .hero-title {
@@ -174,9 +194,6 @@
       padding: 10px;
       background-attachment: scroll;
     }
-    .hero::before {
-      height: 100svh;
-    }
     .hero-title {
       font-size: 2em;
       margin-top: 0;
@@ -184,8 +201,7 @@
       text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.2), 
         0 0 7px rgba(255, 255, 255, 0.2), 
-        0 0 13px rgba(255, 255, 255, 0.13), 
-        0 0 19px rgba(255, 255, 255, 0.07);
+        0 0 13px rgba(255, 255, 255, 0.13);
     }
     .container {
       padding: 10px;

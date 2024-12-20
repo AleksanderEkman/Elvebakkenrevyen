@@ -16,4 +16,4 @@ echo -e "\033[0;33mPushing image to Docker Hub...\033[0m"
 docker push $IMAGE_NAME:$TAG
 
 # Deploy complete
-echo -e "\033[0;32mDocker Hub deploy complete!\033[0m"
+echo -e "\033[0;32mDocker Hub deploy complete!"
