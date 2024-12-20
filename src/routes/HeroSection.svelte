@@ -21,7 +21,7 @@
       height = '100svh';
     }
     if (window.matchMedia("(max-width: 540px)").matches) {
-      scrollAmplifier = 0.8;
+      scrollAmplifier = 0.9;
     } else {
       scrollAmplifier = -1.1;
     }

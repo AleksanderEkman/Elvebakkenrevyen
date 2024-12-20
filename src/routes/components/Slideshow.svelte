@@ -24,7 +24,7 @@
 
       const interval = setInterval(() => {
         imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-      }, 5000); // Change image every 5 seconds
+      }, 4500); // Change image every 5 seconds
 
       return () => clearInterval(interval); // Cleanup interval on component unmount
     })();
@@ -32,7 +32,7 @@
 </script>
 
 <div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
-  <p class="slideshow-text">Fra skaperne av:</p>
+  <p class="slideshow-text">Fra skaperne av</p>
   <div class="slideshow" aria-live="polite" aria-atomic="true">
     {#if imageArray.length > 0}
       {#key imageIndex}

@@ -11,10 +11,11 @@
 
     onMount(async () => {
         SponsorsSection = (await import('./SponsorsSection.svelte')).default;
-        ContactSection = (await import('./ContactSection.svelte')).default;
-        await tick();
-
         showContent = true;
+        await tick();
+        setTimeout(async () => {
+            ContactSection = (await import('./ContactSection.svelte')).default;
+        }, 700);
     });
 
 </script>
@@ -28,8 +29,10 @@
 <!-- Bruker litt annen syntaks for å lazy loade SponsorsSection og ContactSection. -->
 <main>
     <HeroSection {showContent}/>
-    {#if SponsorsSection && ContactSection}
+    {#if SponsorsSection}
         <svelte:component this={SponsorsSection} {showContent}/>    
+    {/if}
+    {#if ContactSection}
         <svelte:component this={ContactSection} {data} {showContent}/>
     {/if}
 </main>
