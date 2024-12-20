@@ -21,9 +21,9 @@
       height = '100svh';
     }
     if (window.matchMedia("(max-width: 540px)").matches) {
-      scrollAmplifier = 0.6;
+      scrollAmplifier = 0.8;
     } else {
-      scrollAmplifier = -1;
+      scrollAmplifier = -1.1;
     }
   });
 </script>
@@ -35,7 +35,7 @@
 <svelte:window bind:innerHeight bind:scrollY></svelte:window>
 
 <!-- HTML-struktur med visuell hierarki for UX -->
-<section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.2}px;">
+<section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.25}px;">
   {#if showContent}
     <div class="container text-center">
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
