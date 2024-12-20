@@ -42,7 +42,7 @@
     align-items: center;
     width: 100vw;
     padding: 2.75em 0em;
-    background: linear-gradient(135deg, #000000, #161616);
+    background: linear-gradient(135deg, #000000, #101010);
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
