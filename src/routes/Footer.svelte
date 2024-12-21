@@ -33,7 +33,7 @@
   </div>
 </footer>
 
-<style nonce="%sveltekit.nonce%">
+<style>
   footer {
     overflow: hidden;
     height: auto;
@@ -122,7 +122,6 @@
       text-align: center;
     }
   }
-
 
   @media (max-width: 933px) and (orientation: landscape) { 
     #header {

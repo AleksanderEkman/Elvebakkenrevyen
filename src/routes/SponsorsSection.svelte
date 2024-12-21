@@ -18,7 +18,9 @@
     };
   });
 </script>
+<!-- Cont er bare continuation -->
 <div class="cont" class:loaded={contBackgroundLoaded} style="background-image: {contBackground};"> 
+  <!-- Lazy loading -->
   {#if showContent}
     <div class="fade" in:fade={{ duration: 500 }}>
       <div class="flex">

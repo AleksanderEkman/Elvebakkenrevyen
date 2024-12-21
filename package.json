@@ -30,7 +30,6 @@
 		"globals": "^15.0.0",
 		"postcss": "^8.4.49",
 		"postcss-cli": "^11.0.0",
-		"postcss-viewport-height-correction": "^1.1.1",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
