@@ -27,7 +27,7 @@
         Kontakt oss
       </p>
       <ul>
-        <li><a href="mailto:revysjefer@elvebakkenrevyen.no">revysjefer@elvebakkenrevyen.no</a></li>
+        <li><a href="mailto:sjefer@elvebakkenrevyen.no">sjefer@elvebakkenrevyen.no</a></li>
       </ul>
     </div>
   </div>

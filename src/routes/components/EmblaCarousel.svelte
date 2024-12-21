@@ -53,7 +53,7 @@
             />
           </div>
           <div class="text">
-            <p><a href="{sponsors[index].url}" target={'_blank'}>
+            <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
               {sponsors[index].name}
           </a></p>
           </div>
