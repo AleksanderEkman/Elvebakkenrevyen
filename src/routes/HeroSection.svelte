@@ -85,11 +85,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.85));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
     width: 100%;
     height: 100%;
     z-index: 1;
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.4px);
   }
 
   .container {
