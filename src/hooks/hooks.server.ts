@@ -38,7 +38,7 @@ function isFormContentType(request: Request) {
 }
 
 const securityHeaders = {
-    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'X-Frame-Options': 'DENY',
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',

@@ -7,7 +7,6 @@
     import 'lenis/dist/lenis.css'
 
     // Kun for Windows, bruker en custom scrollbar som gir mer smooth scrolling
-
     onMount(() => {
         window.scrollTo(0, 0)
         // Bruker userAgent til å sjekke enheten som brukeren er på
@@ -21,17 +20,13 @@
     });
 </script>
 
-<!-- Denne scroll-containeren er en wrapper for alle komponentene -->
-<div class="scroll-container">
-    {@render children()}
-    <Footer />    
-</div>
+
+{@render children()}
+<Footer />    
+
 
 <style>
-    .scroll-container {
-        height: auto;
-        overflow: hidden;
-    }
+
     :global(.scroll-container .scrollbar-track) {
         background: transparent;
         width: 15px;
@@ -41,16 +36,5 @@
         width: 15px;
         border-radius: 10px;
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-    }
-    @media (max-width: 1450px) {
-        .scroll-container {
-            height: auto;
-        }
-        :global(.scroll-container .scrollbar-track) {
-            width: 8px;
-        }
-        :global(.scroll-container .scrollbar-thumb) {
-            width: 8px;
-        }
     }
 </style>

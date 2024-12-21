@@ -8,6 +8,7 @@
   import InAppSpy from "inapp-spy";
 
   let height: number | string;
+  let scale = 100;
   let scrollY: number;
   export let showContent: boolean;
   let innerHeight: number;
@@ -85,11 +86,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.85));
     width: 100%;
     height: 100%;
     z-index: 1;
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.75px);
   }
 
   .container {
