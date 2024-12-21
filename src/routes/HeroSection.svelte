@@ -90,7 +90,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    backdrop-filter: blur(1.75px);
+    backdrop-filter: blur(1.5px);
   }
 
   .container {
