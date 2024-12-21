@@ -25,8 +25,10 @@
     <div class="fade" in:fade={{ duration: 500 }}>
       <div class="flex">
         <div class="text">
+          <!-- Overskrift -->
           <h2>Sponsorer</h2>
         </div>
+        <!-- Importer EmblaCarousel - se EmblaCarousel.svelte i /components -->
         <EmblaCarousel />
       </div>
     </div>
