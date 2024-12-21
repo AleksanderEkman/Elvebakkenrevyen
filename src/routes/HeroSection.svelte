@@ -15,6 +15,7 @@
   let scrollAmplifier: number;
 
   onMount(() => {
+    // Sjekker om brukeren er i en app, bruker annen strategi for å hente høyde
     const { isInApp } = InAppSpy();
     if (isInApp) {
       height = innerHeight + 'px';
@@ -29,16 +30,14 @@
   });
 </script>
 
-<svelte:head>
-  <link rel="preload" href={background_image} as="image">
-</svelte:head>
-
+<!-- Bind til vinduet for å hente scrollY og innerHeight -->
 <svelte:window bind:innerHeight bind:scrollY></svelte:window>
 
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.25}px;">
   {#if showContent}
     <div class="container text-center">
+      <!-- Animasjoner for innhold -->
       <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
       <div class="fade" in:fade={{ duration: 800 }}>
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
@@ -90,7 +89,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    backdrop-filter: blur(1.75px);
+    backdrop-filter: blur(1.5px);
   }
 
   .container {

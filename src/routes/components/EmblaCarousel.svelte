@@ -8,10 +8,12 @@
   let sponsorImages: string[] = [];
   let sponsors: {name: string, url: string}[] = [];
   
+  // EmblaCarousel options
   /** @type {import('embla-carousel').EmblaOptionsType} */
   const OPTIONS = { loop: true };
 
   onMount(() => {
+    // Liste over alle sponsorer samt URL
     sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
         {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
         {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
@@ -21,14 +23,17 @@
       ]
 
     const loadImages = async () => {
+      // Importerer alle bildene fra lib/assets/sponsors
       const images = import.meta.glob<{ default: string }>('$lib/assets/sponsors/*.webp');
       for (const path in images) {
+        // Henter bildene og legger de i en liste, importerer bildene som moduler
         const imageModule = await images[path]();
         sponsorImages = [...sponsorImages, imageModule.default];
       }
     };
 
     loadImages().then(() => {
+      // Oppretter en ny EmblaCarousel med emblaAPI
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
     });
 
@@ -38,9 +43,11 @@
   });
 </script>
 
+<!-- Struktur for slideshow -->
 <section bind:this={emblaNode} class="embla">
   <div bind:this={viewportNode} class="embla__viewport">
     <div class="embla__container">
+      <!-- Itererer over hvert sponsorbilde -->
       {#each sponsorImages as image, index}
         <div class="embla__slide">
           <div class="embla__slide__img">
@@ -54,6 +61,7 @@
           </div>
           <div class="text">
             <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
+              <!-- Legger til tekst basert på indeks -->
               {sponsors[index].name}
           </a></p>
           </div>
@@ -63,7 +71,7 @@
   </div>
 </section>
 
-<style nonce="%sveltekit.nonce%">
+<style>
   .embla {
     z-index: 2;
     margin: auto;
