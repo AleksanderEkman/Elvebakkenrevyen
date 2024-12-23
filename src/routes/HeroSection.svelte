@@ -35,6 +35,7 @@
 
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.25}px;">
+  <div class="overlay"></div>
   {#if showContent}
     <div class="container text-center">
       <!-- Animasjoner for innhold -->
@@ -57,6 +58,7 @@
 <style>
   .hero {
     margin-top: 0%;
+    z-index: 1;
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
@@ -69,6 +71,7 @@
     padding: 0;
     background-size: cover;
     background-position: center;
+    will-change: background-position-y;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
@@ -77,24 +80,23 @@
     scroll-behavior: smooth; /* Enable smooth scrolling */
   }
   .fade {
-    z-index: 1;
+    z-index: 3;
   }
   
-  .hero::before {
+  .overlay {
     content: ''; 
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
     width: 100%;
     height: 100%;
-    z-index: 1;
-    backdrop-filter: blur(1.4px);
+    z-index: 2;
   }
 
   .container {
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
   
   .hero-title {

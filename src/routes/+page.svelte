@@ -15,6 +15,7 @@
         if (contactSection && footer) {
             const footerHeight = footer.offsetHeight;
             if (window.matchMedia('(min-width: 768px)').matches && !navigator.userAgent.includes('Mobile')) {
+                console.log("run")
                 contactSection.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
             } else {
                 contactSection.style.height = `auto`;
@@ -28,7 +29,7 @@
         await tick();
         setTimeout(async () => {
             ContactSection = (await import('./ContactSection.svelte')).default;
-        }, 750);
+        }, 1000);
 
         footer = document.querySelector('footer');
         updateContactSectionHeight();

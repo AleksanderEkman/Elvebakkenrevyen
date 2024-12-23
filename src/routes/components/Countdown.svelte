@@ -57,7 +57,9 @@
       updateVisibility(minuteElement, minutes);
 
       if (months <= 0 && days <= 0 && hours <= 0 && minutes <= 0 && secondElement) {
-        secondElement.style.fontSize = "1.6em";
+        secondElement.innerText = "Kommer snart...";
+        secondElement.style.width = '100vw';
+        secondElement.classList.add('coming-soon')
       }
       
 
@@ -103,6 +105,15 @@
 </div>
 
 <style nonce="%sveltekit.nonce%">
+  :global(.coming-soon) {
+    font-size: 1.6em;
+    font-family: "Bebas Neue";
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
   .row1, .row2 {
     display: flex;
     flex-direction: row;
@@ -180,6 +191,9 @@
     span {
       font-size: 1rem; 
     }
+    :global(.coming-soon) {
+      font-size: 1.2rem;
+    }
   }
 
   @media (max-width: 540px) {
@@ -208,6 +222,9 @@
     }
     span {
       font-size: 0.85rem; 
+    }
+   :global(.coming-soon) {
+      font-size: 1.5rem;
     }
   }
   @media (max-width: 1024px) and (max-height:600px) {

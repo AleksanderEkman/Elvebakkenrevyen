@@ -11,7 +11,7 @@
     export let data; // Form data passed from the parent
     export let showContent: boolean;
     let mount = false;
-    
+
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
@@ -22,7 +22,7 @@
         if (showContent) { 
             setTimeout(() => {
                 mount = true;
-            }, 5);
+        }, 1);
         }
     });
 
@@ -84,8 +84,8 @@
                     <small>&nbsp;</small>
                 {/if}
             </div>
-            <div style="position: absolute; left: -99999px;">
-                <label for="hp">Your Website</label>
+            <div aria-hidden="true" style="position: absolute; left: -99999px;;">
+                <label for="website-url">Your Website</label>
                 <input type="text" id="website-url" bind:value={$form.url}  name="url" tabindex="-1" autocomplete="off" />
             </div>
 
