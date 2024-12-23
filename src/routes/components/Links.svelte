@@ -60,6 +60,7 @@
     }
   
     li a {
+      z-index: 2;
       color: rgb(255, 255, 255, 0.5);
       text-decoration: none;
       transition: color 0.3s ease, transform 0.2s ease;
