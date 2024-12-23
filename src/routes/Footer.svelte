@@ -1,38 +1,44 @@
-<footer aria-label="Footer Informasjon">
-  <div class="content">
-    <div class="footer-col">
-      <p id="header">
-        © 2025 Elvebakkenrevyen
-      </p>
-      <p id="credit">
-        Designet og utviklet av <a href="mailto:aleksanderekman@elvebakkenrevyen.no">Aleksander Ekman</a>
-      </p>
-    </div>
-    <div class="footer-col">
-      <p id="header">
-        Adresse
-      </p>
-      <ul>
-        <li>
-          <a href="https://www.google.com/maps/place/Vestre+Elvebakke+3" target="_blank" rel="noopener noreferrer">
-            Vestre Elvebakke 3<br>
-            0182 Oslo
-          </a>
-        </li>
+<script lang="ts">
+  import { onMount } from 'svelte';
+  export let showContent: boolean;
+</script>
 
-      </ul>
-    </div>
-    <div class="footer-col">
-      <p id="header">
-        Kontakt oss
-      </p>
-      <ul>
-        <li><a href="mailto:sjefer@elvebakkenrevyen.no">sjefer@elvebakkenrevyen.no</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+{#if showContent}
+  <footer aria-label="Footer Informasjon">
+    <div class="content">
+      <div class="footer-col">
+        <p id="header">
+          © 2025 Elvebakkenrevyen
+        </p>
+        <p id="credit">
+          Designet og utviklet av <a href="mailto:aleksanderekman@elvebakkenrevyen.no">Aleksander Ekman</a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p id="header">
+          Adresse
+        </p>
+        <ul>
+          <li>
+            <a href="https://www.google.com/maps/place/Vestre+Elvebakke+3" target="_blank" rel="noopener noreferrer">
+              Vestre Elvebakke 3<br>
+              0182 Oslo
+            </a>
+          </li>
 
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p id="header">
+          Kontakt oss
+        </p>
+        <ul>
+          <li><a href="mailto:sjefer@elvebakkenrevyen.no">sjefer@elvebakkenrevyen.no</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+{/if}
 <style>
   footer {
     overflow: hidden;
