@@ -15,7 +15,7 @@
         await tick();
         setTimeout(async () => {
             ContactSection = (await import('./ContactSection.svelte')).default;
-        }, 700);
+        }, 750);
     });
 
 </script>

@@ -23,7 +23,7 @@
       height = '100svh';
     }
     if (window.matchMedia("(max-width: 540px)").matches) {
-      scrollAmplifier = 0.9;
+      scrollAmplifier = 0.7;
     } else {
       scrollAmplifier = -1.1;
     }
@@ -42,8 +42,8 @@
       <div class="fade" in:fade={{ duration: 800 }}>
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
           <!-- Nøstede komponenter -->
-          <Slideshow />
-          <Countdown />
+          <Slideshow /> <!-- Slideshow for å vise tidligere konsepter -->
+          <Countdown /> <!-- Countdown for å vise tid til konseptslipp -->
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
   .fade {
     z-index: 1;
   }
-
+  
   .hero::before {
     content: ''; 
     position: absolute;

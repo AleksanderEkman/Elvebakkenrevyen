@@ -11,7 +11,6 @@
     export let data; // Form data passed from the parent
     export let showContent: boolean;
     
-    let isMounted = false;
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
@@ -36,13 +35,12 @@
         footer = document.querySelector('footer');
         setTimeout(() => {
             updateContactSectionHeight();
-            isMounted = true;
         }, 500);
     });
 </script>
 
 <section bind:this={contactSection} class="contact">
-    {#if showContent && isMounted}
+    {#if showContent}
         <form in:fade={{ duration: 500 }} 
         method="POST" 
         use:enhance 
@@ -97,7 +95,11 @@
                         <small>&nbsp;</small>
                     {/if}
                 </div>
-                
+                <div style="position: absolute; left: -99999px;">
+                    <label for="hp">Your Website</label>
+                    <input type="text" id="website-url" bind:value={$form.url}  name="url" tabindex="-1" autocomplete="off" />
+                </div>
+
                 <div class="progress">
                     {#if !$delayed && !$message}
                         <button type="submit">Send</button>

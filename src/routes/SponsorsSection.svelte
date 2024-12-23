@@ -104,7 +104,7 @@
       font-size: 4rem;
     }
   }
-  @media (max-width: 540px) {
+  @media (max-width: 550px) {
     h2 {
       font-size: 3.25rem;
       margin-bottom: 0rem;

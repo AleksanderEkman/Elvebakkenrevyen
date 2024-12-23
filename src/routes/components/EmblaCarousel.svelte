@@ -159,7 +159,7 @@
       width: 100vw;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 821px) {
     .embla {
       --slide-size: 30%;
       --slide-height: 17rem;
@@ -171,7 +171,7 @@
       font-size: 2rem;
     }
   }
-  @media (max-width: 540px) {
+  @media (max-width: 550px) {
     .embla {
       --slide-size: 75%;
       --slide-height: 22.5rem;

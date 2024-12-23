@@ -37,8 +37,12 @@ export const actions = {
         }
 
         // Henter ut data fra kontaktskjemaet
-        const { name, email, body, phone } = form.data;
-
+        const { name, email, body, phone, url } = form.data;
+        console.log(form.data)
+        if (url) {
+            // Returnerer 400 Bad Request hvis hp-feltet er utfylt
+            return fail(400, { form, message: 'Failed to send email' });
+        }
         // Sanitiserer og trimmer meldingen
         const sanitizedBody = sanitizeHtml(body, {
             allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
