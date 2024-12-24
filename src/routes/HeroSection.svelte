@@ -57,8 +57,6 @@
 
 <style>
   .hero {
-    margin-top: 0%;
-    z-index: 1;
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
@@ -66,12 +64,9 @@
     align-items: center;
     width: 100vw;
     position: relative;
-    text-transform: uppercase;
     overflow: hidden;
-    padding: 0;
     background-size: cover;
     background-position: center;
-    will-change: background-position-y;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
@@ -101,17 +96,16 @@
   
   .hero-title {
     user-select: none;
-    margin-top: 0%;
     @apply text-8xl font-bold mb-4;
     font-family: var(--font-header);
-    background: linear-gradient(90deg, #ffffff, #ffffff);
+    background: #ffffff;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 
-    0 0 10px rgba(255, 255, 255, 0.25), 
-    0 0 20px rgba(255, 255, 255, 0.15), 
-    0 0 30px rgba(255, 255, 255, 0.1);
+                0 0 10px rgba(255, 255, 255, 0.25), 
+                0 0 20px rgba(255, 255, 255, 0.15), 
+                0 0 30px rgba(255, 255, 255, 0.1);
     letter-spacing: 3px;
   }
 
@@ -126,14 +120,12 @@
   /* Media queries for responsiveness */
   @media (max-width: 1440px) {
     .hero-title {
-      margin-top: 0%;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-      0 0 10px rgba(255, 255, 255, 0.25), 
-      0 0 15px rgba(255, 255, 255, 0.15), 
-      0 0 20px rgba(255, 255, 255, 0.1);
+                  0 0 10px rgba(255, 255, 255, 0.25), 
+                  0 0 15px rgba(255, 255, 255, 0.15), 
+                  0 0 20px rgba(255, 255, 255, 0.1);
       margin-top: -2.5%;
       font-size: 4.5em;
-      user-select: none;
     }
   }
 
@@ -156,16 +148,11 @@
     .hero {
       display: flex; /* Ensure flexbox is applied */
       justify-content: flex-start;
-      align-items: center; /* Center items vertically if needed */
-      background-size: cover;
       background-attachment: scroll;
-      background-position: top; 
-      overflow: hidden; /* Prevent overflow if needed */
-      scroll-behavior: smooth; /* Enable smooth scrolling for mobile */
     }
 
     .hero-title {
-      margin-top: 10%;
+      margin-top: 9%;
       text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.2), 
         0 0 7px rgba(255, 255, 255, 0.2), 
@@ -175,11 +162,7 @@
       -webkit-background-clip: initial;
       background-clip: initial;
       -webkit-text-fill-color: initial;
-      color: #ffffff; /* Fallback color */
       padding: 5px;
-      text-align: center; /* Center title text for better readability */
-      width: 100%; /* Ensure it takes full width */
-      box-sizing: border-box; /* Include padding in width calculation */
     }
   }
 

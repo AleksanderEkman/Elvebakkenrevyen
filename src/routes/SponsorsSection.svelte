@@ -38,28 +38,16 @@
 <style nonce="%sveltekit.nonce%">
   .cont {
     height: 49rem;
-    padding: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     position: relative;
-    text-transform: uppercase;
     overflow: hidden;
     font-family: var(--font-header);
-    text-align: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: none;
-    transition: background-image 1s ease-in-out;
   }
-
-  .cont.loaded {
-    background-image: var(--contBackground);
-  }
-
   .cont::before {
     content: '';
     position: absolute;
@@ -86,7 +74,6 @@
     font-size: 5rem;
     margin-bottom: 2rem;
     user-select: none;
-    z-index: 2;
   }
   .text {
     z-index: 2;

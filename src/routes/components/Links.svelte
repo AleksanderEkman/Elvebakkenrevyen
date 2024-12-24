@@ -35,16 +35,13 @@
     ul {
       user-select: none;
       z-index: 3;
-      color: var(--color-text1);
       list-style-type: none;
-      text-transform: none;
       font-size: 1.2em;
       padding: 2em;
       width: 5%;
     }
 
     li {
-      color: var(--color-text1);
       padding-bottom: 10px;
     
     }

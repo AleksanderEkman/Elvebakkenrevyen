@@ -140,7 +140,6 @@
       text-align: center;
       justify-content: center;
       min-width: 15rem;
-      flex: 1 1 100px;
   }
   p {
     font-family: Helvetica, sans-serif;

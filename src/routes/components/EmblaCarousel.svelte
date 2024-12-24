@@ -138,7 +138,6 @@
     margin-top: -0.5rem;
     display: flex;
     justify-self: center;
-    align-self: center;
     content: '';
     width: 0%;
     height: 5px;

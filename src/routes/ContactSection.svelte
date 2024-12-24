@@ -30,14 +30,14 @@
 
 
 {#if showContent && mount}
-    <form in:fade={{ duration: 400 }} 
+    <form
     method="POST" 
     use:enhance 
     class="contact-field">
         <div class="contact-content">
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>
-                <p>Er det noe du lurer på? Send oss en mail da vel!</p>
+                <p>Er det noe du lurer på?<br>Send oss en mail da vel!</p>
             </div>
 
             <div class="input-container">

@@ -56,10 +56,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
     border-radius: 12.5px;
     user-select: none;
-    margin-top: 0; /* Removed percentage for consistency */
     z-index: 5;
   }
 
@@ -94,7 +92,6 @@
     font-family: var(--font-header);
     color: #fff;
     margin-bottom: 1rem;
-    text-align: center;
   }
 
   @media (max-width: 1450px) {

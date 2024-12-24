@@ -8,17 +8,18 @@
     let showContent = false;
     export let data;
 
-    let contactSection: HTMLElement;
+    let contactSectionRef: HTMLElement;
+    let sponsorsSectionRef: HTMLElement;
     let footer: HTMLElement | null;
 
     const updateContactSectionHeight = () => {
-        if (contactSection && footer) {
+        if (contactSectionRef && footer) {
             const footerHeight = footer.offsetHeight;
             if (window.matchMedia('(min-width: 768px)').matches && !navigator.userAgent.includes('Mobile')) {
                 console.log("run")
-                contactSection.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
+                contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
             } else {
-                contactSection.style.height = `auto`;
+                contactSectionRef.style.height = `auto`;
             }
         }
     };
@@ -27,9 +28,15 @@
         showContent = true;
         SponsorsSection = (await import('./SponsorsSection.svelte')).default;
         await tick();
-        setTimeout(async () => {
-            ContactSection = (await import('./ContactSection.svelte')).default;
-        }, 1000);
+
+        const observer = new IntersectionObserver(async (entries) => {
+            if (entries[0].isIntersecting) {
+                ContactSection = (await import('./ContactSection.svelte')).default;
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(sponsorsSectionRef);
 
         footer = document.querySelector('footer');
         updateContactSectionHeight();
@@ -47,10 +54,12 @@
 <main>
     <HeroSection {showContent}/>
     {#if SponsorsSection}
-        <svelte:component this={SponsorsSection} {showContent}/>    
+        <section bind:this={sponsorsSectionRef}>
+            <svelte:component this={SponsorsSection} {showContent}/>
+        </section>
     {/if}
     {#if showContent}
-        <section bind:this={contactSection} class="contact">
+        <section bind:this={contactSectionRef} class="contact">
             {#if ContactSection}
                 <svelte:component this={ContactSection} {data} {showContent}/>
             {/if}
