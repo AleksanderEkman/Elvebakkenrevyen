@@ -346,7 +346,7 @@
             gap: 1rem;
         }
         .contact-field {
-            width: 90%;
+            width: 97.5%;
         }
         .country-code {
             left: 7.5px;
