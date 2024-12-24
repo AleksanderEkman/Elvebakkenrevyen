@@ -18,13 +18,17 @@
     };
   });
 </script>
+<!-- Cont er bare continuation -->
 <div class="cont" class:loaded={contBackgroundLoaded} style="background-image: {contBackground};"> 
+  <!-- Lazy loading -->
   {#if showContent}
     <div class="fade" in:fade={{ duration: 500 }}>
       <div class="flex">
         <div class="text">
+          <!-- Overskrift -->
           <h2>Sponsorer</h2>
         </div>
+        <!-- Importer EmblaCarousel - se EmblaCarousel.svelte i /components -->
         <EmblaCarousel />
       </div>
     </div>
@@ -33,41 +37,29 @@
 
 <style nonce="%sveltekit.nonce%">
   .cont {
-    height: 100vh;
-    padding: 0;
+    height: 49rem;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     position: relative;
-    text-transform: uppercase;
     overflow: hidden;
     font-family: var(--font-header);
-    text-align: center;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     background-repeat: no-repeat;
-    background-image: none;
-    transition: background-image 1s ease-in-out;
   }
-
-  .cont.loaded {
-    background-image: var(--contBackground);
-  }
-
   .cont::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
     width: 100%;
-    height: 100vh;
-    z-index: 1;
+    height: 49rem;
+    z-index: 2;
   }
   .flex {
-    margin-top: -8rem;
+    margin-top: -5rem;
     z-index: 1;
     width: 100vw;
     flex-direction: column;
@@ -82,17 +74,24 @@
     font-size: 5rem;
     margin-bottom: 2rem;
     user-select: none;
-    z-index: 2;
   }
   .text {
     z-index: 2;
+  }
+  @media (min-width: 1450px) {
+    .cont {
+      height: 90vh;
+    }
+    .cont::before {
+      height: 90vh;
+    }
   }
   @media (max-width: 1450px) {
     h2 {
       font-size: 4rem;
     }
   }
-  @media (max-width: 540px) {
+  @media (max-width: 550px) {
     h2 {
       font-size: 3.25rem;
       margin-bottom: 0rem;
@@ -101,5 +100,14 @@
       background-position: top;
     }
   }
-  
+    
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .cont {
+      height: 40rem;
+    }
+    h2 {
+      font-size: 3.5rem;
+    }
+  }
 </style>

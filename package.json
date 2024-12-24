@@ -56,6 +56,8 @@
 		"embla-carousel-wheel-gestures": "^8.0.1",
 		"fortawesome": "^0.0.1-security",
 		"googleapis": "^144.0.0",
+		"inapp-spy": "^4.1.1",
+		"lenis": "^1.1.18",
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.get": "^4.4.2",
 		"lodash.isequal": "^4.5.0",

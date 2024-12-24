@@ -20,10 +20,9 @@ const csrf = (allowedPaths: string[]): Handle =>
                 403,
                 `Cross-site ${event.request.method} form submissions are forbidden`
             );
-            if (event.request.headers.get('accept') === 'application/json') {
-                return json(csrfError.body, { status: csrfError.status });
-            }
-            return text(csrfError.body.message, { status: csrfError.status });
+            return event.request.headers.get('accept') === 'application/json'
+                ? json(csrfError.body, { status: csrfError.status })
+                : text(csrfError.body.message, { status: csrfError.status });
         }
 
         return resolve(event);
@@ -39,21 +38,20 @@ function isFormContentType(request: Request) {
 }
 
 const securityHeaders = {
-    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'X-Frame-Options': 'DENY',
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'geolocation=(self), microphone=()',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://bakkarevydocker-o869w.ondigitalocean.app',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Vary': 'Origin'
 };
 
-const csrfProtection = csrf(['/']); // Add paths that should be exempt from CSRF protection
+const csrfProtection = csrf(['/']);
 
 export const handle: Handle = async ({ event, resolve }) => {
-
     if (event.request.method === 'OPTIONS') {
         return new Response(null, {
             headers: {
@@ -64,16 +62,24 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     // Apply CSRF protection
-    const csrfResult = await csrfProtection({ event, resolve });
+    const csrfResult = await csrfProtection({ 
+        event, 
+        resolve: async (event) => {
+            const response = await resolve(event);
+            // Apply security headers
+            Object.entries(securityHeaders).forEach(
+                ([header, value]) => response.headers.set(header, value)
+            );
+            return response;
+        }
+    });
+
     if (csrfResult !== undefined) {
+        Object.entries(securityHeaders).forEach(
+            ([header, value]) => csrfResult.headers.set(header, value)
+        );
         return csrfResult;
     }
 
-    const response = await resolve(event);
-
-    Object.entries(securityHeaders).forEach(
-        ([header, value]) => response.headers.set(header, value)
-    );
-
-    return response;
-};
+    return csrfResult;
+}

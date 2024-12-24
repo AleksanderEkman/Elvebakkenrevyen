@@ -10,125 +10,100 @@
 
     export let data; // Form data passed from the parent
     export let showContent: boolean;
-    
-    let isMounted = false;
+    let mount = false;
+
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
         taintedMessage: 'Er du sikker på at du vil forlate siden?',
         validators: zod(contactSchema)
     });
 
-    let contactSection: HTMLElement;
-    let footer: HTMLElement | null;
-
-    const updateContactSectionHeight = () => {
-        if (contactSection && footer) {
-            const footerHeight = footer.offsetHeight;
-            if (window.matchMedia('(min-width: 768px)').matches) {
-                contactSection.style.height = `calc(100svh - ${footerHeight}px)`;
-            } else {
-                contactSection.style.height = `auto`;
-            }
+    onMount(() => {
+        if (showContent) { 
+            setTimeout(() => {
+                mount = true;
+        }, 1);
         }
-    };
-
-    onMount(async () => {
-        footer = document.querySelector('footer');
-        setTimeout(() => {
-            updateContactSectionHeight();
-            isMounted = true;
-        }, 500);
     });
+
 </script>
 
-<section bind:this={contactSection} class="contact">
-    {#if showContent && isMounted}
-        <form in:fade={{ duration: 500 }} 
-        method="POST" 
-        use:enhance 
-        class="contact-field">
-            <div class="contact-content">
-                <div class="desc">
-                    <h2 id="contact-header">Kontakt oss</h2>
-                    <p>Er det noe du lurer på? Send oss en mail da vel!</p>
-                </div>
- 
+
+{#if showContent && mount}
+    <form
+    method="POST" 
+    use:enhance 
+    class="contact-field">
+        <div class="contact-content">
+            <div class="desc">
+                <h2 id="contact-header">Kontakt oss</h2>
+                <p>Er det noe du lurer på?<br>Send oss en mail da vel!</p>
+            </div>
+
+            <div class="input-container">
+                <label for="name">Navn *</label>
+                <input type="text" id="name" name="name" bind:value={$form.name} required />
+                {#if $errors.firstName}
+                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                {:else}
+                    <small>&nbsp;</small>
+                {/if}
+            </div>
+
+            <div class="info">
                 <div class="input-container">
-                    <label for="name">Navn *</label>
-                    <input type="text" id="name" name="name" bind:value={$form.name} required />
-                    {#if $errors.firstName}
-                        <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                    <label for="email">E-post *</label>
+                    <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
+                    {#if $errors.email}
+                        <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig e-postadresse</small>
                     {:else}
                         <small>&nbsp;</small>
                     {/if}
                 </div>
-
-                <div class="info">
-                    <div class="input-container">
-                        <label for="email">E-post *</label>
-                        <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
-                        {#if $errors.email}
-                            <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig e-postadresse</small>
-                        {:else}
-                            <small>&nbsp;</small>
-                        {/if}
+                <div class="input-container phone-input">
+                    <label for="phone">Telefon <small>(Valgfritt)</small></label>
+                    <div class="phone-wrapper">
+                        <span class="country-code">+47</span>
+                        <input type="tel" id="phone" name="phone" bind:value={$form.phone} />
                     </div>
-                    <div class="input-container phone-input">
-                        <label for="phone">Telefon <small>(Valgfritt)</small></label>
-                        <div class="phone-wrapper">
-                            <span class="country-code">+47</span>
-                            <input type="tel" id="phone" name="phone" bind:value={$form.phone} />
-                        </div>
 
-                        {#if $errors.phone}
-                            <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig telefonnummer</small>
-                        {:else}
-                            <small>&nbsp;</small>
-                        {/if}
-                    </div>
-                </div>
-                
-                <div class="input-container">
-                    <label for="message">Melding *</label>
-                    <textarea id="message" name="body" bind:value={$form.body} required></textarea>
-                    {#if $errors.body}
-                        <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig melding (må ha 50-500 tegn)</small>
+                    {#if $errors.phone}
+                        <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig telefonnummer</small>
                     {:else}
                         <small>&nbsp;</small>
-                    {/if}
-                </div>
-                
-                <div class="progress">
-                    {#if !$delayed && !$message}
-                        <button type="submit">Send</button>
-                    {:else if $message}
-                        <p in:fade={{duration:50 }} class="icon" id="spinner" aria-live="polite"><FontAwesomeIcon icon={faCheck}/></p>
-                    {:else}
-                        <img in:fade={{duration:50}} id="spinner" src={spinner} alt="Sender.." aria-live="polite">
                     {/if}
                 </div>
             </div>
-        </form>
-    {/if}
-</section>
+            
+            <div class="input-container">
+                <label for="message">Melding *</label>
+                <textarea id="message" name="body" bind:value={$form.body} required></textarea>
+                {#if $errors.body}
+                    <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig melding (må ha 50-500 tegn)</small>
+                {:else}
+                    <small>&nbsp;</small>
+                {/if}
+            </div>
+            <div aria-hidden="true" style="position: absolute; left: -99999px;;">
+                <label for="website-url">Your Website</label>
+                <input type="text" id="website-url" bind:value={$form.url}  name="url" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="progress">
+                {#if !$delayed && !$message}
+                    <button type="submit">Send</button>
+                {:else if $message}
+                    <p in:fade={{duration:50 }} class="icon" id="spinner" aria-live="polite"><FontAwesomeIcon icon={faCheck}/></p>
+                {:else}
+                    <img in:fade={{duration:50}} id="spinner" src={spinner} alt="Sender.." aria-live="polite">
+                {/if}
+            </div>
+        </div>
+    </form>
+{/if}
+
 
 <style>
-    .contact {
-        padding:0.75rem;
-        color: white;
-        background: linear-gradient(135deg, rgba(0, 0, 10, 1) 0%, rgba(10, 10, 20, 1) 50%, rgba(20, 20, 30, 1) 80%, rgba(30, 30, 40, 1) 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 100vh;
-        position: relative;
-        text-transform: none;
-        overflow: hidden;
-        text-align: center;
-        transition: background-image 1s ease-in-out;
-    }
 
     .contact-field {
         font-size: 1.2rem;
@@ -240,7 +215,7 @@
         --tw-ring-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
     }
     input:hover, textarea:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.06);
     }
 
     .progress {
@@ -299,7 +274,7 @@
     }
 
     button:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.06);
     }
 
     button:active {
@@ -328,7 +303,7 @@
         }
 
         #message {
-            height: 5rem;
+            height: 6.25rem;
         }
     }
 
@@ -371,7 +346,7 @@
             gap: 1rem;
         }
         .contact-field {
-            width: 90%;
+            width: 97.5%;
         }
         .country-code {
             left: 7.5px;

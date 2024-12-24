@@ -35,16 +35,13 @@
     ul {
       user-select: none;
       z-index: 3;
-      color: var(--color-text1);
       list-style-type: none;
-      text-transform: none;
       font-size: 1.2em;
       padding: 2em;
       width: 5%;
     }
-  
+
     li {
-      color: var(--color-text1);
       padding-bottom: 10px;
     
     }
@@ -60,12 +57,25 @@
     }
   
     li a {
+      z-index: 2;
       color: rgb(255, 255, 255, 0.5);
       text-decoration: none;
       transition: color 0.3s ease, transform 0.2s ease;
       white-space: nowrap;
     }
-  
+    li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--color-text1);
+      transition: width 0.2s ease;
+    }
+    li a:hover::after {
+      width: 100%;
+    }
     li a:hover {
       color: var(--color-text1);
       transform: translateY(-2px);
@@ -87,7 +97,8 @@
   
     @media (max-width: 480px) {
       ul {
-        font-size: 0.9em;
+        font-size: 0.85em;
+        padding: 0em;
       }
     }
   

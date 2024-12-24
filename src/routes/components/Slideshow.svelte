@@ -4,7 +4,7 @@
 
   let images: Record<string, () => Promise<{ default: string }>>;
 
-  // Import all images for the slideshow
+  // Importer alle bilder fra assets mappa
   if (navigator.userAgent.includes('Mobile')) {
     images = import.meta.glob<{ default: string }>('$lib/assets/slideshow/mobile/*.webp');
   } else {
@@ -20,11 +20,11 @@
         Object.values(images).map(module => module())
       ).then(images => images.map(img => img.default));
 
-      if (imageArray.length === 0) return; // Ensure imageArray is not empty
+      if (imageArray.length === 0) return; // Passer på at imageArray ikke er tom
 
       const interval = setInterval(() => {
         imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-      }, 5000); // Change image every 5 seconds
+      }, 4250); // Change image every 5 seconds
 
       return () => clearInterval(interval); // Cleanup interval on component unmount
     })();
@@ -32,7 +32,7 @@
 </script>
 
 <div class="overflow" role="region" aria-label="Slideshow over Elvebakkenrevy-konseptene" aria-roledescription="carousel">
-  <p class="slideshow-text">Fra skaperne av:</p>
+  <p class="slideshow-text">Fra skaperne av</p>
   <div class="slideshow" aria-live="polite" aria-atomic="true">
     {#if imageArray.length > 0}
       {#key imageIndex}
@@ -56,10 +56,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: auto;
     border-radius: 12.5px;
     user-select: none;
-    margin-top: 0; /* Removed percentage for consistency */
     z-index: 5;
   }
 
@@ -94,7 +92,6 @@
     font-family: var(--font-header);
     color: #fff;
     margin-bottom: 1rem;
-    text-align: center;
   }
 
   @media (max-width: 1450px) {

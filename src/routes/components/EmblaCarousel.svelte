@@ -8,10 +8,12 @@
   let sponsorImages: string[] = [];
   let sponsors: {name: string, url: string}[] = [];
   
+  // EmblaCarousel options
   /** @type {import('embla-carousel').EmblaOptionsType} */
   const OPTIONS = { loop: true };
 
   onMount(() => {
+    // Liste over alle sponsorer samt URL
     sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
         {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
         {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
@@ -21,14 +23,17 @@
       ]
 
     const loadImages = async () => {
+      // Importerer alle bildene fra lib/assets/sponsors
       const images = import.meta.glob<{ default: string }>('$lib/assets/sponsors/*.webp');
       for (const path in images) {
+        // Henter bildene og legger de i en liste, importerer bildene som moduler
         const imageModule = await images[path]();
         sponsorImages = [...sponsorImages, imageModule.default];
       }
     };
 
     loadImages().then(() => {
+      // Oppretter en ny EmblaCarousel med emblaAPI
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
     });
 
@@ -38,9 +43,11 @@
   });
 </script>
 
+<!-- Struktur for slideshow -->
 <section bind:this={emblaNode} class="embla">
   <div bind:this={viewportNode} class="embla__viewport">
     <div class="embla__container">
+      <!-- Itererer over hvert sponsorbilde -->
       {#each sponsorImages as image, index}
         <div class="embla__slide">
           <div class="embla__slide__img">
@@ -53,7 +60,10 @@
             />
           </div>
           <div class="text">
-            <p><a href="{sponsors[index].url}" target={'_blank'}>{sponsors[index].name}</a></p>
+            <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
+              <!-- Legger til tekst basert på indeks -->
+              {sponsors[index].name}
+          </a></p>
           </div>
         </div>
       {/each}
@@ -61,7 +71,7 @@
   </div>
 </section>
 
-<style nonce="%sveltekit.nonce%">
+<style>
   .embla {
     z-index: 2;
     margin: auto;
@@ -122,10 +132,22 @@
   }
   .text p a {
     user-select: none;
+    display: inline-block;
   }
-  .text a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+  .text p a::after {
+    margin-top: -0.5rem;
+    display: flex;
+    justify-self: center;
+    content: '';
+    width: 0%;
+    height: 5px;
+    left: 0;
+    background-color: var(--color-text1);
+    transition: width 0.2s ease;
+    border-radius: 1px;
+  }
+  .text p a:hover::after {
+    width: 100%;
   }
   @media (max-width: 1450px) {
     .embla {
@@ -135,12 +157,20 @@
     .embla__viewport {
       width: 100vw;
     }
-    .text p {
-      font-size: 2.25rem;
-    }
-
   }
-  @media (max-width: 540px) {
+  @media (max-width: 821px) {
+    .embla {
+      --slide-size: 30%;
+      --slide-height: 17rem;
+    }
+    .embla__viewport {
+      width: 100vw;
+    }
+    .text p {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 550px) {
     .embla {
       --slide-size: 75%;
       --slide-height: 20rem;
@@ -160,6 +190,16 @@
       border-radius: 10px;
       box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  }  
+
+  /* Media query for mobile landscape mode */
+  @media (max-width: 933px) and (orientation: landscape) {
+    .embla {
+      --slide-height: 15rem;
+    }
+    .text p {
+      font-size: 1.75rem;
     }
   }
 </style>

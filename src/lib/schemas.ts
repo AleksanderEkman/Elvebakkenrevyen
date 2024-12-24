@@ -6,5 +6,6 @@ export const contactSchema = z.object({
     phone: z.string().optional().default('').refine(value => value === '' || /^\d{8}$/.test(value), {
         message: "Invalid phone number format"
     }),
-    body: z.string().min(50).max(500)
+    body: z.string().min(50).max(500),
+    url: z.string().optional().default('')
 });
