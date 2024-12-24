@@ -2,7 +2,6 @@
   import { fly, fade } from 'svelte/transition';
   import background_image from '$lib/assets/Elvebakken.webp';
   import { onMount } from 'svelte';
-  import Countdown from './components/Countdown.svelte';
   import Slideshow from './components/Slideshow.svelte';
   import Links from './components/Links.svelte';
   import InAppSpy from "inapp-spy";
@@ -44,7 +43,6 @@
         <div class="fly" in:fly={{ y: 200, duration: 800 }}>
           <!-- Nøstede komponenter -->
           <Slideshow /> <!-- Slideshow for å vise tidligere konsepter -->
-          <Countdown /> <!-- Countdown for å vise tid til konseptslipp -->
         </div>
       </div>
     </div>
