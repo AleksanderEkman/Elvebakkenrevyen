@@ -65,6 +65,7 @@
                 <svelte:component this={ContactSection} {data} {showContent}/>
             {/if}
         </section>
+        <TicketSection/>
     {/if}
 </main>
 
