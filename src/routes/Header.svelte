@@ -28,89 +28,109 @@
             <div id="more">
                 <p id="text">Revymedlemmer</p>
                 <ul class="submenu" in:fade={{duration: 500}}>
-                    <li><a href="/aktører">Aktører</a></li>
-                    <li><a href="/sjefer">Grupper</a></li>
-                  </ul>
+                    <li id="item"><a href="/aktører">Aktører</a></li>
+                    <li id="item"><a href="/grupper">Revygrupper</a></li>
+                </ul>
             </div>
-          </li>
+        </li>
         <li><a href="/kontakt">Kontakt oss</a></li>
     </ul>
 </header>
 
 <style>
     header {
-        font-size: 1.175rem;
+        font-family: 'Montserrat', sans-serif;
+        user-select: none;
+        font-size: 1.185rem;
         top: 0;
         z-index: 4;
         position: fixed;
-        width: 100vw;
+        width: 100%;
         color: white;
         text-align: center;
         display: flex;
         justify-content: flex-end;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
     }
-
+    
     ul {
         transition: all 0.5s;
-        top: 0;
-        z-index: 4;
         list-style-type: none;
-        padding: 1rem;
+        padding: 0; /* Reset padding to avoid extra space */
         display: flex;
         justify-content: space-around;
         border-radius: 0 0 0 25px;
-        width: 20%;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-top: none;
-        border-right: none;
+        align-items: center; /* Center items vertically */
+        margin: 0; /* Reset default margin */
+        padding: 0.75rem;
     }
+    
     :global(.active) {
-        background-color: rgba(23, 23, 23, 0.6);
-        backdrop-filter: blur(20px);
+        background-color: rgba(23, 23, 23, 0.6); /* Slightly darker for better visibility */
+        backdrop-filter: blur(15px);
     }
+    
     ul li {
-        display: inline;
-        margin-right: 10px;
+        margin-left: 20px; /* Reduced margin for a more compact look */
         display: flex;
         justify-content: center;
     }
-
+    
     ul li a {
         color: white;
         text-decoration: none;
+        padding: 0.5rem 1rem; 
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
     }
-
+    
     ul li a:hover {
-        text-decoration: underline;
+        background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+        transform: scale(1.05); /* Slightly enlarge on hover for emphasis */
     }
+    
     .submenu {
-        transition: all 0.25s;
-        display: block;
-        width: 100%;
-        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease; /* Smooth transitions for opacity and movement */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto; /* Adjusted to fit content naturally */
+        opacity: 0; /* Start hidden for transition effect */
         position:absolute;
         top: 100%;
         right: 0;
-        background-color: rgba(23, 23, 23, 0.6);
-        border: none;
-        border-radius: 5px;
-        backdrop-filter: blur(20px);
-        z-index: 3;
-        margin-top: 1rem;
+        background-color: rgba(23, 23, 23, 0.6); /* Darker submenu for better contrast */
+        border-radius: 0 0 25px 25px;
+        backdrop-filter: blur(15px);
+        z-index: 2;
+        gap: 0.2rem; 
+        padding-top: 0;
     }
+    
+    #item {
+        margin: 0;
+        padding: 0.3rem;
+        padding-top:0;
+    }
+    
     #more {
         position: relative;
         cursor: pointer !important;
+        padding: 0.5rem 1rem; 
     }
+    
     #more:hover > .submenu {
-       opacity: 1;
+       opacity: 1; /* Show submenu on hover */
+       transform: translateY(10px); /* Slide down effect when appearing */
     }
-
+    
     .submenu li {
-        width: 100px;
+       width: auto; /* Allow items to size naturally based on content */
+       margin-bottom: 5px; /* Add space between submenu items */
     }
-
+    
     .submenu a {
-        padding: 0.5rem 0.5rem;
+       padding: 0.5rem; /* Consistent padding in submenu links */
     }
-</style>
+    </style>
+    
