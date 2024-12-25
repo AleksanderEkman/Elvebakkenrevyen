@@ -3,6 +3,7 @@
 
     import { onMount } from 'svelte';
     import Footer from './Footer.svelte';
+    import Header from './Header.svelte';
     import Lenis from 'lenis'
     import 'lenis/dist/lenis.css'
     
@@ -18,13 +19,14 @@
 
             const lenis = new Lenis({
                 autoRaf: true,
+
             });
         } 
         showContent = true;
     });
 </script>
 
-
+<Header />
 {@render children()}
 <Footer {showContent} />    
 
