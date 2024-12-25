@@ -5,6 +5,9 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
     preprocess: vitePreprocess(),
     kit: {
+        csrf : {
+            checkOrigin: true
+        },
         adapter: adapter(),
         csp: {
             mode: "nonce",
