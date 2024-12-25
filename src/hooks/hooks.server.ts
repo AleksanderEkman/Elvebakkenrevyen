@@ -1,41 +1,10 @@
-import { error, json, text, type Handle } from '@sveltejs/kit';
+import { error, type Handle } from '@sveltejs/kit';
+import { RateLimiter } from "sveltekit-rate-limiter/server";
 
-type ErrorResponse = {
-    status: number;
-    body: {
-        message: string;
-    };
-};
-
-const csrf = (allowedPaths: string[]): Handle =>
-    async ({ event, resolve }) => {
-        const forbidden =
-            ['POST', 'PUT', 'PATCH', 'DELETE'].includes(event.request.method) &&
-            event.request.headers.get('origin') !== event.url.origin &&
-            isFormContentType(event.request) &&
-            !allowedPaths.includes(event.url.pathname);
-
-        if (forbidden) {
-            const csrfError: ErrorResponse = error(
-                403,
-                `Cross-site ${event.request.method} form submissions are forbidden`
-            );
-            return event.request.headers.get('accept') === 'application/json'
-                ? json(csrfError.body, { status: csrfError.status })
-                : text(csrfError.body.message, { status: csrfError.status });
-        }
-
-        return resolve(event);
-    };
-
-function isContentType(request: Request, ...types: string[]) {
-    const type = request.headers.get('content-type')?.split(';', 1)[0].trim() ?? '';
-    return types.includes(type);
-}
-
-function isFormContentType(request: Request) {
-    return isContentType(request, 'application/x-www-form-urlencoded', 'multipart/form-data', 'text/plain');
-}
+const limiter = new RateLimiter({
+    IP: [75, 'd'], 
+    IPUA: [50, 'h'] 
+});
 
 const securityHeaders = {
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
@@ -49,9 +18,12 @@ const securityHeaders = {
     'Vary': 'Origin'
 };
 
-const csrfProtection = csrf(['/']);
-
 export const handle: Handle = async ({ event, resolve }) => {
+    // Apply rate limiting
+    if (await limiter.isLimited(event)) {
+        throw error(429, 'Too Many Requests');
+    }
+
     if (event.request.method === 'OPTIONS') {
         return new Response(null, {
             headers: {
@@ -61,25 +33,12 @@ export const handle: Handle = async ({ event, resolve }) => {
         });
     }
 
-    // Apply CSRF protection
-    const csrfResult = await csrfProtection({ 
-        event, 
-        resolve: async (event) => {
-            const response = await resolve(event);
-            // Apply security headers
-            Object.entries(securityHeaders).forEach(
-                ([header, value]) => response.headers.set(header, value)
-            );
-            return response;
-        }
-    });
+    const response = await resolve(event);
+    
+    // Apply security headers
+    Object.entries(securityHeaders).forEach(
+        ([header, value]) => response.headers.set(header, value)
+    );
 
-    if (csrfResult !== undefined) {
-        Object.entries(securityHeaders).forEach(
-            ([header, value]) => csrfResult.headers.set(header, value)
-        );
-        return csrfResult;
-    }
-
-    return csrfResult;
+    return response;
 }

@@ -2,10 +2,7 @@
     import { onMount } from 'svelte';
     import { faYoutube, faInstagram, faTiktok, faFacebook } from '@fortawesome/free-brands-svg-icons';
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
-  
-    onMount(() => {
-      // Any additional logic if needed
-    });
+    
   </script>
   
   <ul aria-label="Sosiale medier">
