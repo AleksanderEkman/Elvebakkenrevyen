@@ -1,4 +1,5 @@
 import { error, json, text, type Handle } from '@sveltejs/kit';
+import { RateLimiter } from "sveltekit-rate-limiter/server";
 
 type ErrorResponse = {
     status: number;
@@ -7,8 +8,14 @@ type ErrorResponse = {
     };
 };
 
+const limiter = new RateLimiter({
+    IP: [75, 'd'], 
+    IPUA: [40, 'd'] 
+});
+
 const csrf = (allowedPaths: string[]): Handle =>
     async ({ event, resolve }) => {
+        if (await limiter.isLimited(event)) error(429);
         const forbidden =
             ['POST', 'PUT', 'PATCH', 'DELETE'].includes(event.request.method) &&
             event.request.headers.get('origin') !== event.url.origin &&
