@@ -158,7 +158,7 @@
     }
     #logo {
         z-index: 2;
-        padding: 0.5rem;
+        padding: 1rem;
         top: 0;
         position: fixed;
         -webkit-user-drag: none;
@@ -268,6 +268,7 @@
         #logo {
             width: 60px;
             height: 60px;
+            padding: 0.5rem;
         }
         ul li a {
             width: 75%;
