@@ -9,7 +9,6 @@
     import spinner from '$lib/assets/spinner.svg';
 
     export let data; // Form data passed from the parent
-    export let showContent: boolean;
     let mount = false;
 
     // Initialize Superform with Zod schema
@@ -19,21 +18,20 @@
     });
 
     onMount(() => {
-        if (showContent) { 
-            setTimeout(() => {
-                mount = true;
+        setTimeout(() => {
+            mount = true;
         }, 1);
-        }
     });
 
 </script>
 
 
-{#if showContent && mount}
+{#if mount}
     <form
     method="POST" 
     use:enhance 
-    class="contact-field">
+    class="contact-field"
+    in:fade={{duration: 500}}>
         <div class="contact-content">
             <div class="desc">
                 <h2 id="contact-header">Kontakt oss</h2>

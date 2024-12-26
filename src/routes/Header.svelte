@@ -1,6 +1,7 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
     import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
  
     let navBar: HTMLElement;
     function checkScroll() {
@@ -22,6 +23,9 @@
 </script>
 
 <header>
+    <button on:click={() => goto('/')}>
+        <img id="logo" src="/favicon.png" alt="">
+    </button>
     <ul bind:this={navBar}>
         <li><a href="/billetter">Billetter</a></li>
         <li>
@@ -38,99 +42,123 @@
 </header>
 
 <style>
-    header {
-        font-family: 'Montserrat', sans-serif;
-        user-select: none;
-        font-size: 1.185rem;
-        top: 0;
-        z-index: 4;
-        position: fixed;
-        width: 100%;
-        color: white;
-        text-align: center;
-        display: flex;
-        justify-content: flex-end;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    :root {
+        --header-bg-color: rgba(23, 23, 23, 0.6);
+        --hover-bg-color: rgba(255, 255, 255, 0.1);
+        --transition-speed: 0.3s;
     }
-    
+
+    header {
+        font-family: var(--font-nav, sans-serif);
+        font-size: 1.185rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        transition: background-color var(--transition-speed) ease, 
+                    box-shadow var(--transition-speed) ease;
+        user-select: none;
+    }
+
     ul {
-        transition: all 0.5s;
         list-style-type: none;
-        padding: 0; /* Reset padding to avoid extra space */
         display: flex;
         justify-content: space-around;
-        border-radius: 0 0 0 25px;
-        align-items: center; /* Center items vertically */
-        margin: 0; /* Reset default margin */
+        align-items: center;
+        margin: 0;
         padding: 0.75rem;
+        border-radius: 0 0 0 25px;
+        transition: all 0.5s;
     }
-    
+
     :global(.active) {
-        background-color: rgba(23, 23, 23, 0.6); /* Slightly darker for better visibility */
+        background-color: var(--header-bg-color);
         backdrop-filter: blur(15px);
     }
-    
+
     ul li {
-        margin-left: 20px; /* Reduced margin for a more compact look */
+        margin-left: 20px;
         display: flex;
         justify-content: center;
     }
-    
+
     ul li a {
         color: white;
         text-decoration: none;
-        padding: 0.5rem 1rem; 
+        padding: 0.5rem 1rem;
         border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+        transition: background-color var(--transition-speed) ease, 
+                    transform 0.2s ease;
     }
-    
-    ul li a:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
-        transform: scale(1.05); /* Slightly enlarge on hover for emphasis */
+
+    ul li a:hover,
+    ul li a:focus {
+        background-color: var(--hover-bg-color);
+        transform: scale(1.05);
     }
-    
+    #logo {
+        transition: transform 0.3s ease;
+        width: 85px;
+        height: 85px;
+        padding: 1rem;
+    }
+    #logo:hover {
+       transform: scale(1.1) rotate(360deg);
+    }
     .submenu {
-        transition: opacity 0.25s ease, transform 0.25s ease; /* Smooth transitions for opacity and movement */
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: auto; /* Adjusted to fit content naturally */
-        opacity: 0; /* Start hidden for transition effect */
-        position:absolute;
+        position: absolute;
         top: 100%;
         right: 0;
-        background-color: rgba(23, 23, 23, 0.6); /* Darker submenu for better contrast */
+        background-color: var(--header-bg-color);
         border-radius: 0 0 25px 25px;
         backdrop-filter: blur(15px);
         z-index: 2;
-        gap: 0.2rem; 
-        padding-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity var(--transition-speed) ease, 
+                    transform var(--transition-speed) ease,
+                    visibility var(--transition-speed) ease;
+        padding: 0.5rem 0;
+        gap: 0.2rem;
     }
-    
+
     #item {
         margin: 0;
         padding: 0.3rem;
-        padding-top:0;
     }
-    
+
     #more {
         position: relative;
-        cursor: pointer !important;
-        padding: 0.5rem 1rem; 
+        cursor: pointer;
+        padding: 0.5rem 1rem;
     }
-    
-    #more:hover > .submenu {
-       opacity: 1; /* Show submenu on hover */
-       transform: translateY(10px); /* Slide down effect when appearing */
+
+    #more:hover > .submenu,
+    #more:focus-within > .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
-    
+
     .submenu li {
-       width: auto; /* Allow items to size naturally based on content */
-       margin-bottom: 5px; /* Add space between submenu items */
+        width: 100%;
+        margin: 0;
     }
-    
+
     .submenu a {
-       padding: 0.5rem; /* Consistent padding in submenu links */
+        display: block;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
-    </style>
+</style>
+
     

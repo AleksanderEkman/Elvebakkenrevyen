@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
     import { goto } from '$app/navigation';
 
     let events: { label: string; date: string; time: string; showCode: string }[] = [];
@@ -19,10 +20,22 @@
 </script>
 
 <section class="ticketSection">
+    
     <div class="text">
         <h2>Billetter</h2>
         <p>Elvebakkenrevyen 2025 spilles i Elvebakkenrevyens lokaler på Vestre Elvebakke 3.</p>
     </div>
+
+    <div class="map-wrapper">
+        <iframe  in:fade={{duration: 1500}}  class="map"
+            title="map" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
+            height="500"
+            style="border:0;"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
     <div class="flex">
         {#each events as event, index}
             <a class="event {index === 0 ? 'first-event' : ''}" href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`} target="_blank">
@@ -33,16 +46,6 @@
                 </div>
             </a>
         {/each}
-    </div>
-    <div class="map-wrapper">
-        <iframe class="map"
-            title="map" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
-            height="500"
-            style="border:0;"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
     </div>
 
 </section>
@@ -102,7 +105,7 @@
         height: auto;
     }
     .map-wrapper {
-        padding: 5rem;
+        padding: 3rem;
         width: 100%;
         height: 100%;
         display: flex;
