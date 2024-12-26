@@ -71,8 +71,8 @@
     background-attachment: fixed;
     overflow: hidden;
     padding: 0;
-    background-color: #000; /* Set a background color that matches the background image */
-    scroll-behavior: smooth; /* Enable smooth scrolling */
+    background-color: #000;
+    scroll-behavior: smooth; 
   }
   .fade {
     z-index: 3;
@@ -83,7 +83,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
     width: 100%;
     height: 100%;
     z-index: 2;
