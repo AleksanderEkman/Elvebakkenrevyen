@@ -82,7 +82,7 @@
 
 <style>
     :root {
-        --header-bg-color: rgba(23, 23, 23, 0.4);
+        --header-bg-color: rgba(23, 23, 23, 0.5);
         --hover-bg-color: rgba(255, 255, 255, 0.15);
         --transition-speed: 0.3s;
         --logo-size: 60px;
@@ -139,7 +139,7 @@
     }
 
     :global(.active) {
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(20px);
         background-color: var(--header-bg-color);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -151,6 +151,7 @@
     }
 
     ul li a, #more {
+        text-align: center;
         color: white;
         text-decoration: none;
         padding: 0.5rem 1rem;
@@ -180,16 +181,16 @@
        transform: scale(1.1) rotate(360deg);
     }
     .submenu {
-        z-index: 0;
+        width: 100%;
+        z-index: 1002;
+        background-color: rgba(30, 30, 30, 0.7);
         display: flex;
         flex-direction: column;
         align-items: center;
         position: absolute;
         top: 100%;
         right: 0;
-        border-radius: 0 0 25px 25px;
-        backdrop-filter: blur(15px);
-        z-index: 2;
+        border-radius: 5px 5px 25px 25px;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -199,7 +200,6 @@
         padding: 0.5rem 0;
         gap: 0.2rem;
         box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
-
     }
 
     #item {
