@@ -24,7 +24,7 @@
 
       const interval = setInterval(() => {
         imageIndex = (imageIndex + 1) % imageArray.length; // Cycle through images
-      }, 4250); // Change image every 5 seconds
+      }, 4250); // Change image every 4.25 seconds
 
       return () => clearInterval(interval); // Cleanup interval on component unmount
     })();

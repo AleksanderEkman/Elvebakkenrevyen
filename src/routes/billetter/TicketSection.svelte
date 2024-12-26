@@ -116,4 +116,21 @@
         width: 47.5rem;
         border-radius: 5px;
     }
+    @media (max-width: 540px) {
+        .flex {
+            grid-template-columns: 1fr;
+        }
+        .map {
+            width: 95vw;
+            height: 95vw;
+            padding: 1.5rem;
+        }
+        .event {
+            gap: 0rem;
+        }
+        .event-content {
+            width: 100%;
+            height: 6rem;
+        }
+    }
 </style>

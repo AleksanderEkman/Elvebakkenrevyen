@@ -152,7 +152,7 @@
     }
 
     .hero-title {
-      margin-top: 9%;
+      margin-top: 15%;
       text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.2), 
         0 0 7px rgba(255, 255, 255, 0.2), 

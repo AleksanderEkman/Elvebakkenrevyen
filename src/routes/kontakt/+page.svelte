@@ -48,4 +48,9 @@
         text-align: center;
         transition: background-image 1s ease-in-out;
     }
+    @media (max-width: 540px) {
+        .contact {
+            padding: 4.5rem 1rem;
+        }
+    }
 </style>
