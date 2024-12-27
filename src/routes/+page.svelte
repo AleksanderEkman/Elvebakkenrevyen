@@ -16,7 +16,7 @@
     const updateContactSectionHeight = () => {
         if (contactSectionRef && footer) {
             const footerHeight = footer.offsetHeight;
-            if (window.matchMedia('(min-width: 768px)').matches && !navigator.userAgent.includes('Mobile')) {
+            if (window.matchMedia('(min-width: 1450px)').matches && !navigator.userAgent.includes('Mobile')) {
                 contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
             } else {
                 contactSectionRef.style.height = `auto`;
@@ -96,7 +96,7 @@
     }
     .sponsors {
         width: 100vw;
-        height: 71rem;
+        height: 50rem;
         display: flex;
         justify-content: center;
         align-items: center;

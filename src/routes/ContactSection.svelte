@@ -51,7 +51,7 @@
             </div>
 
             <div class="info">
-                <div class="input-container">
+                <div class="input-container email-input">
                     <label for="email">E-post *</label>
                     <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
                     {#if $errors.email}
@@ -152,7 +152,7 @@
     .info {
         overflow: hidden;
         width: 99.5%;
-        gap: 1.5rem;
+        gap: 5rem;
         display: flex;
         flex-direction: row;
     }
@@ -172,6 +172,7 @@
     }
     .phone-input {
         position: relative;
+        width: 60%;
     }
     .phone-wrapper input {
         padding-left: 2.5rem; /* Adjust padding to make space for the country code */
