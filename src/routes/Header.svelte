@@ -43,7 +43,7 @@
             <li>
                 <div id="more">
                     <p id="text">Revymedlemmer <FontAwesomeIcon icon={faAngleDown}/></p>
-                    <ul class="submenu" in:fade={{duration: 500}}>
+                    <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
                         <li id="item"><a href="/aktører">Aktører</a></li>
                         <li id="item"><a href="/grupper">Revygrupper</a></li>
                     </ul>
@@ -59,11 +59,11 @@
         <aside class="mobile">
             <button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
                 {#if !mobileMenuOpen}
-                    <div in:fade={{ duration: 150, delay:215 }} out:fade={{ duration: 150 }}>
+                    <div in:fade={{ duration: 100, delay:165 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faBars} />
                     </div>
                 {:else}
-                    <div in:fade={{ duration: 150, delay:215 }} out:fade={{ duration: 150 }}>
+                    <div in:fade={{ duration: 100, delay:165 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faClose} />
                     </div>
                 {/if}
@@ -168,14 +168,14 @@
     }
     #logo {
         z-index: 2;
-        padding: 1rem;
+        margin: 0.75rem;
         top: 0;
         left: 0;
         position: fixed;
         -webkit-user-drag: none;
         transition: transform 0.3s ease;
-        width: 85px;
-        height: 85px;
+        width: 50px;
+        height: 50px;
 
     }
     #logo:hover {
@@ -183,8 +183,9 @@
     }
     .submenu {
         width: 100%;
-        z-index: 1002;
-        background-color: rgba(30, 30, 30, 0.7);
+        z-index: 5;
+        background-color: rgba(30, 30, 30, 0.9);
+        backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -250,7 +251,7 @@
             position: absolute;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            width: 90%;
+            width: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -260,6 +261,7 @@
             background-color: var(--header-bg-color);
             backdrop-filter: blur(15px);
             padding: 1rem;
+            gap: 2.25rem;
             z-index: 1000;
         }
 
@@ -269,7 +271,7 @@
             text-align: center;
             justify-content: center;
             width: 100%;
-            margin: 1rem 0;
+            margin: 0.25rem 0;
         }
         #menu-button {
             position: absolute;
@@ -283,9 +285,8 @@
             width: 60px;
         }
         #logo {
-            width: 60px;
-            height: 60px;
-            padding: 0.6rem;
+            width: 35px;
+            height: 35px;
         }
         ul li a {
             width: 75%;

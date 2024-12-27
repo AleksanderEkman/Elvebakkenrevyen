@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { fly, fade } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import background_image from '$lib/assets/Elvebakken.webp';
   import { onMount } from 'svelte';
-  import Slideshow from './components/Slideshow.svelte';
+  import { goto } from '$app/navigation';
   import Links from './components/Links.svelte';
   import InAppSpy from "inapp-spy";
+  import dice from '$lib/assets/dice.svg';
 
   let height: number | string;
   let scale = 100;
@@ -36,14 +37,23 @@
 <section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.25}px;">
   <div class="overlay"></div>
   {#if showContent}
-    <div class="container text-center">
-      <!-- Animasjoner for innhold -->
-      <h1 class="hero-title" in:fly={{ y: -200, duration: 800 }}>Elvebakkenrevyen 2025</h1>
-      <div class="fade" in:fade={{ duration: 800 }}>
-        <div class="fly" in:fly={{ y: 200, duration: 800 }}>
-          <!-- Nøstede komponenter -->
-          <Slideshow /> <!-- Slideshow for å vise tidligere konsepter -->
+    <div class="container">
+      <div class="kicker">
+        <div class="inline">
+          <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyen logo">
+          <p>Elvebakkenrevyen 2025 -</p>
         </div>
+        <p id="grey">en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
+      </div>
+      <div class="hero-title">
+        <h1>Konseptnavn</h1>
+      </div>
+      <div class="btn-container">
+        <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
+      </div>
+      <div class="rating">
+        <img src={dice} alt="Rating" />
+        <p id="grey">15x</p>
       </div>
     </div>
     <div class="links" in:fade={{ duration: 800 }}>
@@ -59,23 +69,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 100vw;
     position: relative;
-    overflow: hidden;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 0;
     background-color: #000; /* Set a background color that matches the background image */
     scroll-behavior: smooth; /* Enable smooth scrolling */
   }
-  .fade {
-    z-index: 3;
-  }
-  
   .overlay {
     content: ''; 
     position: absolute;
@@ -86,24 +90,37 @@
     height: 100%;
     z-index: 2;
   }
-
   .container {
+    font-size: 1.25rem;
+    display: inline-flex;
+    left: 18.5vw;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     z-index: 3;
+    height: 80%;
   }
-  
+  .cta {
+    font-size: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    background-color: rgba(25,49,132,0.75);
+  }
   .hero-title {
-    user-select: none;
+    position: relative;
     @apply text-8xl font-bold mb-4;
     font-family: var(--font-header);
     background: #ffffff;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 
-                0 0 10px rgba(255, 255, 255, 0.25), 
-                0 0 20px rgba(255, 255, 255, 0.15), 
-                0 0 30px rgba(255, 255, 255, 0.1);
     letter-spacing: 3px;
   }
 
@@ -115,6 +132,42 @@
     z-index: 2;
   }
 
+  .kicker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.15rem;
+    padding: 0.25rem;
+  }
+  .rating {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .rating img {
+    width: 40px;
+    height: 40px;
+  }
+  #grey {
+    color: rgb(209,209,209);
+  }
+  strong {
+    color: white;
+    font-style: italic;
+  }
+  .inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #logo {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
   /* Media queries for responsivitet */
   /* Tilegnet laptoper og Mac */
   @media (max-width: 1440px) {
@@ -123,19 +176,16 @@
                   0 0 10px rgba(255, 255, 255, 0.25), 
                   0 0 15px rgba(255, 255, 255, 0.15), 
                   0 0 20px rgba(255, 255, 255, 0.1);
-      margin-top: -2.5%;
       font-size: 4.5em;
     }
   }
   /* Tilegnet tablets (iPad-er) */
   @media (max-width: 768px) {
     .hero-title {
-      margin-top: -8%;
-      font-size: 2.5em;
+      font-size: 2.5rem;
     }
   }
 
-  /* Links plasseres langs bunnen */
   @media (max-height: 1368px) {
     .links {
       bottom: 0;
@@ -152,26 +202,23 @@
     }
 
     .hero-title {
-      margin-top: 15%;
-      text-shadow: 
-        1px 1px 2px rgba(0, 0, 0, 0.2), 
-        0 0 7px rgba(255, 255, 255, 0.2), 
-        0 0 13px rgba(255, 255, 255, 0.13), 
-        0 0 19px rgba(255, 255, 255, 0.07);
-      background: none;
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      -webkit-text-fill-color: initial;
-      padding: 5px;
+
+      font-size: 3rem;
+    }
+    .container {
+      font-size: 1rem;
+      left: 0;
+      margin-left: 2rem;
+    }
+    .kicker {
+      font-size: 0.9rem;
+    }
+    .cta {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
     }
   }
 
-  /* Tilpasset nest hub og nest hub max (ikke så nødvendig)*/
-  @media (max-width: 1024px) and (max-height: 600px) {
-    .hero-title {
-      margin-top: -5.5%;
-    }
-  }
   
   /* Media query for mobile landscape mode */
   @media (max-width: 935px) and (orientation: landscape) {
@@ -181,7 +228,7 @@
       background-attachment: scroll;
     }
     .hero-title {
-      font-size: 2em;
+      font-size: 2rem;
       margin-top: 0;
       text-shadow: none;
       text-shadow: 
