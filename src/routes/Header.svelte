@@ -4,7 +4,7 @@
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
-    import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
+    import { faBars, faClose, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
     let showContent = false;
     let mobileMenuOpen = false;
@@ -42,7 +42,7 @@
             <li><a href="/billetter">Billetter</a></li>
             <li>
                 <div id="more">
-                    <p id="text">Revymedlemmer</p>
+                    <p id="text">Revymedlemmer <FontAwesomeIcon icon={faAngleDown}/></p>
                     <ul class="submenu" in:fade={{duration: 500}}>
                         <li id="item"><a href="/aktører">Aktører</a></li>
                         <li id="item"><a href="/grupper">Revygrupper</a></li>
@@ -133,9 +133,10 @@
         justify-content: space-around;
         align-items: center;
         margin: 0;
-        padding: 0.75rem;
+        padding: 1rem;
         border-radius: 0 0 25px 25px;
         transition: all 0.5s;
+        gap: 5.5rem;
     }
 
     :global(.active) {
@@ -190,7 +191,7 @@
         position: absolute;
         top: 100%;
         right: 0;
-        border-radius: 5px 5px 25px 25px;
+        border-radius: 10px 10px 25px 25px;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);

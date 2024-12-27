@@ -54,7 +54,7 @@
     h2 {
         font-size: 3.5rem;
         letter-spacing: 0.05rem;
-        margin-top: 6.5rem;
+        margin-top: 4rem;
         margin-bottom: 0.5rem;
         font-family: var(--font-header);
     }
