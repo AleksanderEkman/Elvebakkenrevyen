@@ -56,6 +56,10 @@
         <p id="grey">15x</p>
       </div>
     </div>
+    <div class="info">
+      <p>Vestre Elvebakke 3</p>
+      <p>26.02.2025 - 12.03.2025</p>
+    </div>
     <div class="links" in:fade={{ duration: 800 }}>
       <!-- Egen komponent for links -->
       <Links />
@@ -85,10 +89,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
     width: 100%;
     height: 100%;
     z-index: 2;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1));
   }
   .container {
     font-size: 1.25rem;
@@ -99,7 +103,24 @@
     flex-direction: column;
     justify-content: center;
     z-index: 3;
-    height: 80%;
+    height: 85%;
+  }
+  .info {
+    font-size: 1.25rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: white;
+    position: absolute;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    bottom: 0;
+  }
+  .info p {
+    display: flex;
   }
   .cta {
     font-size: 1.25rem;
@@ -121,7 +142,7 @@
     background: #ffffff;
     -webkit-background-clip: text;
     background-clip: text;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
   }
 
   .links {
@@ -137,7 +158,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     padding: 0.25rem;
   }
   .rating {
@@ -173,9 +194,9 @@
   @media (max-width: 1440px) {
     .hero-title {
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-                  0 0 10px rgba(255, 255, 255, 0.25), 
-                  0 0 15px rgba(255, 255, 255, 0.15), 
-                  0 0 20px rgba(255, 255, 255, 0.1);
+                  0 0 8px rgba(255, 255, 255, 0.25), 
+                  0 0 10px rgba(255, 255, 255, 0.15), 
+                  0 0 15px rgba(255, 255, 255, 0.1);
       font-size: 4.5em;
     }
   }
@@ -200,26 +221,26 @@
       justify-content: flex-start;
       background-attachment: scroll;
     }
-
     .hero-title {
-
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
     .container {
       font-size: 1rem;
       left: 0;
-      margin-left: 2rem;
+      margin-left: 3.8rem;
     }
     .kicker {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     .cta {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      padding: 0.6rem 1rem;
+    }
+    .info {
+      display: none;
     }
   }
 
-  
   /* Media query for mobile landscape mode */
   @media (max-width: 935px) and (orientation: landscape) {
     .hero {

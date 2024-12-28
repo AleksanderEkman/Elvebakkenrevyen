@@ -25,6 +25,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>Elvebakkenrevyen 2025 Kontaktskjema</title>
+</svelte:head>
+
 <section bind:this={contactSectionRef} class="contact">
     {#if ContactSection}
         <svelte:component this={ContactSection} {data}/>

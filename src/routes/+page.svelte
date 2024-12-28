@@ -49,7 +49,7 @@
     }
     .sponsors {
         width: 100vw;
-        height: 71rem;
+        height: 50rem;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -40,7 +40,7 @@
         <!-- Desktop -->
         <ul class="desktop" bind:this={navBar}>
             <li><a href="/billetter">Billetter</a></li>
-            <li>
+            <div class="dropdown">
                 <div id="more">
                     <p id="text">Revymedlemmer <FontAwesomeIcon icon={faAngleDown}/></p>
                     <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
@@ -48,7 +48,7 @@
                         <li id="item"><a href="/grupper">Revygrupper</a></li>
                     </ul>
                 </div>
-            </li>
+            </div>
             <li><a href="/kontakt">Kontakt oss</a></li>
         </ul>
 
@@ -70,10 +70,10 @@
             </button>
             {#if mobileMenuOpen}
                 <ul class="mobile-menu" transition:fade={{duration: 300}}>
-                    <li><a href="/billetter" on:click={toggleMobileMenu}>Billetter</a></li>
-                    <li><a href="/aktører" on:click={toggleMobileMenu}>Aktører</a></li>
-                    <li><a href="/grupper" on:click={toggleMobileMenu}>Revygrupper</a></li>
-                    <li><a href="/kontakt" on:click={toggleMobileMenu}>Kontakt oss</a></li>
+                    <li><a href="/billetter" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Billetter</a></li>
+                    <li><a href="/aktører" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Aktører</a></li>
+                    <li><a href="/grupper" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Revygrupper</a></li>
+                    <li><a href="/kontakt" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Kontakt oss</a></li>
                 </ul>
             {/if}
         </aside>
@@ -102,12 +102,19 @@
         display: none;
     }
     .desktop {
+        text-align: center;
+        width: 57.5%;
         display: flex;
-        justify-self: center;
+        justify-content: space-evenly;
         align-items: center;
     }
-    
+    .dropdown {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     header {
+        z-index: -1;
         width: 100vw;
         font-family: var(--font-nav, sans-serif);
         font-size: 1.1rem;
@@ -130,13 +137,12 @@
         z-index: 4;
         list-style-type: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
         margin: 0;
         padding: 1rem;
         border-radius: 0 0 25px 25px;
         transition: all 0.5s;
-        gap: 5.5rem;
     }
 
     :global(.active) {
@@ -146,16 +152,16 @@
     }
 
     ul li {
-        margin-left: 1rem;
         display: flex;
         justify-content: center;
+        flex: 1;
     }
 
     ul li a, #more {
         text-align: center;
         color: white;
         text-decoration: none;
-        padding: 0.5rem 1rem;
+        padding: 0.3rem 0.5rem;
         border-radius: 5px;
         transition: background-color var(--transition-speed) ease, 
                     transform 0.2s ease;
@@ -212,7 +218,6 @@
     #more {
         position: relative;
         cursor: pointer;
-        padding: 0.5rem 1rem;
     }
 
     #more:hover > .submenu,
@@ -274,19 +279,20 @@
             margin: 0.25rem 0;
         }
         #menu-button {
+            top: 0;
+            margin: 0.75rem;
             position: absolute;
-            top: 0.6rem;
             right: 0rem;
             z-index: 1001;
             background: none;
             border: none;
             color: white;
             font-size: 1.75rem;
-            width: 60px;
+            width: 42px;
         }
         #logo {
-            width: 35px;
-            height: 35px;
+            width: 42px;
+            height: 42px;
         }
         ul li a {
             width: 75%;
