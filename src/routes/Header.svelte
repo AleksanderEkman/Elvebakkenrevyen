@@ -20,7 +20,15 @@
     function toggleMobileMenu() {
         mobileMenuOpen = !mobileMenuOpen;
     }
-
+    const rotate = () => {
+        const logo = document.getElementById('logo');
+        if (!logo) return;
+        
+        logo.classList.add('animate-logo');
+        setTimeout(() => {
+            logo.classList.remove('animate-logo');
+        }, 650);
+    };
     onMount(() => {
         showContent = true;
         window.addEventListener('scroll', checkScroll);
@@ -34,13 +42,13 @@
 
 <header>
     {#if showContent}
-        <button aria-label="Hjem knapp" id="logo-button" on:click={() => {goto('/'); mobileMenuOpen = false;}}>
+        <button aria-label="Hjem knapp" id="logo-button" on:click={() => {goto('/'); rotate(); mobileMenuOpen = false; }}>
             <img id="logo" src="/favicon.webp" alt="">
         </button>
         <!-- Desktop -->
         <ul class="desktop" bind:this={navBar}>
             <li><a href="/billetter">Billetter</a></li>
-            <div class="dropdown">
+            <li class="dropdown">
                 <div id="more">
                     <p id="text">Revymedlemmer <FontAwesomeIcon icon={faAngleDown}/></p>
                     <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
@@ -48,7 +56,7 @@
                         <li id="item"><a href="/grupper">Revygrupper</a></li>
                     </ul>
                 </div>
-            </div>
+            </li>
             <li><a href="/kontakt">Kontakt oss</a></li>
         </ul>
 
@@ -59,11 +67,11 @@
         <aside class="mobile">
             <button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
                 {#if !mobileMenuOpen}
-                    <div in:fade={{ duration: 100, delay:165 }} out:fade={{ duration: 100 }}>
+                    <div in:fade={{ duration: 100, delay:160 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faBars} />
                     </div>
                 {:else}
-                    <div in:fade={{ duration: 100, delay:165 }} out:fade={{ duration: 100 }}>
+                    <div in:fade={{ duration: 100, delay:160 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faClose} />
                     </div>
                 {/if}
@@ -81,6 +89,17 @@
 </header>
 
 <style>
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg) scale(1);
+        }
+        50% {
+            transform: rotate(360deg) scale(1.1);
+        }
+        100% {
+            transform: rotate(0deg) scale(1);
+        }
+    }
     :root {
         --header-bg-color: rgba(23, 23, 23, 0.5);
         --hover-bg-color: rgba(255, 255, 255, 0.15);
@@ -117,7 +136,7 @@
         z-index: -1;
         width: 100vw;
         font-family: var(--font-nav, sans-serif);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -131,6 +150,7 @@
         transition: background-color var(--transition-speed) ease, 
                     box-shadow var(--transition-speed) ease;
         user-select: none;
+        touch-action: manipulation;
     }
 
     ul {
@@ -184,8 +204,10 @@
         height: 50px;
 
     }
-    #logo:hover {
-       transform: scale(1.1) rotate(360deg);
+    @media (min-width: 768px) {
+        #logo:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
     }
     .submenu {
         width: 100%;
@@ -236,7 +258,6 @@
         display: block;
         padding: 0.5rem 1rem;
         width: 100%;
-
     }
 
     @media (max-width: 540px) {
@@ -276,11 +297,11 @@
             text-align: center;
             justify-content: center;
             width: 100%;
-            margin: 0.25rem 0;
+            margin: 0.5rem 0;
         }
         #menu-button {
             top: 0;
-            margin: 0.75rem;
+            margin: 0.7rem;
             position: absolute;
             right: 0rem;
             z-index: 1001;
@@ -294,7 +315,13 @@
             width: 42px;
             height: 42px;
         }
+        :global(.animate-logo) {
+            animation: rotate 0.65s ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
         ul li a {
+            padding: 0.75rem 1.2rem;
             width: 75%;
         }
     }

@@ -34,13 +34,12 @@
       z-index: 3;
       list-style-type: none;
       font-size: 1.2em;
-      padding: 2em;
+      margin: 1.25rem;
       width: 5%;
     }
 
     li {
       padding-bottom: 10px;
-    
     }
   
     :global(li a svg) {
@@ -92,10 +91,10 @@
       }
     }
   
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       ul {
         font-size: 0.85em;
-        padding: 0em;
+        margin: 0;
       }
     }
   

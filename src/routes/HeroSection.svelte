@@ -41,7 +41,7 @@
       <div class="kicker">
         <div class="inline">
           <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyen logo">
-          <p>Elvebakkenrevyen 2025 -</p>
+          <p id="grey">Elvebakkenrevyen 2025 -</p>
         </div>
         <p id="grey">en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
       </div>
@@ -95,7 +95,7 @@
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1));
   }
   .container {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     display: inline-flex;
     left: 18.5vw;
     position: relative;
@@ -106,7 +106,7 @@
     height: 85%;
   }
   .info {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -123,17 +123,22 @@
     display: flex;
   }
   .cta {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     align-items: center;
     justify-content: center;
     display: inline-block;
     width: auto;
     padding: 0;
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid white;
     padding: 0.5rem 1rem;
-    background-color: rgba(25,49,132,0.75);
+    background-color: rgba(11, 111, 244, 0.5);
+    transition: all 0.3s ease;
+  }
+  .cta:hover {
+    background-color: rgba(11, 111, 244, 0.75);
+    transform: scale(1.025);
   }
   .hero-title {
     position: relative;
@@ -159,23 +164,24 @@
     flex-direction: column;
     justify-content: center;
     font-size: 1.4rem;
-    padding: 0.25rem;
+    margin-bottom: 0.75rem;
   }
   .rating {
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1.2rem;
   }
   .rating img {
     width: 40px;
     height: 40px;
   }
   #grey {
-    color: rgb(209,209,209);
+    color: #9E9E9E;
   }
   strong {
-    color: white;
+    color: #b3b1b1;
     font-style: italic;
   }
   .inline {

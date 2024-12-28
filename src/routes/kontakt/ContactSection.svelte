@@ -269,14 +269,15 @@
         border-radius: 10px;
         height: 4rem;
         transition: all 0.2s;
+        background-color: rgba(11, 111, 244, 0.1);
     }
 
     button:hover {
-        background-color: rgba(255, 255, 255, 0.06);
+        background-color: rgba(11, 111, 244, 0.25);
     }
 
     button:active {
-        background-color: rgb(32, 32, 32);
+        background-color: rgba(11, 111, 244, 0.4);
         transform: scale(0.95);
     }
 

@@ -6,23 +6,7 @@
 
     let contactSectionRef: HTMLElement;
     let footer: HTMLElement | null;
-    
-    const updateContactSectionHeight = () => {
-        if (contactSectionRef && footer) {
-            const footerHeight = footer.offsetHeight;
-            if (window.matchMedia('(min-width: 768px)').matches && !navigator.userAgent.includes('Mobile')) {
-                contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
-            } else {
-                contactSectionRef.style.height = `auto`;
-            }
-        }
-    };
 
-    onMount(async () => {
-        await tick();
-        footer = document.querySelector('footer');
-        updateContactSectionHeight();
-    });
 </script>
 
 <svelte:head>
@@ -45,7 +29,7 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: 52.5rem;
         position: relative;
         text-transform: none;
         overflow: hidden;
