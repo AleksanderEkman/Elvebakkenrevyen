@@ -17,7 +17,7 @@
         if (contactSectionRef && footer) {
             const footerHeight = footer.offsetHeight;
             if (window.matchMedia('(min-width: 1450px)').matches && !navigator.userAgent.includes('Mobile')) {
-                contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px)`;
+                contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px) !important`;
             } else {
                 contactSectionRef.style.height = `auto`;
             }
@@ -25,27 +25,28 @@
     };
 
     onMount(async () => {
-        showContent = true;
-        await tick();
-        const spObserver = new IntersectionObserver(async (entries) => {
-            if (entries[0].isIntersecting) {
-                SponsorsSection = (await import('./SponsorsSection.svelte')).default;
-                spObserver.disconnect();
-            }
-        }, { threshold: 0.025});
-        spObserver.observe(sponsorsSectionRef);
-        
-        const observer = new IntersectionObserver(async (entries) => {
-            if (entries[0].isIntersecting) {
-                ContactSection = (await import('./ContactSection.svelte')).default;
-                observer.disconnect();
-            }
-        }, { threshold: 0.7 });
-
-        observer.observe(sponsorsSectionRef);
-
         footer = document.querySelector('footer');
         updateContactSectionHeight();
+        showContent = true;
+        await tick();
+        const observer = new IntersectionObserver(async (entries) => {
+            entries.forEach(async (entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.intersectionRatio >= 0.025 && !SponsorsSection) {
+                        SponsorsSection = (await import('./SponsorsSection.svelte')).default;
+                    }
+                    if (entry.intersectionRatio >= 0.6 && !ContactSection) {
+                        ContactSection = (await import('./ContactSection.svelte')).default;
+                    }
+
+                    if (SponsorsSection && ContactSection) {
+                        observer.disconnect();
+                    }
+                }
+            });
+        }, { threshold: [0.025, 0.6] });
+
+        observer.observe(sponsorsSectionRef);
     });
 
 </script>
@@ -68,6 +69,8 @@
         <section bind:this={contactSectionRef} class="contact">
             {#if ContactSection}
                 <svelte:component this={ContactSection} {data} {showContent}/>
+            {:else}
+                <div style="height: 90svh;"></div>
             {/if}
         </section>
     {/if}
@@ -87,7 +90,7 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: auto;
         position: relative;
         text-transform: none;
         overflow: hidden;

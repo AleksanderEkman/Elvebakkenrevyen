@@ -17,7 +17,7 @@
     sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
         {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
         {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
-        {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/no"}, 
+        {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/"}, 
         {name: 'Vega Scene', url: "https://www.vegascene.no/"}, 
         {name: 'Syng', url: "https://syng.no/"}
       ]
