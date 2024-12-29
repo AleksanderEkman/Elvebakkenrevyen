@@ -7,10 +7,11 @@
   import InAppSpy from "inapp-spy";
   import dice from '$lib/assets/dice.svg';
 
+  export let showContent;
+
   let height: number | string;
   let scale = 100;
   let scrollY: number;
-  export let showContent: boolean;
   let innerHeight: number;
   let scrollAmplifier: number;
 
@@ -36,39 +37,44 @@
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section class="hero" style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier * scrollY * 0.25}px;">
   <div class="overlay"></div>
-  {#if showContent}
-    <div class="container">
-      <div class="kicker">
-        <div class="inline">
-          <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyen logo">
-          <p id="grey">Elvebakkenrevyen 2025 -</p>
+
+    {#if showContent}
+      <div class="container" in:fade={{ duration: 50 }}>
+        <div class="kicker">
+          <div class="inline">
+            <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyenlogo">
+            <p id="grey">Elvebakkenrevyen 2025 -</p>
+          </div>
+          <p id="grey">en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
         </div>
-        <p id="grey">en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
+        <div class="hero-title">
+          <h1>Konseptnavn</h1>
+        </div>
+        <div class="btn-container">
+          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
+        </div>
+        <div class="rating">
+          <img src={dice} alt="Terningkast seks av seks for Elvebakkenrevyen" />
+          <p id="grey">15x</p>
+        </div>
       </div>
-      <div class="hero-title">
-        <h1>Konseptnavn</h1>
-      </div>
-      <div class="btn-container">
-        <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
-      </div>
-      <div class="rating">
-        <img src={dice} alt="Rating" />
-        <p id="grey">15x</p>
-      </div>
-    </div>
+    {/if}
+
     <div class="info">
       <p>Vestre Elvebakke 3</p>
       <p>26.02.2025 - 12.03.2025</p>
     </div>
-    <div class="links" in:fade={{ duration: 800 }}>
-      <!-- Egen komponent for links -->
-      <Links />
-    </div>
-  {/if}
+    {#if showContent}
+      <div class="links" in:fade={{ duration: 500 }}>
+        <!-- Egen komponent for links -->
+        <Links />
+      </div>
+    {/if}
 </section>
 
 <style>
   .hero {
+    height: 100svh;
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
@@ -85,6 +91,7 @@
     scroll-behavior: smooth; /* Enable smooth scrolling */
   }
   .overlay {
+    user-select: none;
     content: ''; 
     position: absolute;
     top: 0;
@@ -123,7 +130,7 @@
     display: flex;
   }
   .cta {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     align-items: center;
     justify-content: center;
     display: inline-block;
@@ -142,12 +149,16 @@
   }
   .hero-title {
     position: relative;
-    @apply text-8xl font-bold mb-4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 2px rgba(255, 255, 255, 0.2), 
+                0 0 4px rgba(255, 255, 255, 0.13);
+    @apply text-8xl mb-4 mt-1;
     font-family: var(--font-header);
     background: #ffffff;
     -webkit-background-clip: text;
     background-clip: text;
     letter-spacing: 2px;
+
   }
 
   .links {
@@ -163,7 +174,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
   .rating {
@@ -197,27 +208,18 @@
   }
   /* Media queries for responsivitet */
   /* Tilegnet laptoper og Mac */
-  @media (max-width: 1440px) {
+  @media (max-width: 1450px) {
     .hero-title {
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-                  0 0 8px rgba(255, 255, 255, 0.25), 
-                  0 0 10px rgba(255, 255, 255, 0.15), 
-                  0 0 15px rgba(255, 255, 255, 0.1);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2),
+                  0 0 2px rgba(255, 255, 255, 0.2), 
+                  0 0 4px rgba(255, 255, 255, 0.13);
       font-size: 4.5em;
     }
   }
   /* Tilegnet tablets (iPad-er) */
   @media (max-width: 768px) {
     .hero-title {
-      font-size: 2.5rem;
-    }
-  }
-
-  @media (max-height: 1368px) {
-    .links {
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      font-size: 4rem;
     }
   }
 
@@ -245,6 +247,11 @@
     .info {
       display: none;
     }
+    .links {
+      left: 0;
+      flex-direction: row;
+      width: 100%;
+    }
   }
 
   /* Media query for mobile landscape mode */
@@ -260,8 +267,8 @@
       text-shadow: none;
       text-shadow: 
         1px 1px 2px rgba(0, 0, 0, 0.2), 
-        0 0 7px rgba(255, 255, 255, 0.2), 
-        0 0 13px rgba(255, 255, 255, 0.13);
+        0 0 2px rgba(255, 255, 255, 0.2), 
+        0 0 4px rgba(255, 255, 255, 0.13);
     }
     .container {
       padding: 10px;

@@ -1,9 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  export let showContent: boolean;
 </script>
 
-{#if showContent}
   <footer aria-label="Footer Informasjon">
     <div class="content">
       <div class="footer-col">
@@ -38,7 +36,7 @@
       </div>
     </div>
   </footer>
-{/if}
+
 <style>
   footer {
     overflow: hidden;

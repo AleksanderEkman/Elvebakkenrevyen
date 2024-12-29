@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow:
+
+User-agent: *
+Disallow: /kontakt
+
+Sitemap: https://bakkarevydocker-o869w.ondigitalocean.app/sitemap.xml

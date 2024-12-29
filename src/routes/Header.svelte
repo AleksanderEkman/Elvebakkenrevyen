@@ -1,6 +1,5 @@
 <script lang="ts">
     import { fade, fly } from 'svelte/transition';
-
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
@@ -41,30 +40,37 @@
 </script>
 
 <header>
-    {#if showContent}
-        <button aria-label="Hjem knapp" id="logo-button" on:click={() => {goto('/'); rotate(); mobileMenuOpen = false; }}>
-            <img id="logo" src="/favicon.webp" alt="">
-        </button>
-        <!-- Desktop -->
-        <ul class="desktop" bind:this={navBar}>
-            <li><a href="/billetter">Billetter</a></li>
-            <li class="dropdown">
-                <div id="more">
-                    <p id="text">Revymedlemmer <FontAwesomeIcon icon={faAngleDown}/></p>
-                    <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
-                        <li id="item"><a href="/aktører">Aktører</a></li>
-                        <li id="item"><a href="/grupper">Revygrupper</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li><a href="/kontakt">Kontakt oss</a></li>
-        </ul>
+    <button aria-label="Hjem knapp" id="logo-button" on:click={() => {goto('/'); rotate(); mobileMenuOpen = false; }}>
+        <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyen logo">
+    </button>
+    <!-- Desktop -->
+    <ul class="desktop" bind:this={navBar}>
+        <li><a href="/billetter">Billetter</a></li>
+        <li class="dropdown">
+            <div id="more">
+                <p id="text">Revymedlemmer 
+                    {#if showContent}
+                        <FontAwesomeIcon icon={faAngleDown}/>
+                    {:else}
+                        <span style="width: 1.05rem;">&nbsp</span>
+                    {/if}
+                </p>
+                <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
+                    <li id="item"><a href="/aktører">Aktører</a></li>
+                    <li id="item"><a href="/sjefer">Sjefer og grupper</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="/om-revyen">Om revyen</a></li>
+        <li><a href="/kontakt">Kontakt oss</a></li>
+    </ul>
 
-        <!-- Mobile -->
-        {#if mobileMenuOpen}
-            <div in:fade={{duration: 200}} class="overlay"></div>
-        {/if}
-        <aside class="mobile">
+    <!-- Mobile -->
+    {#if mobileMenuOpen}
+        <div in:fade={{duration: 200}} class="overlay"></div>
+    {/if}
+    <aside class="mobile">
+        {#if showContent}
             <button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
                 {#if !mobileMenuOpen}
                     <div in:fade={{ duration: 100, delay:160 }} out:fade={{ duration: 100 }}>
@@ -76,16 +82,18 @@
                     </div>
                 {/if}
             </button>
-            {#if mobileMenuOpen}
-                <ul class="mobile-menu" transition:fade={{duration: 300}}>
-                    <li><a href="/billetter" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Billetter</a></li>
-                    <li><a href="/aktører" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Aktører</a></li>
-                    <li><a href="/grupper" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Revygrupper</a></li>
-                    <li><a href="/kontakt" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Kontakt oss</a></li>
-                </ul>
-            {/if}
-        </aside>
-    {/if}
+        {/if}
+        {#if mobileMenuOpen}
+            <ul class="mobile-menu" transition:fade={{duration: 300}}>
+                <li><a href="/billetter" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Billetter</a></li>
+                <li><a href="/aktører" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Aktører</a></li>
+                <li><a href="/sjefer" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Sjefer og grupper</a></li>
+                <li><a href="/om-revyen" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Om revyen</a></li>
+                <li><a href="/kontakt" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Kontakt oss</a></li>
+            </ul>
+        {/if}
+    </aside>
+
 </header>
 
 <style>
@@ -178,10 +186,14 @@
     }
 
     ul li a, #more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-wrap: nowrap;
         text-align: center;
         color: white;
         text-decoration: none;
-        padding: 0.3rem 0.5rem;
+        padding: 0.45rem 1.8rem;
         border-radius: 5px;
         transition: background-color var(--transition-speed) ease, 
                     transform 0.2s ease;
@@ -191,6 +203,13 @@
     ul li a:focus {
         background-color: var(--hover-bg-color);
         transform: scale(1.05);
+    }
+    #text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: auto;
     }
     #logo {
         z-index: 2;
@@ -207,6 +226,9 @@
     @media (min-width: 768px) {
         #logo:hover {
             transform: scale(1.1) rotate(360deg);
+        }
+        .desktop {
+            width: 62%;
         }
     }
     .submenu {
@@ -256,8 +278,8 @@
 
     .submenu a {
         display: block;
-        padding: 0.5rem 1rem;
-        width: 100%;
+        padding: 0.5rem 0.75rem;
+        width: 80%;
     }
 
     @media (max-width: 540px) {
@@ -287,7 +309,7 @@
             background-color: var(--header-bg-color);
             backdrop-filter: blur(15px);
             padding: 1rem;
-            gap: 2.25rem;
+            gap: 1.2rem;
             z-index: 1000;
         }
 
@@ -308,12 +330,12 @@
             background: none;
             border: none;
             color: white;
-            font-size: 1.75rem;
-            width: 42px;
+            font-size: 2rem;
+            width: 45px;
         }
         #logo {
-            width: 42px;
-            height: 42px;
+            width: 45px;
+            height: 45px;
         }
         :global(.animate-logo) {
             animation: rotate 0.65s ease-in-out;

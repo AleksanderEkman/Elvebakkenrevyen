@@ -13,11 +13,14 @@
     <title>Elvebakkenrevyen 2025 Kontaktskjema</title>
 </svelte:head>
 
-<section bind:this={contactSectionRef} class="contact">
-    {#if ContactSection}
-        <svelte:component this={ContactSection} {data}/>
-    {/if}
-</section>
+<main>
+   <section bind:this={contactSectionRef} class="contact">
+        {#if ContactSection}
+            <svelte:component this={ContactSection} {data}/>
+        {/if}
+    </section> 
+</main>
+
 
 <style>
     .contact {
@@ -39,6 +42,7 @@
     @media (max-width: 540px) {
         .contact {
             padding: 4.5rem 1rem;
+            height: 47.5rem;
         }
     }
 </style>

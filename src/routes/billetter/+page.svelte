@@ -6,4 +6,6 @@
     <title>Elvebakkenrevyen 2025 Billetter</title>
 </svelte:head>
 
-<TicketSection />
+<main>
+    <TicketSection />
+</main>

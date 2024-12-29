@@ -13,9 +13,16 @@
 
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
-        taintedMessage: 'Er du sikker på at du vil forlate siden?',
+        taintedMessage: 'Er du sikker på at du vil forlate siden? Alle endringer du har gjort vil gå tapt.',
         validators: zod(contactSchema)
     });
+
+    let phone: string = '';
+    function handleInput(event: Event) {
+        const input = event.target as HTMLInputElement;
+        input.value = input.value.replace(/[^0-9]/g, '');
+        phone = input.value;
+    }
 
     onMount(() => {
         setTimeout(() => {
@@ -34,7 +41,7 @@
     in:fade={{duration: 500}}>
         <div class="contact-content">
             <div class="desc">
-                <h2 id="contact-header">Kontakt oss</h2>
+                <h1 id="contact-header">Kontakt oss</h1>
                 <p>Er det noe du lurer på?<br>Send oss en mail da vel!</p>
             </div>
 
@@ -59,10 +66,10 @@
                     {/if}
                 </div>
                 <div class="input-container phone-input">
-                    <label for="phone">Telefon <small>(Valgfritt)</small></label>
+                    <label for="phone">Telefon <small>Valgfritt</small></label>
                     <div class="phone-wrapper">
                         <span class="country-code">+47</span>
-                        <input type="tel" id="phone" name="phone" bind:value={$form.phone} />
+                        <input type="tel" id="phone" name="phone" on:input={handleInput} bind:value={$form.phone} />
                     </div>
 
                     {#if $errors.phone}
@@ -141,10 +148,11 @@
     }
     
     #contact-header {
-        overflow: hidden;
-        padding: 1rem;
-        font-family: var(--font-header);
         font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+        font-family: var(--font-header);
     }
 
     .info {
@@ -170,6 +178,7 @@
     }
     .phone-input {
         position: relative;
+        width: 20rem;
     }
     .phone-wrapper input {
         padding-left: 2.5rem; /* Adjust padding to make space for the country code */
@@ -225,7 +234,7 @@
     small {
         margin: 0;
         padding: 0;
-        color: white;
+        color: #6E6E6E;
         overflow: hidden;
         transition: all 0.15s;
         font-size: 0.8rem;

@@ -4,8 +4,6 @@
   import { cubicOut } from 'svelte/easing';
   import EmblaCarousel from './components/EmblaCarousel.svelte';
 
-
-
 </script>
 
 

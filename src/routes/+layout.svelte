@@ -8,7 +8,6 @@
     import 'lenis/dist/lenis.css'
     
     let { children } = $props();
-    let showContent = $state(false);
     // Kun for Windows, bruker en custom scrollbar som gir mer smooth scrolling
     onMount(() => {
         // Bruker userAgent til å sjekke enheten som brukeren er på
@@ -21,13 +20,12 @@
 
             });
         } 
-        showContent = true;
     });
 </script>
 
 <Header />
 {@render children()}
-<Footer {showContent} />    
+<Footer />    
 
 
 <style>

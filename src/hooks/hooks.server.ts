@@ -3,7 +3,7 @@ import { RateLimiter } from "sveltekit-rate-limiter/server";
 
 const limiter = new RateLimiter({
     IP: [75, 'd'], 
-    IPUA: [75, 'h'] 
+    IPUA: [10000, 'h'] 
 });
 
 const securityHeaders = {
@@ -15,7 +15,8 @@ const securityHeaders = {
     'Access-Control-Allow-Origin': 'https://bakkarevydocker-o869w.ondigitalocean.app',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Vary': 'Origin'
+    'Vary': 'Origin',
+    'Cache-Control': 'public, max-age=3600'
 };
 
 export const handle: Handle = async ({ event, resolve }) => {

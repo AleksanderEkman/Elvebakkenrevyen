@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, tick } from 'svelte';
     import HeroSection from './HeroSection.svelte';
+    import AboutSection from './AboutSection.svelte';
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
     import sponsorer_background from '$lib/assets/sponsorer.webp';
 
@@ -32,14 +33,14 @@
 </svelte:head>
 
 <!-- Rendrer alle komponentene med en main tag. -->
-<!-- Bruker litt annen syntaks for å lazy loade SponsorsSection og ContactSection. -->
+<!-- Bruker litt annen syntaks for å lazy loade SponsorsSection -->
 <main>
-    <HeroSection {showContent}/>
-    {#if showContent}
-        <section bind:this={sponsorsSectionRef} class="sponsors" style="background-image: url({sponsorer_background})">
-            <svelte:component this={SponsorsSection}/>
-        </section>
-    {/if}
+    <HeroSection {showContent} />
+    <AboutSection />
+    <section bind:this={sponsorsSectionRef} class="sponsors" style="background-image: url({sponsorer_background})">
+        <svelte:component this={SponsorsSection}/>
+    </section>
+
 </main>
 
 <style nonce="%sveltekit.nonce%">

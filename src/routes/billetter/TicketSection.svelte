@@ -6,62 +6,70 @@
     let events: { label: string; date: string; time: string; showCode: string }[] = [];
     onMount(() => {
         events = [
-            {label: "Premiere", date: "26.02", time:"18:00", showCode: "s1"},
-            {label: "", date: "27.02", time:"18:00", showCode: "s2"},
-            {label: "", date: "28.02", time:"18:00", showCode: "s3"},
-            {label: "", date: "29.02", time:"18:00", showCode: "s4"},
-            {label: "", date: "1.03", time:"18:00", showCode: "s5"},
-            {label: "", date: "2.03", time:"18:00", showCode: "s6"},
-            {label: "", date: "3.03", time:"18:00", showCode: "s7"},
-            {label: "", date: "4.03", time:"18:00", showCode: "s8"},
-            {label: "Teppefalls", date: "5.03", time:"18:00", showCode: "s9"}
+            {label: "Premiere", date: "26. Februar", time:"18:00", showCode: "s1"},
+            {label: "Forestilling", date: "27. Februar", time:"18:00", showCode: "s2"},
+            {label: "Forestilling", date: "28. Februar", time:"18:00", showCode: "s3"},
+            {label: "Forestilling", date: "29. Februar", time:"18:00", showCode: "s4"},
+            {label: "Forestilling", date: "1. Mars", time:"18:00", showCode: "s5"},
+            {label: "Forestilling", date: "2. Mars", time:"18:00", showCode: "s6"},
+            {label: "Forestilling", date: "3. Mars", time:"18:00", showCode: "s7"},
+            {label: "Forestilling", date: "4. Mars", time:"18:00", showCode: "s8"},
+            {label: "Teppefalls", date: "5. Mars", time:"18:00", showCode: "s9"}
         ];
     });
 </script>
 
 <section class="ticketSection">
-    
     <div class="text">
-        <h2>Billetter</h2>
-        <p>Elvebakkenrevyen 2025 spilles i Elvebakkenrevyens lokaler på Vestre Elvebakke 3.</p>
+        <h1>Billetter</h1>
+        <p>Spar datoen 26. februar 2025, for da går premieren av stabelen. 
+            Kom og bli en del av vårt publikum, og opplev magien selv.
+            <br><br>
+            Elvebakkenrevyen er mer enn en forestilling, det er en hjertelig invitasjon til å bli en del av noe større.<br>Vi gleder oss til å dele kvelden med dere!</p>
     </div>
 
-    <div class="map-wrapper">
-        <iframe  in:fade={{duration: 1500}}  class="map"
-            title="map" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
-            height="500"
-            style="border:0;"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <div class="wide">
+        <div class="map-wrapper">
+            <iframe in:fade={{duration: 1500}} class="map"
+                title="map" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
+                height="500"
+                style="border:0;"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
     </div>
 
     <div class="flex">
         {#each events as event, index}
             <a class="event {index === 0 ? 'first-event' : ''}" href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`} target="_blank">
                 <div class="event-content">
-                    <p>{event.label}</p>
-                    <p>{event.date}.2025</p>
-                    <p>{event.time}</p>
+                    <p class="event-label">{event.label}</p>
+                    <p class="event-date">{event.date} 2025</p>
+                    <p class="event-time">Kl. {event.time}</p>
                 </div>
             </a>
         {/each}
     </div>
-
 </section>
 
 <style>
-    h2 {
+    h1 {
         font-size: 3.5rem;
-        letter-spacing: 0.05rem;
-        margin-top: 4rem;
-        margin-bottom: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
         font-family: var(--font-header);
     }
     p {
         font-size: 1.25rem;
-        letter-spacing: 0.025rem;
+        max-width: 60ch;
         margin-bottom: 1rem;
+    }
+    .wide {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
     }
     .ticketSection {
         background: linear-gradient(135deg, rgba(0, 0, 10, 1) 0%, rgba(10, 10, 20, 1) 50%, rgba(20, 20, 30, 1) 80%, rgba(30, 30, 40, 1) 100%);
@@ -74,11 +82,12 @@
         width: 100vw;
         text-align: center;
         padding: 4rem;
+        overflow: hidden;
     }
     .flex {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, auto);
+        grid-template-rows: repeat(5, auto);
         gap: 2rem;
         padding: 1rem;
     }
@@ -93,11 +102,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0rem;
         cursor: pointer;
         box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+    }
+    .event:hover {
+        transform: scale(1.04) translateY(-5px);;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
     }
     .event-content {
+        text-wrap: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -105,33 +120,60 @@
         width: 20rem;
         height: auto;
     }
-    .map-wrapper {
-        padding: 3rem;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .event-label {
+        font-size: 1.5rem;
+        font-weight: bold;
     }
+    .event-date, .event-time {
+        text-wrap: nowrap;
+        font-size: 1.25rem;
+    }
+    .map-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        margin: 3rem 0;
+        max-width: 800px;
+    }
+
     .map {
-        width: 47.5rem;
-        border-radius: 5px;
+        display: flex;
+        justify-self: center;
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
     }
     @media (max-width: 540px) {
-        .flex {
-            grid-template-columns: 1fr;
-        }
         .map {
-            width: 95vw;
-            height: 95vw;
-            padding: 1.5rem;
+            width: 92.5vw;
+            height: 92.5vw;
+        }
+        .map-wrapper {
+            max-width: none;
         }
         .event {
             gap: 0rem;
+            grid-column: span 2;
+            width: auto;
+            padding: 1.5rem 8.5rem;
         }
         .event-content {
-            width: 100%;
-            height: 6rem;
+            width: auto;
+            max-width: none;
+            height: 8rem;
+        }
+        .event-label {
+            font-size: 1.25rem;
+        }
+
+        .event-date, .event-time {
+            font-size: 1rem;
+        }
+        p {
+            font-size: 1rem;
         }
     }
 </style>
