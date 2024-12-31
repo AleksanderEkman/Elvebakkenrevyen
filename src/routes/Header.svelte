@@ -30,8 +30,9 @@
     };
     onMount(() => {
         showContent = true;
+        checkScroll();
         window.addEventListener('scroll', checkScroll);
-
+        
         // Cleanup event listener on component destroy
         return () => {
             window.removeEventListener('scroll', checkScroll);
@@ -56,13 +57,13 @@
                     {/if}
                 </p>
                 <ul class="submenu" id="submenu" in:fade={{duration: 500}}>
-                    <li id="item"><a href="/aktører">Aktører</a></li>
+                    <li id="item"><a href="/skuespillere">Aktører</a></li>
                     <li id="item"><a href="/sjefer">Sjefer og grupper</a></li>
                 </ul>
             </div>
         </li>
         <li><a href="/om-revyen">Om revyen</a></li>
-        <li><a href="/kontakt">Kontakt oss</a></li>
+        <li><a href="/kontakt-oss">Kontakt oss</a></li>
     </ul>
 
     <!-- Mobile -->
@@ -86,10 +87,10 @@
         {#if mobileMenuOpen}
             <ul class="mobile-menu" transition:fade={{duration: 300}}>
                 <li><a href="/billetter" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Billetter</a></li>
-                <li><a href="/aktører" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Aktører</a></li>
+                <li><a href="/skuespillere" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Aktører</a></li>
                 <li><a href="/sjefer" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Sjefer og grupper</a></li>
                 <li><a href="/om-revyen" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Om revyen</a></li>
-                <li><a href="/kontakt" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Kontakt oss</a></li>
+                <li><a href="/kontakt-oss" on:click={() => {setTimeout(toggleMobileMenu, 150)}}>Kontakt oss</a></li>
             </ul>
         {/if}
     </aside>
@@ -168,7 +169,7 @@
         justify-content: space-evenly;
         align-items: center;
         margin: 0;
-        padding: 1rem;
+        padding: 0.75rem;
         border-radius: 0 0 25px 25px;
         transition: all 0.5s;
     }
@@ -282,7 +283,7 @@
         width: 80%;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 1200px) {
         header {
             padding: 0.5rem;
             justify-content: space-between;
@@ -300,6 +301,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             width: 80%;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;

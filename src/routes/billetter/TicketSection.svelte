@@ -1,11 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { goto } from '$app/navigation';
+	import { set } from 'zod';
 
-    let events: { label: string; date: string; time: string; showCode: string }[] = [];
-    onMount(() => {
-        events = [
+    const events = [
             {label: "Premiere", date: "26. Februar", time:"18:00", showCode: "s1"},
             {label: "Forestilling", date: "27. Februar", time:"18:00", showCode: "s2"},
             {label: "Forestilling", date: "28. Februar", time:"18:00", showCode: "s3"},
@@ -14,8 +12,27 @@
             {label: "Forestilling", date: "2. Mars", time:"18:00", showCode: "s6"},
             {label: "Forestilling", date: "3. Mars", time:"18:00", showCode: "s7"},
             {label: "Forestilling", date: "4. Mars", time:"18:00", showCode: "s8"},
-            {label: "Teppefalls", date: "5. Mars", time:"18:00", showCode: "s9"}
+            {label: "Forestilling", date: "5. Mars", time:"18:00", showCode: "s9"},
+            {label: "Forestilling", date: "6. Mars", time:"18:00", showCode: "s10"},
+            {label: "Teppefalls", date: "7. Mars", time:"18:00", showCode: "s11"}
         ];
+    onMount(() => {
+        setTimeout(() => {
+                const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target)
+                    }
+                });
+            }, { threshold: 0.45 });
+
+            const cards = document.querySelectorAll('.event');
+            cards.forEach(card => observer.observe(card));
+        })
     });
 </script>
 
@@ -41,6 +58,7 @@
     </div>
 
     <div class="flex">
+        <h2><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
         {#each events as event, index}
             <a class="event {index === 0 ? 'first-event' : ''}" href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`} target="_blank">
                 <div class="event-content">
@@ -60,6 +78,17 @@
         letter-spacing: 0.05em;
         margin-bottom: 1rem;
         font-family: var(--font-header);
+    }
+    h2 {
+        font-size: 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        grid-column: span 2;
+    }
+    h2:hover {
+        text-decoration: underline;
     }
     p {
         font-size: 1.25rem;
@@ -106,6 +135,12 @@
         cursor: pointer;
         box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.4);
         transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    :global(.event.visible) {
+        opacity: 1;
+        transform: translateY(0);
     }
     .event:hover {
         transform: scale(1.04) translateY(-5px);;
@@ -121,12 +156,17 @@
         height: auto;
     }
     .event-label {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: bold;
     }
     .event-date, .event-time {
         text-wrap: nowrap;
-        font-size: 1.25rem;
+    }
+    .event-date {
+        font-size: 1.6rem;
+    }
+    .event-time {
+        font-size: 1.3rem;
     }
     .map-wrapper {
         display: flex;
@@ -147,6 +187,9 @@
         box-shadow: var(--shadow);
     }
     @media (max-width: 540px) {
+        .ticketSection {
+            padding: 2rem 0;
+        }
         .map {
             width: 92.5vw;
             height: 92.5vw;
@@ -154,22 +197,31 @@
         .map-wrapper {
             max-width: none;
         }
+        .flex {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .event {
             gap: 0rem;
             grid-column: span 2;
-            width: auto;
-            padding: 1.5rem 8.5rem;
+            width: 85%;
+            padding: 1.5rem 10rem;
         }
         .event-content {
-            width: auto;
+            width: 100%;
             max-width: none;
             height: 8rem;
         }
         .event-label {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
         }
 
-        .event-date, .event-time {
+        .event-date {
+            font-size: 1.1rem;
+        }
+        .event-time {
             font-size: 1rem;
         }
         p {

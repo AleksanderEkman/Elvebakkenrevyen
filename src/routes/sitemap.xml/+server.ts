@@ -4,9 +4,13 @@ const site = 'https://bakkarevydocker-o869w.ondigitalocean.app';
 const pages: string[] = [
     '',
     'billetter',
-    'aktører',
-    'grupper',
-    'kontakt'
+    'skuespillere',
+    'band',
+    'dansere',
+    'sangere',
+    'om-revyen',
+    'sjefer',
+    'kontakt-oss'
 ];
 
 export const GET: RequestHandler = async () => {

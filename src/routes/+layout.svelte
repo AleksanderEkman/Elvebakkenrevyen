@@ -5,22 +5,10 @@
     import Footer from './Footer.svelte';
     import Header from './Header.svelte';
     import Lenis from 'lenis'
-    import 'lenis/dist/lenis.css'
+
     
     let { children } = $props();
-    // Kun for Windows, bruker en custom scrollbar som gir mer smooth scrolling
-    onMount(() => {
-        // Bruker userAgent til å sjekke enheten som brukeren er på
-        const userAgent = navigator.userAgent;
-        const mobileOrMac = (userAgent.includes('Mobile') || userAgent.includes('Mac'));
-        if (!mobileOrMac) {
 
-            const lenis = new Lenis({
-                autoRaf: true,
-
-            });
-        } 
-    });
 </script>
 
 <Header />

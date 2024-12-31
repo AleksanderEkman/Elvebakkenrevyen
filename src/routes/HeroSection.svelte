@@ -40,22 +40,24 @@
 
     {#if showContent}
       <div class="container" in:fade={{ duration: 50 }}>
+
         <div class="kicker">
           <div class="inline">
             <img id="logo" src="/favicon.webp" alt="Elvebakkenrevyenlogo">
-            <p id="grey">Elvebakkenrevyen 2025 -</p>
+            <p id="grey">Elvebakkenrevyen 2025</p>
           </div>
-          <p id="grey">en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
+          <p id="grey">&nbsp- en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
         </div>
         <div class="hero-title">
           <h1>Konseptnavn</h1>
         </div>
-        <div class="btn-container">
-          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
-        </div>
         <div class="rating">
           <img src={dice} alt="Terningkast seks av seks for Elvebakkenrevyen" />
           <p id="grey">15x</p>
+          <p id="grey">| Vinneren av årets revy 4 ganger!</p>
+        </div> 
+        <div class="btn-container">
+          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
         </div>
       </div>
     {/if}
@@ -152,7 +154,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
                 0 0 2px rgba(255, 255, 255, 0.2), 
                 0 0 4px rgba(255, 255, 255, 0.13);
-    @apply text-8xl mb-4 mt-1;
+    @apply text-8xl mb-2 mt-2;
     font-family: var(--font-header);
     background: #ffffff;
     -webkit-background-clip: text;
@@ -178,15 +180,16 @@
     margin-bottom: 0.75rem;
   }
   .rating {
-    margin-top: 1.5rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
   }
   .rating img {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   #grey {
     color: #9E9E9E;
@@ -244,6 +247,9 @@
       font-size: 0.95rem;
       padding: 0.6rem 1rem;
     }
+    .rating {
+      font-size: 0.8rem;
+    }
     .info {
       display: none;
     }
@@ -251,6 +257,24 @@
       left: 0;
       flex-direction: row;
       width: 100%;
+    }
+  }
+  @media (max-width: 375px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+    .container {
+      margin-left: 2.25rem;
+    }
+    .cta {
+      font-size: 0.85rem;
+      padding: 0.5rem 0.9rem;
+    }
+    .kicker {
+      font-size: 0.85rem;
+    }
+    .rating {
+      font-size: 0.725rem;
     }
   }
 

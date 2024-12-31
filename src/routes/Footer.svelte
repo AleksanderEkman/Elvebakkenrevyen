@@ -28,6 +28,14 @@
       </div>
       <div class="footer-col">
         <p id="header">
+          Billetter
+        </p>
+        <ul>
+          <li><a href="https://bestill.albillett.no/nb/1574">Elvebakkenrevyen Albillett</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p id="header">
           Kontakt oss
         </p>
         <ul>
@@ -47,6 +55,7 @@
     padding: 2.75em 0em;
     background: linear-gradient(135deg, #000000, #101010);
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.5);
+    text-wrap: nowrap;
   }
 
   .content {
@@ -102,7 +111,7 @@
     text-decoration: underline;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 880px) {
     footer {
       flex-direction: column;
       align-items: center;
@@ -125,7 +134,7 @@
     }
   }
 
-  @media (max-width: 933px) and (orientation: landscape) { 
+  @media (max-width: 1030px) and (orientation: landscape) { 
     #header {
       font-size: 0.9em;
     }

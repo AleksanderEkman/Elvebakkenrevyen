@@ -13,6 +13,7 @@
   const OPTIONS = { loop: true };
 
   onMount(() => {
+    
     // Liste over alle sponsorer samt URL
     sponsors = [{name: 'Vulkan Oslo', alt: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
         {name: 'Kaffebrenneriet', alt: 'Vulkan Oslo', url: "https://www.kaffebrenneriet.no/"}, 
@@ -21,7 +22,7 @@
         {name: 'Vega Scene', alt: 'Vulkan Oslo', url: "https://www.vegascene.no/"}, 
         {name: 'Syng', alt: 'Vulkan Oslo', url: "https://syng.no/"}
       ]
-
+    
     const loadImages = async () => {
       // Importerer alle bildene fra lib/assets/sponsors
       const images = import.meta.glob<{ default: string }>('$lib/assets/sponsors/*.webp');
@@ -30,12 +31,12 @@
         const imageModule = await images[path]();
         sponsorImages = [...sponsorImages, imageModule.default];
       }
+      showContent = true;
     };
 
     loadImages().then(() => {
       // Oppretter en ny EmblaCarousel med emblaAPI
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
-      showContent = true;
     });
 
     return () => {
@@ -49,25 +50,27 @@
   <div bind:this={viewportNode} class="embla__viewport">
     <div class="embla__container">
       <!-- Itererer over hvert sponsorbilde -->
-      {#each sponsorImages as image, index}
-        <div class="embla__slide">
-          <div class="embla__slide__img">
-            <img
-              src={image} 
-              width="100%"
-              height="100%"
-              alt="Sponsor" 
-              loading="lazy" 
-            />
+      {#if showContent}
+        {#each sponsorImages as image, index}
+          <div class="embla__slide">
+            <div class="embla__slide__img">
+              <img
+                src={image} 
+                width="100%"
+                height="100%"
+                alt="Sponsor" 
+                loading="lazy" 
+              />
+            </div>
+            <div class="text">
+              <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
+                <!-- Legger til tekst basert på indeks -->
+                {sponsors[index].name}
+            </a></p>
+            </div>
           </div>
-          <div class="text">
-            <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
-              <!-- Legger til tekst basert på indeks -->
-              {sponsors[index].name}
-          </a></p>
-          </div>
-        </div>
-      {/each}
+        {/each}
+      {/if}
     </div>
   </div>
 </section>

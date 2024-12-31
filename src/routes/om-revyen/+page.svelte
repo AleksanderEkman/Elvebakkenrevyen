@@ -5,6 +5,7 @@
 
 <svelte:head>
     <title>Elvebakkenrevyen 2025 Om Oss</title>
+    <meta name="description" content="Møt Elvebakkenrevyen 2025">
 </svelte:head>
 
 <main>
