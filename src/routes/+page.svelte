@@ -48,7 +48,6 @@
 
         observer.observe(sponsorsSectionRef);
     });
-
 </script>
 
 <!-- Side-spesifikk tittel -->
