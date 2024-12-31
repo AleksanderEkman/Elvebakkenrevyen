@@ -101,7 +101,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1));
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0));
   }
   .container {
     font-size: 1.2rem;
@@ -286,7 +286,7 @@
       background-attachment: scroll;
     }
     .hero-title {
-      font-size: 2rem;
+      font-size: 4.25rem;
       margin-top: 0;
       text-shadow: none;
       text-shadow: 

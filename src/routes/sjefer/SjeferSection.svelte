@@ -92,12 +92,12 @@
         opacity: 1;
         transform: translateY(0);
     }
-    @media (min-width: 540px) {
+    @media (min-width: 676px) {
         .card:nth-child(even) {
             flex-direction: row-reverse;
         }
     }
-    @media (max-width: 540px) {
+    @media (max-width: 675px) {
         .card {
             width: 65%;
             flex-direction: column-reverse;
@@ -106,6 +106,13 @@
         }
         .card-container {
             justify-content: space-between;
+        }
+        h1 {
+            margin: 4rem 0rem;
+            font-size: 2.1rem;
+        }
+        h2 {
+            font-size: 1.9rem;
         }
     }
 </style>

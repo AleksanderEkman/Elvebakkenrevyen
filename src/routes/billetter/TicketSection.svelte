@@ -186,7 +186,12 @@
         border-radius: 10px;
         box-shadow: var(--shadow);
     }
-    @media (max-width: 540px) {
+    @media (max-width: 800px) {
+        .event-content {
+            width: 12.5rem;
+        }
+    }
+    @media (max-width: 580px) {
         .ticketSection {
             padding: 2rem 0;
         }

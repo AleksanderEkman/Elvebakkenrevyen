@@ -8,7 +8,7 @@
   <ul aria-label="Sosiale medier">
     <li>
       <a href="https://www.youtube.com/Elvebakkenrevyen" aria-label="Abonner på Elvebakken på YouTube">
-        <FontAwesomeIcon icon={faYoutube}  /> YouTube
+        <FontAwesomeIcon icon={faYoutube} /> YouTube
       </a>
     </li>
     <li>
@@ -18,12 +18,12 @@
     </li>
     <li>
       <a href="https://www.tiktok.com/@Elvebakkenrevyen" aria-label="Følg Elvebakkenrevyen på TikTok">
-        <FontAwesomeIcon icon={faTiktok}  /> TikTok
+        <FontAwesomeIcon icon={faTiktok} /> TikTok
       </a>
     </li>
     <li>
       <a href="https://www.facebook.com/Elvebakkenrevyen/" aria-label="Følg Elvebakkenrevyen på Facebook">
-        <FontAwesomeIcon icon={faFacebook}  /> Facebook
+        <FontAwesomeIcon icon={faFacebook} /> Facebook
       </a>
     </li>
   </ul>
@@ -39,7 +39,7 @@
     }
 
     li {
-      padding-bottom: 10px;
+      padding-bottom: 13px;
     }
   
     :global(li a svg) {
@@ -74,7 +74,6 @@
     }
     li a:hover {
       color: var(--color-text1);
-      transform: translateY(-2px);
     }
   
     :global(li a:hover svg) {

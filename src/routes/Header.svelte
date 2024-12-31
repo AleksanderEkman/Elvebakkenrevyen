@@ -46,7 +46,7 @@
     </button>
     <!-- Desktop -->
     <ul class="desktop" bind:this={navBar}>
-        <li><a href="/billetter">Billetter</a></li>
+        <li><a id="border" href="/billetter">Billetter</a></li>
         <li class="dropdown">
             <div id="more">
                 <p id="text">Revymedlemmer 
@@ -128,6 +128,10 @@
     .mobile {
         z-index: 2;
         display: none;
+    }
+    #border {
+        border-radius: 5px;
+        border: 1px solid rgb(103, 103, 103);
     }
     .desktop {
         text-align: center;

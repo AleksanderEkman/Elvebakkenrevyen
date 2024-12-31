@@ -118,12 +118,12 @@
         opacity: 1;
         transform: translateY(0);
     }
-    @media (min-width: 540px) {
+    @media (min-width: 601px) {
         .card:nth-child(even) {
             flex-direction: row-reverse;
         }
     }
-    @media (max-width: 540px) {
+    @media (max-width: 600px) {
         .card {
             width: 65%;
             flex-direction: column-reverse;
