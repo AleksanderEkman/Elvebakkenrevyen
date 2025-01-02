@@ -9,7 +9,7 @@
 
   let { showContent } = $props();
 
-  let height: number | string = $state(0);
+  let height: number | string = $state('100svh');
   let scrollY: number = $state(0);
   let innerHeight: number = $state(0);
   let scrollAmplifier: number = $state(0);
@@ -56,7 +56,7 @@
           <p id="grey">| Vinneren av årets revy 4 ganger!</p>
         </div> 
         <div class="btn-container">
-          <button class="cta" onclick={() => goto("/billetter")}>Se forestillingene våre!</button>
+          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
         </div>
       </div>
     {/if}
