@@ -34,7 +34,7 @@
         padding: 1rem 0.5rem;
         display: flex;
         justify-content: space-evenly;
-        width: 50%;
+        width: 45%;
     }
     ul li a {
         border-radius: 5px;

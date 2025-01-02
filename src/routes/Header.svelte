@@ -178,7 +178,7 @@
     }
 
     :global(.active) {
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(12px);
         background-color: var(--header-bg-color);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -239,7 +239,7 @@
         width: 100%;
         z-index: 5;
         background-color: rgba(30, 30, 30, 0.9);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(15px);
         display: flex;
         flex-direction: column;
         align-items: center;
