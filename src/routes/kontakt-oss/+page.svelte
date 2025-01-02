@@ -4,8 +4,6 @@
 
     export let data;
 
-    let contactSectionRef: HTMLElement;
-    let footer: HTMLElement | null;
 
 </script>
 
@@ -14,17 +12,15 @@
 </svelte:head>
 
 <main>
-   <section bind:this={contactSectionRef} class="contact">
-        {#if ContactSection}
-            <svelte:component this={ContactSection} {data}/>
-        {/if}
+   <section class="contact">
+        <ContactSection  {data} />
     </section> 
 </main>
 
 
 <style>
     .contact {
-        padding:0.75rem;
+        padding: 4.5rem 0.75rem;
         color: white;
         background: linear-gradient(135deg, rgba(0, 0, 10, 1) 0%, rgba(10, 10, 20, 1) 50%, rgba(20, 20, 30, 1) 80%, rgba(30, 30, 40, 1) 100%);
         display: flex;
@@ -32,7 +28,7 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 52.5rem;
+        height: auto;
         position: relative;
         text-transform: none;
         overflow: hidden;

@@ -9,7 +9,7 @@
     import spinner from '$lib/assets/spinner.svg';
 
     export let data; // Form data passed from the parent
-    let mount = false;
+
 
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
@@ -24,88 +24,83 @@
         phone = input.value;
     }
 
-    onMount(() => {
-        setTimeout(() => {
-            mount = true;
-        }, 1);
-    });
+
 
 </script>
 
 
-{#if mount}
-    <form
-    method="POST" 
-    use:enhance 
-    class="contact-field"
-    in:fade={{duration: 500}}>
-        <div class="contact-content">
-            <div class="desc">
-                <h1 id="contact-header">Kontakt oss</h1>
-                <p>Er det noe du lurer på?<br>Send oss en mail da vel!</p>
-            </div>
+<form
+method="POST" 
+use:enhance 
+class="contact-field"
+in:fade={{duration: 500}}>
+    <div class="contact-content">
+        <div class="desc">
+            <h1 id="contact-header">Kontakt oss</h1>
+            <p>Er det noe du lurer på?<br>Send oss en mail da vel!</p>
+        </div>
 
+        <div class="input-container">
+            <label for="name">Navn *</label>
+            <input type="text" id="name" name="name" bind:value={$form.name} required />
+            {#if $errors.firstName}
+                <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+            {:else}
+                <small>&nbsp;</small>
+            {/if}
+        </div>
+
+        <div class="info">
             <div class="input-container">
-                <label for="name">Navn *</label>
-                <input type="text" id="name" name="name" bind:value={$form.name} required />
-                {#if $errors.firstName}
-                    <small id="error" in:fade={{ duration: 70 }}>Ugyldig fornavn</small>
+                <label for="email">E-post *</label>
+                <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
+                {#if $errors.email}
+                    <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig e-postadresse</small>
                 {:else}
                     <small>&nbsp;</small>
                 {/if}
             </div>
-
-            <div class="info">
-                <div class="input-container">
-                    <label for="email">E-post *</label>
-                    <input type="email" id="email" name="email" bind:value={$form.email} required autocomplete="email" />
-                    {#if $errors.email}
-                        <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig e-postadresse</small>
-                    {:else}
-                        <small>&nbsp;</small>
-                    {/if}
+            <div class="input-container phone-input">
+                <label for="phone">Telefon <small>Valgfritt</small></label>
+                <div class="phone-wrapper">
+                    <span class="country-code">+47</span>
+                    <input type="tel" id="phone" name="phone" on:input={handleInput} bind:value={$form.phone} />
                 </div>
-                <div class="input-container phone-input">
-                    <label for="phone">Telefon <small>Valgfritt</small></label>
-                    <div class="phone-wrapper">
-                        <span class="country-code">+47</span>
-                        <input type="tel" id="phone" name="phone" on:input={handleInput} bind:value={$form.phone} />
-                    </div>
 
-                    {#if $errors.phone}
-                        <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig telefonnummer</small>
-                    {:else}
-                        <small>&nbsp;</small>
-                    {/if}
-                </div>
-            </div>
-            
-            <div class="input-container">
-                <label for="message">Melding *</label>
-                <textarea id="message" name="body" bind:value={$form.body} required></textarea>
-                {#if $errors.body}
-                    <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig melding (må ha 50-500 tegn)</small>
+                {#if $errors.phone}
+                    <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig telefonnummer</small>
                 {:else}
                     <small>&nbsp;</small>
-                {/if}
-            </div>
-            <div aria-hidden="true" style="position: absolute; left: -99999px;;">
-                <label for="website-url">Your Website</label>
-                <input type="text" id="website-url" bind:value={$form.url}  name="url" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <div class="progress">
-                {#if !$delayed && !$message}
-                    <button type="submit">Send</button>
-                {:else if $message}
-                    <p in:fade={{duration:50 }} class="icon" id="spinner" aria-live="polite"><FontAwesomeIcon icon={faCheck}/></p>
-                {:else}
-                    <img in:fade={{duration:50}} id="spinner" src={spinner} alt="Sender.." aria-live="polite">
                 {/if}
             </div>
         </div>
-    </form>
-{/if}
+        
+        <div class="input-container">
+            <label for="message">Melding *</label>
+            <textarea id="message" name="body" bind:value={$form.body} required></textarea>
+            {#if $errors.body}
+                <small id="error" in:fade={{ duration: 70 }} aria-live="assertive">Ugyldig melding (må ha 50-500 tegn)</small>
+            {:else}
+                <small>&nbsp;</small>
+            {/if}
+        </div>
+        <div aria-hidden="true" style="position: absolute; left: -99999px;;">
+            <label for="website-url">Your Website</label>
+            <input type="text" id="website-url" bind:value={$form.url}  name="url" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="progress">
+            {#if !$delayed && !$message}
+                <button type="submit">Send</button>
+            {:else if $message}
+                <p in:fade={{duration:50 }} class="icon" id="spinner" aria-live="polite"><FontAwesomeIcon icon={faCheck}/></p>
+            {:else}
+                <img in:fade={{duration:50}} id="spinner" src={spinner} alt="Sender.." aria-live="polite">
+            {/if}
+        </div>
+    </div>
+</form>
+
 
 
 <style>
@@ -263,8 +258,11 @@
 
     #message {
         height: 15rem;
+        min-height: 15rem;
+        max-height: 30rem;
         padding: 0.4rem;
         font-size: 1rem;
+        resize: vertical;
         color: rgb(255, 255, 255);
     }
 
@@ -312,6 +310,8 @@
 
         #message {
             height: 6.25rem;
+            min-height: 6.25rem;
+            max-height: 20rem;
         }
     }
 

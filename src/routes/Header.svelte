@@ -74,11 +74,11 @@
         {#if showContent}
             <button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
                 {#if !mobileMenuOpen}
-                    <div in:fade={{ duration: 100, delay:160 }} out:fade={{ duration: 100 }}>
+                    <div in:fade={{ duration: 100, delay:150 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faBars} />
                     </div>
                 {:else}
-                    <div in:fade={{ duration: 100, delay:160 }} out:fade={{ duration: 100 }}>
+                    <div in:fade={{ duration: 100, delay:150 }} out:fade={{ duration: 100 }}>
                         <FontAwesomeIcon icon={faClose} />
                     </div>
                 {/if}
@@ -130,8 +130,7 @@
         display: none;
     }
     #border {
-        border-radius: 5px;
-        border: 1px solid rgb(103, 103, 103);
+        border: 1px solid rgb(66, 66, 66);
     }
     .desktop {
         text-align: center;
@@ -173,7 +172,7 @@
         justify-content: space-evenly;
         align-items: center;
         margin: 0;
-        padding: 0.75rem;
+        padding: 0.6rem 0.75rem;
         border-radius: 0 0 25px 25px;
         transition: all 0.5s;
     }
@@ -198,7 +197,7 @@
         text-align: center;
         color: white;
         text-decoration: none;
-        padding: 0.45rem 1.8rem;
+        padding: 0.4rem 1.8rem;
         border-radius: 5px;
         transition: background-color var(--transition-speed) ease, 
                     transform 0.2s ease;
@@ -245,7 +244,7 @@
         flex-direction: column;
         align-items: center;
         position: absolute;
-        top: 100%;
+        top: 105%;
         right: 0;
         border-radius: 10px 10px 25px 25px;
         opacity: 0;

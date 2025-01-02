@@ -101,7 +101,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0));
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
   }
   .container {
     font-size: 1.2rem;
