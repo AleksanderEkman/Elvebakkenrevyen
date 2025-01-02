@@ -7,13 +7,12 @@
   import InAppSpy from "inapp-spy";
   import dice from '$lib/assets/dice.svg';
 
-  export let showContent;
+  let { showContent } = $props();
 
-  let height: number | string;
-  let scale = 100;
-  let scrollY: number;
-  let innerHeight: number;
-  let scrollAmplifier: number;
+  let height: number | string = $state(0);
+  let scrollY: number = $state(0);
+  let innerHeight: number = $state(0);
+  let scrollAmplifier: number = $state(0);
 
   onMount(() => {
     // Sjekker om brukeren er i en app, bruker annen strategi for å hente høyde
@@ -57,7 +56,7 @@
           <p id="grey">| Vinneren av årets revy 4 ganger!</p>
         </div> 
         <div class="btn-container">
-          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
+          <button class="cta" onclick={() => goto("/billetter")}>Se forestillingene våre!</button>
         </div>
       </div>
     {/if}

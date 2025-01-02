@@ -1,7 +1,6 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
-
-    export let activePath: string;
+    let  {activePath } = $props();
 </script>
 
 <nav class="submenu" aria-label="Sub Navigation">

@@ -8,8 +8,7 @@
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
     import spinner from '$lib/assets/spinner.svg';
 
-    export let data; // Form data passed from the parent
-
+    let { data } = $props(); // Form data passed from the parent
 
     // Initialize Superform with Zod schema
     const { form, errors, constraints, message, enhance, delayed } = superForm(data.form, {
@@ -64,7 +63,7 @@ in:fade={{duration: 500}}>
                 <label for="phone">Telefon <small>Valgfritt</small></label>
                 <div class="phone-wrapper">
                     <span class="country-code">+47</span>
-                    <input type="tel" id="phone" name="phone" on:input={handleInput} bind:value={$form.phone} />
+                    <input type="tel" id="phone" name="phone" oninput={handleInput} bind:value={$form.phone} />
                 </div>
 
                 {#if $errors.phone}
