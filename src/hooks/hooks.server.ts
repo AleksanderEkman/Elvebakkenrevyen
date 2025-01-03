@@ -3,7 +3,7 @@ import { RateLimiter } from "sveltekit-rate-limiter/server";
 
 const limiter = new RateLimiter({
     IP: [75, 'd'], 
-    IPUA: [10000, 'h'] 
+    IPUA: [1000, 'h'] 
 });
 
 const securityHeaders = {

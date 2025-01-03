@@ -1,9 +1,37 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
     let  {activePath } = $props();
+    let submenu: HTMLElement;
+    let maxScroll = $state(100)
+    let y = $state(0);
+
+    $effect(() => {
+        maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (submenu) {
+            if (y < maxScroll*0.04 || y > maxScroll*0.9) {
+                submenu.classList.add('show');
+            } else {
+                submenu.classList.remove('show');
+            }
+        }
+    })
+
+    onMount(() => {
+        if (submenu) {
+            if (y > 10) {
+                submenu.classList.remove('show');
+            } else {
+                submenu.classList.add('show');
+            }
+        }
+    });
+
 </script>
 
-<nav class="submenu" aria-label="Sub Navigation">
+<svelte:window bind:scrollY={y}></svelte:window>
+
+<nav class="submenu" bind:this={submenu} aria-label="Sub Navigation">
     <ul>
         <li><a class:active={activePath === 'skuespillere'} href="/skuespillere">Skuespillere</a></li>
         <li><a class:active={activePath === 'band'} href="/band">Band</a></li>
@@ -23,13 +51,20 @@
         width: 100vw;
         margin: 0;
         padding: 0;
+        transition: all 0.325s;
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    :global(.submenu.show) {
+        opacity: 1;
+        transform: scale(1);
     }
     .active {
         background-color: var(--hover-bg-color);
     }
     ul {
         background-color: rgba(23, 23, 23, 0.6);;
-        border-radius: 25px;
+        border-radius: 17px;
         padding: 1rem 0.5rem;
         display: flex;
         justify-content: space-evenly;
@@ -45,7 +80,7 @@
         background-color: var(--hover-bg-color);
         transform: scale(1.05);
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
         .submenu {
             top: 4.5rem;
         }

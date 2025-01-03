@@ -173,7 +173,7 @@
         align-items: center;
         margin: 0;
         padding: 0.6rem 0.75rem;
-        border-radius: 0 0 25px 25px;
+        border-radius: 0 0 17px 17px;
         transition: all 0.5s;
     }
 

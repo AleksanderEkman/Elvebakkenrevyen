@@ -56,7 +56,7 @@
           <p id="grey">| Vinneren av årets revy 4 ganger!</p>
         </div> 
         <div class="btn-container">
-          <button class="cta" on:click={() => goto("/billetter")}>Se forestillingene våre!</button>
+          <button class="cta" onclick={() => goto("/billetter")}>Se forestillingene våre!</button>
         </div>
       </div>
     {/if}
@@ -75,7 +75,6 @@
 
 <style>
   .hero {
-    height: 100svh;
     @apply text-white py-20;
     display: flex;
     flex-direction: column;
