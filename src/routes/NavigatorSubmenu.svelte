@@ -9,7 +9,7 @@
     $effect(() => {
         maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         if (submenu) {
-            if (y < maxScroll*0.04 || y > maxScroll*0.9) {
+            if (y < maxScroll*0.04 || y > maxScroll*0.925) {
                 submenu.classList.add('show');
             } else {
                 submenu.classList.remove('show');
@@ -53,7 +53,7 @@
         padding: 0;
         transition: all 0.325s;
         opacity: 0;
-        transform: scale(0.7);
+        transform: scale(0.8);
     }
     :global(.submenu.show) {
         opacity: 1;
@@ -65,20 +65,25 @@
     ul {
         background-color: rgba(23, 23, 23, 0.6);;
         border-radius: 17px;
-        padding: 1rem 0.5rem;
+        padding: 1.25rem 0.5rem;
         display: flex;
         justify-content: space-evenly;
-        width: 45%;
+        width: 27.5%;
     }
     ul li a {
         border-radius: 5px;
         transition: all 0.5s;
-        padding: 0.5rem 2rem;
+        padding: 0.75rem 2rem;
     }
     ul li a:hover,
     ul li a:focus {
         background-color: var(--hover-bg-color);
         transform: scale(1.05);
+    }
+    @media (max-width: 1500px) {
+        ul {
+            width: 45%;
+        }
     }
     @media (max-width: 1100px) {
         .submenu {

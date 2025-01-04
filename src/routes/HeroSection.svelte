@@ -152,7 +152,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
                 0 0 2px rgba(255, 255, 255, 0.2), 
                 0 0 4px rgba(255, 255, 255, 0.13);
-    @apply text-8xl mb-2 mt-2;
+    @apply text-9xl mb-2 mt-2;
     font-family: var(--font-header);
     background: #ffffff;
     -webkit-background-clip: text;
@@ -183,7 +183,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
   .rating img {
     width: 20px;
@@ -215,6 +215,9 @@
                   0 0 2px rgba(255, 255, 255, 0.2), 
                   0 0 4px rgba(255, 255, 255, 0.13);
       font-size: 4.5em;
+    }
+    .rating {
+      font-size: 0.95rem;
     }
   }
   /* Tilegnet tablets (iPad-er) */

@@ -225,7 +225,16 @@
         transition: transform 0.3s ease;
         width: 50px;
         height: 50px;
-
+    }
+    @media (min-width: 1500px) {
+        #logo {
+            width: 55px;
+            height: 55px;
+        }
+        .desktop {
+            width: 45% !important;
+            padding: 0.65rem 0.75rem;
+        }
     }
     @media (min-width: 768px) {
         #logo:hover {

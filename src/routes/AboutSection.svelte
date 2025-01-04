@@ -86,7 +86,11 @@
         height: auto;
         max-width: none;
     }
-
+    @media (min-width: 1500px) {
+        .aboutSection {
+            height: 85svh
+        }
+    }
     @media (max-width: 768px) {
         .aboutSection {
             flex-direction: column-reverse;

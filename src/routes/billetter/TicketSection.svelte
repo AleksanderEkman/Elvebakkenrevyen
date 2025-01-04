@@ -111,7 +111,7 @@
         align-items: center;
         width: 100vw;
         text-align: center;
-        padding: 4rem;
+        padding: 5rem;
         overflow: hidden;
     }
     .flex {
@@ -176,16 +176,24 @@
         justify-content: center;
         width: 100vw;
         margin: 3rem 0;
-        max-width: 800px;
+        max-width: 1100px;
     }
 
     .map {
         display: flex;
         justify-self: center;
         width: 100%;
-        height: 400px;
+        height: 40rem;
         border-radius: 10px;
         box-shadow: var(--shadow);
+    }
+    @media (min-width: 1500px) {
+        .event-content {
+            width: 30rem;
+        }
+        .event {
+            padding: 2.5rem 2rem;
+        }
     }
     @media (max-width: 800px) {
         .event-content {
