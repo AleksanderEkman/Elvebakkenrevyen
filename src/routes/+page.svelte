@@ -12,21 +12,8 @@
     let contactSectionRef: HTMLElement;
     let sponsorsSectionRef: HTMLElement;
     let footer: HTMLElement | null;
-
-    const updateContactSectionHeight = () => {
-        if (contactSectionRef && footer) {
-            const footerHeight = footer.offsetHeight;
-            if (window.matchMedia('(min-width: 1450px)').matches && !navigator.userAgent.includes('Mobile')) {
-                contactSectionRef.style.height = `calc(100svh - ${footerHeight}px + 1px) !important`;
-            } else {
-                contactSectionRef.style.height = `auto`;
-            }
-        }
-    };
-
+    
     onMount(async () => {
-        footer = document.querySelector('footer');
-        updateContactSectionHeight();
         showContent = true;
         await tick();
         const observer = new IntersectionObserver(async (entries) => {
@@ -81,7 +68,7 @@
         overflow-x: hidden;
     }
     .contact {
-        padding:0.75rem;
+        padding:5rem;
         color: white;
         background: linear-gradient(135deg, rgba(0, 0, 10, 1) 0%, rgba(10, 10, 20, 1) 50%, rgba(20, 20, 30, 1) 80%, rgba(30, 30, 40, 1) 100%);
         display: flex;

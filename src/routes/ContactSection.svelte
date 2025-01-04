@@ -61,7 +61,7 @@
                     {/if}
                 </div>
                 <div class="input-container phone-input">
-                    <label for="phone">Telefon <small>(Valgfritt)</small></label>
+                    <label for="phone">Telefon <small id="grey">Valgfritt</small></label>
                     <div class="phone-wrapper">
                         <span class="country-code">+47</span>
                         <input type="tel" id="phone" name="phone" bind:value={$form.phone} />
@@ -112,7 +112,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 32.5%;
+        width: 35%;
         height: 100%;
         position: relative;
         text-transform: none;
@@ -175,7 +175,10 @@
         width: 60%;
     }
     .phone-wrapper input {
-        padding-left: 2.5rem; /* Adjust padding to make space for the country code */
+        padding-left: 2.5rem; 
+    }
+    #grey {
+        color: rgba(255, 255, 255, 0.5);
     }
     .phone-wrapper {
         position: relative;
