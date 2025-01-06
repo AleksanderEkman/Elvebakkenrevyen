@@ -4,7 +4,8 @@
 
 @font-face {
 	font-family: 'Bebas Neue';
-	src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTUSjIg69CK48gW7PXoo9Wdhzg.ttf') format('truetype');
+	src: url('https://fonts.gstatic.com/s/bebasneue/v2/JTUSjIg69CK48gW7PXoo9Wdhzg.ttf')
+		format('truetype');
 	font-display: swap;
 }
 @font-face {
@@ -14,7 +15,7 @@
 	src: url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvvYwYL8g.woff2) format('woff2');
 	unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 	font-display: swap;
-  }
+}
 :root {
 	--font-nav: 'Inter', sans-serif;
 	--font-header: 'Bebas Neue', sans-serif;
@@ -26,7 +27,7 @@
 	--color-bg-1: hsl(209, 36%, 86%);
 	--color-bg-2: hsl(224, 44%, 95%);
 	--color-theme-1: #1d7c99;
-	--color-theme-2: #22212A;
+	--color-theme-2: #22212a;
 	--color-text: rgba(0, 0, 0, 0.9);
 	--color-text1: rgba(255, 255, 255, 0.9);
 	--column-width: 42rem;
@@ -36,9 +37,9 @@
 }
 
 main {
-    @apply flex flex-col items-center justify-center;
+	@apply flex flex-col items-center justify-center;
 	overflow: hidden;
-  }
+}
 
 html {
 	@apply antialiased;

@@ -1,20 +1,14 @@
 <script lang="ts">
-    import '../app.css';
+	import '../app.css';
+	import Footer from './Footer.svelte';
+	import Header from './Header.svelte';
 
-    import { onMount } from 'svelte';
-    import Footer from './Footer.svelte';
-    import Header from './Header.svelte';
-    import Lenis from 'lenis'
-
-    
-    let { children } = $props();
-
+	let { children } = $props();
 </script>
 
 <Header />
 {@render children()}
-<Footer />    
-
+<Footer />
 
 <style>
 </style>
