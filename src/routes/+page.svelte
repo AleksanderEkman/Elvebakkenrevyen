@@ -3,7 +3,7 @@
 	import HeroSection from './HeroSection.svelte';
 	import AboutSection from './AboutSection.svelte';
 	import sponsorer_background from '$lib/assets/sponsorer.webp';
-	import type { ConstructorOfATypedSvelteComponent } from '$lib/types';
+	
 	let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
 	let showContent = false;
 	let sponsorsSectionRef: HTMLElement;
