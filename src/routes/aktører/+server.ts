@@ -1,5 +1,5 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 
 export function GET() {
-    return redirect(301, "/skuespillere");
+	return redirect(301, '/skuespillere');
 }

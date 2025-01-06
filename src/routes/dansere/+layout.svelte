@@ -1,20 +1,13 @@
 <script lang="ts">
-    import '../../app.css';
-    import { onMount } from 'svelte';
-    import Footer from '../Footer.svelte';
-    import Header from '../Header.svelte';
-    import NavigatorSubmenu from '../NavigatorSubmenu.svelte';
-    
-    let activePath = "dansere";
+	import '../../app.css';
+	import NavigatorSubmenu from '../NavigatorSubmenu.svelte';
 
-    let { children } = $props();
-
+	let activePath = 'dansere';
+	let { children } = $props();
 </script>
-
 
 <NavigatorSubmenu {activePath} />
 {@render children()}
-
 
 <style>
 </style>

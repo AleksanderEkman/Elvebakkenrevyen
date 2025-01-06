@@ -9,10 +9,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run",
 		"start": "vite preview --host 0.0.0.0 --port 8080",
-		"build:css": "postcss src/app.css -o dist/styles.css",
 		"build": "vite build"
 	},
 	"devDependencies": {

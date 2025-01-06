@@ -1,12 +1,12 @@
 <script lang="ts">
-    import BandSection from './BandSection.svelte';
+	import BandSection from './BandSection.svelte';
 </script>
 
 <svelte:head>
-    <title>Elvebakkenrevyen 2025 Bandet</title>
-    <meta name="description" content="Møt bandet til Elvebakkenrevyen 2025">
+	<title>Elvebakkenrevyen 2025 Bandet</title>
+	<meta name="description" content="Møt bandet til Elvebakkenrevyen 2025" />
 </svelte:head>
 
 <main>
-    <BandSection />
+	<BandSection />
 </main>

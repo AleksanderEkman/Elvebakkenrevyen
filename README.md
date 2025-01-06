@@ -21,20 +21,29 @@ Elvebakkenrevyen-nettsiden er laget for å presentere informasjon om revyen ved 
 For å sette opp prosjektet lokalt, følg disse trinnene:
 
 1. Klon repositoriet:
+
    ```bash
    git clone https://github.com/allsers/elvebakkenrevyen.git
    cd elvebakkenrevyen
 
+   ```
+
 2. Installer avhengigheter:
+
    ```bash
    npm install
+
+   ```
 
 3. Start utviklingsserveren:
    ```bash
    npm run dev
+   ```
 
 ### Prosjektstruktur
+
 /elvebakkenrevyen
+
 - │
 - ├── src/
 - │ ├── routes/ # Inneholder ruter for applikasjonen
@@ -47,4 +56,5 @@ For å sette opp prosjektet lokalt, følg disse trinnene:
 - └── svelte.config.js # Konfigurasjon for SvelteKit
 
 ### Kontakt
+
 For spørsmål eller tilbakemeldinger, vennligst kontakt meg på aleksander.ekman1@gmail.com. Takk for at du besøker Elvebakkenrevyens nettside!
