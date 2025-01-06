@@ -39,7 +39,9 @@
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section
 	class="hero"
-	style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier *
+	style="background-image: url({background_image}); height: {height} !important; 
+	background-position-y: 
+	{scrollAmplifier *
 		scrollY *
 		0.25}px;"
 >
@@ -95,7 +97,6 @@
 		overflow-x: hidden;
 		padding: 0;
 		background-color: #000; /* Set a background color that matches the background image */
-		scroll-behavior: smooth; /* Enable smooth scrolling */
 	}
 	.overlay {
 		user-select: none;
@@ -109,11 +110,12 @@
 		background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 	}
 	.container {
+		width: auto;
+		height: auto;
 		font-size: 1.2rem;
 		display: inline-flex;
 		left: 18.5vw;
 		position: relative;
-		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		z-index: 3;
@@ -155,12 +157,16 @@
 		transform: scale(1.025);
 	}
 	.hero-title {
+		line-height: 1;
+		display: inline-block;
+		width: auto;
+		height: auto;
 		position: relative;
 		text-shadow:
 			2px 2px 4px rgba(0, 0, 0, 0.2),
 			0 0 2px rgba(255, 255, 255, 0.2),
 			0 0 4px rgba(255, 255, 255, 0.13);
-		font-size: 8.5rem;
+		font-size: 11.5rem;
 		font-family: var(--font-header);
 		background: #ffffff;
 		-webkit-background-clip: text;
@@ -168,8 +174,10 @@
 		letter-spacing: 2px;
 	}
 	h1 {
+		display: inline-block;
+		width: auto;
 		margin: 0;
-		height: 11rem;
+		height: auto;
 	}
 	.links {
 		position: absolute;

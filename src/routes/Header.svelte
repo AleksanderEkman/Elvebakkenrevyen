@@ -174,7 +174,7 @@
 		height: 80%;
 	}
 	.mobile {
-		z-index: 2;
+		z-index: 2;	
 		display: none;
 	}
 	#border {
@@ -285,7 +285,7 @@
 		}
 		.desktop {
 			width: 45% !important;
-			padding: 0.65rem 0.75rem;
+			padding: 0.85rem 0.75rem;
 		}
 	}
 	@media (min-width: 768px) {
