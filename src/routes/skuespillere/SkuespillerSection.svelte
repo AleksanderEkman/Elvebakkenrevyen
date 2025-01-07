@@ -57,7 +57,7 @@
 	}
 
 	.quote {
-		white-space: pre-line;
+		white-space: pre-wrap;
 		margin-top: 1rem;
 		font-size: 1.25rem;
 		font-style: italic;
