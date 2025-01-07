@@ -55,7 +55,7 @@
               src={image} 
               width="100%"
               height="100%"
-              alt="Sponsor" 
+              alt="{sponsors[index].name} logo" 
               loading="lazy" 
             />
           </div>

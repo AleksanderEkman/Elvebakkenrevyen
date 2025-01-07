@@ -12,8 +12,8 @@ import type { RequestEvent } from "./$types.js";
 
 // Begrenser antall e-poster som kan sendes fra kontaktskjemaet
 const limiter = new RateLimiter({
-    IP: [1, 'h'], // 1 requests per hour per IP
-    IPUA: [1, 'd'] // 1 requests per day per IP and User Agent 
+    IP: [1, 'h'], // 1 request per time per IP
+    IPUA: [1, 'd'] // 1 request per dag per IP og User Agent 
 });
 
 // Denne funksjonen kjøres når brukeren navigerer til siden
