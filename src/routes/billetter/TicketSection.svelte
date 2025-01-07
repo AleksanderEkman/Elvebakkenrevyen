@@ -249,7 +249,39 @@
 		.event-label {
 			font-size: 1.4rem;
 		}
-
+		.event-date {
+			font-size: 1.1rem;
+		}
+		.event-time {
+			font-size: 1rem;
+		}
+		p {
+			font-size: 1rem;
+		}
+	}
+	@media (max-width: 935px) and (orientation: landscape) {
+		.map {
+			width: 72.5vw;
+			height: 37.5vw;
+		}
+		.map-wrapper {
+			max-width: none;
+		}
+		.flex {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.event {
+			gap: 0rem;
+			grid-column: span 2;
+			width: 85%;
+			padding: 1.5rem 10rem;
+		}
+		.event-label {
+			font-size: 1.4rem;
+		}
 		.event-date {
 			font-size: 1.1rem;
 		}

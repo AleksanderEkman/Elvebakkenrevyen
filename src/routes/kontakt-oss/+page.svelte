@@ -36,6 +36,11 @@
 		text-align: center;
 		transition: background-image 1s ease-in-out;
 	}
+	@media (min-width: 1450px) {
+		.contact {
+			height: 86.25vh;
+		}
+	}
 	@media (max-width: 540px) {
 		.contact {
 			padding: 4.5rem 1rem;

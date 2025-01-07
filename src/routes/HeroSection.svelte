@@ -22,7 +22,10 @@
 		} else {
 			height = '100svh';
 		}
-		if (window.matchMedia('(max-width: 540px)').matches) {
+		if (
+			window.matchMedia('(max-width: 540px)').matches ||
+			window.matchMedia('(max-height: 450px)').matches
+		) {
 			scrollAmplifier = 0.7;
 		} else {
 			scrollAmplifier = -1.1;
@@ -36,7 +39,9 @@
 <!-- HTML-struktur med visuell hierarki for UX -->
 <section
 	class="hero"
-	style="background-image: url({background_image}); height: {height} !important; background-position-y: {scrollAmplifier *
+	style="background-image: url({background_image}); height: {height} !important; 
+	background-position-y: 
+	{scrollAmplifier *
 		scrollY *
 		0.25}px;"
 >
@@ -92,7 +97,6 @@
 		overflow-x: hidden;
 		padding: 0;
 		background-color: #000; /* Set a background color that matches the background image */
-		scroll-behavior: smooth; /* Enable smooth scrolling */
 	}
 	.overlay {
 		user-select: none;
@@ -106,11 +110,12 @@
 		background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 	}
 	.container {
+		width: auto;
+		height: auto;
 		font-size: 1.2rem;
 		display: inline-flex;
 		left: 18.5vw;
 		position: relative;
-		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		z-index: 3;
@@ -152,19 +157,28 @@
 		transform: scale(1.025);
 	}
 	.hero-title {
+		line-height: 1;
+		display: inline-block;
+		width: auto;
+		height: auto;
 		position: relative;
 		text-shadow:
 			2px 2px 4px rgba(0, 0, 0, 0.2),
 			0 0 2px rgba(255, 255, 255, 0.2),
 			0 0 4px rgba(255, 255, 255, 0.13);
-		@apply mb-2 mt-2 text-9xl;
+		font-size: 11.5rem;
 		font-family: var(--font-header);
 		background: #ffffff;
 		-webkit-background-clip: text;
 		background-clip: text;
 		letter-spacing: 2px;
 	}
-
+	h1 {
+		display: inline-block;
+		width: auto;
+		margin: 0;
+		height: auto;
+	}
 	.links {
 		position: absolute;
 		width: 100%;
@@ -178,7 +192,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 		margin-bottom: 0.75rem;
 	}
 	.rating {
@@ -224,6 +238,9 @@
 		.rating {
 			font-size: 0.95rem;
 		}
+		.kicker {
+			font-size: 1.2rem;
+		}
 	}
 	/* Tilegnet tablets (iPad-er) */
 	@media (max-width: 768px) {
@@ -233,6 +250,9 @@
 	}
 
 	@media (max-width: 540px) {
+		h1 {
+			height: auto;
+		}
 		.hero {
 			display: flex;
 			justify-content: flex-start;
@@ -300,8 +320,22 @@
 				0 0 2px rgba(255, 255, 255, 0.2),
 				0 0 4px rgba(255, 255, 255, 0.13);
 		}
+		h1 {
+			height: auto;
+		}
 		.container {
 			padding: 10px;
+		}
+		.info {
+			display: none;
+		}
+		.links {
+			left: 0;
+			bottom: 0;
+		}
+		.cta {
+			font-size: 1.1rem;
+			padding: 0.6rem 1rem;
 		}
 	}
 </style>

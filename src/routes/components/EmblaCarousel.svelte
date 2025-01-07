@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import EmblaCarousel from 'embla-carousel';
+	import type { EmblaCarouselType } from 'embla-carousel';
 
 	let emblaNode: HTMLElement;
 	let viewportNode: HTMLElement;
-	let emblaApi: any;
+	let emblaApi: EmblaCarouselType;
 	let sponsorImages: string[] = [];
 	let sponsors: { name: string; alt: string; url: string }[] = [];
 	let showContent = false;
@@ -73,7 +74,7 @@
 
 <style>
 	.embla {
-		z-index: 2;
+		z-index: 4;
 		margin: auto;
 		--slide-height: 30rem;
 		--slide-spacing: 0.75rem;
@@ -86,12 +87,13 @@
 		cursor: grabbing;
 	}
 	.embla__viewport {
+		z-index: 4;
 		width: 100vw;
 		border-radius: 1.5rem;
 		overflow: hidden;
 	}
 	.embla__container {
-		z-index: 2;
+		z-index: 4;
 		display: flex;
 		touch-action: pan-y pinch-zoom;
 		margin-left: calc(var(--slide-spacing) * -1);
@@ -99,7 +101,7 @@
 	.embla__slide {
 		display: flex;
 		flex-direction: column;
-		z-index: 2;
+		z-index: 4;
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 var(--slide-size);
 		width: 30rem;

@@ -3,8 +3,8 @@
 
 	const skuespillere = [
 		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitatsafsad', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitasdffsdsdft', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Sitas\ndffsdsdft', img: '/favicon.webp' },
 		{ name: 'Navn', quote: 'Sitdsfsdat', img: '/favicon.webp' },
 		{ name: 'Navn', quote: 'Sitadsfsdfsdft', img: '/favicon.webp' },
 		{ name: 'Navn', quote: 'Sitdsfsdfsdat', img: '/favicon.webp' },

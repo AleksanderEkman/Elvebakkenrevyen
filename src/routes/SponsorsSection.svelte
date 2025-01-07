@@ -14,7 +14,7 @@
 <style>
 	.flex {
 		margin-top: -5rem;
-		z-index: 2;
+		z-index: 3;
 		width: 100vw;
 		flex-direction: column;
 		display: flex;

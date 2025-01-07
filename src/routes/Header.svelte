@@ -174,11 +174,12 @@
 		height: 80%;
 	}
 	.mobile {
-		z-index: 2;
+		z-index: 2;	
 		display: none;
 	}
 	#border {
-		border: 1px solid rgb(66, 66, 66);
+		border: 1px solid rgb(146, 146, 146);
+		background-color: rgba(11, 111, 244, 0.2);
 	}
 	.desktop {
 		text-align: center;
@@ -257,7 +258,7 @@
 	ul li a:hover,
 	ul li a:focus {
 		background-color: var(--hover-bg-color);
-		transform: scale(1.05);
+		transform: scale(1.1);
 	}
 	#text {
 		display: flex;
@@ -267,7 +268,7 @@
 		width: auto;
 	}
 	#logo {
-		z-index: 2;
+		z-index: 5;
 		margin: 0.75rem;
 		top: 0;
 		left: 0;
@@ -284,7 +285,7 @@
 		}
 		.desktop {
 			width: 45% !important;
-			padding: 0.65rem 0.75rem;
+			padding: 0.85rem 0.75rem;
 		}
 	}
 	@media (min-width: 768px) {
@@ -297,7 +298,7 @@
 	}
 	.submenu {
 		width: 100%;
-		z-index: 5;
+		z-index: 4;
 		background-color: rgba(30, 30, 30, 0.9);
 		backdrop-filter: blur(15px);
 		display: flex;
@@ -307,8 +308,8 @@
 		top: 105%;
 		right: 0;
 		border-radius: 10px 10px 25px 25px;
-		opacity: 0;
 		visibility: hidden;
+		opacity: 0;
 		transform: translateY(-10px);
 		transition:
 			opacity var(--transition-speed) ease,
@@ -370,15 +371,12 @@
 			flex-direction: column;
 			align-items: center;
 			top: 4.25rem;
-			left: 50%;
-			transform: translateX(-50%);
 			background-color: var(--header-bg-color);
 			backdrop-filter: blur(15px);
 			padding: 1rem;
 			gap: 1.2rem;
 			z-index: 1000;
 		}
-
 		.mobile-menu li {
 			display: flex;
 			flex-direction: row;
@@ -411,6 +409,25 @@
 		ul li a {
 			padding: 0.75rem 1.2rem;
 			width: 75%;
+		}
+	}
+	@media (max-width: 935px) and (orientation: landscape) {
+		.mobile {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.mobile-menu {
+			position: relative;
+			padding: 1.25rem;
+			top: 1rem;
+			height: 100svh;
+			justify-content: center;
+			justify-self: center;
+			align-self: center;
+		}
+		.mobile-menu li {
+			margin: 0;
 		}
 	}
 </style>

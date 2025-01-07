@@ -52,15 +52,19 @@
 		transition: all 0.325s;
 		opacity: 0;
 		transform: scale(0.8);
+		pointer-events: none;
 	}
 	:global(.submenu.show) {
+		display: flex;
 		opacity: 1;
 		transform: scale(1);
+		pointer-events: auto;
 	}
 	.active {
 		background-color: var(--hover-bg-color);
 	}
 	ul {
+		font-size: 1.1rem;
 		background-color: rgba(23, 23, 23, 0.6);
 		border-radius: 17px;
 		padding: 1.25rem 0.5rem;
@@ -78,14 +82,14 @@
 		background-color: var(--hover-bg-color);
 		transform: scale(1.05);
 	}
-	@media (max-width: 1500px) {
+	@media (max-width: 1900px) {
 		ul {
 			width: 45%;
 		}
 	}
 	@media (max-width: 1100px) {
 		.submenu {
-			top: 4.5rem;
+			top: 0.5rem;
 		}
 		ul {
 			width: 80%;
@@ -97,12 +101,13 @@
 	@media (max-width: 650px) {
 		.submenu {
 			top: 3.9rem;
+			left: 0;
 		}
 		ul {
 			width: 90%;
 		}
 		ul li a {
-			padding: 0.5rem 0.75rem;
+			padding: 0.5rem 0.5rem;
 		}
 	}
 	@media (max-width: 390px) {

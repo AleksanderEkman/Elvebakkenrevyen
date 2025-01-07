@@ -3,7 +3,7 @@
 	import HeroSection from './HeroSection.svelte';
 	import AboutSection from './AboutSection.svelte';
 	import sponsorer_background from '$lib/assets/sponsorer.webp';
-
+	
 	let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
 	let showContent = false;
 	let sponsorsSectionRef: HTMLElement;
@@ -85,7 +85,7 @@
 	/* Media query for mobile landscape mode */
 	@media (max-width: 933px) and (orientation: landscape) {
 		.sponsors {
-			height: 40rem;
+			height: 35rem;
 		}
 	}
 </style>

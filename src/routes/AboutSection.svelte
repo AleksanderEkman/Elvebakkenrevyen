@@ -52,7 +52,6 @@
 		font-size: clamp(1rem, 2vw, 1.15rem);
 		display: flex;
 		flex-direction: column;
-		width: 50%;
 		border-radius: 25px;
 	}
 
@@ -103,8 +102,16 @@
 		max-width: none;
 	}
 	@media (min-width: 1500px) {
+		.text-card {
+			width: 45rem;
+		}
 		.aboutSection {
+			gap: 5rem;
 			height: 85svh;
+			justify-content: center;
+		}
+		img {
+			width: 47.5rem;
 		}
 	}
 	@media (max-width: 768px) {
@@ -112,7 +119,6 @@
 			flex-direction: column-reverse;
 			padding: 2rem 1rem;
 		}
-
 		.text-card,
 		.card {
 			width: 100%;
@@ -122,6 +128,23 @@
 
 		.text-card {
 			padding: 1.5rem;
+		}
+		img {
+			width: 22.5rem;
+		}
+	}
+	@media (max-width: 935px) and (orientation: landscape) {
+		.aboutSection {
+			height: auto;
+		}
+		img {
+			padding: 1rem;
+			width: 22.5rem;
+		}
+		.text-card {
+			height: 100%;
+			padding: 1.5rem;
+			font-size: 1rem;
 		}
 		img {
 			width: 22.5rem;
