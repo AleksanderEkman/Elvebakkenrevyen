@@ -18,7 +18,7 @@
 					spObserver.disconnect();
 				}
 			},
-			{ threshold: 0.025 }
+			{ threshold: 0.01 }
 		);
 		spObserver.observe(sponsorsSectionRef);
 	});

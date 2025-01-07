@@ -77,24 +77,24 @@
 
 	<!-- Mobile -->
 	{#if mobileMenuOpen}
-		<div in:fade={{ duration: 200 }} class="overlay"></div>
+		<div in:fade={{ duration: 150 }} class="overlay"></div>
 	{/if}
 	<aside class="mobile">
 		{#if showContent}
 			<button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
 				{#if !mobileMenuOpen}
-					<div in:fade={{ duration: 100, delay: 150 }} out:fade={{ duration: 100 }}>
+					<div in:fade={{ duration: 80, delay: 120 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
 				{:else}
-					<div in:fade={{ duration: 100, delay: 150 }} out:fade={{ duration: 100 }}>
+					<div in:fade={{ duration: 80, delay: 120 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faClose} />
 					</div>
 				{/if}
 			</button>
 		{/if}
 		{#if mobileMenuOpen}
-			<ul class="mobile-menu" transition:fade={{ duration: 300 }}>
+			<ul class="mobile-menu" transition:fade={{ duration: 220 }}>
 				<li>
 					<a
 						href="/billetter"
@@ -402,7 +402,7 @@
 			height: 45px;
 		}
 		:global(.animate-logo) {
-			animation: rotate 0.65s ease-in-out;
+			animation: rotate 0.52s ease-in-out;
 			animation-fill-mode: forwards;
 		}
 

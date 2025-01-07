@@ -96,8 +96,6 @@
 		flex-direction: row;
 		justify-content: center;
 		grid-column: span 2;
-	}
-	h2:hover {
 		text-decoration: underline;
 	}
 	p {
