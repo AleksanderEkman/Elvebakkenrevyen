@@ -257,7 +257,7 @@
 			background-attachment: scroll;
 		}
 		.hero-title {
-			font-size: 3.5rem;
+			font-size: 4.25rem;
 		}
 		.container {
 			font-size: 1rem;
