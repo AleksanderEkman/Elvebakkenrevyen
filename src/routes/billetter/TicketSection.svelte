@@ -126,7 +126,7 @@
 		align-items: center;
 		width: 100vw;
 		text-align: center;
-		padding: 5rem;
+		padding: 6.5rem 5rem;
 		overflow: hidden;
 	}
 	.flex {

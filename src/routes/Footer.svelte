@@ -4,7 +4,7 @@
 <footer aria-label="Footer Informasjon">
 	<div class="content">
 		<div class="footer-col">
-			<p id="header">© 2025 Elvebakkenrevyen</p>
+			<h3 id="header">© 2025 Elvebakkenrevyen</h3>
 			<p id="credit">
 				Designet og utviklet av <a href="mailto:aleksanderekman@elvebakkenrevyen.no"
 					>Aleksander Ekman</a
@@ -12,7 +12,7 @@
 			</p>
 		</div>
 		<div class="footer-col">
-			<p id="header">Adresse</p>
+			<h3 id="header">Adresse</h3>
 			<ul>
 				<li>
 					<a
@@ -27,13 +27,13 @@
 			</ul>
 		</div>
 		<div class="footer-col">
-			<p id="header">Billetter</p>
+			<h3 id="header">Billetter</h3>
 			<ul>
 				<li><a href="https://bestill.albillett.no/nb/1574">Elvebakkenrevyen Albillett</a></li>
 			</ul>
 		</div>
 		<div class="footer-col">
-			<p id="header">Kontakt oss</p>
+			<h3 id="header">Kontakt oss</h3>
 			<ul>
 				<li><a href="mailto:sjefer@elvebakkenrevyen.no">sjefer@elvebakkenrevyen.no</a></li>
 			</ul>

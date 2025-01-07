@@ -55,15 +55,15 @@
 				{#each sponsorImages as image, index}
 					<div class="embla__slide">
 						<div class="embla__slide__img">
-							<img src={image} width="100%" height="100%" alt="Sponsor" loading="lazy" />
+							<img src={image} width="100%" height="100%" alt="{sponsors[index].name} logo" loading="lazy" />
 						</div>
 						<div class="text">
-							<p>
+							<h2>
 								<a href={sponsors[index].url} target={'_blank'} draggable="true">
 									<!-- Legger til tekst basert på indeks -->
 									{sponsors[index].name}
 								</a>
-							</p>
+							</h2>
 						</div>
 					</div>
 				{/each}
@@ -122,7 +122,7 @@
 		user-select: none;
 	}
 
-	.text p {
+	.text h2 {
 		font-size: 2.5rem;
 		color: white;
 		text-align: center;
@@ -133,11 +133,11 @@
 	.text {
 		user-select: none;
 	}
-	.text p a {
+	.text h2 a {
 		user-select: none;
 		display: inline-block;
 	}
-	.text p a::after {
+	.text h2 a::after {
 		margin-top: -0.5rem;
 		display: flex;
 		justify-self: center;
@@ -149,7 +149,7 @@
 		transition: width 0.2s ease;
 		border-radius: 1px;
 	}
-	.text p a:hover::after {
+	.text h2 a:hover::after {
 		width: 100%;
 	}
 	@media (max-width: 1450px) {
@@ -169,7 +169,7 @@
 		.embla__viewport {
 			width: 100vw;
 		}
-		.text p {
+		.text h2 {
 			font-size: 2rem;
 		}
 	}
@@ -182,7 +182,7 @@
 		.embla__viewport {
 			width: 100vw;
 		}
-		.text p {
+		.text h2 {
 			font-size: 2rem;
 			margin-top: 0;
 		}
@@ -200,7 +200,7 @@
 		.embla {
 			--slide-height: 15rem;
 		}
-		.text p {
+		.text h2 {
 			font-size: 1.75rem;
 		}
 	}

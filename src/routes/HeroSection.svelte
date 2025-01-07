@@ -168,9 +168,7 @@
 			0 0 4px rgba(255, 255, 255, 0.13);
 		font-size: 11.5rem;
 		font-family: var(--font-header);
-		background: #ffffff;
-		-webkit-background-clip: text;
-		background-clip: text;
+
 		letter-spacing: 2px;
 	}
 	h1 {
@@ -227,13 +225,13 @@
 	}
 	/* Media queries for responsivitet */
 	/* Tilegnet laptoper og Mac */
-	@media (max-width: 1450px) {
+	@media (max-width: 1550px) {
 		.hero-title {
 			text-shadow:
 				1px 1px 2px rgba(0, 0, 0, 0.2),
 				0 0 2px rgba(255, 255, 255, 0.2),
 				0 0 4px rgba(255, 255, 255, 0.13);
-			font-size: 4.5em;
+			font-size: 7rem;
 		}
 		.rating {
 			font-size: 0.95rem;
