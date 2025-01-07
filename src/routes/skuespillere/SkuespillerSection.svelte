@@ -4,12 +4,12 @@
 	const skuespillere = [
 		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
 		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitas\ndffsdsdft', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitdsfsdat', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitadsfsdfsdft', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitdsfsdfsdat', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitasdfsdft', img: '/favicon.webp' },
-		{ name: 'Navn', quote: 'Sitdsfsdfsdfat', img: '/favicon.webp' }
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' },
+		{ name: 'Navn', quote: 'Dette er et veldig\nlangt og fint sitat.', img: '/favicon.webp' }
 	];
 
 	onMount(() => {

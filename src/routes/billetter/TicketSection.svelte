@@ -47,24 +47,8 @@
 		</p>
 	</div>
 
-	<div class="wide">
-		<div class="map-wrapper">
-			<iframe
-				in:fade={{ duration: 1500 }}
-				class="map"
-				title="map"
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
-				height="500"
-				loading="eager"
-				style="border:0;"
-				referrerpolicy="no-referrer-when-downgrade"
-			>
-			</iframe>
-		</div>
-	</div>
-
 	<div class="flex">
-		<h2><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
+		<h2 id="link"><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
 		{#each events as event, index}
 			<a
 				class="event {index === 0 ? 'first-event' : ''}"
@@ -79,6 +63,22 @@
 			</a>
 		{/each}
 	</div>
+	<div class="wide">
+		<h2 id="loc">Vestre Elvebakke 3</h2>
+		<div class="map-wrapper">
+			<iframe
+				in:fade={{ duration: 1500 }}
+				class="map"
+				title="map"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.7978048428802!2d10.750444813434079!3d59.918902963584095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e6418f98fa3%3A0xd28772a8dd823d4b!2sVestre%20Elvebakke%203%2C%200182%20Oslo!5e0!3m2!1sno!2sno!4v1735079848859!5m2!1sno!2sno"
+				height="500"
+				loading="eager"
+				style="border:0;"
+				referrerpolicy="no-referrer-when-downgrade"
+			>
+			</iframe>
+		</div>
+	</div>
 </section>
 
 <style>
@@ -89,7 +89,7 @@
 		margin-bottom: 1rem;
 		font-family: var(--font-header);
 	}
-	h2 {
+	#link{
 		font-size: 1.5rem;
 		width: 100%;
 		display: flex;
@@ -98,15 +98,26 @@
 		grid-column: span 2;
 		text-decoration: underline;
 	}
+	h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	#loc {
+		margin-bottom: 1rem;
+		font-family: var(--font-header);
+		letter-spacing: 0.05em;
+	}
 	p {
 		font-size: 1.25rem;
 		max-width: 60ch;
 		margin-bottom: 1rem;
 	}
 	.wide {
+		margin: 8rem 0;
 		width: 100vw;
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: center;
 	}
 	.ticketSection {
 		background: linear-gradient(
@@ -124,10 +135,11 @@
 		align-items: center;
 		width: 100vw;
 		text-align: center;
-		padding: 6.5rem 5rem;
+		padding: 6rem 5rem;
 		overflow: hidden;
 	}
 	.flex {
+		margin-top: 5rem;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(5, auto);
@@ -191,7 +203,6 @@
 		align-items: center;
 		justify-content: center;
 		width: 100vw;
-		margin: 3rem 0;
 		max-width: 1100px;
 	}
 
