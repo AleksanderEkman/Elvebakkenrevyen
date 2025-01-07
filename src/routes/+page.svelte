@@ -18,7 +18,7 @@
 					spObserver.disconnect();
 				}
 			},
-			{ rootMargin: '500px 0px 0px 0px', threshold: 0.1 }
+			{ rootMargin: '0px 0px 300px 0px', threshold: 0.1 }
 		);
 		spObserver.observe(sponsorsSectionRef);
 	});
