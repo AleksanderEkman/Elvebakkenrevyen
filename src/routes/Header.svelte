@@ -83,18 +83,18 @@
 		{#if showContent}
 			<button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
 				{#if !mobileMenuOpen}
-					<div in:fade={{ duration: 80, delay: 90 }} out:fade={{ duration: 80 }}>
+					<div in:fade={{ duration: 80, delay: 80 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
 				{:else}
-					<div in:fade={{ duration: 80, delay: 90 }} out:fade={{ duration: 80 }}>
+					<div in:fade={{ duration: 80, delay: 80 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faClose} />
 					</div>
 				{/if}
 			</button>
 		{/if}
 		{#if mobileMenuOpen}
-			<ul class="mobile-menu" transition:fade={{ duration: 220 }}>
+			<ul class="mobile-menu" transition:fade={{ duration: 200 }}>
 				<li>
 					<a
 						href="/billetter"
