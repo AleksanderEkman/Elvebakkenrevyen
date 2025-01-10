@@ -4,4 +4,4 @@ Disallow: /
 User-agent: *
 Disallow: /kontakt-oss
 
-Sitemap: https://bakkarevydocker-o869w.ondigitalocean.app/sitemap.xml
+Sitemap: https://www.elvebakkenrevyen.no/sitemap.xml
