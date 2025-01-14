@@ -1,7 +1,7 @@
 User-agent: Googlebot
-Disallow: /
+Disallow:
 
 User-agent: *
-Disallow: /kontakt-oss
+Disallow: /
 
-Sitemap: https://bakkarevydocker-o869w.ondigitalocean.app/sitemap.xml
+Sitemap: https://www.elvebakkenrevyen.no/sitemap.xml
