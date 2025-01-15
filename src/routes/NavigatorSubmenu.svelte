@@ -40,6 +40,7 @@
 
 <style>
 	.submenu {
+		backdrop-filter: blur(5px);
 		z-index: 4;
 		top: 4.5rem;
 		position: fixed;

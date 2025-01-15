@@ -4,6 +4,7 @@
 
 <svelte:head>
 	<title>Elvebakkenrevyen 2025 Revysjefer og grupper</title>
+	<link rel="canonical" href="https://www.elvebakkenrevyen.no/sjefer" />
 </svelte:head>
 
 <main>
