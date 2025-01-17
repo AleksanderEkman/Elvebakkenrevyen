@@ -394,12 +394,12 @@
 			background: none;
 			border: none;
 			color: white;
-			font-size: 2rem;
-			width: 45px;
+			font-size: 2.1rem;
+			width: 2.7rem;
 		}
 		#logo {
-			width: 45px;
-			height: 45px;
+			width: 2.7rem;
+			height: 2.7rem;
 		}
 		:global(.animate-logo) {
 			animation: rotate 0.52s ease-in-out;

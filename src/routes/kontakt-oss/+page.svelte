@@ -5,6 +5,7 @@
 
 <svelte:head>
 	<title>Elvebakkenrevyen 2025 Kontaktskjema</title>
+	<link rel="canonical" href="https://www.elvebakkenrevyen.no" />
 </svelte:head>
 
 <main>

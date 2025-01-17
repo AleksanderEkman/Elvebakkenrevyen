@@ -27,6 +27,7 @@
 <!-- Side-spesifikk tittel -->
 <svelte:head>
 	<title>Elvebakkenrevyen 2025</title>
+	<link rel="canonical" href="https://www.elvebakkenrevyen.no" />
 </svelte:head>
 
 <!-- Rendrer alle komponentene med en main tag. -->

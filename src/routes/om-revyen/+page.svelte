@@ -6,6 +6,7 @@
 <svelte:head>
 	<title>Elvebakkenrevyen 2025 Om Oss</title>
 	<meta name="description" content="Møt Elvebakkenrevyen 2025" />
+	<link rel="canonical" href="https://www.elvebakkenrevyen.no" />
 </svelte:head>
 
 <main>

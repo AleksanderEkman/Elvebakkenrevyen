@@ -241,9 +241,12 @@
 		}
 	}
 	/* Tilegnet tablets (iPad-er) */
-	@media (max-width: 768px) {
-		.hero-title {
-			font-size: 4rem;
+	@media (max-width: 930px) {
+		.container {
+			left: 6rem;
+		}
+		.hero {
+			justify-content: flex-start;
 		}
 	}
 
