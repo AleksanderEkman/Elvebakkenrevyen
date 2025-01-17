@@ -40,7 +40,9 @@
 		class="sponsors"
 		style="background-image: url({sponsorer_background})"
 	>
-		<svelte:component this={SponsorsSection} />
+		{#if SponsorsSection}
+			<svelte:component this={SponsorsSection} />
+		{/if}
 	</section>
 </main>
 

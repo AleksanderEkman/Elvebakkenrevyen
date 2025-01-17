@@ -83,11 +83,11 @@
 		{#if showContent}
 			<button id="menu-button" aria-label="Åpne meny" on:click={toggleMobileMenu}>
 				{#if !mobileMenuOpen}
-					<div in:fade={{ duration: 80, delay: 80 }} out:fade={{ duration: 80 }}>
+					<div in:fade={{ duration: 80, delay: 85 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
 				{:else}
-					<div in:fade={{ duration: 80, delay: 80 }} out:fade={{ duration: 80 }}>
+					<div in:fade={{ duration: 80, delay: 85 }} out:fade={{ duration: 80 }}>
 						<FontAwesomeIcon icon={faClose} />
 					</div>
 				{/if}
@@ -373,7 +373,7 @@
 			top: 4.25rem;
 			background-color: var(--header-bg-color);
 			backdrop-filter: blur(15px);
-			padding: 1rem;
+			padding: 1rem 0;
 			gap: 1.2rem;
 			z-index: 1000;
 		}
@@ -383,7 +383,7 @@
 			text-align: center;
 			justify-content: center;
 			width: 100%;
-			margin: 0.5rem 0;
+			margin: 0.4rem 0;
 		}
 		#menu-button {
 			top: 0;
@@ -408,7 +408,7 @@
 
 		ul li a {
 			padding: 0.75rem 1.2rem;
-			width: 75%;
+			width: 82.5%;
 		}
 	}
 	@media (max-width: 935px) and (orientation: landscape) {

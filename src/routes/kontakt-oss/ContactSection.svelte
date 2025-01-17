@@ -206,7 +206,6 @@
 		align-items: center;
 		justify-content: center;
 	}
-
 	.country-code {
 		position: absolute;
 		left: 10px;
