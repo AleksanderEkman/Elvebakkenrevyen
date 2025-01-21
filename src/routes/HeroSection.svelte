@@ -57,7 +57,7 @@
 				<p id="grey">&nbsp- en <strong>uforglemmelig</strong> opplevelse siden 2002</p>
 			</div>
 			<div class="hero-title">
-				<h1>Konseptnavn</h1>
+				<h1>This Must Be The Place</h1>
 			</div>
 			<div class="rating">
 				<img src={dice} alt="Terningkast seks av seks for Elvebakkenrevyen" />
