@@ -56,7 +56,7 @@
 		pointer-events: none;
 	}
 	:global(.submenu.show) {
-		display: flex;
+		display: flex; 
 		opacity: 1;
 		transform: scale(1);
 		pointer-events: auto;
