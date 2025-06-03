@@ -78,7 +78,7 @@ export const actions = {
 
         await prisma.refresh_token.create({
             data: {
-                userId: user.id,
+                user_id: user.id,
                 token_hash: await hashToken(refreshToken),
                 device_id: createHash('sha256').update(deviceId).digest('hex'),
                 expires_at: new Date(Date.now() + 60 * 60 * 24 * 7 * 30 * 1000)

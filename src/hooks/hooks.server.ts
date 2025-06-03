@@ -6,7 +6,8 @@ import jwt from 'jsonwebtoken';
 import type { User } from '@prisma/client';
 import prisma from '$lib/utils/prismaUtils'
 import { generateRefreshToken } from '$lib/utils/prismaUtils';
-import { hashToken } from '$lib/utils/password';
+import { hashToken, compareToken } from '$lib/utils/password';
+import { createHash } from 'crypto';
 
 const limiter = new RateLimiter({
     IP: [100, 'd'],
@@ -39,20 +40,36 @@ function redirectIfLoggedIn(event: RequestEvent) {
         throw redirect(302, '/');
     }
 }
-
-const verifyRefreshToken = (refreshToken: string, deviceId: string) => {
-    return prisma.refresh_token.findFirst({
+const verifyRefreshToken = async (refreshToken: string, deviceId: string) => {
+    console.log("Verifying refresh token for device:", deviceId);
+    
+    const hashedDeviceId = createHash('sha256').update(deviceId).digest('hex');
+    const tokenRecord = await prisma.refresh_token.findUnique({
         where: {
-            token_hash: refreshToken,
-            device_id: deviceId
+            device_id: hashedDeviceId
         }
-    })
-};
+    });
+    
+    if (!tokenRecord) {
+        console.log("No token record found for device ID");
+        return null;
+    }
+
+    const isValid = await compareToken(refreshToken, tokenRecord.token_hash);
+    console.log("Token validation result:", isValid);
+    
+    if (!isValid) {
+        console.log("Token validation failed");
+        return null;
+    }
+    
+    return tokenRecord;
+}
 
 const deleteRefreshToken = (deviceId: string) => {
     return prisma.refresh_token.delete({
         where: {
-            device_id: deviceId
+            device_id: createHash('sha256').update(deviceId).digest('hex')
         }
     })
 }
@@ -68,9 +85,9 @@ const fetchUserByPrimary = (id: string) => {
 const insertRefreshToken = async (userId: string, refreshToken: string, deviceId: string) => {
     return prisma.refresh_token.create({
         data: {
-            userId: userId,
+            user_id: userId,
             token_hash: await hashToken(refreshToken),
-            device_id: deviceId,
+            device_id: createHash('sha256').update(deviceId).digest('hex'),
             expires_at: new Date(Date.now() + 60 * 60 * 24 * 30 * 1000)
         }
     })
@@ -151,7 +168,7 @@ const handleRefreshToken: Handle = async ({ event, resolve }) => {
             return resolve(event);
         }
 
-        const userData = await fetchUserByPrimary(tokenData.userId);
+        const userData = await fetchUserByPrimary(tokenData.user_id);
         if (!userData) {
 			await deleteRefreshToken(deviceId);
             event.cookies.delete('refreshToken', { path: '/' });

@@ -32,6 +32,10 @@ export async function comparePassword(password: string, hash: string): Promise<b
     
 }
 
+export async function compareToken(token: string, hash: string): Promise<boolean> {
+	return await bcryptjs.compare(token, hash);
+}
+
 export async function hashToken(token: string, SALT_ROUNDS = 4): Promise<string> {
 	const salt = await bcryptjs.genSalt(SALT_ROUNDS);
 	return await bcryptjs.hash(token, salt);
