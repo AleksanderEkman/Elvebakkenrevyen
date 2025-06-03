@@ -34,3 +34,12 @@ export const newUserSchema = z
 		message: 'Passordene er ikke like',
 		path: ['confirmPassword']
 	});
+
+export const loginSchema = z
+	.object({
+		email: z
+			.string()
+			.email({ message: 'E-posten er ugyldig'}),
+		password: z
+			.string().min(6, { message: 'Passordet må være minst 6 tegn.'})
+	})

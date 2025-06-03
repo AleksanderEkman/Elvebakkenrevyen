@@ -1,7 +1,18 @@
 import { PrismaClient } from '@prisma/client';
+import * as crypto from 'crypto';
 
-const prisma = global.prisma ?? new PrismaClient();
+declare global {
+  var prisma: PrismaClient | undefined;
+}
 
-if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
+const prisma = global.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== 'production') {
+  global.prisma = prisma;
+}
+
+export function generateRefreshToken(): string {
+  return crypto.randomBytes(40).toString('hex');
+}
 
 export default prisma;

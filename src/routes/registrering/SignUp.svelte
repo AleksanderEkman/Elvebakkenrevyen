@@ -8,7 +8,6 @@
 	export let data: PageData;
 	import hidePasswordSVG from '$lib/assets/svg/eye-slash.svg';
 	import showPasswordSVG from '$lib/assets/svg/eye.svg';
-	import SuperDebug from 'sveltekit-superforms';
 
 	let passwordField: HTMLInputElement;
 	const { form, errors, enhance, constraints } = superForm(data.form, {
@@ -37,7 +36,7 @@
 		allValid = validLength && validUppercase && validLowercase && validNumber && validSpecialChar;
 	}
 </script>
-	<SuperDebug data={$form} />
+
 <section class="signup-section">
 	<form method="POST" use:enhance class="signup-form">
 		<h1>Registrer bruker</h1>
@@ -146,9 +145,13 @@
 		height: 100vh;
 		background-color: var(--color-background);
 		padding: 2rem;
+		color: white;
 	}
 	.signup-form {
-	
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		border-radius: 1rem;
 		padding: 2rem;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -160,5 +163,19 @@
 		margin-bottom: 1.5rem;
 		font-size: 2rem;
 		color: var(--color-primary);
+	}
+	.input-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	input {
+		color: black;
+		width: 100%;
+		padding: 0.75rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.5rem;
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
 	}
 </style>
