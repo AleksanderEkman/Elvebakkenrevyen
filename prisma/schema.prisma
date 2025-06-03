@@ -1,0 +1,49 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String         @id @default(uuid())
+  first_name     String         @unique
+  email        String         @unique
+  password     String
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @updatedAt
+  tickets      Ticket[]
+  refresh_token refresh_token[]
+
+  @@map("users")
+}
+
+model Ticket {
+  id           String   @id @default(uuid())
+  userId       String   @db.Uuid
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eventName    String
+  eventDate    DateTime
+  purchaseDate DateTime @default(now())
+  seatNumber   String?
+  active       Boolean  @default(true)
+
+  @@index([userId], name: "idx_tickets_userId")
+  @@index([eventDate], name: "idx_tickets_eventDate")
+  @@map("tickets")
+}
+
+model refresh_token {
+  id         String   @id @default(uuid())
+  userId     String   @db.Uuid
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token_hash String   @unique
+  device_id  String   @unique
+  expires_at  DateTime
+  created_at  DateTime @default(now())
+
+  @@index([userId], name: "idx_refresh_tokens_userId")
+  @@map("refresh_tokens")
+}

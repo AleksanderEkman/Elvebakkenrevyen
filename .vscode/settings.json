@@ -1,6 +1,6 @@
 {
-    "files.associations": {
-      "*.css": "css"
-    },
-    "css.lint.unknownAtRules": "ignore" // Optional: to ignore unknown at-rule warnings
-  }
+	"files.associations": {
+		"*.css": "css"
+	},
+	"css.lint.unknownAtRules": "ignore" // Disable unknownAtRules linting
+}
