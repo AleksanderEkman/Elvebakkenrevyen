@@ -21,7 +21,7 @@
 			{ name: 'Freddy Fuego', alt: 'Vulkan Oslo', url: 'https://www.freddyfuego.no/' },
 			{ name: 'Fellesverkstedet', alt: 'Vulkan Oslo', url: 'https://www.fellesverkstedet.no/no' },
 			{ name: 'Vega Scene', alt: 'Vulkan Oslo', url: 'https://www.vegascene.no/' },
-			{ name: 'Syng', alt: 'Vulkan Oslo', url: 'https://syng.no/' }
+			{ name: 'Syng', alt: 'Vulkan Oslo', url: 'https://syng.no/' }	
 		];
 
 		const loadImages = async () => {
