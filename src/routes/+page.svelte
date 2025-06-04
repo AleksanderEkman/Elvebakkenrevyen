@@ -8,6 +8,7 @@
 	let showContent = false;
 	let sponsorsSectionRef: HTMLElement;
 
+<<<<<<< Updated upstream
 	onMount(async () => {
 		showContent = true;
 		await tick();
@@ -22,6 +23,36 @@
 		);
 		spObserver.observe(sponsorsSectionRef);
 	});
+=======
+
+    let showContent = false;
+    export let data;
+
+    let contactSectionRef: HTMLElement;
+    let sponsorsSectionRef: HTMLElement;
+    let footer: HTMLElement | null;
+    
+    onMount(async () => {
+        showContent = true;
+        await tick();
+        const observer = new IntersectionObserver(async (entries) => {
+            entries.forEach(async (entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.intersectionRatio >= 0.025 && !SponsorsSection) {
+                        SponsorsSection = (await import('./SponsorsSection.svelte')).default;
+                    }
+
+
+                    if (SponsorsSection && ContactSection) {
+                        observer.disconnect();
+                    }
+                }
+            });
+        }, { threshold: [0.025, 0.6] });
+
+        observer.observe(sponsorsSectionRef);
+    });
+>>>>>>> Stashed changes
 </script>
 
 <!-- Side-spesifikk tittel -->
@@ -33,6 +64,7 @@
 <!-- Rendrer alle komponentene med en main tag. -->
 <!-- Bruker litt annen syntaks for å lazy loade SponsorsSection -->
 <main>
+<<<<<<< Updated upstream
 	<HeroSection {showContent} />
 	<AboutSection />
 	<section
@@ -91,4 +123,60 @@
 			height: 35rem;
 		}
 	}
+=======
+    <HeroSection {showContent}/>
+    {#if showContent}
+        <section bind:this={sponsorsSectionRef} class="sponsors" style="background-image: url({sponsorer_background})">
+            <svelte:component this={SponsorsSection}/>
+        </section>
+    {/if}
+</main>
+
+<style nonce="%sveltekit.nonce%">
+    main {
+        height: auto;
+        overflow-x: hidden;
+    }
+
+    .sponsors {
+        width: 100vw;
+        height: 50rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        font-family: var(--font-header);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .sponsors::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+    @media (min-width: 1450px) {
+        .sponsors {
+            height: 90vh;
+        }
+    }
+    @media (max-width: 550px) {
+        .sponsors {
+            height: 47.5rem;
+            background-position: top;
+        }
+    }
+    /* Media query for mobile landscape mode */
+    @media (max-width: 933px) and (orientation: landscape) {
+        .sponsors {
+            height: 40rem;
+        }
+    }
+>>>>>>> Stashed changes
 </style>
