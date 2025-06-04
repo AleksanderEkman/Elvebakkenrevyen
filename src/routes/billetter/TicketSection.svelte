@@ -16,9 +16,12 @@
 		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10', data: '-06-03 18:00' },
 		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11', data: '-07-03 18:00' }
 	];
+	let selectedEvent = '';
+	let childValue = 0;
+	let adultValue = 0;
 	function handleSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
-		const selectedEvent = target.value;
+		selectedEvent = target.value;
 		showPopup = true;
 	}
 	let showPopup = false;
