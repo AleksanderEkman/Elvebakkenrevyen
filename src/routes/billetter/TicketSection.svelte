@@ -4,17 +4,17 @@
 
 	/* Liste over alle forestillinger, koblet opp til en showCode */
 	const events = [
-		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1' },
-		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2' },
-		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3' },
-		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4' },
-		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5' },
-		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6' },
-		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7' },
-		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8' },
-		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9' },
-		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10' },
-		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11' }
+		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1', data: '2602&1800' },
+		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2', data: '2702&1800' },
+		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3', data: '2802&1800' },
+		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4', data: '2902&1800' },
+		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5', data: '0103&1800' },
+		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6', data: '0203&1800' },
+		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7', data: '0303&1800' },
+		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8', data: '0403&1800' },
+		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9', data: '0503&1800' },
+		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10', data: '0603&1800' },
+		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11', data: '0703&1800' }
 	];
 
 	/* Håndterer valg av forestilling */

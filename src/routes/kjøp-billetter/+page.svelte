@@ -9,5 +9,6 @@
 </svelte:head>
 
 <main>
+    <!-- Overfører billettdata til billettkomponenten-->
 	<PurchaseTickets {data} />
 </main>

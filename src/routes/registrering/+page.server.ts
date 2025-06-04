@@ -6,9 +6,9 @@ import { hashPassword } from '$lib/utils/password';
 import { redirect } from '@sveltejs/kit';
 import { RateLimiter } from 'sveltekit-rate-limiter/server';
 import prisma from '$lib/utils/prismaUtils'
-// import { usernameTaken, emailTaken, fetchEmailProviders } from '$lib/supabaseClient';
 import crypto from 'crypto';
 
+/* Definerer interface for oppretting av ny bruker */
 interface CreateUserInput {
     username: string;
     email: string;
