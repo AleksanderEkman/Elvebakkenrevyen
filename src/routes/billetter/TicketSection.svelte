@@ -15,6 +15,12 @@
 		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10' },
 		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11' }
 	];
+	function handleSelect(event: Event) {
+		const target = event.target as HTMLInputElement;
+		const selectedEvent = target.value;
+		showPopup = true;
+	}
+	let showPopup = false;
 	onMount(() => {
 		setTimeout(() => {
 			const observer = new IntersectionObserver(
@@ -47,21 +53,26 @@
 		</p>
 	</div>
 
-	<div class="flex">
+	<div>
 		<h2 id="link"><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
-		{#each events as event, index}
-			<a
-				class="event {index === 0 ? 'first-event' : ''}"
-				href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`}
-				target="_blank"
-			>
-				<div class="event-content">
-					<p class="event-label">{event.label}</p>
-					<p class="event-date">{event.date} 2025</p>
-					<p class="event-time">Kl. {event.time}</p>
+		<form class="flex">
+			{#each events as event, index}
+				<div class="event {index === 0 ? 'first-event' : ''}">
+					<input 
+						type=radio
+						value="{event.showCode}"
+						id="{event.showCode}"
+						name="selectedEvent"
+						on:change={handleSelect}
+					>
+					<label for="{event.showCode}" class="event-content">
+						<p class="event-label">{event.label}</p>
+						<p class="event-date">{event.date} 2025</p>
+						<p class="event-time">Kl. {event.time}</p>
+					</label>
 				</div>
-			</a>
-		{/each}
+			{/each}
+		</form>
 	</div>
 	<div class="wide">
 		<h2 id="loc">Vestre Elvebakke 3</h2>
