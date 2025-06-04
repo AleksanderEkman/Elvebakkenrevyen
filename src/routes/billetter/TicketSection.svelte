@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
+	/* Liste over alle forestillinger, koblet opp til en showCode */
 	const events = [
 		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1' },
 		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2' },
@@ -15,8 +16,23 @@
 		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10' },
 		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11' }
 	];
+
+	/* Håndterer valg av forestilling */
+	let selectedEvent = '';
+	function handleSelect(event: Event) {
+		const target = event.target as HTMLInputElement;
+		selectedEvent = target.value;
+		showPopup = true;
+		console.log(showPopup)
+	}
+	let showPopup = false;
+	let childValue = 0;
+	let adultValue = 0;
+
+
 	onMount(() => {
 		setTimeout(() => {
+			/* Intersection observer for animasjon når elementer vises på skjermen */
 			const observer = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
@@ -47,20 +63,52 @@
 		</p>
 	</div>
 
-	<div class="flex">
-		<h2 id="link"><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
-		{#each events as event, index}
-			<a
-				class="event {index === 0 ? 'first-event' : ''}"
-				href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`}
-				target="_blank"
-			>
-				<div class="event-content">
-					<p class="event-label">{event.label}</p>
-					<p class="event-date">{event.date} 2025</p>
-					<p class="event-time">Kl. {event.time}</p>
+	<div>
+		<form class="flex">
+			{#each events as event, index}
+				<div class="event {index === 0 ? 'first-event' : ''}">
+					<input 
+						type=radio
+						style="display: none;"
+						value="{event.showCode}"
+						id="{event.showCode}"
+						name="selectedEvent"
+						on:change={handleSelect}
+					>
+					<label for="{event.showCode}" class="event-content">
+						<p class="event-label">{event.label}</p>
+						<p class="event-date">{event.date} 2025</p>
+						<p class="event-time">Kl. {event.time}</p>
+					</label>
+					{#if event.showCode === selectedEvent}
+						<div class="valueSelect" in:fade={{ duration: 500 }}>
+							<label for="{event.showCode}_value">Velg antall billetter:</label>
+							<label for="{event.showCode}_child_value">Barn (0-16 år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_child_value"
+								name="{event.showCode}_child_value"
+								min="1"
+								max="10"
+								bind:value={childValue}
+								placeholder="0"
+							>
+							<label for="{event.showCode}_adult_value">Voksne (17+ år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_adult_value"
+								name="{event.showCode}_adult_value"
+								min="1"
+								max="10"
+								bind:value={adultValue}
+								placeholder="0"
+							>
+						</div>
+					{/if}
 				</div>
-			</a>
+	
 		{/each}
 	</div>
 	<div class="wide">
@@ -80,6 +128,11 @@
 		</div>
 	</div>
 </section>
+{#if showPopup && (childValue > 0 || adultValue > 0	)}
+	<div class="popup" in:fade={{ duration: 500 }}>
+		<a href="/kjøp-billetter?showCode={selectedEvent}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
+	</div>
+{/if}
 
 <style>
 	h1 {
@@ -183,6 +236,9 @@
 		width: 20rem;
 		height: auto;
 	}
+	.event-content:hover {
+		cursor: pointer;
+	}
 	.event-label {
 		font-size: 1.7rem;
 		font-weight: bold;
@@ -204,6 +260,35 @@
 		justify-content: center;
 		width: 100vw;
 		max-width: 1100px;
+	}
+	.popup {
+		position: fixed;
+		bottom: 0%;
+		left: 50%;
+		background-color: rgba(0, 0, 0, 0.8);
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+		transform: translateX(-50%);
+	}
+	.valueInput {
+		width: 5rem;
+		height: 2rem;
+		font-size: 1rem;
+		border-radius: 5px;
+		border: solid 0.8px rgba(255, 255, 255, 0.75);
+		color: white;
+		padding: 0.4rem;
+		background-color: transparent;
+		transition: all 0.2s;
+	}
+	.valueSelect {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
 	}
 
 	.map {
