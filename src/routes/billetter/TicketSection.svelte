@@ -1,19 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	export let data;
 
 	const events = [
-		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1' },
-		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2' },
-		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3' },
-		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4' },
-		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5' },
-		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6' },
-		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7' },
-		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8' },
-		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9' },
-		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10' },
-		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11' }
+		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1', data: '-26-02 18:00' },
+		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2', data: '-27-02 18:00' },
+		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3', data: '-28-02 18:00' },
+		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4', data: '-29-02 18:00' },
+		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5', data: '-01-03 18:00' },
+		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6', data: '-02-03 18:00' },
+		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7', data: '-03-03 18:00' },
+		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8', data: '-04-03 18:00' },
+		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9', data: '-05-03 18:00' },
+		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10', data: '-06-03 18:00' },
+		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11', data: '-07-03 18:00' }
 	];
 	function handleSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -60,7 +61,8 @@
 				<div class="event {index === 0 ? 'first-event' : ''}">
 					<input 
 						type=radio
-						value="{event.showCode}"
+						style="display: none;"
+						value="{event.data}"
 						id="{event.showCode}"
 						name="selectedEvent"
 						on:change={handleSelect}
@@ -70,6 +72,33 @@
 						<p class="event-date">{event.date} 2025</p>
 						<p class="event-time">Kl. {event.time}</p>
 					</label>
+					{#if event.data === selectedEvent}
+						<div class="valueSelect" in:fade={{ duration: 500 }}>
+							<label for="{event.showCode}_value">Velg antall billetter:</label>
+							<label for="{event.showCode}_child_value">Barn (0-16 år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_child_value"
+								name="{event.showCode}_child_value"
+								min="1"
+								max="10"
+								bind:value={childValue}
+								placeholder="0"
+							>
+							<label for="{event.showCode}_adult_value">Voksne (17+ år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_adult_value"
+								name="{event.showCode}_adult_value"
+								min="1"
+								max="10"
+								bind:value={adultValue}
+								placeholder="0"
+							>
+						</div>
+					{/if}
 				</div>
 			{/each}
 		</form>
@@ -91,6 +120,16 @@
 		</div>
 	</div>
 </section>
+{#if showPopup && (childValue > 0 || adultValue > 0	)}
+	<div class="popup" in:fade={{ duration: 500 }}>
+		{#if !data.user}
+			<p>Du må være logget inn for å bestille billetter</p>
+			<a href="/logginn">Logg inn</a>
+		{:else if data.user}
+			<a href="/kjøp-billetter?showCode={selectedEvent}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
+		{/if}
+	</div>
+{/if}
 
 <style>
 	h1 {
