@@ -10,16 +10,6 @@
 	let sponsors: { name: string; alt: string; url: string }[] = [];
 	let showContent = false;
 
-  onMount(() => {
-    // Liste over alle sponsorer samt URL
-    sponsors = [{name: 'Vulkan Oslo', url: "https://vulkanoslo.no/"},
-        {name: 'Kaffebrenneriet', url: "https://www.kaffebrenneriet.no/"}, 
-        {name: 'Freddy Fuego', url: "https://www.freddyfuego.no/"},
-        {name: 'Fellesverkstedet', url: "https://www.fellesverkstedet.no/"}, 
-        {name: 'Vega Scene', url: "https://www.vegascene.no/"}, 
-        {name: 'Syng', url: "https://syng.no/"}
-      ]
-
 	onMount(() => {
 		// Liste over alle sponsorer samt URL
 		sponsors = [
@@ -44,7 +34,7 @@
 
 		loadImages().then(() => {
 			// Oppretter en ny EmblaCarousel med emblaAPI
-			emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+			emblaApi = EmblaCarousel(viewportNode);
 		});
 
 		return () => {
