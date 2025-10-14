@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { zod } from 'sveltekit-superforms/adapters';
 	import { superForm } from 'sveltekit-superforms/client';
-	import { contactSchema } from '$lib/schemas'; // Ensure this schema is defined correctly
+	import { contactSchema } from '$lib/schemas';
 	import { fade } from 'svelte/transition';
 	import { faCheck } from '@fortawesome/free-solid-svg-icons';
 	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
@@ -16,7 +16,7 @@
 		validators: zod(contactSchema)
 	});
 
-	function handleInput(event: Event) {
+	function handleInput(event: Event) {	
 		const input = event.target as HTMLInputElement;
 		input.value = input.value.replace(/[^0-9]/g, '');
 	}

@@ -3,17 +3,18 @@
 	import { fade } from 'svelte/transition';
 
 	const events = [
-		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1' },
-		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2' },
-		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3' },
-		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4' },
-		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5' },
-		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6' },
-		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7' },
-		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8' },
-		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9' },
-		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10' },
-		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11' }
+		{ label: 'This Must Be the Place Premiere', date: '27. Februar', time: '18:00', showCode: 'iimkkkld' },
+		{ label: 'This Must Be the Place', date: '28. Februar', time: '18:00', showCode: 'vhob5g7f' },
+		{ label: 'This Must Be the Place', date: '1 Mars', time: '15:00', showCode: 'zmxzy9lz' },
+		{ label: 'This Must Be the Place', date: '2. Mars', time: '15:00', showCode: '6h0ycs6t' },
+		{ label: 'This Must Be the Place', date: '2. Mars', time: '19:00', showCode: 'dygycret' },
+		{ label: 'This Must Be the Place', date: '3. Mars', time: '18:00', showCode: 'gzncwcxh' },
+		{ label: 'This Must Be the Place', date: '4. Mars', time: '18:00', showCode: 'r1d75odf' },
+		{ label: 'This Must Be the Place', date: '6. Mars', time: '18:00', showCode: 'wo1prbo4' },
+		{ label: 'This Must Be the Place', date: '7. Mars', time: '18:00', showCode: 'v12kfxhr' },
+		{ label: 'This Must Be the Place', date: '8. Mars', time: '15:00', showCode: 'nttcc3ti' },
+		{ label: 'This Must Be the Place', date: '9. Mars', time: '15:00', showCode: 'equwegbz' },
+		{ label: 'This Must Be the Place Teppefalls', date: '9. Mars', time: '19:00', showCode: '5ddnhgcc' }
 	];
 	onMount(() => {
 		setTimeout(() => {
@@ -51,7 +52,7 @@
 		<h2 id="link"><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
 		{#each events as event, index}
 			<a
-				class="event {index === 0 ? 'first-event' : ''}"
+				class="event {(index === 0 || index === events.length-1) ? 'first-event' : ''}"
 				href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`}
 				target="_blank"
 			>
