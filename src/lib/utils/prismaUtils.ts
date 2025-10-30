@@ -5,6 +5,10 @@ const prisma = global.prisma ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
 
+export function generateRefreshToken(): string {
+  return crypto.randomBytes(40).toString('hex');
+}
+
 export default prisma;
 
 export async function createTicket(input: {
