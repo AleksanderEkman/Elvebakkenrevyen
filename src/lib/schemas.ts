@@ -18,7 +18,7 @@ export const newUserSchema = z
 			.string()
 			.min(3, { message: 'Fornavnet må være minst 3 tegn' })
 			.max(20, { message: 'Fornavnet kan ikke være mer enn 20 tegn' })
-			.regex(/^\S+$/, { message: 'Brukernavnet kan ikke inneholde mellomrom' }),
+			.regex(/^\S+$/, { message: 'Fornavnet kan ikke inneholde mellomrom' }),
 		email: z
 			.string()
 			.email({ message: 'E-postadressen er ugyldig' }),
@@ -34,3 +34,17 @@ export const newUserSchema = z
 		message: 'Passordene er ikke like',
 		path: ['confirmPassword']
 	});
+
+	
+export const loginSchema = z.object({
+	identifier: z.string().refine(
+		(value) => {
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return emailRegex.test(value) || value.length >= 3;
+		},
+		{
+			message: 'Ugyldig brukernavn eller e-postadresse'
+		}
+	),
+	password: z.string().min(10, { message: 'Passordet må være minst 10 tegn' })
+});

@@ -10,6 +10,9 @@ declare global {
 		// interface Platform {}
 	};
 	var prisma: PrismaClient | undefined;
+			interface Locals {
+			user?: User;
+		}
 }
 
 export {};

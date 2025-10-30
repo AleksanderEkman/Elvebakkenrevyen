@@ -2,7 +2,6 @@
     import { onMount, tick } from 'svelte';
     import HeroSection from './HeroSection.svelte';
     let SponsorsSection: ConstructorOfATypedSvelteComponent | null = null;
-    let ContactSection: ConstructorOfATypedSvelteComponent | null = null;
     import sponsorer_background from '$lib/assets/sponsorer.webp';
 
 
@@ -22,11 +21,8 @@
                     if (entry.intersectionRatio >= 0.025 && !SponsorsSection) {
                         SponsorsSection = (await import('./SponsorsSection.svelte')).default;
                     }
-                    if (entry.intersectionRatio >= 0.6 && !ContactSection) {
-                        ContactSection = (await import('./ContactSection.svelte')).default;
-                    }
 
-                    if (SponsorsSection && ContactSection) {
+                    if (SponsorsSection) {
                         observer.disconnect();
                     }
                 }
@@ -52,15 +48,7 @@
             <svelte:component this={SponsorsSection}/>
         </section>
     {/if}
-    {#if showContent}
-        <section bind:this={contactSectionRef} class="contact">
-            {#if ContactSection}
-                <svelte:component this={ContactSection} {data} {showContent}/>
-            {:else}
-                <div style="height: 90svh;"></div>
-            {/if}
-        </section>
-    {/if}
+
 </main>
 
 <style nonce="%sveltekit.nonce%">
