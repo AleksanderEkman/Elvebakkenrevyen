@@ -1,5 +1,6 @@
 <script lang="ts">
 	import TicketSection from './TicketSection.svelte';
+	export let data;
 </script>
 
 <svelte:head>
@@ -9,5 +10,5 @@
 </svelte:head>
 
 <main>
-	<TicketSection />
+	<TicketSection {data} />
 </main>

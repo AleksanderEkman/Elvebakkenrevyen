@@ -1,21 +1,30 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	export let data;
 
 	const events = [
-		{ label: 'This Must Be the Place Premiere', date: '27. Februar', time: '18:00', showCode: 'iimkkkld' },
-		{ label: 'This Must Be the Place', date: '28. Februar', time: '18:00', showCode: 'vhob5g7f' },
-		{ label: 'This Must Be the Place', date: '1 Mars', time: '15:00', showCode: 'zmxzy9lz' },
-		{ label: 'This Must Be the Place', date: '2. Mars', time: '15:00', showCode: '6h0ycs6t' },
-		{ label: 'This Must Be the Place', date: '2. Mars', time: '19:00', showCode: 'dygycret' },
-		{ label: 'This Must Be the Place', date: '3. Mars', time: '18:00', showCode: 'gzncwcxh' },
-		{ label: 'This Must Be the Place', date: '4. Mars', time: '18:00', showCode: 'r1d75odf' },
-		{ label: 'This Must Be the Place', date: '6. Mars', time: '18:00', showCode: 'wo1prbo4' },
-		{ label: 'This Must Be the Place', date: '7. Mars', time: '18:00', showCode: 'v12kfxhr' },
-		{ label: 'This Must Be the Place', date: '8. Mars', time: '15:00', showCode: 'nttcc3ti' },
-		{ label: 'This Must Be the Place', date: '9. Mars', time: '15:00', showCode: 'equwegbz' },
-		{ label: 'This Must Be the Place Teppefalls', date: '9. Mars', time: '19:00', showCode: '5ddnhgcc' }
+		{ label: 'Premiere', date: '26. Februar', time: '18:00', showCode: 's1', data: '-26-02 18:00' },
+		{ label: 'Forestilling', date: '27. Februar', time: '18:00', showCode: 's2', data: '-27-02 18:00' },
+		{ label: 'Forestilling', date: '28. Februar', time: '18:00', showCode: 's3', data: '-28-02 18:00' },
+		{ label: 'Forestilling', date: '29. Februar', time: '18:00', showCode: 's4', data: '-29-02 18:00' },
+		{ label: 'Forestilling', date: '1. Mars', time: '18:00', showCode: 's5', data: '-01-03 18:00' },
+		{ label: 'Forestilling', date: '2. Mars', time: '18:00', showCode: 's6', data: '-02-03 18:00' },
+		{ label: 'Forestilling', date: '3. Mars', time: '18:00', showCode: 's7', data: '-03-03 18:00' },
+		{ label: 'Forestilling', date: '4. Mars', time: '18:00', showCode: 's8', data: '-04-03 18:00' },
+		{ label: 'Forestilling', date: '5. Mars', time: '18:00', showCode: 's9', data: '-05-03 18:00' },
+		{ label: 'Forestilling', date: '6. Mars', time: '18:00', showCode: 's10', data: '-06-03 18:00' },
+		{ label: 'Teppefalls', date: '7. Mars', time: '18:00', showCode: 's11', data: '-07-03 18:00' }
 	];
+	let selectedEvent = '';
+	let childValue = 0;
+	let adultValue = 0;
+	function handleSelect(event: Event) {
+		const target = event.target as HTMLInputElement;
+		selectedEvent = target.value;
+		showPopup = true;
+	}
+	let showPopup = false;
 	onMount(() => {
 		setTimeout(() => {
 			const observer = new IntersectionObserver(
@@ -48,21 +57,54 @@
 		</p>
 	</div>
 
-	<div class="flex">
+	<div>
 		<h2 id="link"><a href="https://bestill.albillett.no/nb/1574">Albillett:</a></h2>
-		{#each events as event, index}
-			<a
-				class="event {(index === 0 || index === events.length-1) ? 'first-event' : ''}"
-				href={`https://bestill.albillett.no/nb/arrangement/${event.showCode}`}
-				target="_blank"
-			>
-				<div class="event-content">
-					<p class="event-label">{event.label}</p>
-					<p class="event-date">{event.date} 2025</p>
-					<p class="event-time">Kl. {event.time}</p>
+		<form class="flex">
+			{#each events as event, index}
+				<div class="event {index === 0 ? 'first-event' : ''}">
+					<input 
+						type=radio
+						style="display: none;"
+						value="{event.data}"
+						id="{event.showCode}"
+						name="selectedEvent"
+						on:change={handleSelect}
+					>
+					<label for="{event.showCode}" class="event-content">
+						<p class="event-label">{event.label}</p>
+						<p class="event-date">{event.date} 2025</p>
+						<p class="event-time">Kl. {event.time}</p>
+					</label>
+					{#if event.data === selectedEvent}
+						<div class="valueSelect" in:fade={{ duration: 500 }}>
+							<label for="{event.showCode}_value">Velg antall billetter:</label>
+							<label for="{event.showCode}_child_value">Barn (0-16 år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_child_value"
+								name="{event.showCode}_child_value"
+								min="1"
+								max="10"
+								bind:value={childValue}
+								placeholder="0"
+							>
+							<label for="{event.showCode}_adult_value">Voksne (17+ år):</label>
+							<input 
+								type="number"
+								class="valueInput"
+								id="{event.showCode}_adult_value"
+								name="{event.showCode}_adult_value"
+								min="1"
+								max="10"
+								bind:value={adultValue}
+								placeholder="0"
+							>
+						</div>
+					{/if}
 				</div>
-			</a>
-		{/each}
+			{/each}
+		</form>
 	</div>
 	<div class="wide">
 		<h2 id="loc">Vestre Elvebakke 3</h2>
@@ -81,6 +123,16 @@
 		</div>
 	</div>
 </section>
+{#if showPopup && (childValue > 0 || adultValue > 0	)}
+	<div class="popup" in:fade={{ duration: 500 }}>
+		{#if !data.user}
+			<p>Du må være logget inn for å bestille billetter</p>
+			<a href="/logginn">Logg inn</a>
+		{:else if data.user}
+			<a href="/kjøp-billetter?showCode={selectedEvent}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
+		{/if}
+	</div>
+{/if}
 
 <style>
 	h1 {
