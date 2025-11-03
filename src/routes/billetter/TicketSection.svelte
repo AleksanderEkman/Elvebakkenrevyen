@@ -19,9 +19,12 @@
 
 	/* Håndterer valg av forestilling */
 	let selectedEvent = '';
+	let data = '';
 	function handleSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
 		selectedEvent = target.value;
+		const selectedEventObj = events.find(e => e.showCode === target.value);
+		data = selectedEventObj?.data || '';
 		showPopup = true;
 		console.log(showPopup)
 	}
@@ -74,6 +77,7 @@
 						id="{event.showCode}"
 						name="selectedEvent"
 						on:change={handleSelect}
+						
 					>
 					<label for="{event.showCode}" class="event-content">
 						<p class="event-label">{event.label}</p>
@@ -130,7 +134,7 @@
 </section>
 {#if showPopup && (childValue > 0 || adultValue > 0	)}
 	<div class="popup" in:fade={{ duration: 500 }}>
-		<a href="/kjøp-billetter?showCode={selectedEvent}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
+		<a href="/kjøp-billetter?data={data}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
 	</div>
 {/if}
 

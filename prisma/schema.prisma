@@ -21,29 +21,30 @@ model User {
 }
 
 model Ticket {
-  id           String   @id @default(uuid())
-  userId       String   @db.Uuid
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  eventName    String
-  eventDate    DateTime
-  purchaseDate DateTime @default(now())
-  seatNumber   String?
-  active       Boolean  @default(true)
+  id            String   @id @default(uuid())
+  user_id       String
+  user          User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  event_name    String
+  event_date    DateTime
+  purchase_date DateTime @default(now())
+  seat_number   String?
+  type          String   @default("adult") // "adult" or "child"
+  active        Boolean  @default(true)
 
-  @@index([userId], name: "idx_tickets_userId")
-  @@index([eventDate], name: "idx_tickets_eventDate")
+  @@index([user_id], name: "idx_tickets_user_id")
+  @@index([event_date], name: "idx_tickets_event_date")
   @@map("tickets")
 }
 
 model refresh_token {
   id         String   @id @default(uuid())
-  userId     String   @db.Uuid
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   token_hash String   @unique
   device_id  String   @unique
-  expires_at  DateTime
-  created_at  DateTime @default(now())
+  expires_at DateTime
+  created_at DateTime @default(now())
 
-  @@index([userId], name: "idx_refresh_tokens_userId")
+  @@index([user_id], name: "idx_refresh_tokens_user_id")
   @@map("refresh_tokens")
 }

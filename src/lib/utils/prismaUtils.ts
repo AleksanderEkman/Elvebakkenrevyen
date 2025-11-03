@@ -9,20 +9,25 @@ export function generateRefreshToken(): string {
   return crypto.randomBytes(40).toString('hex');
 }
 
-export default prisma;
 
-export async function createTicket(input: {
-    userId: string,
-    eventName: string,
-    eventDate: Date,
-    seatNumber?: string | null;
+
+export async function addTicket(input: {
+    user_id: string,
+    event_name: string,
+    event_date: Date,
+    type: string,
+    seat_number?: string | null;
 }): Promise<Ticket> {
     return prisma.ticket.create({
         data: {
-            userId: input.userId,
-            eventName: input.eventName,
-            eventDate: input.eventDate,
-            seatNumber: input.seatNumber || null,
+            user_id: input.user_id,
+            event_name: input.event_name,
+            event_date: input.event_date,
+            type: input.type,
+            seat_number: input.seat_number || null,
         },
     })
 }
+
+
+export default prisma;
