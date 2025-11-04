@@ -1,4 +1,5 @@
 <script lang="ts">
+    import QRCode from '@castlenine/svelte-qrcode';
     export let data;
 </script>
 
@@ -8,7 +9,12 @@
     <p>Forestilling: {data.showCode}</p>
     <p>Barn: {data.childValue}</p>
     <p>Voksne: {data.adultValue}</p>
+
+    {#each data.ticketsWithTokens as ticketWithToken}
+        <QRCode data={`${ticketWithToken.ticket.id}.${ticketWithToken.rawToken}`}/>
+    {/each}
 </section>
+
 
 <style>
     .purchaseSection {

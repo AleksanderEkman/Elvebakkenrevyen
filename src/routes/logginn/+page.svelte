@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import LogIn from './LoggInn.svelte';
-	
+	import LogIn from './logginn.svelte';
+
 	export let data;
 
 	onMount(() => {

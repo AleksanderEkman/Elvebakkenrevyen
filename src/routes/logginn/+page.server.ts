@@ -3,7 +3,7 @@ import { RateLimiter } from 'sveltekit-rate-limiter/server';
 import { loginSchema } from '$lib/schemas';
 import { superValidate } from 'sveltekit-superforms/server';
 import { zod } from 'sveltekit-superforms/adapters';
-import { fetchUserByIdentifier, generateRefreshToken, insertRefreshToken, emailVerified } from '$lib/prismaUtils.ts';
+import { fetchUserByIdentifier, generateRefreshToken, insertRefreshToken } from '$lib/utils/prismaUtils';
 import { comparePassword } from '$lib/utils/password';
 import jwt from 'jsonwebtoken';
 import { sleep } from '$lib/utils/helpers';
@@ -54,11 +54,12 @@ export const actions = {
 		const userData = await fetchUserByIdentifier(form.data.identifier);
 
 		const errorMessage = 'Ugyldig brukernavn, e-postadresse eller passord';
-
+		console.log(form.data.password);
 		const isMatch = await comparePassword(
 			form.data.password,
 			userData?.hashed_password || INVALID_HASH
 		);
+		console.log(userData)
 		if (!userData || !isMatch) {
 			await sleep(500);
 			form.errors.password = [errorMessage];
@@ -66,10 +67,6 @@ export const actions = {
 		}
 
 		const { hashed_password, ...userWithoutPassword } = userData;
-
-		if (userData.verified_email === false) {
-			throw redirect(302, '/verifyemail');
-		}
 
 		const authToken = jwt.sign({ userData: userWithoutPassword }, JWT_SECRET_KEY, {
 			expiresIn: '20m'

@@ -8,13 +8,13 @@ generator client {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  first_name     String         @unique
-  email        String         @unique
-  password     String
-  created_at    DateTime       @default(now())
-  updated_at    DateTime       @updatedAt
-  tickets      Ticket[]
+  id            String         @id @default(uuid())
+  first_name    String         @unique
+  email         String         @unique
+  password      String
+  created_at    DateTime       @default(now()) @db.Timestamptz(0)
+  updated_at    DateTime       @updatedAt @db.Timestamptz(0)
+  tickets       Ticket[]
   refresh_token refresh_token[]
 
   @@map("users")
@@ -25,11 +25,12 @@ model Ticket {
   user_id       String
   user          User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   event_name    String
-  event_date    DateTime
-  purchase_date DateTime @default(now())
+  event_date    DateTime @db.Timestamptz(0)
+  purchase_date DateTime @default(now()) @db.Timestamptz(0)
   seat_number   String?
   type          String   @default("adult") // "adult" or "child"
   active        Boolean  @default(true)
+  token         String?  @unique
 
   @@index([user_id], name: "idx_tickets_user_id")
   @@index([event_date], name: "idx_tickets_event_date")
@@ -42,8 +43,8 @@ model refresh_token {
   user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   token_hash String   @unique
   device_id  String   @unique
-  expires_at DateTime
-  created_at DateTime @default(now())
+  expires_at DateTime @db.Timestamptz(0)
+  created_at DateTime @default(now()) @db.Timestamptz(0)
 
   @@index([user_id], name: "idx_refresh_tokens_user_id")
   @@map("refresh_tokens")

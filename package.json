@@ -43,6 +43,7 @@
 		"zod": "^3.24.1"
 	},
 	"dependencies": {
+		"@castlenine/svelte-qrcode": "^2.3.0",
 		"@fortawesome/free-brands-svg-icons": "^6.7.1",
 		"@fortawesome/free-solid-svg-icons": "^6.7.1",
 		"@fortawesome/svelte-fontawesome": "^0.2.3",

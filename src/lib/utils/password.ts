@@ -25,11 +25,8 @@ export async function hashPassword(password: string): Promise<string> {
     return hash;
 }
 export async function comparePassword(password: string, hash: string): Promise<boolean> {
-
     const pepperedPassword = applyPepper(password);
-    const storedHash = hash.slice(3);
-    return await bcryptjs.compare(pepperedPassword, storedHash);
-    
+    return await bcryptjs.compare(pepperedPassword, hash);
 }
 
 export async function hashToken(token: string, SALT_ROUNDS = 4): Promise<string> {

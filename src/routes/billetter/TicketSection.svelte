@@ -20,13 +20,14 @@
 	/* Håndterer valg av forestilling */
 	let selectedEvent = '';
 	let data = '';
+	let encodedData = '';
 	function handleSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
 		selectedEvent = target.value;
 		const selectedEventObj = events.find(e => e.showCode === target.value);
 		data = selectedEventObj?.data || '';
+		encodedData = encodeURIComponent(data);
 		showPopup = true;
-		console.log(showPopup)
 	}
 	let showPopup = false;
 	let childValue = 0;
@@ -134,7 +135,7 @@
 </section>
 {#if showPopup && (childValue > 0 || adultValue > 0	)}
 	<div class="popup" in:fade={{ duration: 500 }}>
-		<a href="/kjøp-billetter?data={data}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
+		<a href="/kjøp-billetter?data={encodedData}&childValue={childValue}&adultValue={adultValue}">Bestill billeter</a>
 	</div>
 {/if}
 
