@@ -25,7 +25,7 @@ const INVALID_HASH =
 
 	
 export const load = async (event) => {
-	console.log(event.locals.user);
+
 	if (event.locals.user || event.cookies.get('authToken')) {
 		console.log('redirecting');
 		throw redirect(302, '/');
@@ -54,12 +54,11 @@ export const actions = {
 		const userData = await fetchUserByIdentifier(form.data.identifier);
 
 		const errorMessage = 'Ugyldig brukernavn, e-postadresse eller passord';
-		console.log(form.data.password);
 		const isMatch = await comparePassword(
 			form.data.password,
 			userData?.hashed_password || INVALID_HASH
 		);
-		console.log(userData)
+
 		if (!userData || !isMatch) {
 			await sleep(500);
 			form.errors.password = [errorMessage];

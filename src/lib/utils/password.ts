@@ -33,3 +33,7 @@ export async function hashToken(token: string, SALT_ROUNDS = 4): Promise<string>
 	const salt = await bcryptjs.genSalt(SALT_ROUNDS);
 	return await bcryptjs.hash(token, salt);
 }
+
+export async function compareToken(plainToken: string, hashedToken: string): Promise<boolean> {
+	return await bcryptjs.compare(plainToken, hashedToken);
+}

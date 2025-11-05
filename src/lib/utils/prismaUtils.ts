@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 import type { Ticket } from '@prisma/client';
 import crypto from 'crypto';
-import { hashToken } from './password';
-import bcryptjs from 'bcryptjs';
+import { hashToken, compareToken as compareTokenUtil } from './password';
+
+export { compareTokenUtil as compareToken };
 
 const prisma = global.prisma ?? new PrismaClient();
 
@@ -91,7 +92,7 @@ export async function verifyRefreshToken(refreshToken: string, deviceId: string)
     }
 
     // Compare the token
-    const isValid = await bcryptjs.compare(refreshToken, tokenRecord.token_hash);
+    const isValid = await compareTokenUtil(refreshToken, tokenRecord.token_hash);
 
     if (!isValid) return null;
 
@@ -151,8 +152,11 @@ export async function fetchTicketById(ticketId: string) {
     return ticket;
 }
 
-export async function compareToken(plainToken: string, hashedToken: string) {
-    return await bcryptjs.compare(plainToken, hashedToken);
+export async function deactivateTicket(ticketId: string) {
+    await prisma.ticket.update({
+        where: { id: ticketId },
+        data: { active: false }
+    });
 }
 
 export default prisma;

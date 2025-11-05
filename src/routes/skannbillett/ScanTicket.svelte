@@ -7,34 +7,61 @@
 	let scannedData: string = '';
 	let isScanning: boolean = false;
 	let error: string = '';
-	let verificationResult: { success: boolean; message: string } | null = null;
+	let isValid: boolean | "used" | null = null;
 
 	const onScanSuccess = async (decodedText: string, decodedResult: any) => {
 		console.log('QR Code scanned:', decodedText);
 		scannedData = decodedText;
 
+		// Pause scanning IMMEDIATELY to prevent duplicate scans
+		if (html5QrCode && isScanning) {
+			html5QrCode.pause(true);
+		}
+
 		// Send to server
 		const formData = new FormData();
 		formData.append('scannedData', decodedText);
 
-		const response = await fetch('?/verifyTicket', {
-			method: 'POST',
-			body: formData
-		});
+		try {
+			const response = await fetch('?/verifyTicket', {
+				method: 'POST',
+				body: formData
+			});
 
-		const result = await response.json();
-		verificationResult = result.data;
+			const result = await response.json();
 
-		// Pause scanning for 3 seconds after successful scan
-		if (html5QrCode && isScanning) {
-			html5QrCode.pause(true);
-			setTimeout(() => {
-				if (html5QrCode && isScanning) {
-					html5QrCode.resume();
-					verificationResult = null;
+			// Parse the double-encoded data
+			const data = typeof result.data === 'string' ? JSON.parse(result.data) : result.data;
+
+			// The data is in array format: [map, "success", true/false/"used", "message"]
+			if (Array.isArray(data)) {
+				if (data[2] === "used") {
+					isValid = "used";
+				} else if (data[2] === true) {
+					isValid = true;
+				} else {
+					isValid = false;
 				}
-			}, 3000);
+			} else {
+				if (data.success === "used") {
+					isValid = "used";
+				} else if (data.success === true) {
+					isValid = true;
+				} else {
+					isValid = false;
+				}
+			}
+		} catch (err) {
+			isValid = false;
 		}
+
+		// Resume scanning after 3 seconds
+		setTimeout(() => {
+			if (html5QrCode && isScanning) {
+				html5QrCode.resume();
+				isValid = null;
+			}
+		}, 3000);
 	};
 
 	const onScanError = (errorMessage: string) => {
@@ -111,16 +138,19 @@
 		</div>
 	{/if}
 
-	{#if verificationResult}
-		{#if verificationResult.success}
-			<div class="success">
-				<h2>✅ {verificationResult.message}</h2>
-			</div>
-		{:else}
-			<div class="error">
-				<h2>❌ {verificationResult.message}</h2>
-			</div>
-		{/if}
+
+	{#if isValid === true}
+		<div class="success">
+			<p>Gyldig billett</p>
+		</div>
+	{:else if isValid == "used"}
+		<div class="error">
+			<p>Billett allerede brukt</p>
+		</div>
+	{:else if isValid === false}
+		<div class="error">
+			<p>Ugyldig billett</p>
+		</div>
 	{/if}
 </div>
 
@@ -156,34 +186,20 @@
 		display: none !important;
 	}
 
+	.success,
 	.error {
-		margin-top: 1rem;
-		padding: 1rem;
-		background-color: #fee;
-		border: 1px solid #fcc;
-		border-radius: 0.5rem;
-		color: #c00;
-		width: 100%;
-	}
-
-	.success {
-		margin-top: 1rem;
-		padding: 1.5rem;
-		background-color: #efe;
-		border: 2px solid #4caf50;
-		border-radius: 0.5rem;
-		width: 100%;
+		margin-top: 2rem;
+		padding: 2rem;
+		border-radius: 8px;
 		text-align: center;
 	}
 
-	.success h2 {
-		margin: 0;
-		font-size: 1.5rem;
-		color: #2e7d32;
+	.success {
+		background: green;
 	}
 
-	.error h2 {
-		margin: 0;
-		font-size: 1.2rem;
+	.error {
+		background: red;
 	}
+
 </style>
