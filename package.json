@@ -13,6 +13,7 @@
 		"build": "vite build"
 	},
 	"devDependencies": {
+		"@cloudparker/easy-qrcode-reader-svelte": "^1.0.2",
 		"@sveltejs/adapter-auto": "^3.3.1",
 		"@sveltejs/adapter-node": "^5.2.9",
 		"@sveltejs/adapter-static": "^3.0.6",

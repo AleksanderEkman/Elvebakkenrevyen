@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import EmblaCarousel from 'embla-carousel';
 	import type { EmblaCarouselType } from 'embla-carousel';
 
 	let emblaNode: HTMLElement;
 	let viewportNode: HTMLElement;
-	let emblaApi: EmblaCarouselType;
+	let emblaApi: EmblaCarouselType | undefined;
 	let sponsorImages: string[] = [];
 	let sponsors: { name: string; alt: string; url: string }[] = [];
 	let showContent = false;
@@ -18,7 +18,7 @@
 			{ name: 'Freddy Fuego', alt: 'Vulkan Oslo', url: 'https://www.freddyfuego.no/' },
 			{ name: 'Fellesverkstedet', alt: 'Vulkan Oslo', url: 'https://www.fellesverkstedet.no/no' },
 			{ name: 'Vega Scene', alt: 'Vulkan Oslo', url: 'https://www.vegascene.no/' },
-			{ name: 'Syng', alt: 'Vulkan Oslo', url: 'https://syng.no/' }	
+			{ name: 'Syng', alt: 'Vulkan Oslo', url: 'https://syng.no/' }
 		];
 
 		const loadImages = async () => {
@@ -33,13 +33,21 @@
 		};
 
 		loadImages().then(() => {
-			// Oppretter en ny EmblaCarousel med emblaAPI
-			emblaApi = EmblaCarousel(viewportNode);
+			// Oppretter en ny EmblaCarousel med emblaAPI og konfigurasjonsalternativer
+			emblaApi = EmblaCarousel(viewportNode, {
+				loop: true,
+				align: 'start',
+				dragFree: true,
+				containScroll: 'trimSnaps',
+				slidesToScroll: 1
+			});
 		});
+	});
 
-		return () => {
+	onDestroy(() => {
+		if (emblaApi) {
 			emblaApi.destroy();
-		};
+		}
 	});
 </script>
 
@@ -60,10 +68,10 @@
             />
           </div>
           <div class="text">
-            <p><a href="{sponsors[index].url}" target={'_blank'} draggable="true">
+            <h2><a href="{sponsors[index].url}" target={'_blank'} draggable="false">
               <!-- Legger til tekst basert på indeks -->
               {sponsors[index].name}
-          </a></p>
+          </a></h2>
           </div>
         </div>
       {/each}
