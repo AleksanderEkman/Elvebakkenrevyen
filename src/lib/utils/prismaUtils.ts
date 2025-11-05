@@ -143,5 +143,16 @@ export async function addTicket(input: {
     };
 }
 
+export async function fetchTicketById(ticketId: string) {
+    const ticket = await prisma.ticket.findUnique({
+        where: { id: ticketId }
+    });
+
+    return ticket;
+}
+
+export async function compareToken(plainToken: string, hashedToken: string) {
+    return await bcryptjs.compare(plainToken, hashedToken);
+}
 
 export default prisma;
